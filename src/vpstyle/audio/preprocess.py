@@ -3,9 +3,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import librosa
 import numpy as np
 import soundfile as sf
+from scipy.signal import resample as scipy_resample
 
 from vpstyle.utils.logging import setup_logging
 
@@ -14,7 +14,12 @@ logger = setup_logging()
 
 def load_audio(path: str | Path, sr: int = 24000, mono: bool = True) -> np.ndarray:
     """Load audio file, resample, and optionally convert to mono."""
-    wav, _ = librosa.load(str(path), sr=sr, mono=mono)
+    wav, in_sr = sf.read(str(path), dtype='float32')
+    if mono and wav.ndim > 1:
+        wav = wav.mean(axis=1)
+    if in_sr != sr:
+        num_samples = int(len(wav) * sr / in_sr)
+        wav = scipy_resample(wav, num_samples)
     return wav
 
 

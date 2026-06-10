@@ -4,9 +4,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import librosa
 import numpy as np
 import soundfile as sf
+from scipy.signal import resample as scipy_resample
 
 from vpstyle.data.metadata_schema import Segment
 from vpstyle.utils.hashing import str_hash
@@ -87,7 +87,12 @@ def segment_file(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    wav, _ = librosa.load(str(wav_path), sr=sr, mono=True)
+    wav, in_sr = sf.read(str(wav_path), dtype='float32')
+    if wav.ndim > 1:
+        wav = wav.mean(axis=1)
+    if in_sr != sr:
+        num_samples = int(len(wav) * sr / in_sr)
+        wav = scipy_resample(wav, num_samples)
     segments = split_segments(
         wav, sr,
         segment_seconds=segment_seconds,

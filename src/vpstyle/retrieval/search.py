@@ -4,6 +4,8 @@ from __future__ import annotations
 from pathlib import Path
 
 import numpy as np
+import soundfile as sf
+from scipy.signal import resample as scipy_resample
 
 from vpstyle.audio.preprocess import preprocess_file
 from vpstyle.audio.segment import segment_file, split_segments
@@ -41,8 +43,14 @@ class ProducerSearch:
         The file is loaded, segmented, embedded, and scored against all profiles.
         """
         audio_path = Path(audio_path)
-        import librosa
-        wav, _ = librosa.load(str(audio_path), sr=self._sr, mono=True)
+        wav, in_sr = sf.read(str(audio_path), dtype='float32')
+        # Convert to mono if needed
+        if wav.ndim > 1:
+            wav = wav.mean(axis=1)
+        # Resample if sample rate differs
+        if in_sr != self._sr:
+            num_samples = int(len(wav) * self._sr / in_sr)
+            wav = scipy_resample(wav, num_samples)
 
         return self.search_wav(wav)
 

@@ -25,7 +25,7 @@ class MERTEmbedder(AudioEmbedder):
         layer_strategy: str = "mean_last_hidden",
         trust_remote_code: bool = True,
     ):
-        from transformers import AutoModel
+        from transformers import AutoModel, AutoProcessor
 
         self._model_name = model_name
         self._device = device
@@ -37,6 +37,11 @@ class MERTEmbedder(AudioEmbedder):
         )
         self.model.to(device)
         self.model.eval()
+
+        self._processor = AutoProcessor.from_pretrained(
+            model_name,
+            trust_remote_code=trust_remote_code,
+        )
 
         # Determine embedding dimension from model config
         self._dim = self.model.config.hidden_size
@@ -57,20 +62,14 @@ class MERTEmbedder(AudioEmbedder):
     @torch.no_grad()
     def embed_wav(self, wav: np.ndarray, sr: int) -> np.ndarray:
         """Extract embedding from waveform array."""
-        from transformers import AutoProcessor
-
-        processor = AutoProcessor.from_pretrained(
-            self._model_name,
-            trust_remote_code=True,
-        )
-
         # Ensure correct sample rate
         if sr != self._sr:
-            import librosa
-            wav = librosa.resample(wav, orig_sr=sr, target_sr=self._sr)
+            from scipy.signal import resample
+            num_samples = int(len(wav) * self._sr / sr)
+            wav = resample(wav, num_samples)
             sr = self._sr
 
-        inputs = processor(wav, sampling_rate=sr, return_tensors="pt")
+        inputs = self._processor(wav, sampling_rate=sr, return_tensors="pt")
         inputs = {k: v.to(self._device) for k, v in inputs.items()}
 
         outputs = self.model(**inputs, output_hidden_states=True)
@@ -82,26 +81,25 @@ class MERTEmbedder(AudioEmbedder):
     @torch.no_grad()
     def embed_file(self, wav_path: str) -> np.ndarray:
         """Extract embedding from an audio file."""
-        import librosa
-        wav, sr = librosa.load(wav_path, sr=self._sr, mono=True)
-        return self.embed_wav(wav, sr)
+        import soundfile as sf
+        wav, sr = sf.read(wav_path, dtype='float32')
+        if wav.ndim > 1:
+            wav = wav.mean(axis=1)  # convert to mono
+        if sr != self._sr:
+            from scipy.signal import resample
+            num_samples = int(len(wav) * self._sr / sr)
+            wav = resample(wav, num_samples)
+        return self.embed_wav(wav, self._sr)
 
     @torch.no_grad()
     def embed_batch(self, wavs: list[np.ndarray], sr: int) -> np.ndarray:
         """Extract embeddings from a batch."""
-        import librosa
-        from transformers import AutoProcessor
-
-        processor = AutoProcessor.from_pretrained(
-            self._model_name,
-            trust_remote_code=True,
-        )
-
         if sr != self._sr:
-            wavs = [librosa.resample(w, orig_sr=sr, target_sr=self._sr) for w in wavs]
+            from scipy.signal import resample
+            wavs = [resample(w, int(len(w) * self._sr / sr)) for w in wavs]
             sr = self._sr
 
-        inputs = processor(wavs, sampling_rate=sr, return_tensors="pt", padding=True)
+        inputs = self._processor(wavs, sampling_rate=sr, return_tensors="pt", padding=True)
         inputs = {k: v.to(self._device) for k, v in inputs.items()}
 
         outputs = self.model(**inputs, output_hidden_states=True)
