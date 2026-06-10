@@ -23,6 +23,15 @@ def _first_original_youtube_url(pvs: list[dict]) -> Optional[str]:
     return None
 
 
+def _is_target_producer(artists: list[dict], artist_id: int) -> bool:
+    """Check if the target artist_id appears as a Producer in the song's artists list."""
+    for a in artists:
+        artist = a.get("artist", {})
+        if artist.get("id") == artist_id and "Producer" in a.get("categories", []):
+            return True
+    return False
+
+
 def _count_producers(artists: list[dict]) -> int:
     """Count the number of artists whose categories include 'Producer'."""
     count = 0
@@ -41,7 +50,7 @@ def _parse_song_type(song_type: str) -> tuple[bool, bool, bool, bool, bool]:
         st == "Remix",
         st == "Instrumental",
         st == "Live",
-        st not in ("Original", "Cover", "Remix", "Instrumental", "Live", "MusicPV"),
+        st not in ("Original", "Cover", "Remix", "Instrumental", "Live", "MusicPV", "Remaster"),
     )
 
 
@@ -49,10 +58,13 @@ def _determine_status(
     song_type: str,
     producer_count: int,
     length_seconds: int,
+    is_target_producer: bool = True,
 ) -> tuple[str, Optional[str]]:
     """Determine accept/reject/pending_review status."""
     is_cover, is_remix, is_instrumental, is_live, is_other = _parse_song_type(song_type)
 
+    if not is_target_producer:
+        return "rejected", "not_target_producer"
     if is_cover:
         return "rejected", "cover"
     if is_remix:
@@ -73,6 +85,7 @@ def _determine_status(
 def build_song_index(
     artists_jsonl: Path,
     producer_slug: str,
+    artist_id: Optional[int] = None,
     cleaning_config: Optional[dict] = None,
 ) -> list[Song]:
     """Convert raw VocaDB artists JSONL into a list of Song dataclasses."""
@@ -106,12 +119,15 @@ def build_song_index(
             source_url = _first_original_youtube_url(pvs)
             source_urls = [source_url] if source_url else []
             producer_count = _count_producers(artists)
+            is_target = _is_target_producer(artists, artist_id) if artist_id else True
             is_cover, is_remix, is_instrumental, is_live, _ = _parse_song_type(
                 song_type
             )
             is_collaboration = producer_count > 1
 
-            status, reason = _determine_status(song_type, producer_count, length_seconds)
+            status, reason = _determine_status(
+                song_type, producer_count, length_seconds, is_target
+            )
 
             song = Song(
                 song_id=song_id,

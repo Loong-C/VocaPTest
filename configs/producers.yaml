@@ -1,90 +1,75 @@
 producers:
-  - slug: wowaka
-    display_name: wowaka
-    vocadb_artist_id: null
-    aliases: ["現実逃避P"]
-
-  - slug: kemu
-    display_name: kemu
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: neru
-    display_name: Neru
-    vocadb_artist_id: null
-    aliases: ["押入れP"]
-
-  - slug: deco27
-    display_name: DECO*27
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: pinocchiop
-    display_name: ピノキオピー
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: mitchie_m
-    display_name: Mitchie M
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: jin
-    display_name: じん
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: orangestar
-    display_name: Orangestar
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: cosmo
-    display_name: cosMo@暴走P
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: hachi
-    display_name: ハチ
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: 40mp
-    display_name: 40mP
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: nayutan
-    display_name: ナユタン星人
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: kairikibear
-    display_name: かいりきベア
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: kanaria
-    display_name: Kanaria
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: chinozo
-    display_name: Chinozo
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: inabakumori
-    display_name: 稲葉曇
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: mimi
-    display_name: MIMI
-    vocadb_artist_id: null
-    aliases: []
-
-  - slug: maretu
-    display_name: MARETU
-    vocadb_artist_id: null
-    aliases: []
+- aliases:
+  - 現実逃避P
+  display_name: wowaka
+  slug: wowaka
+  vocadb_artist_id: 53
+- aliases: []
+  display_name: kemu
+  slug: kemu
+  vocadb_artist_id: 735
+- aliases:
+  - 押入れP
+  display_name: Neru
+  slug: neru
+  vocadb_artist_id: 137
+- aliases: []
+  display_name: DECO*27
+  slug: deco27
+  vocadb_artist_id: 45
+- aliases: []
+  display_name: ピノキオピー
+  slug: pinocchiop
+  vocadb_artist_id: 28
+- aliases: []
+  display_name: Mitchie M
+  slug: mitchie_m
+  vocadb_artist_id: 624
+- aliases: []
+  display_name: じん
+  slug: jin
+  vocadb_artist_id: 136320
+- aliases: []
+  display_name: Orangestar
+  slug: orangestar
+  vocadb_artist_id: 11630
+- aliases: []
+  display_name: cosMo@暴走P
+  slug: cosmo
+  vocadb_artist_id: 85
+- aliases: []
+  display_name: ハチ
+  slug: hachi
+  vocadb_artist_id: 49
+- aliases: []
+  display_name: 40mP
+  slug: 40mp
+  vocadb_artist_id: 8
+- aliases: []
+  display_name: ナユタン星人
+  slug: nayutan
+  vocadb_artist_id: 36280
+- aliases: []
+  display_name: かいりきベア
+  slug: kairikibear
+  vocadb_artist_id: 885
+- aliases: []
+  display_name: Kanaria
+  slug: kanaria
+  vocadb_artist_id: 80976
+- aliases: []
+  display_name: Chinozo
+  slug: chinozo
+  vocadb_artist_id: 67910
+- aliases: []
+  display_name: 稲葉曇
+  slug: inabakumori
+  vocadb_artist_id: 46824
+- aliases: []
+  display_name: MIMI
+  slug: mimi
+  vocadb_artist_id: 16116
+- aliases: []
+  display_name: MARETU
+  slug: maretu
+  vocadb_artist_id: 1665

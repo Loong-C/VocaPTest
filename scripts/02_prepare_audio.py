@@ -41,7 +41,7 @@ def main():
             logger.warning("Metadata not found for %s — skipping", slug)
             continue
 
-        songs = build_song_index(jsonl_path, slug)
+        songs = build_song_index(jsonl_path, slug, artist_id=producer.get("vocadb_artist_id"))
         accepted = [s for s in songs if s.status == "accepted"]
         pending = [s for s in songs if s.status == "pending_review"]
 
