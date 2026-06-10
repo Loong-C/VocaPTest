@@ -10,6 +10,8 @@ venv/
 
 # Data (large files)
 data/raw/audio/
+data/audio/
+data/raw_jsonl/
 data/interim/
 data/processed/embeddings/
 data/processed/producer_profiles/

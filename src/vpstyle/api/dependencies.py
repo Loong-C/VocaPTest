@@ -60,7 +60,7 @@ def get_profiles() -> dict:
     if _profiles is None:
         cfg = get_config()
         root = project_root()
-        profile_path = root / cfg.paths.profile_dir / "profiles_mert_95.pkl"
+        profile_path = root / "data" / "processed" / "profiles.pkl"
         if profile_path.exists():
             _profiles = load_profiles(profile_path)
             logger.info("Profiles loaded: %d producers", len(_profiles.get("producers", {})))
