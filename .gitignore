@@ -38,6 +38,9 @@ Thumbs.db
 # External repos
 external/
 
+# Tools
+tools/
+
 # Node
 web/node_modules/
 web/.next/
