@@ -1,4 +1,4 @@
-# 测测你的曲风最像哪位 P 主
+﻿# 测测你的曲风最像哪位 P 主
 
 ## 项目目标
 
@@ -12,11 +12,13 @@
 
 第一版建议只覆盖 10 到 20 位风格差异明显的 P 主。不要一开始做 100 位以上，因为数据清洗、标签歧义、合作曲、Remix、翻唱、音源差异都会迅速放大难度。
 
-第一版推荐选择风格轮廓较鲜明、代表作较多、听众印象较稳定的 P 主，例如 wowaka、kemu、Neru、DECO*27、ピノキオピー、Mitchie M、じん、Orangestar、cosMo@暴走P、ハチ、トーマ、40mP、ナユタン星人、かいりきベア、Kanaria、Chinozo、稲葉曇、MIMI 等。实际进入数据集的名单应以数据可获取性和清洗质量为准。
+第一版推荐选择风格轮廓较鲜明、代表作较多、听众印象较稳定的 P 主，推荐名单如下（实际进入数据集的名单应以数据可获取性和清洗质量为准）：
+
+- wowaka（現実逃避P）、kemu、Neru（押入れP）、DECO*27、ピノキオピー、Mitchie M、じん、Orangestar、cosMo@暴走P、ハチ、40mP、ナユタン星人、かいりきベア、Kanaria、Chinozo、稲葉曇、MIMI、MARETU
 
 每位 P 主第一版建议收集 20 到 50 首歌曲。每首歌切成多个 10 到 30 秒片段，每个片段提取 embedding。假设选择 20 位 P 主，每位 30 首歌，每首歌切 8 个片段，那么可以得到约 4800 个片段样本。这个规模不适合从零训练大模型，但足够用于 frozen backbone embedding、原型相似度检索、kNN、线性分类器或小型 MLP probe。
 
-第一版输出建议采用 Top-5，而不是 Top-1。因为“曲风像谁”本身不是单标签分类问题。输出形式可以是“最接近的 P 主”“相似度分数”“所属大风格区域”“相似原因解释”“参考曲示例”。
+第一版输出建议采用 Top-5，而不是 Top-1。"曲风像谁"本身不是单标签分类问题。输出形式只包含 P 主名称和相似度分数，不做风格区域分类、原因解释等附加输出。
 
 ## 总体技术路线
 
@@ -128,10 +130,6 @@ voca-like/
         evaluate.py
         split.py
 
-      explain/
-        style_cards.py
-        generate_explanation.py
-
       api/
         main.py
         schemas.py
@@ -185,7 +183,7 @@ voca-like/
 
 ## 环境准备
 
-推荐使用 Python 3.10 或 3.11。如果某些模型依赖要求较旧版本，再单独建立环境。第一版建议优先使用 PyTorch、transformers、torchaudio、librosa、scikit-learn、fastapi、uvicorn、pydantic、numpy、pandas、faiss-cpu 或 hnswlib。
+推荐使用 Python 3.10+。当前开发环境使用 Python 3.13，已验证 torch、numba、faiss-cpu 等关键依赖均有 cp313 预编译 wheel，可以直接使用 3.13。第一版建议优先使用 PyTorch、transformers、torchaudio、librosa、scikit-learn、fastapi、uvicorn、pydantic、numpy、pandas、faiss-cpu 或 hnswlib。
 
 基础依赖可以先写成：
 
@@ -227,7 +225,7 @@ pip install muq
 推荐创建环境：
 
 ```bash
-conda create -n vpstyle python=3.10 -y
+conda create -n vpstyle python=3.13 -y
 conda activate vpstyle
 pip install -r requirements.txt
 ```
@@ -309,7 +307,9 @@ model:
 
 P 主列表建议人工确定，不要完全自动抓取。因为项目目标是娱乐向“风格像谁”，第一版更应该选择有代表性、风格轮廓明显、歌曲数量足够、用户熟悉度较高的 P 主。
 
-歌曲元数据可以从 VocaDB 获取。VocaDB 提供 artist、album、song 等信息查询，可以用于建立 P 主与歌曲列表。你需要记录的信息至少包括 producer_id、producer_name、song_id、song_name、publish_date、vocalists、artist_roles、pv_links、tags、song_type、is_cover、is_remix、is_collaboration、source_url。
+歌曲元数据可以从 VocaDB 获取。VocaDB 提供 artist、album、song 等信息查询，可以用于建立 P 主与歌曲列表。
+
+**VocaDB → yt-dlp 下载链路已确认可行**：通过 VocaDB API `/api/songs?artistId=X&fields=PVs` 获取歌曲的 PV 列表，过滤 `service=Youtube` 且 `pvType=Original` 的条目，提取 `url` 字段（格式如 `https://youtu.be/vnw8zURAxkU`），即可用 yt-dlp 下载音频。你需要记录的信息至少包括 producer_id、producer_name、song_id、song_name、publish_date、vocalists、artist_roles、pv_links、tags、song_type、is_cover、is_remix、is_collaboration、source_url。
 
 音频文件可以来自 YouTube、Niconico、Bilibili、个人已有音频文件或其他平台。暂且不考虑版权时，可以用 yt-dlp 统一下载音频。但项目结构仍然要设计成可以替换音频来源：metadata 中只保存 source_url 和 local_audio_path，不把下载逻辑写死在模型代码里。
 
@@ -353,7 +353,15 @@ yt-dlp -x --audio-format wav --audio-quality 0 -o "data/raw/audio/producers/%(id
 
 第一版一定要做最小清洗，否则模型结果会非常不稳定。
 
-首先，去掉明显的 cover、remix、live、instrumental remake、short version、crossfade、album preview。其次，合作曲要谨慎处理。如果一首歌有多个主要 composer，第一版建议直接排除。再次，每位 P 主尽量平衡歌曲数量，不要让某位 P 主有 200 首、另一位只有 10 首。最后，同一首歌的不同投稿版本不要重复进入训练和测试，否则会造成泄漏。
+**自动清洗**（通过 VocaDB 元数据字段判断）：
+- 根据 `songType` 字段排除 Cover、Remix、Instrumental、Live、Other 等非 Original 类型
+- 根据 `artists` 中 `categories` 包含 "Producer" 的人数判断是否为合作曲：如果超过 1 位 Producer，标记为 `collaboration` 并排除
+- 根据 `lengthSeconds` 排除过短（<60s）的 preview/short version
+
+**人工确认**（自动过滤后不确定的边界情况）：
+- 同名歌曲的不同投稿版本（同一 song_id 只保留一个 PV）
+- 别名、合作名义混淆导致同一首歌被多次收录
+- 每位 P 主尽量平衡歌曲数量，目标每人 20~50 首
 
 可以给每首歌一个 status 字段：
 
@@ -362,9 +370,12 @@ yt-dlp -x --audio-format wav --audio-quality 0 -o "data/raw/audio/producers/%(id
 {"song_id":"...","status":"rejected","reason":"cover"}
 {"song_id":"...","status":"rejected","reason":"collaboration"}
 {"song_id":"...","status":"rejected","reason":"short_preview"}
+{"song_id":"...","status":"pending_review","reason":"multiple_producers_need_check"}
 ```
 
 第一版不需要完美，但需要可追踪。每次删除一首歌，最好记录原因。以后模型出错时可以回看数据清洗是否合理。
+
+自动清洗脚本遇到不确定情况（如多个 Producer 但 roles 不明确、songType 标记矛盾等）应标记为 `pending_review` 并暂停等待人工确认。
 
 ## 音频预处理
 
@@ -492,11 +503,7 @@ class MuQEmbedder:
 
 这里的 output 字段需要以实际 MuQ 版本为准。第一次接入时不要急着封装复杂逻辑，先在 notebook 中打印 output 类型和 shape，再写正式 wrapper。
 
-### CLAP / MuQ-MuLan 的位置
-
-CLAP 或 MuQ-MuLan 更适合用于“文本解释”和“风格标签匹配”，而不是第一版的 P 主检索主模型。它们可以支持这样的功能：预先写一组文本标签，如“fast vocaloid rock with dense melody”“dark electronic vocaloid song”“soft piano ballad”“kawaii future bass”，然后计算用户音频与这些文本标签的相似度，用于生成解释。
-
-因此第一版主检索用 MERT 或 MuQ，解释辅助可选 CLAP 或 MuQ-MuLan。
+第一版主检索用 MERT 或 MuQ。CLAP / MuQ-MuLan 作为备选方案，如果后续需要文本相关功能再考虑接入。
 
 ## Embedding 缓存设计
 
@@ -553,24 +560,10 @@ build_profiles.py 应输出：
       "display_name": "wowaka",
       "centroids": np.ndarray,
       "song_count": 30,
-      "segment_count": 240,
-      "style_card": {...}
+      "segment_count": 240
     }
   }
 }
-```
-
-style_card 可以人工写在 configs/style_cards.yaml：
-
-```yaml
-wowaka:
-  display_name: "wowaka"
-  tags: ["高速", "VOCAROCK", "密集旋律", "焦灼感", "初音ミク"]
-  explanation_template: "你的歌曲在高速推进、密集主旋律和紧张感上接近 wowaka 的参考曲库。"
-kemu:
-  display_name: "kemu"
-  tags: ["高能", "摇滚", "戏剧性", "副歌爆发", "明亮压迫感"]
-  explanation_template: "你的歌曲有强烈的副歌爆发和高能摇滚推进，接近 kemu 的参考曲库。"
 ```
 
 ## 相似度计算
@@ -680,7 +673,7 @@ GET /api/producers
 返回当前参考库中的 P 主列表。
 
 GET /api/producers/{producer_slug}
-返回某位 P 主的风格卡片、参考曲数量、标签等信息。
+返回某位 P 主的基本信息和参考曲数量。
 ```
 
 如果第一版处理速度足够快，可以 POST /api/analyze 同步返回结果。如果上传歌曲较长或 CPU 推理较慢，应使用异步任务队列。简单版可以用后台线程或 asyncio，正式版可以用 Celery/RQ + Redis。
@@ -704,20 +697,15 @@ curl -X POST "http://localhost:8000/api/analyze" \
         "producer_slug": "kemu",
         "display_name": "kemu",
         "score": 0.84,
-        "rank": 1,
-        "tags": ["高能", "摇滚", "副歌爆发"],
-        "explanation": "你的歌曲在高能推进、摇滚质感和副歌爆发上接近 kemu 的参考曲库。"
+        "rank": 1
       },
       {
         "producer_slug": "neru",
         "display_name": "Neru",
         "score": 0.79,
-        "rank": 2,
-        "tags": ["疾走感", "暗色", "VOCAROCK"],
-        "explanation": "你的歌曲也接近 Neru 的暗色疾走系 VOCAROCK 区域。"
+        "rank": 2
       }
     ],
-    "global_tags": ["高速", "高能", "VOCAROCK"],
     "warnings": []
   }
 }
@@ -746,53 +734,30 @@ def list_producers():
 
 ## 前端设计
 
-前端推荐使用 Next.js 或 Vite + React。第一版页面很简单：上传音频、显示分析进度、展示 Top-5 P 主、展示解释文案、展示相似度条形图、展示“你的曲风区域”。
+前端推荐使用 Next.js 或 Vite + React。第一版页面很简单：上传音频、显示分析进度、展示 Top-5 P 主及相似度分数。
 
 页面结构可以是：
 
-```text
+ + "`	ext" + @"
 /
   首页，项目说明，上传入口。
 
 /result/{job_id}
-  分析结果页。
+  分析结果页，显示 Top-5 P 主和分数。
 
 /producers
   当前参考库 P 主列表。
+ + "`" + @"
 
-/producers/{slug}
-  P 主风格卡片，参考曲示例，标签。
-```
+结果页展示：
 
-结果页不要只显示一个名字。推荐展示：
+"你的曲风最接近：kemu（相似度 0.84）"
+"同时也接近：Neru（0.79）、wowaka（0.75）、かいりきベア（0.72）、DECO*27（0.68）"
+"注意：结果基于当前参考曲库，不代表严格音乐学判断。"
 
-“你的曲风最接近：kemu”
-“同时也接近：Neru、wowaka、かいりきベア、DECO*27”
-“整体区域：高能 VOCAROCK / 疾走系 / 副歌爆发”
-“相似理由：节奏密度高、频谱亮度高、主旋律推进强、整体情绪紧张”
-“注意：结果基于当前参考曲库，不代表严格音乐学判断。”
+## 传统 MIR 特征（可选调试工具）
 
-## 传统 MIR 特征
-
-虽然核心系统使用 embedding，但建议同时提取一些传统 MIR 特征用于解释。可以使用 librosa 或 Essentia。
-
-第一版可提取：
-
-BPM 或 tempo，onset density，spectral centroid，spectral bandwidth，zero crossing rate，chroma mean，RMS loudness，dynamic range，MFCC mean/std。
-
-这些特征不要一开始用于主分类，可以用于解释和调试。例如模型认为某首用户歌曲像 cosMo@暴走P，如果它的 tempo 和 onset density 都很高，解释就更可信。如果模型认为像 MIMI，但 tempo 很高、频谱很亮，就需要检查模型是否被歌姬音色带偏。
-
-mir_features.py 可以输出：
-
-```json
-{
-  "tempo": 180.0,
-  "onset_density": 4.2,
-  "spectral_centroid_mean": 3100.5,
-  "rms_mean": 0.18,
-  "chroma_entropy": 2.1
-}
-```
+如果后续需要调试和内部验证，可以提取一些传统 MIR 特征。这些特征不用于前端展示，仅用于内部检查模型是否被音色等非风格因素带偏。可以使用 librosa 提取：BPM、onset density、spectral centroid、spectral bandwidth、zero crossing rate、RMS loudness、MFCC mean/std 等。第一版不强制实现。
 
 ## 可参考或克隆的仓库
 
@@ -830,7 +795,7 @@ git clone https://github.com/pxaris/FM-music-tagging external/FM-music-tagging
 
 第三阶段目标是建立 API 和简单前端。具体任务是：FastAPI 上传音频，后端调用同一套 pipeline，返回 Top-5 JSON。前端做上传页面和结果页。
 
-验收标准是：用户上传一首 wav/mp3，页面能显示 Top-5 P 主、分数、标签、解释语。
+验收标准是：用户上传一首 wav/mp3，页面能显示 Top-5 P 主和分数。
 
 第四阶段目标是加入评估。具体任务是：按 song_id 切 train/val/test，计算 centroid baseline 的 Top-K accuracy，绘制 confusion matrix，用 UMAP 可视化 P 主 embedding 分布。
 
@@ -840,9 +805,9 @@ git clone https://github.com/pxaris/FM-music-tagging external/FM-music-tagging
 
 验收标准是：验证集 Top-3 或 Top-5 明显优于 centroid baseline，且错误案例没有明显数据泄漏。
 
-第六阶段目标是增强解释。具体任务是：加入传统 MIR 特征，加入人工 style cards，加入大风格区域分类，考虑 CLAP/MuQ-MuLan 的文本标签匹配。
+第六阶段目标是对外部署上线。具体任务是：部署到云服务器，配置域名和 HTTPS，添加速率限制，添加使用统计。
 
-验收标准是：结果页不只是名字，还能解释“为什么像”。
+验收标准是：外部用户可以通过公网 URL 访问和使用服务。
 
 ## 最小命令流
 
@@ -923,15 +888,11 @@ similarity.py 负责余弦相似度、top-k 聚合、分数校准。
 
 search.py 负责输入一首歌，返回 Top-K P 主。
 
-style_cards.py 负责人类可读的 P 主解释信息。
-
-generate_explanation.py 负责把模型分数、MIR 特征、style card 拼成解释文案。
-
 api/main.py 负责 FastAPI 服务入口。
 
 routes_upload.py 负责上传与分析接口。
 
-routes_metadata.py 负责 P 主列表和风格卡片接口。
+routes_metadata.py 负责 P 主列表接口。
 
 ## 推荐的数据 schema
 
@@ -943,7 +904,6 @@ class Producer:
     display_name: str
     vocadb_artist_id: int | None
     aliases: list[str]
-    style_tags: list[str]
     notes: str | None
 ```
 
@@ -999,8 +959,6 @@ class SearchResult:
     display_name: str
     score: float
     rank: int
-    tags: list[str]
-    explanation: str
 ```
 
 ## .env 准备
