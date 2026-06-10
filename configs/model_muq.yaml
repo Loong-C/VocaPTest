@@ -1,0 +1,5 @@
+model:
+  backend: muq
+  hf_name: OpenMuQ/MuQ-large-msd-iter
+  sample_rate: 24000
+  use_fp32: true

@@ -1,0 +1,6 @@
+retrieval:
+  metric: cosine
+  producer_clusters: 5
+  top_k: 5
+  segment_top_ratio: 0.4
+  normalize_before_search: true

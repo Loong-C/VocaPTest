@@ -1,0 +1,38 @@
+project:
+  name: vocaloid-producer-style
+  seed: 42
+
+paths:
+  data_root: data
+  raw_audio_dir: data/raw/audio/producers
+  upload_dir: data/raw/audio/uploads
+  metadata_dir: data/raw/metadata
+  interim_dir: data/interim
+  embedding_dir: data/processed/embeddings
+  profile_dir: data/processed/producer_profiles
+
+audio:
+  sample_rate: 24000
+  mono: true
+  segment_seconds: 20
+  hop_seconds: 10
+  min_rms_db: -45
+  max_segments_per_song: 12
+  trim_silence: true
+
+model:
+  backend: mert_95
+  device: cuda
+  batch_size: 8
+  pooling: mean
+
+retrieval:
+  metric: cosine
+  producer_clusters: 5
+  top_k: 5
+  segment_top_ratio: 0.4
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  max_upload_mb: 50

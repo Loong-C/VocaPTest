@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+
+# Data (large files)
+data/raw/audio/
+data/interim/
+data/processed/embeddings/
+data/processed/producer_profiles/
+
+# Cache
+.cache/
+*.npy
+*.pkl
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Notebooks
+.ipynb_checkpoints/
+
+# External repos
+external/
+
+# Node
+web/node_modules/
+web/.next/
+web/dist/

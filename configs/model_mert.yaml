@@ -1,0 +1,6 @@
+model:
+  backend: mert_95
+  hf_name: m-a-p/MERT-v1-95M
+  sample_rate: 24000
+  layer_strategy: mean_last_hidden
+  trust_remote_code: true

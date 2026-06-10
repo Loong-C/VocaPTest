@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "vpstyle"
+version = "0.1.0"
+description = "Vocaloid Producer Style Similarity System"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "torch",
+    "torchaudio",
+    "transformers",
+    "librosa",
+    "soundfile",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "scipy",
+    "tqdm",
+    "pyyaml",
+    "pydantic",
+    "pydantic-settings",
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "faiss-cpu",
+    "hnswlib",
+    "matplotlib",
+    "umap-learn",
+    "requests",
+    "httpx",
+    "yt-dlp",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+
+[project.scripts]
+vpstyle = "vpstyle.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

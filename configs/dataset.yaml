@@ -1,0 +1,15 @@
+dataset:
+  producers_file: configs/producers.yaml
+  songs_per_producer_min: 10
+  songs_per_producer_target: 30
+  songs_per_producer_max: 50
+
+cleaning:
+  exclude_cover: true
+  exclude_remix: true
+  exclude_instrumental: true
+  exclude_live: true
+  exclude_collaboration: true
+  min_duration_seconds: 60
+  auto_reject: true
+  pending_on_ambiguous: true
