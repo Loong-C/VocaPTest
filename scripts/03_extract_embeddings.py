@@ -1,13 +1,13 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Extract embeddings from preprocessed audio segments."""
 import argparse
 import json
 from pathlib import Path
 
-from vpstyle.features.extract_embeddings import extract_embeddings
-from vpstyle.data.metadata_schema import Segment
-from vpstyle.utils.config import load_config
-from vpstyle.utils.logging import setup_logging
+from vocaptest.features.extract_embeddings import extract_embeddings
+from vocaptest.data.metadata_schema import Segment
+from vocaptest.utils.config import load_config
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 
@@ -26,13 +26,13 @@ def main():
 
     # Load embedder
     if backend == "muq":
-        from vpstyle.models.muq_embedder import MuQEmbedder
+        from vocaptest.models.muq_embedder import MuQEmbedder
         embedder = MuQEmbedder(
             model_name=cfg.model.get("hf_name", "OpenMuQ/MuQ-large-msd-iter"),
             device=args.device,
         )
     else:
-        from vpstyle.models.mert_embedder import MERTEmbedder
+        from vocaptest.models.mert_embedder import MERTEmbedder
         embedder = MERTEmbedder(
             model_name=cfg.model.get("hf_name", "m-a-p/MERT-v1-95M"),
             device=args.device,

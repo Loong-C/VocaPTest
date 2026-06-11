@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Build producer profiles from embedding records."""
 import argparse
 import json
 from pathlib import Path
 
-from vpstyle.data.metadata_schema import EmbeddingRecord
-from vpstyle.retrieval.build_profiles import build_producer_profiles
-from vpstyle.utils.logging import setup_logging
+from vocaptest.data.metadata_schema import EmbeddingRecord
+from vocaptest.retrieval.build_profiles import build_producer_profiles
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 

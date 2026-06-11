@@ -1,6 +1,6 @@
-"""Tests for similarity computation."""
+﻿"""Tests for similarity computation."""
 import numpy as np
-from vpstyle.retrieval.similarity import cosine_similarity, score_song_against_producer
+from vocaptest.retrieval.similarity import cosine_similarity, score_song_against_producer
 
 
 def test_cosine_similarity_same():

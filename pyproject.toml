@@ -1,9 +1,9 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "vpstyle"
+name = "vocaptest"
 version = "0.1.0"
 description = "Vocaloid Producer Style Similarity System"
 requires-python = ">=3.10"
@@ -43,7 +43,7 @@ dev = [
 ]
 
 [project.scripts]
-vpstyle = "vpstyle.cli:main"
+vocaptest = "vocaptest.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

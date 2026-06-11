@@ -45,3 +45,4 @@ tools/
 web/node_modules/
 web/.next/
 web/dist/
+*.tsbuildinfo

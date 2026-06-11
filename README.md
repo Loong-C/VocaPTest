@@ -1,4 +1,4 @@
-# Voca-like — 测测你的曲风最像哪位 P 主
+﻿# VocaP Test — 测测你的曲风最像哪位 P 主
 
 一个娱乐向的 Vocaloid Producer 风格相似度系统。上传一段音乐，系统在预先构建的 P 主参考库中寻找听感最接近的 Producer，输出 Top-K 相似结果。
 
@@ -104,11 +104,11 @@ python scripts/06_run_api.py
 ## 项目结构
 
 ```text
-voca-like/
+VocaP Test/
   configs/         # YAML 配置文件
   data/            # 原始/中间/处理后数据
   external/        # 外部参考仓库
-  src/vpstyle/     # Python 核心包
+  src/vocaptest/     # Python 核心包
   web/             # 前端（待开发）
   scripts/         # 一键流程脚本
   notebooks/       # 探索分析

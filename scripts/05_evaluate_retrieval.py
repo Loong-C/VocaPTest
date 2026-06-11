@@ -1,13 +1,13 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Evaluate retrieval: run search on a test audio file."""
 import argparse
 import json
 from pathlib import Path
 
-from vpstyle.retrieval.search import ProducerSearch
-from vpstyle.retrieval.build_profiles import load_profiles
-from vpstyle.utils.config import load_config
-from vpstyle.utils.logging import setup_logging
+from vocaptest.retrieval.search import ProducerSearch
+from vocaptest.retrieval.build_profiles import load_profiles
+from vocaptest.utils.config import load_config
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 
@@ -30,13 +30,13 @@ def main():
     backend = profiles.get("backend", cfg.model.get("backend", "mert_95"))
 
     if "muq" in backend:
-        from vpstyle.models.muq_embedder import MuQEmbedder
+        from vocaptest.models.muq_embedder import MuQEmbedder
         embedder = MuQEmbedder(
             model_name=cfg.model.get("hf_name", "OpenMuQ/MuQ-large-msd-iter"),
             device=args.device,
         )
     else:
-        from vpstyle.models.mert_embedder import MERTEmbedder
+        from vocaptest.models.mert_embedder import MERTEmbedder
         embedder = MERTEmbedder(
             model_name=cfg.model.get("hf_name", "m-a-p/MERT-v1-95M"),
             device=args.device,

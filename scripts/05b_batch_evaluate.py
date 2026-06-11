@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Batch evaluation: song-level top-k recall using precomputed embeddings."""
 import argparse
 import json
@@ -8,9 +8,9 @@ from pathlib import Path
 
 import numpy as np
 
-from vpstyle.retrieval.similarity import score_song_against_all
-from vpstyle.retrieval.build_profiles import load_profiles
-from vpstyle.utils.logging import setup_logging
+from vocaptest.retrieval.similarity import score_song_against_all
+from vocaptest.retrieval.build_profiles import load_profiles
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 

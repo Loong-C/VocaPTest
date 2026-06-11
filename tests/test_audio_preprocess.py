@@ -1,7 +1,7 @@
-"""Tests for audio preprocessing."""
+﻿"""Tests for audio preprocessing."""
 import pytest
 import numpy as np
-from vpstyle.audio.preprocess import normalize_peak, normalize_rms
+from vocaptest.audio.preprocess import normalize_peak, normalize_rms
 
 
 def test_normalize_peak_silence():

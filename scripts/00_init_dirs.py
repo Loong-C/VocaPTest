@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Initialize project directories."""
 from pathlib import Path
 
-from vpstyle.utils.config import load_config
-from vpstyle.utils.paths import ProjectPaths, project_root
+from vocaptest.utils.config import load_config
+from vocaptest.utils.paths import ProjectPaths, project_root
 
 
 def main():

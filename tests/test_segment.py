@@ -1,6 +1,6 @@
-"""Tests for audio segmentation."""
+﻿"""Tests for audio segmentation."""
 import numpy as np
-from vpstyle.audio.segment import rms_db, split_segments
+from vocaptest.audio.segment import rms_db, split_segments
 
 
 def test_rms_db_silence():

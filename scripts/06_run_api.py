@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Start the FastAPI dev server."""
 import uvicorn
 
-from vpstyle.utils.config import load_config
-from vpstyle.utils.paths import project_root
+from vocaptest.utils.config import load_config
+from vocaptest.utils.paths import project_root
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
     api_cfg = cfg.api
 
     uvicorn.run(
-        "vpstyle.api.main:app",
+        "vocaptest.api.main:app",
         host=api_cfg.get("host", "0.0.0.0"),
         port=api_cfg.get("port", 8000),
         reload=True,

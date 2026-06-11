@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """YouTube-based search + download pipeline. Replaces VocaDB for MVP."""
 import argparse
 import json
@@ -11,7 +11,7 @@ from datetime import datetime
 
 import yaml
 
-from vpstyle.utils.logging import setup_logging
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 

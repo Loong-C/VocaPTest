@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Split embedding manifest into train/test by song (stratified per producer)."""
 import argparse
 import json
@@ -6,7 +6,7 @@ import random
 from collections import defaultdict
 from pathlib import Path
 
-from vpstyle.utils.logging import setup_logging
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 

@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Fetch VocaDB metadata for all producers in config."""
 import argparse
 from pathlib import Path
 
 import yaml
 
-from vpstyle.data.vocadb_client import VocaDBClient
-from vpstyle.utils.logging import setup_logging
+from vocaptest.data.vocadb_client import VocaDBClient
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 

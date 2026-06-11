@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Prepare audio: build song index, download audio, validate."""
 import argparse
 import json
@@ -6,10 +6,10 @@ from pathlib import Path
 
 import yaml
 
-from vpstyle.data.build_song_index import build_song_index, save_song_index
-from vpstyle.data.download_audio import build_audio_manifest, download_audio
-from vpstyle.data.validate_dataset import check_song_balance
-from vpstyle.utils.logging import setup_logging
+from vocaptest.data.build_song_index import build_song_index, save_song_index
+from vocaptest.data.download_audio import build_audio_manifest, download_audio
+from vocaptest.data.validate_dataset import check_song_balance
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 

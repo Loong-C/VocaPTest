@@ -1,8 +1,8 @@
-"""Tests for API endpoints."""
+﻿"""Tests for API endpoints."""
 import pytest
 from fastapi.testclient import TestClient
 
-from vpstyle.api.main import app
+from vocaptest.api.main import app
 
 client = TestClient(app)
 

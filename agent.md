@@ -39,7 +39,7 @@
 建议仓库从一开始就分清“原始音频”“元数据”“中间缓存”“模型代码”“服务端”“前端”“实验记录”。不要把所有脚本堆在根目录。
 
 ```tex
-voca-like/
+VocaP Test/
   README.md
   pyproject.toml
   requirements.txt
@@ -89,7 +89,7 @@ voca-like/
     MuQ/
 
   src/
-    vpstyle/
+    vocaptest/
       __init__.py
 
       data/
@@ -179,7 +179,7 @@ voca-like/
     product_design.md
 ```
 
-这个结构里，data/raw 保存原始音频和原始元数据，data/interim 保存统一采样率后的 wav、切片、静音检测报告，data/processed 保存 embedding 和 P 主 profile。external 保存参考或克隆来的外部仓库，但不建议直接把外部仓库代码深度耦合到主项目。src/vpstyle 是你的正式 Python 包，所有稳定代码都放在这里。scripts 是面向流程的一键脚本。notebooks 用于观察、可视化和错误分析，不作为正式生产逻辑。
+这个结构里，data/raw 保存原始音频和原始元数据，data/interim 保存统一采样率后的 wav、切片、静音检测报告，data/processed 保存 embedding 和 P 主 profile。external 保存参考或克隆来的外部仓库，但不建议直接把外部仓库代码深度耦合到主项目。src/vocaptest 是你的正式 Python 包，所有稳定代码都放在这里。scripts 是面向流程的一键脚本。notebooks 用于观察、可视化和错误分析，不作为正式生产逻辑。
 
 ## 环境准备
 
@@ -225,8 +225,8 @@ pip install muq
 推荐创建环境：
 
 ```bash
-conda create -n vpstyle python=3.13 -y
-conda activate vpstyle
+conda create -n vocaptest python=3.13 -y
+conda activate vocaptest
 pip install -r requirements.txt
 ```
 
@@ -379,7 +379,7 @@ yt-dlp -x --audio-format wav --audio-quality 0 -o "data/raw/audio/producers/%(id
 
 ## 音频预处理
 
-音频预处理应该统一在 src/vpstyle/audio/preprocess.py 中实现。
+音频预处理应该统一在 src/vocaptest/audio/preprocess.py 中实现。
 
 预处理步骤建议包括：读取音频，转 mono，重采样到 24kHz，归一化响度或峰值，裁剪过长静音，保存到 data/interim/wav_24k。
 
@@ -405,7 +405,7 @@ def save_wav(wav, path: str, sr: int = 24000):
     sf.write(path, wav, sr)
 ```
 
-切片逻辑放在 src/vpstyle/audio/segment.py。建议第一版使用固定长度滑窗，例如 segment_seconds=20，hop_seconds=10。不要只取歌曲中间 30 秒，因为很多 Vocaloid 曲的风格特征可能出现在副歌、高速段、drop、间奏、调声密集段。也不要切太短，10 秒以下可能缺少结构信息。20 到 30 秒是比较合理的起点。
+切片逻辑放在 src/vocaptest/audio/segment.py。建议第一版使用固定长度滑窗，例如 segment_seconds=20，hop_seconds=10。不要只取歌曲中间 30 秒，因为很多 Vocaloid 曲的风格特征可能出现在副歌、高速段、drop、间奏、调声密集段。也不要切太短，10 秒以下可能缺少结构信息。20 到 30 秒是比较合理的起点。
 
 片段筛选可以用 RMS 能量过滤静音和过弱片段。第一版不用复杂 VAD，因为音乐不是语音。可以计算每个片段的 RMS dB，低于阈值就丢弃。每首歌最多保留 8 到 12 个片段，以免长歌拥有过多权重。
 
@@ -711,12 +711,12 @@ curl -X POST "http://localhost:8000/api/analyze" \
 }
 ```
 
-FastAPI 主入口 src/vpstyle/api/main.py：
+FastAPI 主入口 src/vocaptest/api/main.py：
 
 ```python
 from fastapi import FastAPI, UploadFile, File
-from vpstyle.api.schemas import AnalyzeResponse
-from vpstyle.pipeline import analyze_uploaded_file
+from vocaptest.api.schemas import AnalyzeResponse
+from vocaptest.pipeline import analyze_uploaded_file
 
 app = FastAPI(title="Vocaloid Producer Style API")
 
@@ -863,7 +863,7 @@ python scripts/05_evaluate_retrieval.py \
 启动 API：
 
 ```bash
-uvicorn vpstyle.api.main:app --host 0.0.0.0 --port 8000
+uvicorn vocaptest.api.main:app --host 0.0.0.0 --port 8000
 ```
 
 ## 第一版代码模块职责

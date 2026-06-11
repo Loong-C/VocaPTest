@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* ===== Kawaii Design Tokens ===== */
+@theme {
+  --color-pink: #FFB7C5;
+  --color-pink-light: #FFD4DE;
+  --color-pink-dark: #F095A8;
+  --color-purple: #C9B1FF;
+  --color-purple-light: #DDCEFF;
+  --color-purple-dark: #A98DE8;
+  --color-mint: #B5EAD7;
+  --color-mint-light: #D4F5E8;
+  --color-sky: #A8D8EA;
+  --color-sky-light: #C5E8F5;
+  --color-cream: #FFF5F5;
+  --color-cream-dark: #FBE8E8;
+  --color-text: #4A4A6A;
+  --color-text-light: #7A7A9A;
+  --color-text-muted: #A0A0B8;
+
+  --font-sans: "Noto Sans JP", "Hiragino Sans", "Microsoft YaHei", sans-serif;
+  --font-display: "Mochiy Pop One", "Noto Sans JP", sans-serif;
+
+  --radius-card: 1.25rem;
+  --radius-btn: 3rem;
+  --shadow-kawaii: 0 4px 20px rgba(255, 183, 197, 0.25);
+  --shadow-kawaii-lg: 0 8px 40px rgba(201, 177, 255, 0.20);
+}
+
+/* ===== Base Styles ===== */
+body {
+  @apply bg-cream text-text font-sans;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 183, 197, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(201, 177, 255, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(168, 216, 234, 0.06) 0%, transparent 60%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ===== Floating Animation ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(2deg); }
+  66% { transform: translateY(-4px) rotate(-1deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-12px) translateX(6px); }
+  50% { transform: translateY(-6px) translateX(-4px); }
+  75% { transform: translateY(-18px) translateX(-8px); }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-120px) scale(0.3); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 183, 197, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 183, 197, 0.55); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes score-fill {
+  from { width: 0%; }
+  to { width: var(--score-width); }
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-up { animation: float-up 4s ease-out forwards; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+.animate-scale-in { animation: scale-in 0.5s ease-out forwards; }
+.animate-slide-in-left { animation: slide-in-left 0.5s ease-out forwards; }
+
+/* Stagger children */
+.stagger > * { opacity: 0; }
+.stagger > *:nth-child(1) { animation: fade-in-up 0.5s ease-out 0.05s forwards; }
+.stagger > *:nth-child(2) { animation: fade-in-up 0.5s ease-out 0.1s forwards; }
+.stagger > *:nth-child(3) { animation: fade-in-up 0.5s ease-out 0.15s forwards; }
+.stagger > *:nth-child(4) { animation: fade-in-up 0.5s ease-out 0.2s forwards; }
+.stagger > *:nth-child(5) { animation: fade-in-up 0.5s ease-out 0.25s forwards; }
+.stagger > *:nth-child(6) { animation: fade-in-up 0.5s ease-out 0.3s forwards; }
+
+/* ===== Component Classes ===== */
+@utility card {
+  @apply bg-white/70 backdrop-blur-sm rounded-[var(--radius-card)]
+         shadow-[var(--shadow-kawaii)] border border-pink-light/30;
+}
+
+@utility card-hover {
+  @apply card transition-all duration-300
+         hover:shadow-[var(--shadow-kawaii-lg)] hover:-translate-y-1
+         hover:border-pink/50;
+}
+
+@utility btn-primary {
+  @apply inline-flex items-center gap-2 px-8 py-3.5
+         bg-gradient-to-r from-pink to-purple text-white font-bold
+         rounded-[var(--radius-btn)] shadow-[var(--shadow-kawaii)]
+         transition-all duration-300 cursor-pointer
+         hover:shadow-[var(--shadow-kawaii-lg)] hover:scale-105
+         active:scale-95;
+}
+
+@utility btn-secondary {
+  @apply inline-flex items-center gap-2 px-6 py-2.5
+         bg-white/60 backdrop-blur-sm text-text border border-pink/40
+         rounded-[var(--radius-btn)] font-medium
+         transition-all duration-300 cursor-pointer
+         hover:bg-pink/10 hover:border-pink/60;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 183, 197, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 183, 197, 0.6);
+}

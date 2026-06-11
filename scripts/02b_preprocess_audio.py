@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Preprocess audio: split into segments, save WAVs, compute RMS."""
 import argparse
 import json
@@ -6,7 +6,7 @@ import subprocess
 import hashlib
 from pathlib import Path
 
-from vpstyle.utils.logging import setup_logging
+from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
 
