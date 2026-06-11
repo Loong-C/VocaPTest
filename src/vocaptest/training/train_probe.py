@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 import torch
 import torch.nn as nn
+from sklearn.metrics import f1_score
 from sklearn.preprocessing import LabelEncoder
 from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
@@ -43,8 +44,11 @@ def train_probe(
     batch_size: int = 64,
     lr: float = 1e-3,
     device: str = "cuda",
+    patience: int = 10,
 ) -> dict:
     """Train an MLP probe and return evaluation metrics."""
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
     embeddings, loaded_records = load_all_embeddings_aligned(records)
     if not loaded_records:
         raise ValueError("No readable embeddings were supplied")
@@ -63,6 +67,10 @@ def train_probe(
     y_train = torch.tensor(y[train_mask], dtype=torch.long)
     X_val = torch.tensor(embeddings[val_mask], dtype=torch.float32)
     y_val = torch.tensor(y[val_mask], dtype=torch.long)
+    val_song_ids_aligned = [
+        record.song_id for record, selected in zip(loaded_records, val_mask)
+        if selected
+    ]
 
     train_ds = TensorDataset(X_train, y_train)
     val_ds = TensorDataset(X_val, y_val)
@@ -73,8 +81,9 @@ def train_probe(
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
-    best_val_acc = 0.0
-    history = {"train_loss": [], "val_acc": []}
+    best_val_macro_f1 = -1.0
+    epochs_without_improvement = 0
+    history = {"train_loss": [], "val_song_acc": [], "val_song_macro_f1": []}
 
     for epoch in range(epochs):
         model.train()
@@ -89,34 +98,68 @@ def train_probe(
 
         # Validation
         model.eval()
-        correct = 0
-        total = 0
+        val_logits: list[torch.Tensor] = []
         with torch.no_grad():
             for xb, yb in val_dl:
                 xb, yb = xb.to(device), yb.to(device)
-                preds = model(xb).argmax(dim=1)
-                correct += (preds == yb).sum().item()
-                total += yb.size(0)
-        val_acc = correct / total
+                val_logits.append(model(xb).cpu())
+
+        logits = torch.cat(val_logits, dim=0).numpy()
+        song_logits: dict[str, list[np.ndarray]] = {}
+        song_labels: dict[str, int] = {}
+        for song_id, logit, label in zip(val_song_ids_aligned, logits, y[val_mask]):
+            song_logits.setdefault(song_id, []).append(logit)
+            previous = song_labels.setdefault(song_id, int(label))
+            if previous != int(label):
+                raise ValueError(f"Song {song_id} has conflicting validation labels")
+
+        ordered_songs = sorted(song_logits)
+        true_labels = np.array([song_labels[song_id] for song_id in ordered_songs])
+        predictions = np.array([
+            np.mean(song_logits[song_id], axis=0).argmax()
+            for song_id in ordered_songs
+        ])
+        val_acc = float(np.mean(predictions == true_labels))
+        val_macro_f1 = float(f1_score(
+            true_labels,
+            predictions,
+            labels=np.arange(num_classes),
+            average="macro",
+            zero_division=0,
+        ))
 
         history["train_loss"].append(total_loss / len(train_dl))
-        history["val_acc"].append(val_acc)
+        history["val_song_acc"].append(val_acc)
+        history["val_song_macro_f1"].append(val_macro_f1)
 
-        if val_acc > best_val_acc:
-            best_val_acc = val_acc
-            # Save best model
-            output_dir = Path(output_dir)
-            output_dir.mkdir(parents=True, exist_ok=True)
+        if val_macro_f1 > best_val_macro_f1:
+            best_val_macro_f1 = val_macro_f1
+            epochs_without_improvement = 0
             torch.save(model.state_dict(), output_dir / "best_model.pt")
+        else:
+            epochs_without_improvement += 1
 
         if epoch % 10 == 0:
-            logger.info("Epoch %3d | loss=%.4f | val_acc=%.4f", epoch, total_loss / len(train_dl), val_acc)
+            logger.info(
+                "Epoch %3d | loss=%.4f | song_acc=%.4f | song_macro_f1=%.4f",
+                epoch,
+                total_loss / len(train_dl),
+                val_acc,
+                val_macro_f1,
+            )
+        if epochs_without_improvement >= patience:
+            logger.info("Early stopping after %d epochs without improvement", patience)
+            break
 
-    logger.info("Best val accuracy: %.4f", best_val_acc)
+    logger.info("Best song-level validation macro-F1: %.4f", best_val_macro_f1)
 
     # Save label encoder
     import pickle
     with open(output_dir / "label_encoder.pkl", "wb") as f:
         pickle.dump(le, f)
 
-    return {"best_val_acc": best_val_acc, "num_classes": num_classes, "history": history}
+    return {
+        "best_val_song_macro_f1": best_val_macro_f1,
+        "num_classes": num_classes,
+        "history": history,
+    }

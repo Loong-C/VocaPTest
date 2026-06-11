@@ -40,7 +40,7 @@ def score_song_against_producer(
         top_ratio: Fraction of top segment scores to average.
 
     Returns:
-        Float score in [0, 1].
+        Float cosine score in [-1, 1]. This is a similarity, not a probability.
     """
     sims = cosine_similarity(song_segment_embs, producer_centroids)
     per_segment_best = sims.max(axis=1)  # best centroid per segment
