@@ -65,6 +65,10 @@ FastAPI 后端已部署，支持以下端点：
 # 启动 API 服务
 python scripts/06_run_api.py
 # → http://localhost:8000 (Swagger UI: /docs)
+
+# 启动前端开发服务器
+cd web && npm run dev
+# → http://localhost:5173 (Vite 代理 /api 到 :8000)
 ```
 
 ### 关键文件位置
@@ -83,7 +87,7 @@ python scripts/06_run_api.py
 - **音频特征提取**：MERT-v1-95M（主力）/ MuQ（备选）
 - **相似度检索**：余弦相似度 + KMeans 多原型 Profile
 - **后端**：FastAPI + Uvicorn
-- **前端**：Next.js / Vite + React（待开发）
+- **前端**：Vite + React + Tailwind CSS + TypeScript
 - **数据源**：YouTube 搜索 → yt-dlp 音频下载
 
 ## 开发阶段
@@ -99,7 +103,7 @@ python scripts/06_run_api.py
 | 6 | 检索系统（Profile/相似度/搜索） | ✅ |
 | 7 | FastAPI 后端服务 | ✅ |
 | 8 | 脚本 + 训练/测试划分 + 评估 | ✅ |
-| 9 | 前端开发 | ⬜ |
+| 9 | 前端开发 | ✅ |
 
 ## 项目结构
 
@@ -108,8 +112,8 @@ VocaP Test/
   configs/         # YAML 配置文件
   data/            # 原始/中间/处理后数据
   external/        # 外部参考仓库
-  src/vocaptest/     # Python 核心包
-  web/             # 前端（待开发）
+  src/vocaptest/   # Python 核心包
+  web/             # 前端 (Vite + React + Tailwind)
   scripts/         # 一键流程脚本
   notebooks/       # 探索分析
   tests/           # 测试
@@ -121,6 +125,7 @@ VocaP Test/
 1. **下载失败 5 首**：kemu《インビジブル》(403)、cosMo《ダイジョブですか》(403)、ハチ《リンネ》(年龄限制)、40mP 1 首 (403)、Kanaria 1 首（Premieres 在 3 小时后）
 2. **合作曲目**：4 首跨 P 主合作曲已标注，但在 Profile 构建中按主要 P 主归类
 3. **NumPy 2.x 兼容性**：`librosa.load()` 在 NumPy 2.x 下与 numba 冲突，已全部替换为 `soundfile.read()` + `scipy.signal.resample()`
+4. **venv 路径残留**：虚拟环境原位于 `Voca-like`，重命名仓库后 `pip.exe` 启动器内硬编码路径失效，需用 `python -m pip` 代替直接调用 `pip`
 
 ## 环境要求
 
