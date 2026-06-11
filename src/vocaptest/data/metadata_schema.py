@@ -55,6 +55,7 @@ class EmbeddingRecord:
     work_id: Optional[str] = None
     recording_id: Optional[str] = None
     title: Optional[str] = None
+    layer_count: Optional[int] = None
 
 
 @dataclass

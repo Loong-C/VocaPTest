@@ -18,6 +18,7 @@ audio:
   hop_seconds: 10
   min_rms_db: -45
   max_segments_per_song: 12
+  segment_selection: uniform
   trim_silence: true
 
 model:

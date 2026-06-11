@@ -23,6 +23,21 @@ def test_temperature_scaler_returns_probabilities():
     assert np.all((calibrated >= 0) & (calibrated <= 1))
 
 
+def test_temperature_scaler_accepts_unsaturated_logits():
+    logits = np.array([
+        [8.0, 1.0],
+        [3.0, 2.0],
+        [1.0, 5.0],
+        [2.0, 2.5],
+    ])
+    labels = np.array([0, 1, 1, 0])
+    scaler = TemperatureScaler.fit_logits(logits, labels)
+    calibrated = scaler.transform_logits(logits)
+
+    assert np.allclose(calibrated.sum(axis=1), 1.0)
+    assert calibrated[0, 0] != calibrated[1, 0]
+
+
 def test_confidence_signals_and_rejection_threshold():
     probabilities = np.array([
         [0.90, 0.10],

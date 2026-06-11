@@ -55,3 +55,18 @@ def test_split_segments_includes_final_full_window():
         max_segments=12,
     )
     assert [segment["start_sec"] for segment in segments] == [0, 10, 20, 30, 40]
+
+
+def test_split_segments_uniformly_covers_long_audio():
+    sr = 10
+    wav = np.ones(sr * 100, dtype=np.float32)
+    segments = split_segments(
+        wav,
+        sr,
+        segment_seconds=10,
+        hop_seconds=10,
+        min_rms_db=-50,
+        max_segments=4,
+        selection_strategy="uniform",
+    )
+    assert [segment["start_sec"] for segment in segments] == [0, 30, 60, 90]

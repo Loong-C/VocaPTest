@@ -1,0 +1,9 @@
+{
+  "songs": 174,
+  "segments": 2086,
+  "layers": 13,
+  "embedding_dim": 768,
+  "batch_size": 4,
+  "device": "cuda",
+  "selection_strategy": "uniform"
+}

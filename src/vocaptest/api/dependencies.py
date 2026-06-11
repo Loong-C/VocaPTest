@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Optional
 
 from vocaptest.models.base import AudioEmbedder
+from vocaptest.models.layer_fusion import LayerFusionLDA
 from vocaptest.models.song_lda import SongMeanShrinkageLDA
 from vocaptest.retrieval.build_profiles import load_profiles
 from vocaptest.retrieval.search import ProducerSearch
@@ -19,6 +20,7 @@ logger = setup_logging()
 _embedder: Optional[AudioEmbedder] = None
 _profiles: Optional[dict] = None
 _lda_model: Optional[SongMeanShrinkageLDA] = None
+_p1_model: Optional[LayerFusionLDA] = None
 _search_engine: Optional[ProducerSearch] = None
 
 
@@ -93,10 +95,45 @@ def get_lda_model() -> SongMeanShrinkageLDA:
     return _lda_model
 
 
+def get_p1_model() -> LayerFusionLDA:
+    """Load the calibrated selected-layer P1 model."""
+    global _p1_model
+    if _p1_model is None:
+        cfg = get_config()
+        root = project_root()
+        configured_path = Path(cfg.retrieval.get(
+            "p1_model_path",
+            "data/processed/models/p1_selected_layer_lda.pkl",
+        ))
+        model_path = configured_path if configured_path.is_absolute() else root / configured_path
+        if not model_path.exists():
+            raise FileNotFoundError(
+                f"Configured P1 model does not exist: {model_path}. "
+                "Run scripts/09_rebuild_p1_layer_embeddings.py and "
+                "scripts/13_train_p1_selected_layer.py."
+            )
+        _p1_model = LayerFusionLDA.load(model_path)
+        logger.info(
+            "P1 selected-layer LDA loaded: %d producers, layers=%s",
+            len(_p1_model.classes_),
+            _p1_model.layer_indices,
+        )
+    return _p1_model
+
+
 def get_reference_library() -> dict:
     """Return metadata for the retrieval backend currently serving requests."""
     cfg = get_config()
     backend = cfg.retrieval.get("backend", "kmeans_profiles")
+    if backend == "p1_selected_layer_lda":
+        try:
+            return get_p1_model().to_reference_library()
+        except (FileNotFoundError, ValueError) as exc:
+            logger.warning("%s", exc)
+            return {
+                "backend": "p1_selected_layer_lda_unavailable",
+                "producers": {},
+            }
     if backend == "song_mean_shrinkage_lda":
         try:
             return get_lda_model().to_reference_library()
@@ -115,11 +152,12 @@ def get_search_engine() -> ProducerSearch:
     if _search_engine is None:
         cfg = get_config()
         retrieval_backend = cfg.retrieval.get("backend", "kmeans_profiles")
-        classifier = (
-            get_lda_model()
-            if retrieval_backend == "song_mean_shrinkage_lda"
-            else None
-        )
+        if retrieval_backend == "p1_selected_layer_lda":
+            classifier = get_p1_model()
+        elif retrieval_backend == "song_mean_shrinkage_lda":
+            classifier = get_lda_model()
+        else:
+            classifier = None
         _search_engine = ProducerSearch(
             embedder=get_embedder(),
             profiles=None if classifier else get_profiles(),
@@ -130,8 +168,10 @@ def get_search_engine() -> ProducerSearch:
                 "hop_seconds": cfg.audio.get("hop_seconds", 10.0),
                 "min_rms_db": cfg.audio.get("min_rms_db", -45.0),
                 "max_segments_per_song": cfg.audio.get("max_segments_per_song", 12),
+                "segment_selection": cfg.audio.get("segment_selection", "uniform"),
                 "segment_top_ratio": cfg.retrieval.get("segment_top_ratio", 0.4),
                 "top_k": cfg.retrieval.get("top_k", 5),
+                "inference_batch_size": cfg.retrieval.get("inference_batch_size", 4),
             },
         )
     return _search_engine

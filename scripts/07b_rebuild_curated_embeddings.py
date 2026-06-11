@@ -104,6 +104,7 @@ def main() -> None:
     hop_seconds = cfg.audio.get("hop_seconds", 10.0)
     min_rms_db = cfg.audio.get("min_rms_db", -45.0)
     max_segments = cfg.audio.get("max_segments_per_song", 12)
+    selection_strategy = cfg.audio.get("segment_selection", "uniform")
 
     decisions = load_decisions(args.decisions)
     if len(decisions) != 174:
@@ -153,6 +154,7 @@ def main() -> None:
             hop_seconds=hop_seconds,
             min_rms_db=min_rms_db,
             max_segments=max_segments,
+            selection_strategy=selection_strategy,
         )
         if not segment_info:
             raise ValueError(f"No valid segments for {song_id}")
@@ -205,6 +207,7 @@ def main() -> None:
             "hop_seconds": hop_seconds,
             "min_rms_db": min_rms_db,
             "max_segments_per_song": max_segments,
+            "selection_strategy": selection_strategy,
         },
         "batch_size": args.batch_size,
         "device": args.device,

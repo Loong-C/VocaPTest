@@ -49,7 +49,7 @@ async def analyze_audio(file: UploadFile = File(...)):
     try:
         t0 = time.time()
         engine = get_search_engine()
-        results = engine.search_file(tmp_path)
+        results, diagnostics = engine.search_file_detailed(tmp_path)
         elapsed = time.time() - t0
 
         logger.info("Job %s: analyzed in %.2fs, %d results", job_id, elapsed, len(results))
@@ -69,11 +69,23 @@ async def analyze_audio(file: UploadFile = File(...)):
             warnings.append("No matching producers found. The reference library may be empty.")
         if len(top_k) < 3:
             warnings.append("Fewer than 3 results — reference data may be limited.")
+        if diagnostics and not diagnostics["accepted"]:
+            warnings.append(
+                "Low-confidence result: the uploaded song is outside the "
+                "model's calibrated acceptance region."
+            )
 
         return AnalyzeResponse(
             job_id=job_id,
             status="done",
-            result=AnalyzeResult(top_k=top_k, warnings=warnings),
+            result=AnalyzeResult(
+                top_k=top_k,
+                accepted=diagnostics["accepted"] if diagnostics else None,
+                confidence=diagnostics["confidence"] if diagnostics else None,
+                margin=diagnostics["margin"] if diagnostics else None,
+                entropy=diagnostics["entropy"] if diagnostics else None,
+                warnings=warnings,
+            ),
         )
     except Exception as e:
         logger.exception("Job %s failed", job_id)

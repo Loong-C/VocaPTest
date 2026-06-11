@@ -20,6 +20,10 @@ class AnalyzeResponse(BaseModel):
 
 class AnalyzeResult(BaseModel):
     top_k: list[SearchResultItem]
+    accepted: bool | None = None
+    confidence: float | None = None
+    margin: float | None = None
+    entropy: float | None = None
     warnings: list[str] = []
 
 

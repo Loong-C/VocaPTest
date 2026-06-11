@@ -137,6 +137,35 @@ class MERTEmbedder(AudioEmbedder):
         emb = torch.nn.functional.normalize(emb, dim=-1)
         return emb.cpu().numpy()
 
+    @torch.no_grad()
+    def embed_batch_layers(
+        self,
+        wavs: list[np.ndarray],
+        sr: int,
+    ) -> np.ndarray:
+        """Return time-pooled embeddings for every transformer hidden state."""
+        if sr != self._sr:
+            from scipy.signal import resample
+            wavs = [resample(w, int(len(w) * self._sr / sr)) for w in wavs]
+            sr = self._sr
+
+        inputs = self._processor(
+            wavs,
+            sampling_rate=sr,
+            return_tensors="pt",
+            padding=True,
+        )
+        inputs = {key: value.to(self._device) for key, value in inputs.items()}
+        outputs = self.model(**inputs, output_hidden_states=True)
+        attention_mask = inputs.get("attention_mask")
+        pooled_layers = [
+            mean_pool_hidden(hidden, attention_mask, self.model)
+            for hidden in outputs.hidden_states
+        ]
+        stacked = torch.stack(pooled_layers, dim=1)
+        stacked = torch.nn.functional.normalize(stacked, dim=-1)
+        return stacked.cpu().numpy()
+
     # ---- Internal -----------------------------------------------------------
 
     def _select_hidden(self, hidden_states: tuple) -> torch.Tensor:

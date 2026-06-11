@@ -28,7 +28,15 @@ class TemperatureScaler:
         probabilities: np.ndarray,
         true_indices: np.ndarray,
     ) -> "TemperatureScaler":
-        logits = probabilities_to_logits(probabilities)
+        return cls.fit_logits(probabilities_to_logits(probabilities), true_indices)
+
+    @classmethod
+    def fit_logits(
+        cls,
+        logits: np.ndarray,
+        true_indices: np.ndarray,
+    ) -> "TemperatureScaler":
+        logits = np.asarray(logits, dtype=np.float64)
         true_indices = np.asarray(true_indices, dtype=int)
 
         def negative_log_likelihood(log_temperature: float) -> float:
@@ -45,7 +53,10 @@ class TemperatureScaler:
         return cls(temperature=float(np.exp(result.x)))
 
     def transform(self, probabilities: np.ndarray) -> np.ndarray:
-        logits = probabilities_to_logits(probabilities)
+        return self.transform_logits(probabilities_to_logits(probabilities))
+
+    def transform_logits(self, logits: np.ndarray) -> np.ndarray:
+        logits = np.asarray(logits, dtype=np.float64)
         return _softmax(logits / self.temperature)
 
 

@@ -11,6 +11,7 @@ from vocaptest.audio.preprocess import preprocess_file
 from vocaptest.audio.segment import segment_file, split_segments
 from vocaptest.data.metadata_schema import SearchResult
 from vocaptest.models.base import AudioEmbedder
+from vocaptest.models.layer_fusion import LayerFusionLDA
 from vocaptest.models.song_lda import SongMeanShrinkageLDA
 from vocaptest.retrieval.similarity import score_song_against_all
 from vocaptest.utils.logging import setup_logging
@@ -25,7 +26,7 @@ class ProducerSearch:
         self,
         embedder: AudioEmbedder,
         profiles: dict | None = None,
-        classifier: SongMeanShrinkageLDA | None = None,
+        classifier: SongMeanShrinkageLDA | LayerFusionLDA | None = None,
         config: dict | None = None,
     ):
         self.embedder = embedder
@@ -39,8 +40,10 @@ class ProducerSearch:
         self._hop_sec = self._cfg.get("hop_seconds", 10.0)
         self._min_rms_db = self._cfg.get("min_rms_db", -45.0)
         self._max_segments = self._cfg.get("max_segments_per_song", 12)
+        self._segment_selection = self._cfg.get("segment_selection", "uniform")
         self._top_ratio = self._cfg.get("segment_top_ratio", 0.4)
         self._top_k = self._cfg.get("top_k", 5)
+        self._inference_batch_size = self._cfg.get("inference_batch_size", 4)
 
     def search_file(self, audio_path: str | Path) -> list[SearchResult]:
         """Search for similar producers for a preprocessed audio file.
@@ -59,8 +62,29 @@ class ProducerSearch:
 
         return self.search_wav(wav)
 
+    def search_file_detailed(
+        self,
+        audio_path: str | Path,
+    ) -> tuple[list[SearchResult], dict | None]:
+        """Search a file and return optional calibration/rejection diagnostics."""
+        audio_path = Path(audio_path)
+        wav, in_sr = sf.read(str(audio_path), dtype="float32")
+        if wav.ndim > 1:
+            wav = wav.mean(axis=1)
+        if in_sr != self._sr:
+            num_samples = int(len(wav) * self._sr / in_sr)
+            wav = scipy_resample(wav, num_samples)
+        return self.search_wav_detailed(wav)
+
     def search_wav(self, wav: np.ndarray) -> list[SearchResult]:
         """Search from an already-loaded waveform."""
+        return self.search_wav_detailed(wav)[0]
+
+    def search_wav_detailed(
+        self,
+        wav: np.ndarray,
+    ) -> tuple[list[SearchResult], dict | None]:
+        """Search waveform and return results plus calibrated confidence signals."""
         # Segment
         segments_info = split_segments(
             wav, self._sr,
@@ -68,26 +92,50 @@ class ProducerSearch:
             hop_seconds=self._hop_sec,
             min_rms_db=self._min_rms_db,
             max_segments=self._max_segments,
+            selection_strategy=self._segment_selection,
         )
 
         if not segments_info:
             logger.warning("No valid segments found in audio")
-            return []
+            return [], None
 
         # Embed each segment
-        segment_embs = []
-        for seg in segments_info:
-            chunk = wav[seg["start_sample"]:seg["end_sample"]]
-            emb = self.embedder.embed_wav(chunk, self._sr)
-            segment_embs.append(emb)
+        chunks = [
+            wav[segment["start_sample"]:segment["end_sample"]]
+            for segment in segments_info
+        ]
+        if isinstance(self.classifier, LayerFusionLDA):
+            segment_layers = []
+            for start in range(0, len(chunks), self._inference_batch_size):
+                segment_layers.extend(self.embedder.embed_batch_layers(
+                    chunks[start:start + self._inference_batch_size],
+                    self._sr,
+                ))
+            prediction = self.classifier.rank_segment_layers(
+                np.stack(segment_layers),
+                top_k=self._top_k,
+            )
+            return prediction.results, {
+                "accepted": prediction.accepted,
+                "confidence": prediction.confidence,
+                "margin": prediction.margin,
+                "entropy": prediction.entropy,
+            }
 
+        segment_embs = [
+            self.embedder.embed_wav(chunk, self._sr)
+            for chunk in chunks
+        ]
         if not segment_embs:
-            return []
+            return [], None
 
         segment_embs = np.stack(segment_embs, axis=0)
 
         if self.classifier is not None:
-            return self.classifier.rank_segments(segment_embs, top_k=self._top_k)
+            return (
+                self.classifier.rank_segments(segment_embs, top_k=self._top_k),
+                None,
+            )
 
         # Score against profiles
         scores = score_song_against_all(
@@ -106,4 +154,4 @@ class ProducerSearch:
                 rank=i + 1,
             ))
 
-        return results
+        return results, None

@@ -30,6 +30,7 @@ def split_segments(
     hop_seconds: float = 10.0,
     min_rms_db: float = -45.0,
     max_segments: int = 12,
+    selection_strategy: str = "uniform",
 ) -> list[dict]:
     """Split waveform into overlapping segments, filtering low-energy ones.
 
@@ -64,10 +65,22 @@ def split_segments(
             "rms_db": rms,
         })
 
-    # Filter by RMS and keep top N
+    # Filter by RMS, then cover the song uniformly unless loudness selection
+    # is explicitly requested for a legacy experiment.
     valid = [c for c in candidates if c["rms_db"] >= min_rms_db]
-    valid.sort(key=lambda c: c["rms_db"], reverse=True)
-    selected = valid[:max_segments]
+    valid.sort(key=lambda c: c["start_sample"])
+    if len(valid) <= max_segments:
+        selected = valid
+    elif selection_strategy == "uniform":
+        indices = np.linspace(0, len(valid) - 1, max_segments)
+        selected = [valid[index] for index in np.rint(indices).astype(int)]
+    elif selection_strategy == "loudest":
+        selected = sorted(
+            sorted(valid, key=lambda c: c["rms_db"], reverse=True)[:max_segments],
+            key=lambda c: c["start_sample"],
+        )
+    else:
+        raise ValueError(f"Unknown segment selection strategy: {selection_strategy}")
 
     logger.debug(
         "Segmentation: %d candidates, %d above threshold, %d selected",
@@ -86,6 +99,7 @@ def segment_file(
     hop_seconds: float = 10.0,
     min_rms_db: float = -45.0,
     max_segments: int = 12,
+    selection_strategy: str = "uniform",
 ) -> list[Segment]:
     """Segment a single preprocessed WAV file and save chunks to disk.
 
@@ -107,6 +121,7 @@ def segment_file(
         hop_seconds=hop_seconds,
         min_rms_db=min_rms_db,
         max_segments=max_segments,
+        selection_strategy=selection_strategy,
     )
 
     results: list[Segment] = []
