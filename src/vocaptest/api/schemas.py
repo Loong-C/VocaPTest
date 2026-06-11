@@ -28,6 +28,7 @@ class ProducerInfo(BaseModel):
     display_name: str
     song_count: int | None = None
     segment_count: int | None = None
+    avatar_url: str | None = None
 
 
 class ProducerListResponse(BaseModel):

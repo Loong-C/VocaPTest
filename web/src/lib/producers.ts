@@ -34,7 +34,13 @@ export function enrichProducer(producer: {
   display_name: string;
   song_count: number | null;
   segment_count: number | null;
+  avatar_url?: string | null;
 }): ProducerDisplay {
   const meta = getProducerMeta(producer.slug);
-  return { ...producer, gradient: meta.gradient, style_tags: meta.tags };
+  return {
+    ...producer,
+    gradient: meta.gradient,
+    style_tags: meta.tags,
+    avatar_url: producer.avatar_url ?? null,
+  };
 }

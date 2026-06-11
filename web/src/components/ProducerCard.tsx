@@ -31,10 +31,21 @@ export default function ProducerCard({ producer, onClick, className = "" }: Prop
 
         {/* Avatar */}
         <div className="w-14 h-14 rounded-full bg-white/25 backdrop-blur-sm
-                        flex items-center justify-center
+                        flex items-center justify-center overflow-hidden
                         border-2 border-white/50 shadow-lg
                         group-hover:scale-110 transition-transform duration-300">
-          <span className="text-white font-display text-lg drop-shadow-md">
+          {producer.avatar_url ? (
+            <img
+              src={producer.avatar_url}
+              alt={producer.display_name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+              }}
+            />
+          ) : null}
+          <span className={`text-white font-display text-lg drop-shadow-md
+                           ${producer.avatar_url ? "hidden" : ""}`}>
             {initials}
           </span>
         </div>

@@ -24,6 +24,7 @@ export interface ProducerInfo {
   display_name: string;
   song_count: number | null;
   segment_count: number | null;
+  avatar_url: string | null;
 }
 
 export interface ProducerListResponse {

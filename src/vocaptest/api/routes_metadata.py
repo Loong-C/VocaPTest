@@ -21,6 +21,7 @@ async def list_producers():
             display_name=info.get("display_name", slug),
             song_count=info.get("song_count"),
             segment_count=info.get("segment_count"),
+            avatar_url=info.get("avatar_url"),
         )
         for slug, info in sorted(producers_dict.items())
     ]
@@ -47,4 +48,5 @@ async def get_producer(producer_slug: str):
         display_name=info.get("display_name", producer_slug),
         song_count=info.get("song_count"),
         segment_count=info.get("segment_count"),
+        avatar_url=info.get("avatar_url"),
     )

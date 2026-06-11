@@ -114,25 +114,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="max-w-3xl mx-auto px-4 pb-20">
-        <div className="card p-8 text-center bg-gradient-to-r from-pink/5 to-purple/5
-                        border-pink-light/30">
-          <h2 className="text-xl font-display text-text mb-2">
-            🎀 准备好发现你的曲风了吗？
-          </h2>
-          <p className="text-text-light text-sm mb-5">
-            拖拽或点击上传，几秒钟即可得到结果
-          </p>
-          <button
-            onClick={() => navigate("/analyze")}
-            className="btn-primary"
-          >
-            <Sparkles size={16} />
-            立即体验
-          </button>
-        </div>
-      </section>
     </div>
   );
 }

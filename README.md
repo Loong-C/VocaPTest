@@ -125,7 +125,6 @@ VocaP Test/
 1. **下载失败 5 首**：kemu《インビジブル》(403)、cosMo《ダイジョブですか》(403)、ハチ《リンネ》(年龄限制)、40mP 1 首 (403)、Kanaria 1 首（Premieres 在 3 小时后）
 2. **合作曲目**：4 首跨 P 主合作曲已标注，但在 Profile 构建中按主要 P 主归类
 3. **NumPy 2.x 兼容性**：`librosa.load()` 在 NumPy 2.x 下与 numba 冲突，已全部替换为 `soundfile.read()` + `scipy.signal.resample()`
-4. **venv 路径残留**：虚拟环境原位于 `Voca-like`，重命名仓库后 `pip.exe` 启动器内硬编码路径失效，需用 `python -m pip` 代替直接调用 `pip`
 
 ## 环境要求
 
