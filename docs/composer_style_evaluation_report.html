@@ -257,6 +257,23 @@
     </ul>
   </section>
 
+  <section data-contract-section="p1-implementation-results">
+    <h2>P1 实施结果（2026-06-11）</h2>
+    <div class="callout positive"><strong>默认模型已升级：</strong>MERT-95M 第 6 层、均匀时间采样、歌曲均值、Shrinkage LDA、logit temperature scaling 与低置信拒识。Top-1 从 P0 的 62.47% 提升到 87.47%。</div>
+    <table>
+      <thead><tr><th>方案</th><th>Top-1</th><th>结论</th></tr></thead>
+      <tbody>
+        <tr><td>第 6 层歌曲均值 LDA</td><td>87.47% ± 1.25%</td><td>采用</td></tr>
+        <tr><td>嵌套非负层融合</td><td>86.78% ± 2.07%</td><td>略低，不采用</td></tr>
+        <tr><td>128 维投影 + supervised contrastive</td><td>83.52% ± 0.88%</td><td>不采用</td></tr>
+        <tr><td>MERT + MIR</td><td>81.61%</td><td>无增益</td></tr>
+        <tr><td>多统计池化</td><td>78.16%</td><td>无增益</td></tr>
+      </tbody>
+    </table>
+    <p>校准后 OOF log-loss 由 3.09 降至 0.51；95% 精度目标的接受阈值覆盖 77.59%，接受样本精度 95.11%。API 已返回 <code>accepted</code>、<code>confidence</code>、<code>margin</code> 和 <code>entropy</code>。</p>
+    <p class="small">完整实施与复现命令见 <code>docs/P1_IMPLEMENTATION_REPORT.md</code>。这些数字仍来自当前数据的分组交叉验证，不替代未来的冻结外部测试集。</p>
+  </section>
+
   <section data-contract-section="limitations">
     <h2>局限性与稳健性说明</h2>
     <ul>

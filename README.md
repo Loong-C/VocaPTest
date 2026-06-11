@@ -4,52 +4,53 @@
 
 ## 已完成工作总览
 
-### 数据管线
+### 当前可信数据管线
 
 | 步骤 | 内容 | 结果 |
 |------|------|------|
-| 下载 | YouTube 搜索 + yt-dlp 下载 18 位 P 主各 12 首 | **211 首** MP3（5 首下载失败） |
-| 验证 | 跨 P 主去重、合作曲目标注、数据集质量检查 | 0 重复，4 首合作曲已标注 |
-| 切片 | 30s 无重叠 WAV、24kHz 单声道、RMS 能量过滤 | **1466 段** |
-| 嵌入 | MERT-v1-95M 提取 768 维特征（CUDA 加速） | **1466 条**嵌入（~2.7 min） |
-| Profile | KMeans 聚类 5 原型 / P 主 | 18 个 Profile（pickle） |
-| 评估 | 按歌曲划分训练/测试集，诚实评估 | 见下方评估结果 |
+| 原始数据 | YouTube 管线收集 | 211 首 |
+| 清洗 | 排除错误实体、翻唱、游戏版、合作污染和重复作品 | **174 首 canonical 歌曲** |
+| 切片 | 24kHz、20s 窗口、10s hop、均匀覆盖、最多 12 段 | **2086 段** |
+| 嵌入 | 一次前向缓存 MERT-v1-95M 全部 13 层 | `13 × 768` / 段 |
+| 模型 | 第 6 层歌曲均值 + 等先验 Shrinkage LDA | 18 类 |
+| 置信度 | OOF logits temperature scaling + 拒识阈值 | 95% 接受精度目标 |
 
 ### 覆盖的 18 位 P 主
 
 | P 主 | 别名 | 歌曲数 | 分段数 |
 |------|------|:------:|:------:|
-| wowaka | 現実逃避P | 12 | ~84 |
-| kemu | — | 11 | ~77 |
-| Neru | 押入れP | 12 | ~84 |
-| DECO*27 | — | 12 | ~84 |
-| ピノキオピー | — | 12 | ~84 |
-| Mitchie M | — | 12 | ~84 |
-| じん | — | 12 | ~84 |
-| Orangestar | — | 12 | ~84 |
-| cosMo@暴走P | — | 11 | ~77 |
-| ハチ | — | 12 | ~84 |
-| 40mP | — | 11 | ~77 |
-| ナユタン星人 | — | 12 | ~84 |
-| かいりきベア | — | 12 | ~84 |
-| Kanaria | — | 11 | ~77 |
-| Chinozo | — | 12 | ~84 |
-| 稲葉曇 | — | 12 | ~84 |
-| MIMI | — | 12 | ~84 |
-| MARETU | — | 12 | ~84 |
+| wowaka | 現実逃避P | 5 | 60 |
+| kemu | — | 10 | 120 |
+| Neru | 押入れP | 5 | 60 |
+| DECO*27 | — | 12 | 144 |
+| ピノキオピー | — | 11 | 131 |
+| Mitchie M | — | 8 | 96 |
+| じん | — | 11 | 132 |
+| Orangestar | — | 10 | 120 |
+| cosMo@暴走P | — | 11 | 132 |
+| ハチ | — | 10 | 120 |
+| 40mP | — | 10 | 120 |
+| ナユタン星人 | — | 9 | 108 |
+| かいりきベア | — | 10 | 120 |
+| Kanaria | — | 7 | 83 |
+| Chinozo | — | 11 | 132 |
+| 稲葉曇 | — | 12 | 144 |
+| MIMI | — | 12 | 144 |
+| MARETU | — | 10 | 120 |
 
-### 评估结果（诚实 train/test split）
+### P1 评估结果
 
-使用 **按歌曲分层划分** 避免数据泄漏（同一首歌的不同分段不会同时出现在训练集和测试集）：
+使用 5 次重复 5 折 `StratifiedGroupKFold`，按 `work_id` 分组：
 
-| 指标 | 训练集自检 | 测试集（36 首未见歌曲） |
-|------|:----------:|:------------------------:|
-| Top-1 准确率 | 97.1% (170/175) | **30.6%** (11/36) |
-| Top-3 准确率 | 98.9% (173/175) | **63.9%** (23/36) |
+| 指标 | P0 最后一层 | P1 第 6 层 |
+|------|:-----------:|:----------:|
+| Top-1 | 62.47% ± 1.99% | **87.47% ± 1.25%** |
+| Top-3 | 79.48% ± 2.25% | **95.63% ± 1.38%** |
+| Macro-F1 | 59.73% ± 2.40% | **85.70% ± 1.67%** |
+| MRR | 72.94% ± 1.49% | **91.72% ± 0.70%** |
 
-> 随机猜测基线为 1/18 ≈ 5.6%，模型在未见歌曲上的 Top-1 约为基线的 **5.5 倍**，Top-3 约为基线的 **11.5 倍**。
->
-> ⚠️ **重要教训**：初次评估时未做歌曲级划分，同一首歌的不同分段泄漏到训练集导致虚高的 95.7% Top-1。修正后取得以上诚实结果。
+校准阈值在 OOF 上覆盖 77.59% 的样本，接受样本精度为 95.11%。详细消融见
+[P1 实施报告](docs/P1_IMPLEMENTATION_REPORT.md)。
 
 ### API 服务
 
@@ -76,7 +77,10 @@ cd web && npm run dev
 | 文件 | 说明 |
 |------|------|
 | `data/processed/profiles.pkl` | 全量 Profile（18 P 主 × 5 原型） |
-| `data/processed/train_profiles.pkl` | 仅训练集 Profile |
+| `data/processed/models/p1_selected_layer_lda.pkl` | 当前默认模型，本地生成且不提交 |
+| `data/processed/evaluations/p1_selected_layer.json` | 最终分组 CV 与校准结果 |
+| `data/processed/evaluations/p1_feature_ablations.json` | 多统计和 MIR 消融 |
+| `data/processed/curated/mert_95_p1/segments.jsonl` | P1 多层 embedding 清单 |
 | `data/processed/song_name_mapping.csv` | YouTube ID → 歌曲名映射（211 首） |
 | `data/interim/youtube_songs.jsonl` | 下载元数据 |
 | `data/interim/segments.jsonl` | 分段清单 |
@@ -84,8 +88,9 @@ cd web && npm run dev
 
 ## 技术路线
 
-- **音频特征提取**：MERT-v1-95M（主力）/ MuQ（备选）
-- **相似度检索**：余弦相似度 + KMeans 多原型 Profile
+- **音频特征提取**：MERT-v1-95M 第 6 层
+- **分类**：歌曲均值 + Shrinkage LDA
+- **置信度**：temperature scaling、margin、归一化熵和拒识阈值
 - **后端**：FastAPI + Uvicorn
 - **前端**：Vite + React + Tailwind CSS + TypeScript
 - **数据源**：YouTube 搜索 → yt-dlp 音频下载
@@ -122,9 +127,10 @@ VocaP Test/
 
 ## 已知问题
 
-1. **下载失败 5 首**：kemu《インビジブル》(403)、cosMo《ダイジョブですか》(403)、ハチ《リンネ》(年龄限制)、40mP 1 首 (403)、Kanaria 1 首（Premieres 在 3 小时后）
-2. **合作曲目**：4 首跨 P 主合作曲已标注，但在 Profile 构建中按主要 P 主归类
-3. **NumPy 2.x 兼容性**：`librosa.load()` 在 NumPy 2.x 下与 numba 冲突，已全部替换为 `soundfile.read()` + `scipy.signal.resample()`
+1. 尚无永久冻结的外部测试集；当前层选择仍可能对 174 首数据产生选择偏差。
+2. wowaka 和 Neru 各只有 5 首 canonical 作品。
+3. 校准拒识基于库内 OOF，不等同于完整的开放集识别保证。
+4. 歌声库、上传频道和母带风格仍可能成为作曲家标签的代理变量。
 
 ## 环境要求
 
@@ -143,7 +149,11 @@ python -m venv .venv
 # 安装依赖
 pip install -r requirements.txt
 
-# 启动 API（无需重新训练）
+# 首次生成 P1 缓存和模型
+python scripts/09_rebuild_p1_layer_embeddings.py
+python scripts/13_train_p1_selected_layer.py
+
+# 启动 API
 python scripts/06_run_api.py
 ```
 
