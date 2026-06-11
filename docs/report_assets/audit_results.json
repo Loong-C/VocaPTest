@@ -1,0 +1,86 @@
+{
+  "generated_on": "2026-06-11",
+  "machine": {
+    "cpu": "Intel Core i7-14700",
+    "cpu_cores": 20,
+    "cpu_threads": 28,
+    "ram_gb": 31.7,
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "vram_gb": 8.0,
+    "python": "3.12.9",
+    "torch": "2.6.0+cu124",
+    "cuda_available": true
+  },
+  "dataset": {
+    "accepted_songs": 211,
+    "segments": 1466,
+    "classes": 18,
+    "train_songs_current_split": 175,
+    "test_songs_current_split": 36,
+    "title_candidates_broad": 20,
+    "title_exclusions_strict": 13,
+    "strict_filtered_songs": 198,
+    "near_duplicate_work_groups": 4,
+    "work_groups_after_strict_filter": 193,
+    "cross_split_test_songs_with_same_class_similarity_gte_0_97": 5
+  },
+  "current_split": {
+    "model": "MERT-95M last-layer mean + segment KMeans-5 prototypes",
+    "top1_correct": 11,
+    "top1_total": 36,
+    "top1": 0.3056,
+    "top1_wilson_95_low": 0.1800,
+    "top1_wilson_95_high": 0.4686,
+    "top3_correct": 23,
+    "top3_total": 36,
+    "top3": 0.6389,
+    "top3_wilson_95_low": 0.4758,
+    "top3_wilson_95_high": 0.7752
+  },
+  "repeated_original_data": {
+    "splits": 30,
+    "test_songs_per_class": 2,
+    "kmeans5": {
+      "top1_mean": 0.4102,
+      "top1_std": 0.0667,
+      "top1_min": 0.2778,
+      "top1_max": 0.5278,
+      "top3_mean": 0.6380,
+      "top3_std": 0.0634
+    }
+  },
+  "repeated_song_level_baselines": {
+    "splits": 50,
+    "test_songs_per_class": 2,
+    "shrinkage_lda": {
+      "top1_mean": 0.6744,
+      "top1_std": 0.0712,
+      "top1_min": 0.5556,
+      "top1_max": 0.8333,
+      "top3_mean": 0.8139,
+      "top3_std": 0.0542
+    }
+  },
+  "strict_clean_grouped_evaluation": {
+    "splits": 50,
+    "group_definition": "Within-producer song-mean cosine similarity >= 0.985",
+    "test_fraction_by_work_group": 0.2,
+    "mean_test_songs": 35.1,
+    "kmeans5": {
+      "top1_mean": 0.3142,
+      "top1_std": 0.0714,
+      "top1_min": 0.1351,
+      "top1_max": 0.4571,
+      "top3_mean": 0.5643,
+      "top3_std": 0.0781
+    },
+    "shrinkage_lda": {
+      "top1_mean": 0.6215,
+      "top1_std": 0.0904,
+      "top1_min": 0.3889,
+      "top1_max": 0.8000,
+      "top3_mean": 0.7772,
+      "top3_std": 0.0734
+    }
+  }
+}

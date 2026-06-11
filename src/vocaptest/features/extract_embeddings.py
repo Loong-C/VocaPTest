@@ -11,6 +11,7 @@ from tqdm import tqdm
 from vocaptest.data.metadata_schema import EmbeddingRecord, Segment
 from vocaptest.models.base import AudioEmbedder
 from vocaptest.utils.logging import setup_logging
+from vocaptest.utils.paths import project_root
 
 logger = setup_logging()
 
@@ -112,7 +113,49 @@ def extract_embeddings(
 
 def load_embedding(record: EmbeddingRecord) -> np.ndarray:
     """Load a single embedding from disk."""
-    return np.load(record.embedding_path)
+    return np.load(resolve_embedding_path(record))
+
+
+def resolve_embedding_path(record: EmbeddingRecord) -> Path:
+    """Resolve both current relative paths and legacy absolute manifest paths."""
+    root = project_root()
+    stored = Path(record.embedding_path)
+    candidates = [stored]
+    if not stored.is_absolute():
+        candidates.extend([root / stored, Path.cwd() / stored])
+    candidates.append(
+        root
+        / "data"
+        / "processed"
+        / "embeddings"
+        / record.model_backend
+        / f"{record.segment_id}.npy"
+    )
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate.resolve()
+
+    tried = ", ".join(str(path) for path in candidates)
+    raise FileNotFoundError(f"Embedding not found for {record.segment_id}; tried: {tried}")
+
+
+def load_all_embeddings_aligned(
+    records: list[EmbeddingRecord],
+) -> tuple[np.ndarray, list[EmbeddingRecord]]:
+    """Load embeddings and return only the records aligned with loaded rows."""
+    embs: list[np.ndarray] = []
+    loaded_records: list[EmbeddingRecord] = []
+    for rec in tqdm(records, desc="Loading embeddings"):
+        try:
+            embs.append(load_embedding(rec))
+            loaded_records.append(rec)
+        except Exception as exc:
+            logger.warning("Failed to load %s: %s", rec.segment_id, exc)
+
+    if not embs:
+        return np.empty((0, 0), dtype=np.float32), []
+    return np.stack(embs, axis=0), loaded_records
 
 
 def load_all_embeddings(
@@ -123,15 +166,9 @@ def load_all_embeddings(
     Returns:
         (embeddings_array, segment_ids, producer_slugs)
     """
-    embs = []
-    seg_ids = []
-    slugs = []
-    for rec in tqdm(records, desc="Loading embeddings"):
-        try:
-            emb = load_embedding(rec)
-            embs.append(emb)
-            seg_ids.append(rec.segment_id)
-            slugs.append(rec.producer_slug)
-        except Exception as e:
-            logger.warning("Failed to load %s: %s", rec.segment_id, e)
-    return np.stack(embs, axis=0), seg_ids, slugs
+    embeddings, loaded_records = load_all_embeddings_aligned(records)
+    return (
+        embeddings,
+        [record.segment_id for record in loaded_records],
+        [record.producer_slug for record in loaded_records],
+    )

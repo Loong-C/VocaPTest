@@ -12,6 +12,32 @@ from vocaptest.utils.logging import setup_logging
 logger = setup_logging()
 
 
+def mean_pool_hidden(
+    hidden: torch.Tensor,
+    attention_mask: torch.Tensor | None,
+    model,
+) -> torch.Tensor:
+    """Mean-pool frame-level hidden states with a feature-length mask."""
+    if attention_mask is None:
+        return hidden.mean(dim=1)
+
+    if hasattr(model, "_get_feature_vector_attention_mask"):
+        feature_mask = model._get_feature_vector_attention_mask(
+            hidden.shape[1],
+            attention_mask,
+        )
+    else:
+        feature_mask = torch.nn.functional.interpolate(
+            attention_mask[:, None, :].float(),
+            size=hidden.shape[1],
+            mode="nearest",
+        ).squeeze(1)
+    feature_mask = feature_mask.to(hidden.dtype)
+    masked_hidden = hidden * feature_mask.unsqueeze(-1)
+    denominator = feature_mask.sum(dim=1, keepdim=True).clamp_min(1.0)
+    return masked_hidden.sum(dim=1) / denominator
+
+
 class MERTEmbedder(AudioEmbedder):
     """MERT-v1 embedding extractor via HuggingFace.
 
@@ -106,12 +132,7 @@ class MERTEmbedder(AudioEmbedder):
         hidden = self._select_hidden(outputs.hidden_states)
 
         # Mean pool with attention mask
-        mask = inputs.get("attention_mask")
-        if mask is not None:
-            hidden = hidden * mask.unsqueeze(-1)
-            emb = hidden.sum(dim=1) / mask.sum(dim=1, keepdim=True)
-        else:
-            emb = hidden.mean(dim=1)
+        emb = mean_pool_hidden(hidden, inputs.get("attention_mask"), self.model)
 
         emb = torch.nn.functional.normalize(emb, dim=-1)
         return emb.cpu().numpy()

@@ -1,0 +1,131 @@
+curation:
+  canonical_only: true
+  minimum_songs_per_producer: 5
+  near_duplicate_review_threshold: 0.985
+
+exclude_songs:
+  youtube__-0xXtEH_y4:
+    category: game_version
+    reason: Project DIVA game capture, not the canonical 40mP recording.
+  youtube_WnUUSI21oMI:
+    category: cover
+    reason: English-language cover rather than a Chinozo master.
+  youtube_xdSAgHGAhhA:
+    category: cover
+    reason: Multi-voice NEO VOCALOID cover, not a Jin master.
+  youtube_TXfJVNqaHiM:
+    category: collaboration
+    reason: Kairiki Bear and MARETU collaboration; unsafe as a single-composer label.
+  youtube_mwnu2aP0Q8g:
+    category: collaboration
+    reason: Kairiki Bear and mafumafu collaboration.
+  youtube_1qorVS1jIJg:
+    category: cover
+    reason: English cover of a Kanaria work.
+  youtube_BvHUt-mLJSo:
+    category: karaoke
+    reason: Karaoke/instrumental upload.
+  youtube_Fp5O_ojp3p0:
+    category: cover
+    reason: VOCALOID cover of a Kanaria work.
+  youtube_g23bBGyCOmE:
+    category: cover
+    reason: English cover of a Kanaria work.
+  youtube_rKdwNw-d3MQ:
+    category: collaboration
+    reason: marasy, Jin, and kemu collaboration.
+  youtube_spiFLc6Fdpo:
+    category: style_imitation
+    reason: MARETU-style fan cover, not a MARETU composition master.
+  youtube_2EHBotv2xnk:
+    category: fan_edit
+    reason: Fan singing duet/edit rather than the canonical MARETU recording.
+  youtube_KmvydnVTriE:
+    category: game_version
+    reason: Project DIVA version of a Mitchie M work.
+  youtube_buRFjDSIu4o:
+    category: collaboration
+    reason: OSTER project collaboration.
+  youtube_uwwU55zBYlQ:
+    category: game_version
+    reason: Project mirai game version.
+  youtube_YXpZ0uRMDR0:
+    category: mashup
+    reason: Mashup that mixes multiple works.
+  youtube_jNVrwAg0xtM:
+    category: cover
+    reason: Utaite cover rather than a NayutalieN master.
+  youtube_ZnroCM3V7eA:
+    category: collaboration
+    reason: NayutalieN and Chinozo collaboration.
+  youtube_Bmqg7naxfvo:
+    category: alternate_vocal
+    reason: Eve human-vocal version, not the canonical Vocaloid master.
+  youtube_1bsd8fFmTAo:
+    category: wrong_entity
+    reason: Akita Neru character content, unrelated to producer Neru.
+  youtube_Dz5rALpx06M:
+    category: wrong_entity
+    reason: Work by Amala featuring the Akita Neru character.
+  youtube_HYKLZOo3DM4:
+    category: wrong_entity
+    reason: Triple Baka/Akita Neru character content.
+  youtube_adyrPWded4M:
+    category: wrong_entity
+    reason: Akita Neru character song by another creator.
+  youtube_beCBweooXpQ:
+    category: wrong_entity
+    reason: MMD/Talkloid Akita Neru content.
+  youtube_kqj7b59D85Y:
+    category: wrong_entity
+    reason: Akita Neru character upload, not producer Neru.
+  youtube_o4Gh11wjpKw:
+    category: wrong_entity
+    reason: Akita Neru character song, not producer Neru.
+  youtube_7yLnea9NO_M:
+    category: cover
+    reason: Cover of Orangestar's Henceforth.
+  youtube_tZ995ezCAbs:
+    category: cover
+    reason: Multi-VOCALOID chorus cover, not an Orangestar master.
+  youtube_lMEt3RdqB9Y:
+    category: collaboration
+    reason: DECO*27 and PinocchioP collaboration.
+  youtube_q6UbH7G2dec:
+    category: fan_edit
+    reason: Tribute duet/edit of Unknown Mother-Goose.
+  youtube_udg1bIBUzJM:
+    category: game_version
+    reason: Project DIVA version of a wowaka work.
+  youtube_vPlFkyXY6L0:
+    category: game_version
+    reason: Project DIVA version of a wowaka work.
+  youtube_8e3EuFaQc7E:
+    category: cover
+    reason: English cover of a wowaka work.
+
+work_groups:
+  - work_id: hachi_donut_hole
+    canonical_song_id: youtube_qnX2CdOBcDI
+    members:
+      - youtube_qnX2CdOBcDI
+      - youtube_y7fu_nNQAEQ
+    reason: Original and 2024 re-recording of the same composition.
+  - work_id: wowaka_ura_omote_lovers
+    canonical_song_id: youtube_b_cuMcDWwsI
+    members:
+      - youtube_b_cuMcDWwsI
+      - youtube_AvTH7J2shuI
+    reason: Canonical upload and English-subtitled re-upload of the same recording.
+  - work_id: wowaka_rolling_girl
+    canonical_song_id: youtube_vnw8zURAxkU
+    members:
+      - youtube_vnw8zURAxkU
+      - youtube_NIqm73xsias
+    reason: Canonical upload and English-subtitled re-upload of the same recording.
+  - work_id: wowaka_unknown_mother_goose
+    canonical_song_id: youtube_P_CSdxSGfaA
+    members:
+      - youtube_P_CSdxSGfaA
+      - youtube_gr5Csep6yFM
+    reason: Canonical upload and English-subtitled re-upload of the same recording.

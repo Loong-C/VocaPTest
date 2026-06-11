@@ -41,7 +41,15 @@ def split_segments(
     total = len(wav)
 
     candidates: list[dict] = []
-    for start in range(0, max(1, total - seg_len), hop_len):
+    if total <= seg_len:
+        starts = [0]
+    else:
+        starts = list(range(0, total - seg_len + 1, hop_len))
+        final_start = total - seg_len
+        if starts[-1] != final_start:
+            starts.append(final_start)
+
+    for start in starts:
         end = min(start + seg_len, total)
         chunk = wav[start:end]
         if len(chunk) < sr * 3:  # skip segments shorter than 3s

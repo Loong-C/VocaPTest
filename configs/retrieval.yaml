@@ -1,4 +1,6 @@
 retrieval:
+  backend: song_mean_shrinkage_lda
+  lda_model_path: data/processed/models/song_mean_shrinkage_lda.pkl
   metric: cosine
   producer_clusters: 5
   top_k: 5

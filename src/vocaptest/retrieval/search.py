@@ -11,6 +11,7 @@ from vocaptest.audio.preprocess import preprocess_file
 from vocaptest.audio.segment import segment_file, split_segments
 from vocaptest.data.metadata_schema import SearchResult
 from vocaptest.models.base import AudioEmbedder
+from vocaptest.models.song_lda import SongMeanShrinkageLDA
 from vocaptest.retrieval.similarity import score_song_against_all
 from vocaptest.utils.logging import setup_logging
 
@@ -23,11 +24,15 @@ class ProducerSearch:
     def __init__(
         self,
         embedder: AudioEmbedder,
-        profiles: dict,
+        profiles: dict | None = None,
+        classifier: SongMeanShrinkageLDA | None = None,
         config: dict | None = None,
     ):
         self.embedder = embedder
-        self.profiles = profiles
+        self.profiles = profiles or {}
+        self.classifier = classifier
+        if classifier is None and not self.profiles.get("producers"):
+            raise ValueError("ProducerSearch requires a classifier or non-empty profiles")
         self._cfg = config or {}
         self._sr = self._cfg.get("sample_rate", embedder.sample_rate)
         self._segment_sec = self._cfg.get("segment_seconds", 20.0)
@@ -80,6 +85,9 @@ class ProducerSearch:
             return []
 
         segment_embs = np.stack(segment_embs, axis=0)
+
+        if self.classifier is not None:
+            return self.classifier.rank_segments(segment_embs, top_k=self._top_k)
 
         # Score against profiles
         scores = score_song_against_all(

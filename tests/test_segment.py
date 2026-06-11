@@ -42,3 +42,16 @@ def test_split_segments_normal():
     for seg in segments:
         assert seg["duration_sec"] <= 21.0
         assert seg["start_sec"] >= 0
+
+
+def test_split_segments_includes_final_full_window():
+    sr = 100
+    wav = np.ones(sr * 60, dtype=np.float32)
+    segments = split_segments(
+        wav, sr,
+        segment_seconds=20.0,
+        hop_seconds=10.0,
+        min_rms_db=-50.0,
+        max_segments=12,
+    )
+    assert [segment["start_sec"] for segment in segments] == [0, 10, 20, 30, 40]

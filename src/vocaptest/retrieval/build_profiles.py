@@ -11,7 +11,7 @@ from sklearn.preprocessing import normalize
 from tqdm import tqdm
 
 from vocaptest.data.metadata_schema import EmbeddingRecord
-from vocaptest.features.extract_embeddings import load_all_embeddings
+from vocaptest.features.extract_embeddings import load_all_embeddings_aligned
 from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
@@ -44,13 +44,15 @@ def build_producer_profiles(
             }
         }
     """
-    embeddings, seg_ids, slugs = load_all_embeddings(records)
+    embeddings, loaded_records = load_all_embeddings_aligned(records)
+    if not loaded_records:
+        raise ValueError("No readable embeddings were supplied")
     embeddings = normalize(embeddings, norm="l2")
 
     # Group by producer
     producer_embs: dict[str, list[np.ndarray]] = {}
     producer_song_ids: dict[str, set[str]] = {}
-    for emb, rec in zip(embeddings, records):
+    for emb, rec in zip(embeddings, loaded_records):
         slug = rec.producer_slug
         if slug not in producer_embs:
             producer_embs[slug] = []
@@ -59,7 +61,7 @@ def build_producer_profiles(
         producer_song_ids[slug].add(rec.song_id)
 
     # Detect backend
-    backend = records[0].model_backend if records else "unknown"
+    backend = loaded_records[0].model_backend
 
     # Build profiles
     profiles: dict = {"backend": backend, "producers": {}}

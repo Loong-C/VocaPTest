@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Optional
 
 from vocaptest.models.base import AudioEmbedder
+from vocaptest.models.song_lda import SongMeanShrinkageLDA
 from vocaptest.retrieval.build_profiles import load_profiles
 from vocaptest.retrieval.search import ProducerSearch
 from vocaptest.utils.config import load_config
@@ -17,6 +18,7 @@ logger = setup_logging()
 # Lazy-loaded singletons
 _embedder: Optional[AudioEmbedder] = None
 _profiles: Optional[dict] = None
+_lda_model: Optional[SongMeanShrinkageLDA] = None
 _search_engine: Optional[ProducerSearch] = None
 
 
@@ -70,14 +72,58 @@ def get_profiles() -> dict:
     return _profiles
 
 
+def get_lda_model() -> SongMeanShrinkageLDA:
+    """Load the configured song-mean Shrinkage LDA artifact."""
+    global _lda_model
+    if _lda_model is None:
+        cfg = get_config()
+        root = project_root()
+        configured_path = Path(cfg.retrieval.get(
+            "lda_model_path",
+            "data/processed/models/song_mean_shrinkage_lda.pkl",
+        ))
+        model_path = configured_path if configured_path.is_absolute() else root / configured_path
+        if not model_path.exists():
+            raise FileNotFoundError(
+                f"Configured Shrinkage LDA model does not exist: {model_path}. "
+                "Run scripts/07_curate_dataset.py and scripts/08_train_song_lda.py."
+            )
+        _lda_model = SongMeanShrinkageLDA.load(model_path)
+        logger.info("Song-mean Shrinkage LDA loaded: %d producers", len(_lda_model.classes_))
+    return _lda_model
+
+
+def get_reference_library() -> dict:
+    """Return metadata for the retrieval backend currently serving requests."""
+    cfg = get_config()
+    backend = cfg.retrieval.get("backend", "kmeans_profiles")
+    if backend == "song_mean_shrinkage_lda":
+        try:
+            return get_lda_model().to_reference_library()
+        except FileNotFoundError as exc:
+            logger.warning("%s", exc)
+            return {
+                "backend": "song_mean_shrinkage_lda_unavailable",
+                "producers": {},
+            }
+    return get_profiles()
+
+
 def get_search_engine() -> ProducerSearch:
     """Get or create the search engine."""
     global _search_engine
     if _search_engine is None:
         cfg = get_config()
+        retrieval_backend = cfg.retrieval.get("backend", "kmeans_profiles")
+        classifier = (
+            get_lda_model()
+            if retrieval_backend == "song_mean_shrinkage_lda"
+            else None
+        )
         _search_engine = ProducerSearch(
             embedder=get_embedder(),
-            profiles=get_profiles(),
+            profiles=None if classifier else get_profiles(),
+            classifier=classifier,
             config={
                 "sample_rate": cfg.audio.get("sample_rate", 24000),
                 "segment_seconds": cfg.audio.get("segment_seconds", 20.0),

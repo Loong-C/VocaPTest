@@ -10,7 +10,7 @@ from vocaptest.api.routes_upload import router as upload_router
 from vocaptest.api.routes_search import router as search_router
 from vocaptest.api.routes_metadata import router as metadata_router
 from vocaptest.api.schemas import HealthResponse
-from vocaptest.api.dependencies import get_config, get_profiles
+from vocaptest.api.dependencies import get_config, get_reference_library
 from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
@@ -24,8 +24,7 @@ async def lifespan(app: FastAPI):
     logger.info("Config loaded: backend=%s, top_k=%d",
                  cfg.model.get("backend", "unknown"),
                  cfg.retrieval.get("top_k", 5))
-    # Pre-load profiles on startup
-    profiles = get_profiles()
+    profiles = get_reference_library()
     logger.info("API ready: %d producers loaded", len(profiles.get("producers", {})))
     yield
     logger.info("Shutting down API...")
@@ -58,9 +57,10 @@ app.include_router(metadata_router)
 @app.get("/health", response_model=HealthResponse)
 async def health_check():
     """Health check endpoint."""
-    profiles = get_profiles()
+    profiles = get_reference_library()
+    backend = profiles.get("backend")
     return HealthResponse(
-        status="ok",
-        backend=profiles.get("backend"),
+        status="degraded" if backend and backend.endswith("_unavailable") else "ok",
+        backend=backend,
         producers_loaded=len(profiles.get("producers", {})),
     )

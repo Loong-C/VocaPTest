@@ -52,6 +52,9 @@ class EmbeddingRecord:
     model_backend: str
     embedding_path: str
     embedding_dim: int
+    work_id: Optional[str] = None
+    recording_id: Optional[str] = None
+    title: Optional[str] = None
 
 
 @dataclass

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from vocaptest.api.dependencies import get_profiles
+from vocaptest.api.dependencies import get_reference_library
 from vocaptest.api.schemas import ProducerInfo, ProducerListResponse
 
 router = APIRouter(prefix="/api", tags=["producers"])
@@ -12,7 +12,7 @@ router = APIRouter(prefix="/api", tags=["producers"])
 @router.get("/producers", response_model=ProducerListResponse)
 async def list_producers():
     """Return the list of producers in the reference library."""
-    profiles = get_profiles()
+    profiles = get_reference_library()
     producers_dict = profiles.get("producers", {})
 
     producers = [
@@ -36,7 +36,7 @@ async def list_producers():
 @router.get("/producers/{producer_slug}", response_model=ProducerInfo)
 async def get_producer(producer_slug: str):
     """Return info for a specific producer."""
-    profiles = get_profiles()
+    profiles = get_reference_library()
     producers_dict = profiles.get("producers", {})
 
     info = producers_dict.get(producer_slug)

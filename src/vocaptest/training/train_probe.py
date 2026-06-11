@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
 
 from vocaptest.data.metadata_schema import EmbeddingRecord
-from vocaptest.features.extract_embeddings import load_all_embeddings
+from vocaptest.features.extract_embeddings import load_all_embeddings_aligned
 from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
@@ -45,15 +45,19 @@ def train_probe(
     device: str = "cuda",
 ) -> dict:
     """Train an MLP probe and return evaluation metrics."""
-    embeddings, seg_ids, slugs = load_all_embeddings(records)
+    embeddings, loaded_records = load_all_embeddings_aligned(records)
+    if not loaded_records:
+        raise ValueError("No readable embeddings were supplied")
 
     le = LabelEncoder()
-    y = le.fit_transform(slugs)
+    y = le.fit_transform([record.producer_slug for record in loaded_records])
     num_classes = len(le.classes_)
 
     # Split by song
-    train_mask = np.array([r.song_id in set(train_song_ids) for r in records])
-    val_mask = np.array([r.song_id in set(val_song_ids) for r in records])
+    train_ids = set(train_song_ids)
+    val_ids = set(val_song_ids)
+    train_mask = np.array([r.song_id in train_ids for r in loaded_records])
+    val_mask = np.array([r.song_id in val_ids for r in loaded_records])
 
     X_train = torch.tensor(embeddings[train_mask], dtype=torch.float32)
     y_train = torch.tensor(y[train_mask], dtype=torch.long)

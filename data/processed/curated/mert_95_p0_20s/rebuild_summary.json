@@ -1,0 +1,15 @@
+{
+  "songs": 174,
+  "segments": 2086,
+  "embedding_dim": 768,
+  "embedding_backend": "mert_95",
+  "segmentation": {
+    "sample_rate": 24000,
+    "segment_seconds": 20,
+    "hop_seconds": 10,
+    "min_rms_db": -45,
+    "max_segments_per_song": 12
+  },
+  "batch_size": 4,
+  "device": "cuda"
+}

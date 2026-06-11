@@ -19,6 +19,7 @@ data/processed/producer_profiles/
 
 # Cache
 .cache/
+.pytest_tmp/
 *.npy
 *.pkl
 
