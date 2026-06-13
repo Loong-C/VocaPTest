@@ -58,6 +58,10 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--device", default="cuda")
     args = parser.parse_args()
+    args.decisions = args.decisions.resolve()
+    args.audio_root = args.audio_root.resolve()
+    args.embedding_output = args.embedding_output.resolve()
+    args.manifest_output = args.manifest_output.resolve()
 
     cfg = load_config(root / "configs/default.yaml", root / "configs/model_mert.yaml")
     decisions = helpers.load_decisions(args.decisions)

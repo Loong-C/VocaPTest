@@ -1,0 +1,1683 @@
+{
+  "protocol": {
+    "name": "strict_frozen_song_holdout",
+    "training_overlap": false,
+    "used_for_model_selection": false,
+    "used_for_calibration": false,
+    "pooling": "uniform_segments_then_song_mean",
+    "selected_layer": [
+      6
+    ]
+  },
+  "dataset": {
+    "songs": 54,
+    "segments": 642,
+    "classes": 27,
+    "songs_per_class": {
+      "40mp": 2,
+      "ayase": 2,
+      "chinozo": 2,
+      "cosmo": 2,
+      "deco27": 2,
+      "hachi": 2,
+      "inabakumori": 2,
+      "iyowa": 2,
+      "jin": 2,
+      "kairikibear": 2,
+      "kanaria": 2,
+      "kemu": 2,
+      "maretu": 2,
+      "mimi": 2,
+      "mitchie_m": 2,
+      "n_buna": 2,
+      "nakiso": 2,
+      "nayutan": 2,
+      "neru": 2,
+      "orangestar": 2,
+      "pinocchiop": 2,
+      "r_sound_design": 2,
+      "surii": 2,
+      "syudou": 2,
+      "teniwoha": 2,
+      "toa": 2,
+      "wowaka": 2
+    }
+  },
+  "metrics": {
+    "top1_accuracy": 0.8703703703703703,
+    "top3_accuracy": 0.9259259259259259,
+    "macro_f1": 0.8458553791887126,
+    "mrr": 0.8973300910337948
+  },
+  "rejection": {
+    "threshold": 0.6703658424422578,
+    "coverage": 0.7222222222222222,
+    "accepted_count": 39,
+    "accepted_accuracy": 0.9743589743589743,
+    "rejected_correct_count": 9
+  },
+  "per_class": {
+    "40mp": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "ayase": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "chinozo": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1": 0.8,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "cosmo": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "deco27": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 0
+    },
+    "hachi": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "inabakumori": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "iyowa": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "jin": {
+      "precision": 0.4,
+      "recall": 1.0,
+      "f1": 0.5714285714285714,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "kairikibear": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "kanaria": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "kemu": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "maretu": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "mimi": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "mitchie_m": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "n_buna": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "nakiso": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 2,
+      "top3_accuracy": 0.0,
+      "accepted": 0
+    },
+    "nayutan": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "neru": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1": 0.8,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "orangestar": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "pinocchiop": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "r_sound_design": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "support": 2,
+      "top3_accuracy": 0.5,
+      "accepted": 1
+    },
+    "surii": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 2,
+      "top3_accuracy": 0.5,
+      "accepted": 1
+    },
+    "syudou": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "teniwoha": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "toa": {
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6666666666666666,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "wowaka": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    }
+  },
+  "songs": [
+    {
+      "song_id": "youtube_1VZKxIgqlZ8",
+      "work_id": "vocadb_song_219883",
+      "title": "先天性アサルトガール",
+      "producer_slug": "ayase",
+      "prediction": "jin",
+      "rank": 3,
+      "accepted": false,
+      "confidence": 0.28377877328421736,
+      "margin": 0.07305919857763021,
+      "entropy": 0.6399855108329668,
+      "top3": [
+        {
+          "producer_slug": "jin",
+          "score": 0.28377877328421736
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.21071957470658714
+        },
+        {
+          "producer_slug": "ayase",
+          "score": 0.1582484952953287
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_1gSMjPLRJik",
+      "work_id": "vocadb_song_419160",
+      "title": "ヒミツ",
+      "producer_slug": "mimi",
+      "prediction": "mimi",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.993545880120816,
+      "margin": 0.9905707933959124,
+      "entropy": 0.015461751018792406,
+      "top3": [
+        {
+          "producer_slug": "mimi",
+          "score": 0.993545880120816
+        },
+        {
+          "producer_slug": "ayase",
+          "score": 0.00297508672490361
+        },
+        {
+          "producer_slug": "toa",
+          "score": 0.0010454422562992392
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_2IH-toUoq3w",
+      "work_id": "vocadb_song_164262",
+      "title": "病名は愛だった",
+      "producer_slug": "neru",
+      "prediction": "neru",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8985266690911857,
+      "margin": 0.8448221667625554,
+      "entropy": 0.15500327715173146,
+      "top3": [
+        {
+          "producer_slug": "neru",
+          "score": 0.8985266690911857
+        },
+        {
+          "producer_slug": "surii",
+          "score": 0.05370450232863034
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.010767376375892361
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_2NkN_QpmnFM",
+      "work_id": "vocadb_song_37948",
+      "title": "マネマネサイコトロピック",
+      "producer_slug": "kairikibear",
+      "prediction": "kairikibear",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.22465692304259802,
+      "margin": 0.03865903514652505,
+      "entropy": 0.6822588868640187,
+      "top3": [
+        {
+          "producer_slug": "kairikibear",
+          "score": 0.22465692304259802
+        },
+        {
+          "producer_slug": "n_buna",
+          "score": 0.18599788789607297
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.16112763628892074
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_79N1O0lF0GY",
+      "work_id": "vocadb_song_47354",
+      "title": "好き！雪！本気マジック",
+      "producer_slug": "mitchie_m",
+      "prediction": "mitchie_m",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9986324227368323,
+      "margin": 0.9982879670465097,
+      "entropy": 0.004018140060134823,
+      "top3": [
+        {
+          "producer_slug": "mitchie_m",
+          "score": 0.9986324227368323
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0003444556903225908
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.00020666616650671964
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_8I0H1dXQxEo",
+      "work_id": "vocadb_song_13086",
+      "title": "愛Dee",
+      "producer_slug": "mitchie_m",
+      "prediction": "mitchie_m",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9998950873468505,
+      "margin": 0.9998609955419077,
+      "entropy": 0.0003815231859383301,
+      "top3": [
+        {
+          "producer_slug": "mitchie_m",
+          "score": 0.9998950873468505
+        },
+        {
+          "producer_slug": "maretu",
+          "score": 3.409180494280397e-05
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 2.5678527743021085e-05
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_8Z3TbMBfDM0",
+      "work_id": "vocadb_song_13351",
+      "title": "ありふれたせかいせいふく",
+      "producer_slug": "pinocchiop",
+      "prediction": "pinocchiop",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.65890240189305,
+      "margin": 0.518481819220033,
+      "entropy": 0.3776549699891935,
+      "top3": [
+        {
+          "producer_slug": "pinocchiop",
+          "score": 0.65890240189305
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.14042058267301705
+        },
+        {
+          "producer_slug": "kemu",
+          "score": 0.10031445697446191
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_9DD6JvY06Ok",
+      "work_id": "vocadb_song_48029",
+      "title": "ストリーミングハート",
+      "producer_slug": "deco27",
+      "prediction": "deco27",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.47648947379421935,
+      "margin": 0.2712173673712106,
+      "entropy": 0.4735791618956381,
+      "top3": [
+        {
+          "producer_slug": "deco27",
+          "score": 0.47648947379421935
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.20527210642300875
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.16913908753531642
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_9xbT8OZcDJQ",
+      "work_id": "vocadb_song_617368",
+      "title": "Dec.",
+      "producer_slug": "kanaria",
+      "prediction": "kanaria",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9561619300055911,
+      "margin": 0.9370169009833064,
+      "entropy": 0.07648527255373848,
+      "top3": [
+        {
+          "producer_slug": "kanaria",
+          "score": 0.9561619300055911
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.01914502902228472
+        },
+        {
+          "producer_slug": "chinozo",
+          "score": 0.009364677132550145
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_DXcY0HUURKw",
+      "work_id": "vocadb_song_1507",
+      "title": "ラインアート",
+      "producer_slug": "wowaka",
+      "prediction": "wowaka",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9977769984581659,
+      "margin": 0.996238381514588,
+      "entropy": 0.005479637744088628,
+      "top3": [
+        {
+          "producer_slug": "wowaka",
+          "score": 0.9977769984581659
+        },
+        {
+          "producer_slug": "kemu",
+          "score": 0.0015386169435779558
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.000453817228621494
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_EUMn-kJbNc0",
+      "work_id": "vocadb_song_586628",
+      "title": "Encounter",
+      "producer_slug": "orangestar",
+      "prediction": "orangestar",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8972460746778396,
+      "margin": 0.8666258696412403,
+      "entropy": 0.16790445142554236,
+      "top3": [
+        {
+          "producer_slug": "orangestar",
+          "score": 0.8972460746778396
+        },
+        {
+          "producer_slug": "kanaria",
+          "score": 0.030620205036599183
+        },
+        {
+          "producer_slug": "kemu",
+          "score": 0.022905906134897007
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_EgOWe9ByNaE",
+      "work_id": "vocadb_song_1354",
+      "title": "タイムマシン",
+      "producer_slug": "40mp",
+      "prediction": "40mp",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.6687540399992792,
+      "margin": 0.39290975005924345,
+      "entropy": 0.2688363635593133,
+      "top3": [
+        {
+          "producer_slug": "40mp",
+          "score": 0.6687540399992792
+        },
+        {
+          "producer_slug": "n_buna",
+          "score": 0.27584428994003574
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.026278459474125812
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Fs-SckNJ3EI",
+      "work_id": "vocadb_song_218813",
+      "title": "クーロンズ・ホテル",
+      "producer_slug": "teniwoha",
+      "prediction": "teniwoha",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.4174079495336517,
+      "margin": 0.15897571879331435,
+      "entropy": 0.5602552731818339,
+      "top3": [
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.4174079495336517
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.25843223074033733
+        },
+        {
+          "producer_slug": "maretu",
+          "score": 0.06897214859822459
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_G9LXGvr7Nyc",
+      "work_id": "vocadb_song_294035",
+      "title": "ネロイズム",
+      "producer_slug": "kairikibear",
+      "prediction": "kairikibear",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.983631789744716,
+      "margin": 0.9787705068280184,
+      "entropy": 0.03456570996045681,
+      "top3": [
+        {
+          "producer_slug": "kairikibear",
+          "score": 0.983631789744716
+        },
+        {
+          "producer_slug": "mitchie_m",
+          "score": 0.004861282916697634
+        },
+        {
+          "producer_slug": "neru",
+          "score": 0.004748362153173715
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_GbYL3MXpQXA",
+      "work_id": "vocadb_song_470760",
+      "title": "トレンドキラー",
+      "producer_slug": "teniwoha",
+      "prediction": "teniwoha",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9589901203327624,
+      "margin": 0.9459143923414444,
+      "entropy": 0.07710485050830743,
+      "top3": [
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.9589901203327624
+        },
+        {
+          "producer_slug": "chinozo",
+          "score": 0.013075727991318042
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.009700919345137
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Imcr7rsBxsc",
+      "work_id": "vocadb_song_534385",
+      "title": "電気予報",
+      "producer_slug": "inabakumori",
+      "prediction": "inabakumori",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8717873651189316,
+      "margin": 0.8086362568545189,
+      "entropy": 0.1849476399812447,
+      "top3": [
+        {
+          "producer_slug": "inabakumori",
+          "score": 0.8717873651189316
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.0631511082644127
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.022302099958412484
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_K-7vpOHVZ2o",
+      "work_id": "vocadb_song_37787",
+      "title": "背景、夏に溺れる",
+      "producer_slug": "n_buna",
+      "prediction": "n_buna",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8618210320873458,
+      "margin": 0.7620182674073027,
+      "entropy": 0.17355960543780052,
+      "top3": [
+        {
+          "producer_slug": "n_buna",
+          "score": 0.8618210320873458
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.09980276468004315
+        },
+        {
+          "producer_slug": "neru",
+          "score": 0.011042369873913004
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_L5t_TkogtDM",
+      "work_id": "vocadb_song_511528",
+      "title": "デーモンロード",
+      "producer_slug": "kanaria",
+      "prediction": "kanaria",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9721997020168142,
+      "margin": 0.9642865506721647,
+      "entropy": 0.054238426047520855,
+      "top3": [
+        {
+          "producer_slug": "kanaria",
+          "score": 0.9721997020168142
+        },
+        {
+          "producer_slug": "hachi",
+          "score": 0.007913151344649465
+        },
+        {
+          "producer_slug": "surii",
+          "score": 0.005271993420494458
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_LCOItseOsFE",
+      "work_id": "vocadb_song_260455",
+      "title": "しう",
+      "producer_slug": "maretu",
+      "prediction": "maretu",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9958338647911378,
+      "margin": 0.9948478568695155,
+      "entropy": 0.01104022426093547,
+      "top3": [
+        {
+          "producer_slug": "maretu",
+          "score": 0.9958338647911378
+        },
+        {
+          "producer_slug": "hachi",
+          "score": 0.000986007921622282
+        },
+        {
+          "producer_slug": "chinozo",
+          "score": 0.0006873134667810275
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Mjv4hjR7xZk",
+      "work_id": "vocadb_song_125099",
+      "title": "#誰かこの痛みに名前をつけてください",
+      "producer_slug": "cosmo",
+      "prediction": "cosmo",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.7632217160906605,
+      "margin": 0.663984616862475,
+      "entropy": 0.2967222183886945,
+      "top3": [
+        {
+          "producer_slug": "cosmo",
+          "score": 0.7632217160906605
+        },
+        {
+          "producer_slug": "kemu",
+          "score": 0.09923709922818547
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.04020281322314288
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_NRQRC_0ZQ00",
+      "work_id": "vocadb_song_467612",
+      "title": "フロートプレイ",
+      "producer_slug": "inabakumori",
+      "prediction": "inabakumori",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9993074204276129,
+      "margin": 0.9991534508603359,
+      "entropy": 0.0021961738190261603,
+      "top3": [
+        {
+          "producer_slug": "inabakumori",
+          "score": 0.9993074204276129
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.00015396956727696708
+        },
+        {
+          "producer_slug": "n_buna",
+          "score": 0.00014866193894736885
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Ny6Y0KrGCCE",
+      "work_id": "vocadb_song_221320",
+      "title": "少女失格",
+      "producer_slug": "nakiso",
+      "prediction": "jin",
+      "rank": 27,
+      "accepted": false,
+      "confidence": 0.5250073910099924,
+      "margin": 0.23867364925216106,
+      "entropy": 0.4023662030287076,
+      "top3": [
+        {
+          "producer_slug": "jin",
+          "score": 0.5250073910099924
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.28633374175783133
+        },
+        {
+          "producer_slug": "40mp",
+          "score": 0.102330624765393
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_PAwZl3Up-hc",
+      "work_id": "vocadb_song_549505",
+      "title": "はぐ",
+      "producer_slug": "mimi",
+      "prediction": "mimi",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9924442795064458,
+      "margin": 0.989180714721283,
+      "entropy": 0.018008032912216553,
+      "top3": [
+        {
+          "producer_slug": "mimi",
+          "score": 0.9924442795064458
+        },
+        {
+          "producer_slug": "ayase",
+          "score": 0.003263564785162752
+        },
+        {
+          "producer_slug": "surii",
+          "score": 0.001022262973495379
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_PLevj9bdRRA",
+      "work_id": "vocadb_song_132923",
+      "title": "きみも悪い人でよかった",
+      "producer_slug": "pinocchiop",
+      "prediction": "pinocchiop",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.7427635002010315,
+      "margin": 0.6979504001365591,
+      "entropy": 0.3624024428058765,
+      "top3": [
+        {
+          "producer_slug": "pinocchiop",
+          "score": 0.7427635002010315
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.04481310006447247
+        },
+        {
+          "producer_slug": "maretu",
+          "score": 0.03885056657949787
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_QiR07U_xpYo",
+      "work_id": "vocadb_song_201532",
+      "title": "キャラバン",
+      "producer_slug": "syudou",
+      "prediction": "syudou",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9998699515683606,
+      "margin": 0.9998264505567855,
+      "entropy": 0.00048024048545383154,
+      "top3": [
+        {
+          "producer_slug": "syudou",
+          "score": 0.9998699515683606
+        },
+        {
+          "producer_slug": "surii",
+          "score": 4.3501011575005815e-05
+        },
+        {
+          "producer_slug": "pinocchiop",
+          "score": 2.1389468996077324e-05
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_RCySAU30PTQ",
+      "work_id": "vocadb_song_185731",
+      "title": "空中分解",
+      "producer_slug": "surii",
+      "prediction": "jin",
+      "rank": 3,
+      "accepted": false,
+      "confidence": 0.6585685352602108,
+      "margin": 0.5083069715173193,
+      "entropy": 0.37658719478473884,
+      "top3": [
+        {
+          "producer_slug": "jin",
+          "score": 0.6585685352602108
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.15026156374289143
+        },
+        {
+          "producer_slug": "surii",
+          "score": 0.08182452501624973
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Ui3XvwatnsU",
+      "work_id": "vocadb_song_2979",
+      "title": "演劇テレプシコーラ",
+      "producer_slug": "hachi",
+      "prediction": "hachi",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9984971263613501,
+      "margin": 0.9977597174553555,
+      "entropy": 0.0042443456101521355,
+      "top3": [
+        {
+          "producer_slug": "hachi",
+          "score": 0.9984971263613501
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.000737408905994583
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.00022491647950098308
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Wr-2xcQkke4",
+      "work_id": "vocadb_song_340159",
+      "title": "あだぽしゃ",
+      "producer_slug": "iyowa",
+      "prediction": "iyowa",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9996796141853572,
+      "margin": 0.999456287550779,
+      "entropy": 0.0009973995385805115,
+      "top3": [
+        {
+          "producer_slug": "iyowa",
+          "score": 0.9996796141853572
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.0002233266345782073
+        },
+        {
+          "producer_slug": "jin",
+          "score": 2.8108014751065372e-05
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_XwCv6Gm3Q3Q",
+      "work_id": "vocadb_song_583745",
+      "title": "キノコがはえてる!!",
+      "producer_slug": "cosmo",
+      "prediction": "cosmo",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9636006572798655,
+      "margin": 0.9436706791409257,
+      "entropy": 0.06324230912804703,
+      "top3": [
+        {
+          "producer_slug": "cosmo",
+          "score": 0.9636006572798655
+        },
+        {
+          "producer_slug": "maretu",
+          "score": 0.019929978138939826
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.00793135215154745
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Xy003ATZLsA",
+      "work_id": "vocadb_song_31098",
+      "title": "さよならワンダーノイズ",
+      "producer_slug": "n_buna",
+      "prediction": "n_buna",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9044023252921364,
+      "margin": 0.8696290051681131,
+      "entropy": 0.15604782269927506,
+      "top3": [
+        {
+          "producer_slug": "n_buna",
+          "score": 0.9044023252921364
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.03477332012402323
+        },
+        {
+          "producer_slug": "inabakumori",
+          "score": 0.015295298528300336
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_YFg48Ai1SSo",
+      "work_id": "vocadb_song_168886",
+      "title": "ダーリン",
+      "producer_slug": "maretu",
+      "prediction": "maretu",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9746714378936414,
+      "margin": 0.965667000076354,
+      "entropy": 0.051470987618540416,
+      "top3": [
+        {
+          "producer_slug": "maretu",
+          "score": 0.9746714378936414
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.009004437817287483
+        },
+        {
+          "producer_slug": "surii",
+          "score": 0.005630159018846738
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_Yd9gTGencrI",
+      "work_id": "vocadb_song_421399",
+      "title": "マンダリン",
+      "producer_slug": "r_sound_design",
+      "prediction": "chinozo",
+      "rank": 25,
+      "accepted": false,
+      "confidence": 0.16052932232096748,
+      "margin": 0.021044407126186215,
+      "entropy": 0.7430312308839562,
+      "top3": [
+        {
+          "producer_slug": "chinozo",
+          "score": 0.16052932232096748
+        },
+        {
+          "producer_slug": "kanaria",
+          "score": 0.13948491519478126
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.13500474908105467
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_cLt8P7lhbw8",
+      "work_id": "vocadb_song_462054",
+      "title": "花呼ぶ声",
+      "producer_slug": "kemu",
+      "prediction": "kemu",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.3617624333221497,
+      "margin": 0.06101128380695375,
+      "entropy": 0.4116268498673458,
+      "top3": [
+        {
+          "producer_slug": "kemu",
+          "score": 0.3617624333221497
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.30075114951519594
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.2859461141734907
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_ggkRMKbb89A",
+      "work_id": "vocadb_song_81641",
+      "title": "だんだん早くなる",
+      "producer_slug": "40mp",
+      "prediction": "40mp",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.992916227640019,
+      "margin": 0.9892467231651616,
+      "entropy": 0.016364077355336328,
+      "top3": [
+        {
+          "producer_slug": "40mp",
+          "score": 0.992916227640019
+        },
+        {
+          "producer_slug": "toa",
+          "score": 0.0036695044748573224
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.0012724441395480408
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_hxSg2Ioz3LM",
+      "work_id": "vocadb_song_164074",
+      "title": "ヒバナ",
+      "producer_slug": "deco27",
+      "prediction": "neru",
+      "rank": 2,
+      "accepted": false,
+      "confidence": 0.5156940373530654,
+      "margin": 0.3107091549608676,
+      "entropy": 0.4472590704885519,
+      "top3": [
+        {
+          "producer_slug": "neru",
+          "score": 0.5156940373530654
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.20498488239219784
+        },
+        {
+          "producer_slug": "surii",
+          "score": 0.13310300874843423
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_iiJJ3LJEje8",
+      "work_id": "vocadb_song_234919",
+      "title": "Nightscape",
+      "producer_slug": "r_sound_design",
+      "prediction": "r_sound_design",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.993650178834661,
+      "margin": 0.9919935359866306,
+      "entropy": 0.016185022778582223,
+      "top3": [
+        {
+          "producer_slug": "r_sound_design",
+          "score": 0.993650178834661
+        },
+        {
+          "producer_slug": "mimi",
+          "score": 0.0016566428480303144
+        },
+        {
+          "producer_slug": "toa",
+          "score": 0.0009261463672817948
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_imFxSJdKlww",
+      "work_id": "vocadb_song_760055",
+      "title": "ラットホープ",
+      "producer_slug": "kemu",
+      "prediction": "kemu",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.7335245304704444,
+      "margin": 0.6166613505740781,
+      "entropy": 0.2829814277174372,
+      "top3": [
+        {
+          "producer_slug": "kemu",
+          "score": 0.7335245304704444
+        },
+        {
+          "producer_slug": "toa",
+          "score": 0.11686317989636627
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.10975102721862078
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_mkP5Myd-YZU",
+      "work_id": "vocadb_song_322144",
+      "title": "めめしぃ",
+      "producer_slug": "surii",
+      "prediction": "toa",
+      "rank": 6,
+      "accepted": true,
+      "confidence": 0.8931050044814635,
+      "margin": 0.8590147019628088,
+      "entropy": 0.16228353745126106,
+      "top3": [
+        {
+          "producer_slug": "toa",
+          "score": 0.8931050044814635
+        },
+        {
+          "producer_slug": "40mp",
+          "score": 0.034090302518654615
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.03095715114068302
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_oePX92KTE_M",
+      "work_id": "vocadb_song_511160",
+      "title": "ミィハー",
+      "producer_slug": "chinozo",
+      "prediction": "chinozo",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.4959599663658921,
+      "margin": 0.3559140762672388,
+      "entropy": 0.4949078742751356,
+      "top3": [
+        {
+          "producer_slug": "chinozo",
+          "score": 0.4959599663658921
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.1400458900986533
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.13920754123397244
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_olAK_zKB1c8",
+      "work_id": "vocadb_song_248949",
+      "title": "ボニータ",
+      "producer_slug": "syudou",
+      "prediction": "syudou",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9994167470399861,
+      "margin": 0.9992892131283037,
+      "entropy": 0.0019044833267964118,
+      "top3": [
+        {
+          "producer_slug": "syudou",
+          "score": 0.9994167470399861
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.00012753391168244385
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.00011297187114220428
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_pLYKKC-EpjA",
+      "work_id": "vocadb_song_25899",
+      "title": "アヤノの幸福理論",
+      "producer_slug": "jin",
+      "prediction": "jin",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.43599920437219253,
+      "margin": 0.11261265877833393,
+      "entropy": 0.4721292633039134,
+      "top3": [
+        {
+          "producer_slug": "jin",
+          "score": 0.43599920437219253
+        },
+        {
+          "producer_slug": "40mp",
+          "score": 0.3233865455938586
+        },
+        {
+          "producer_slug": "n_buna",
+          "score": 0.08493319306061933
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_qSYgzSDgewU",
+      "work_id": "vocadb_song_182617",
+      "title": "ドライドライフラワー",
+      "producer_slug": "toa",
+      "prediction": "toa",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9939153433385612,
+      "margin": 0.9925560408214289,
+      "entropy": 0.015478340567713132,
+      "top3": [
+        {
+          "producer_slug": "toa",
+          "score": 0.9939153433385612
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0013593025171323644
+        },
+        {
+          "producer_slug": "pinocchiop",
+          "score": 0.0012214913522549404
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_sVRGyUnOWtY",
+      "work_id": "vocadb_song_1505",
+      "title": "テノヒラ",
+      "producer_slug": "wowaka",
+      "prediction": "wowaka",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9304577649930519,
+      "margin": 0.9137235574355189,
+      "entropy": 0.12301791529162756,
+      "top3": [
+        {
+          "producer_slug": "wowaka",
+          "score": 0.9304577649930519
+        },
+        {
+          "producer_slug": "orangestar",
+          "score": 0.016734207557532934
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.011533227121558453
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_tI47fWu0r_s",
+      "work_id": "vocadb_song_259150",
+      "title": "ヴァイオレッタ",
+      "producer_slug": "ayase",
+      "prediction": "ayase",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.97896490743385,
+      "margin": 0.969123767201627,
+      "entropy": 0.04406468947069576,
+      "top3": [
+        {
+          "producer_slug": "ayase",
+          "score": 0.97896490743385
+        },
+        {
+          "producer_slug": "kanaria",
+          "score": 0.009841140232223022
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.0016235355762429307
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_tTksX77aUCM",
+      "work_id": "vocadb_song_2980",
+      "title": "リンネ",
+      "producer_slug": "hachi",
+      "prediction": "hachi",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8840962221757527,
+      "margin": 0.8526150412262395,
+      "entropy": 0.1939199308359134,
+      "top3": [
+        {
+          "producer_slug": "hachi",
+          "score": 0.8840962221757527
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.03148118094951317
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.015362837474068839
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_tZvn-cdHgnc",
+      "work_id": "vocadb_song_275892",
+      "title": "花めかない",
+      "producer_slug": "nakiso",
+      "prediction": "toa",
+      "rank": 22,
+      "accepted": false,
+      "confidence": 0.324814871535394,
+      "margin": 0.03816506813859749,
+      "entropy": 0.5105577257480699,
+      "top3": [
+        {
+          "producer_slug": "toa",
+          "score": 0.324814871535394
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.2866498033967965
+        },
+        {
+          "producer_slug": "iyowa",
+          "score": 0.15571386711200375
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_uOeOZQ5eCZ0",
+      "work_id": "vocadb_song_661302",
+      "title": "だまってちゃん",
+      "producer_slug": "chinozo",
+      "prediction": "chinozo",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.7442372605441995,
+      "margin": 0.6418948169360803,
+      "entropy": 0.2944575137714161,
+      "top3": [
+        {
+          "producer_slug": "chinozo",
+          "score": 0.7442372605441995
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.10234244360811919
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.09529649864050815
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_uhkcKvcSpkI",
+      "work_id": "vocadb_song_25896",
+      "title": "ロスタイムメモリー",
+      "producer_slug": "jin",
+      "prediction": "jin",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.971339519320333,
+      "margin": 0.9638770493383138,
+      "entropy": 0.05665444362104945,
+      "top3": [
+        {
+          "producer_slug": "jin",
+          "score": 0.971339519320333
+        },
+        {
+          "producer_slug": "neru",
+          "score": 0.007462469982019254
+        },
+        {
+          "producer_slug": "orangestar",
+          "score": 0.007352551878571781
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_vQSFmQBtlRY",
+      "work_id": "vocadb_song_100165",
+      "title": "ハウトゥワープ",
+      "producer_slug": "nayutan",
+      "prediction": "nayutan",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9985766974977456,
+      "margin": 0.9978529553527965,
+      "entropy": 0.004054458036034103,
+      "top3": [
+        {
+          "producer_slug": "nayutan",
+          "score": 0.9985766974977456
+        },
+        {
+          "producer_slug": "kairikibear",
+          "score": 0.0007237421449490793
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.00017166911974679101
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_wLJc5rTk16A",
+      "work_id": "vocadb_song_75280",
+      "title": "恋の才能",
+      "producer_slug": "toa",
+      "prediction": "toa",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9645000978597251,
+      "margin": 0.9489113601527256,
+      "entropy": 0.06778324477930779,
+      "top3": [
+        {
+          "producer_slug": "toa",
+          "score": 0.9645000978597251
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.015588737706999495
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.004293591989600089
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_wdNjJ3eh8EQ",
+      "work_id": "vocadb_song_480032",
+      "title": "大女優さん",
+      "producer_slug": "iyowa",
+      "prediction": "iyowa",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8897832531574,
+      "margin": 0.8381751264205672,
+      "entropy": 0.15857163263808008,
+      "top3": [
+        {
+          "producer_slug": "iyowa",
+          "score": 0.8897832531574
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.05160812673683276
+        },
+        {
+          "producer_slug": "cosmo",
+          "score": 0.03224340389148775
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_wvlUWjqGQSA",
+      "work_id": "vocadb_song_310792",
+      "title": "霽れを待つ",
+      "producer_slug": "orangestar",
+      "prediction": "orangestar",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8323281405390054,
+      "margin": 0.7940851441970375,
+      "entropy": 0.2629452097955571,
+      "top3": [
+        {
+          "producer_slug": "orangestar",
+          "score": 0.8323281405390054
+        },
+        {
+          "producer_slug": "40mp",
+          "score": 0.03824299634196796
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.021404639130031395
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_y8-6QPEes1k",
+      "work_id": "vocadb_song_174236",
+      "title": "い〜やい〜やい〜や",
+      "producer_slug": "neru",
+      "prediction": "neru",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.30520786914984127,
+      "margin": 0.0839688913468025,
+      "entropy": 0.5963434409086037,
+      "top3": [
+        {
+          "producer_slug": "neru",
+          "score": 0.30520786914984127
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.22123897780303878
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.1492282706092906
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_ziubPl820DA",
+      "work_id": "vocadb_song_90781",
+      "title": "アンドロメダアンドロメダ",
+      "producer_slug": "nayutan",
+      "prediction": "nayutan",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9903625574498424,
+      "margin": 0.9876347237865885,
+      "entropy": 0.022867662053576186,
+      "top3": [
+        {
+          "producer_slug": "nayutan",
+          "score": 0.9903625574498424
+        },
+        {
+          "producer_slug": "kairikibear",
+          "score": 0.0027278336632538544
+        },
+        {
+          "producer_slug": "orangestar",
+          "score": 0.0020660768841184885
+        }
+      ]
+    }
+  ]
+}

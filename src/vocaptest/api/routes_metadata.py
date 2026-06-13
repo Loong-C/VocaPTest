@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException
 from vocaptest.api.dependencies import get_reference_library
 from vocaptest.api.schemas import ProducerInfo, ProducerListResponse, ProducerSong
 from vocaptest.data.producer_catalog import (
+    load_frozen_test_song_catalog,
     load_producer_metadata,
     load_training_song_catalog,
 )
@@ -21,6 +22,8 @@ def _producer_info(
 ) -> ProducerInfo:
     metadata = load_producer_metadata().get(slug, {})
     songs = load_training_song_catalog().get(slug, []) if include_songs else []
+    frozen_catalog = load_frozen_test_song_catalog()
+    test_songs = frozen_catalog.get(slug, []) if include_songs else []
     return ProducerInfo(
         slug=slug,
         display_name=metadata.get(
@@ -33,6 +36,8 @@ def _producer_info(
         aliases=metadata.get("aliases", []),
         profile_url=metadata.get("profile_url"),
         songs=[ProducerSong(**song) for song in songs],
+        test_song_count=len(frozen_catalog.get(slug, [])),
+        test_songs=[ProducerSong(**song) for song in test_songs],
     )
 
 

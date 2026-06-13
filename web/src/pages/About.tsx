@@ -12,21 +12,21 @@ const TECH_ITEMS = [
   {
     icon: Music,
     title: "音频处理",
-    desc: "30 秒无重叠切片、24kHz 单声道、RMS 能量过滤，确保特征质量",
+    desc: "24kHz 单声道、20 秒窗口、10 秒步长、均匀覆盖且每首最多 12 段",
     color: "text-pink-dark",
     bg: "bg-pink/10",
   },
   {
     icon: Database,
     title: "参考库",
-    desc: "18 位 Vocaloid P 主 × 12 首代表作 × ~80 片段 = 1466 条嵌入向量",
+    desc: "27 位 P 主、309 首训练作品与 54 首严格隔离的冻结测试作品",
     color: "text-sky",
     bg: "bg-sky/10",
   },
   {
     icon: Code2,
     title: "后端",
-    desc: "FastAPI + Uvicorn，余弦相似度 + KMeans 多原型 Profile 检索",
+    desc: "FastAPI + MERT 第 6 层歌曲均值 + 等先验 Shrinkage LDA + 校准拒识",
     color: "text-emerald-500",
     bg: "bg-mint/20",
   },
@@ -36,6 +36,8 @@ const PRODUCER_LIST = [
   "wowaka", "kemu", "Neru", "DECO*27", "ピノキオピー", "Mitchie M",
   "じん", "Orangestar", "cosMo@暴走P", "ハチ", "40mP", "ナユタン星人",
   "かいりきベア", "Kanaria", "Chinozo", "稲葉曇", "MIMI", "MARETU",
+  "n-buna", "Ayase", "いよわ", "syudou", "なきそ", "すりぃ",
+  "R Sound Design", "とあ", "てにをは",
 ];
 
 export default function About() {
@@ -64,13 +66,13 @@ export default function About() {
         <h2 className="font-display text-lg text-text mb-3">🎀 项目简介</h2>
         <p className="text-text-light text-sm leading-relaxed mb-3">
           VocaP Test 是一个娱乐向的 Vocaloid Producer 风格相似度系统。
-          用户上传一段音乐，系统在预先构建的 18 位 P 主参考库中寻找听感最接近的 Producer，
+          用户上传一段音乐，系统在预先构建的 27 位 P 主参考库中寻找听感最接近的 Producer，
           输出 Top-K 相似结果。
         </p>
         <p className="text-text-light text-sm leading-relaxed">
           项目不追求严肃的"作者识别"，也不声称模型真正理解了作曲家的音乐学风格。
-          它更接近一个音频 Embedding 检索系统：把每位 P 主的代表作映射成向量空间中的风格原型，
-          再把用户上传的歌曲映射到同一空间中计算相似度。
+          当前模型把歌曲映射为 MERT 音频表征，再由歌曲级 Shrinkage LDA 给出候选结果。
+          54 首冻结测试曲从不参与训练、层选择或校准，用于监测扩类后的真实泛化表现。
         </p>
       </motion.div>
 
@@ -139,7 +141,7 @@ export default function About() {
           Made with <Heart className="w-3 h-3 text-pink fill-pink" /> + Python + React
         </p>
         <a
-          href="https://github.com"
+          href="https://github.com/Loong-C/VocaPTest"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-text-muted text-xs

@@ -32,6 +32,8 @@ export interface ProducerInfo {
   aliases: string[];
   profile_url: string | null;
   songs: ProducerSong[];
+  test_song_count: number;
+  test_songs: ProducerSong[];
 }
 
 export interface ProducerSong {

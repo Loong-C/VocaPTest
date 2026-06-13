@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ExternalLink, Music, Search, Users, X } from "lucide-react";
+import { ExternalLink, LockKeyhole, Music, Search, Users, X } from "lucide-react";
 import ProducerCard from "@/components/ProducerCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { getProducer, listProducers } from "@/lib/api";
@@ -48,7 +48,7 @@ export default function Producers() {
     try {
       setDetails(await getProducer(producer.slug));
     } catch (err) {
-      setDetailsError(err instanceof Error ? err.message : "训练曲目加载失败");
+      setDetailsError(err instanceof Error ? err.message : "曲目目录加载失败");
     } finally {
       setDetailsLoading(false);
     }
@@ -198,7 +198,7 @@ function ProducerDialog({
       <motion.section
         role="dialog"
         aria-modal="true"
-        aria-label={`${producer.display_name} 的训练曲目`}
+        aria-label={`${producer.display_name} 的训练与冻结测试曲目`}
         initial={{ opacity: 0, y: 24, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -224,7 +224,9 @@ function ProducerDialog({
                 </p>
               )}
               <p className="text-white/80 text-xs mt-2">
-                {producer.song_count ?? 0} 首训练曲目 · {producer.segment_count ?? 0} 个片段
+                {producer.song_count ?? 0} 首训练曲目 ·{" "}
+                {details?.test_song_count ?? producer.test_song_count} 首冻结测试曲目 ·{" "}
+                {producer.segment_count ?? 0} 个训练片段
               </p>
             </div>
           </div>
@@ -257,51 +259,90 @@ function ProducerDialog({
             <p className="text-red-500 text-sm py-8 text-center">{error}</p>
           )}
 
-          {!loading && !error && details?.songs.length === 0 && (
+          {!loading && !error && details &&
+            details.songs.length === 0 && details.test_songs.length === 0 && (
             <p className="text-text-muted text-sm py-8 text-center">
-              暂未记录训练曲目
+              暂未记录曲目
             </p>
           )}
 
-          {!loading && !error && details && details.songs.length > 0 && (
-            <div className="grid sm:grid-cols-2 gap-2">
-              {details.songs.map((song, index) => {
-                const content = (
-                  <>
-                    <span className="w-6 h-6 rounded-full bg-pink/10 text-pink-dark
-                                     flex items-center justify-center text-[11px] shrink-0">
-                      {index + 1}
-                    </span>
-                    <span className="min-w-0 flex-1 line-clamp-2">{song.title}</span>
-                    {song.source_url && (
-                      <ExternalLink size={13} className="shrink-0 opacity-50" />
-                    )}
-                  </>
-                );
-                const className =
-                  "flex items-center gap-2.5 rounded-xl bg-white/55 hover:bg-white " +
-                  "border border-pink/5 px-3 py-2.5 text-sm text-text transition-colors";
-                return song.source_url ? (
-                  <a
-                    key={song.song_id}
-                    href={song.source_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={className}
-                  >
-                    {content}
-                  </a>
-                ) : (
-                  <div key={song.song_id} className={className}>
-                    {content}
-                  </div>
-                );
-              })}
-            </div>
+          {!loading && !error && details && (
+            <>
+              <SongGrid songs={details.songs} tone="training" />
+              <div className="mt-7 pt-6 border-t border-purple/10">
+                <div className="mb-4">
+                  <h3 className="font-display text-lg text-text flex items-center gap-2">
+                    <LockKeyhole size={17} className="text-purple" />
+                    冻结测试曲目
+                  </h3>
+                  <p className="text-xs text-text-muted mt-1">
+                    仅用于最终评估，从未参与训练、层选择或置信度校准
+                  </p>
+                </div>
+                <SongGrid songs={details.test_songs} tone="test" />
+              </div>
+            </>
           )}
         </div>
       </motion.section>
     </motion.div>
+  );
+}
+
+function SongGrid({
+  songs,
+  tone,
+}: {
+  songs: ProducerInfo["songs"];
+  tone: "training" | "test";
+}) {
+  if (songs.length === 0) {
+    return (
+      <p className="text-text-muted text-sm py-4 text-center">
+        暂未记录{tone === "training" ? "训练" : "冻结测试"}曲目
+      </p>
+    );
+  }
+  return (
+    <div className="grid sm:grid-cols-2 gap-2">
+      {songs.map((song, index) => {
+        const content = (
+          <>
+            <span className={`w-6 h-6 rounded-full flex items-center justify-center
+                              text-[11px] shrink-0 ${
+              tone === "training"
+                ? "bg-pink/10 text-pink-dark"
+                : "bg-purple/10 text-purple"
+            }`}>
+              {index + 1}
+            </span>
+            <span className="min-w-0 flex-1 line-clamp-2">{song.title}</span>
+            {song.source_url && (
+              <ExternalLink size={13} className="shrink-0 opacity-50" />
+            )}
+          </>
+        );
+        const className =
+          "flex items-center gap-2.5 rounded-xl hover:bg-white " +
+          "border border-pink/5 px-3 py-2.5 text-sm text-text transition-colors " +
+          (tone === "training" ? "bg-white/55" : "bg-purple/[0.04]");
+        return song.source_url ? (
+          <a
+            key={song.song_id}
+            href={song.source_url}
+            target="_blank"
+            rel="noreferrer"
+            className={className}
+          >
+            {content}
+          </a>
+        ) : (
+          <div key={song.song_id} className={className}>
+            {content}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 

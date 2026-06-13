@@ -66,3 +66,39 @@ def load_training_song_catalog() -> dict[str, list[dict]]:
         )
         for slug, songs in songs_by_producer.items()
     }
+
+
+@lru_cache(maxsize=1)
+def load_frozen_test_song_catalog() -> dict[str, list[dict]]:
+    """Return the validated songs that never participate in model fitting."""
+    path = (
+        project_root()
+        / "data"
+        / "processed"
+        / "frozen_test"
+        / "catalog.jsonl"
+    )
+    if not path.exists():
+        return {}
+
+    songs_by_producer: dict[str, list[dict]] = {}
+    with open(path, "r", encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            songs_by_producer.setdefault(
+                record["producer_slug"],
+                [],
+            ).append({
+                "song_id": record["song_id"],
+                "title": record.get("title") or record["song_id"],
+                "source_url": record.get("source_url"),
+            })
+    return {
+        slug: sorted(
+            songs,
+            key=lambda item: item["title"].casefold(),
+        )
+        for slug, songs in songs_by_producer.items()
+    }

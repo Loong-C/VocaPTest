@@ -25,6 +25,13 @@ const PRODUCER_META: Record<string, { gradient: string; tags: string[] }> = {
   maretu:         { gradient: "from-red-600 to-rose-700",       tags: ["暗黑", "重摇滚", "狂气"] },
   n_buna:         { gradient: "from-cyan-500 to-blue-600",      tags: ["清澈", "吉他", "叙情"] },
   ayase:          { gradient: "from-indigo-500 to-fuchsia-600", tags: ["都市感", "电子流行", "夜色"] },
+  iyowa:          { gradient: "from-pink-400 to-orange-400",    tags: ["实验流行", "不安感", "复合节奏"] },
+  syudou:         { gradient: "from-slate-600 to-red-600",      tags: ["暗黑流行", "锐利", "叙事感"] },
+  nakiso:         { gradient: "from-zinc-700 to-purple-700",    tags: ["阴郁", "极简", "病态美"] },
+  surii:          { gradient: "from-yellow-500 to-red-500",     tags: ["高速摇滚", "短篇冲击", "中毒性"] },
+  r_sound_design: { gradient: "from-blue-500 to-violet-600",    tags: ["都市电子", "氛围感", "精致编曲"] },
+  toa:            { gradient: "from-sky-300 to-pink-400",       tags: ["轻柔电子", "透明感", "细腻"] },
+  teniwoha:       { gradient: "from-emerald-600 to-slate-700",  tags: ["和风", "文学性", "戏剧感"] },
 };
 
 export function getProducerMeta(slug: string): { gradient: string; tags: string[] } {
@@ -40,6 +47,8 @@ export function enrichProducer(producer: {
   aliases?: string[];
   profile_url?: string | null;
   songs?: ProducerSong[];
+  test_song_count?: number;
+  test_songs?: ProducerSong[];
 }): ProducerDisplay {
   const meta = getProducerMeta(producer.slug);
   return {
@@ -50,5 +59,7 @@ export function enrichProducer(producer: {
     aliases: producer.aliases ?? [],
     profile_url: producer.profile_url ?? null,
     songs: producer.songs ?? [],
+    test_song_count: producer.test_song_count ?? 0,
+    test_songs: producer.test_songs ?? [],
   };
 }
