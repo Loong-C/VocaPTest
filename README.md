@@ -1,187 +1,162 @@
-﻿# VocaP Test — 测测你的曲风最像哪位 P 主
+# VocaP Test - 测测你的曲风最像哪位 P 主
 
-一个娱乐向的 Vocaloid Producer 风格相似度系统。上传一段音乐，系统在预先构建的 P 主参考库中寻找听感最接近的 Producer，输出 Top-K 相似结果。
+一个娱乐向的 Vocaloid Producer 风格相似度系统。上传一段音乐，系统会在 27 位
+P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受区域时给出低置信提示。
 
-## 已完成工作总览
+## 当前数据与模型
 
-### 当前可信数据管线
+| 项目 | 当前状态 |
+|---|---:|
+| 训练目录 | **309 首 canonical 作品** |
+| 冻结测试目录 | **54 首作品，每类 2 首** |
+| 训练分段 | **3690 段** |
+| 冻结测试分段 | **642 段** |
+| 音频处理 | 24kHz 单声道、20s 窗口、10s hop、均匀覆盖、最多 12 段 |
+| 音频表征 | MERT-v1-95M 第 6 层，768 维 |
+| 分类器 | 歌曲均值 + 等先验 Shrinkage LDA |
+| 置信度 | OOF logits temperature scaling + 拒识阈值 |
 
-| 步骤 | 内容 | 结果 |
-|------|------|------|
-| 原始数据 | YouTube 管线收集 + VocaDB 人工核验扩充 | 276 条候选记录 |
-| 清洗 | 排除错误实体、翻唱、游戏版、合作污染和重复作品 | **239 首 canonical 歌曲** |
-| 切片 | 24kHz、20s 窗口、10s hop、均匀覆盖、最多 12 段 | **2866 段** |
-| 嵌入 | 一次前向缓存 MERT-v1-95M 全部 13 层 | `13 × 768` / 段 |
-| 模型 | 第 6 层歌曲均值 + 等先验 Shrinkage LDA | 20 类 |
-| 置信度 | OOF logits temperature scaling + 拒识阈值 | 95% 接受精度目标 |
+冻结测试曲与训练曲按 YouTube ID 和 VocaDB `work_id` 双重隔离，从不参与训练、
+层选择或阈值校准。曲目均通过 VocaDB `Original` 条目、作曲者角色和 YouTube
+原始 PV 关系核验。
 
-### 覆盖的 20 位 P 主
+## 覆盖的 27 位 P 主
 
-| P 主 | 别名 | 歌曲数 | 分段数 |
-|------|------|:------:|:------:|
+| P 主 | 别名 | 训练歌曲 | 训练分段 |
+|---|---|---:|---:|
 | wowaka | 現実逃避P | 10 | 120 |
-| kemu | — | 12 | 144 |
+| kemu | - | 12 | 144 |
 | Neru | 押入れP | 10 | 120 |
-| DECO*27 | — | 14 | 168 |
-| ピノキオピー | — | 13 | 155 |
-| Mitchie M | — | 10 | 120 |
-| じん | — | 13 | 156 |
-| Orangestar | — | 12 | 144 |
-| cosMo@暴走P | — | 13 | 156 |
-| ハチ | — | 12 | 144 |
-| 40mP | — | 12 | 144 |
-| ナユタン星人 | — | 11 | 132 |
-| かいりきベア | — | 12 | 144 |
-| Kanaria | — | 10 | 119 |
-| Chinozo | — | 13 | 156 |
-| 稲葉曇 | — | 14 | 168 |
-| MIMI | — | 14 | 168 |
-| MARETU | — | 12 | 144 |
+| DECO*27 | - | 14 | 168 |
+| ピノキオピー | - | 13 | 155 |
+| Mitchie M | - | 10 | 120 |
+| じん | - | 13 | 156 |
+| Orangestar | - | 12 | 144 |
+| cosMo@暴走P | - | 13 | 156 |
+| ハチ | - | 12 | 144 |
+| 40mP | - | 12 | 144 |
+| ナユタン星人 | - | 11 | 132 |
+| かいりきベア | - | 12 | 144 |
+| Kanaria | - | 10 | 119 |
+| Chinozo | - | 13 | 156 |
+| 稲葉曇 | - | 14 | 168 |
+| MIMI | - | 14 | 168 |
+| MARETU | - | 12 | 144 |
 | n-buna | ナブナ | 11 | 132 |
-| Ayase | — | 11 | 132 |
+| Ayase | - | 11 | 132 |
+| いよわ | - | 10 | 120 |
+| syudou | - | 10 | 120 |
+| なきそ | - | 10 | 116 |
+| すりぃ | - | 10 | 108 |
+| R Sound Design | - | 10 | 120 |
+| とあ | - | 10 | 120 |
+| てにをは | - | 10 | 120 |
 
-### P1 评估结果
+每位 P 主另有 2 首冻结测试曲，可在 P 主详情页中查看；冻结曲不会被列入训练统计。
 
-使用 5 次重复 5 折 `StratifiedGroupKFold`，按 `work_id` 分组：
+## 评估结果
 
-| 指标 | 20 类 / 192 首 | 当前 20 类 / 239 首 |
-|------|:--------------:|:-------------------:|
-| Top-1 | 86.67% ± 1.36% | **88.20% ± 0.55%** |
-| Top-3 | 96.35% ± 0.74% | **95.56% ± 0.56%** |
-| Macro-F1 | 85.64% ± 1.52% | **88.48% ± 0.55%** |
-| MRR | 91.62% ± 0.76% | **92.30% ± 0.29%** |
+分组交叉验证使用 5 次重复 5 折 `StratifiedGroupKFold`，按 `work_id` 隔离：
 
-补齐低样本类别后，wowaka 的 OOF F1 从约 0.73 升至 0.89，Neru 从约
-0.62 升至 0.75。校准阈值在 OOF 上覆盖 83.51% 的样本，接受样本精度为
-95.09%。这说明模型已适合当前 20 类库内的娱乐性匹配，但没有冻结库外测试集，
-不能把 88.20% 解读为任意歌曲上的作曲家鉴定准确率。详细消融见
-[P1 实施报告](docs/P1_IMPLEMENTATION_REPORT.md)。
+| 指标 | 20 类 / 239 首 | 27 类 / 309 首 |
+|---|---:|---:|
+| Top-1 | 88.20% ± 0.55% | **86.73% ± 0.86%** |
+| Top-3 | 95.56% ± 0.56% | **93.92% ± 0.58%** |
+| Macro-F1 | 88.48% ± 0.55% | **87.00% ± 0.80%** |
+| MRR | 92.30% ± 0.29% | **90.98% ± 0.44%** |
 
-### API 服务
+扩展到 27 类后，任务明显更难，但指标只小幅下降。OOF 拒识覆盖率为 81.04%，
+被接受样本精度为 95.05%。
 
-FastAPI 后端已部署，支持以下端点：
+首次冻结测试只评估一次，不据此回调模型：
+
+| 指标 | 54 首冻结测试 |
+|---|---:|
+| Top-1 | **87.04%** |
+| Top-3 | **92.59%** |
+| Macro-F1 | **84.59%** |
+| MRR | **89.73%** |
+| 拒识覆盖率 | **72.22%** |
+| 被接受样本准确率 | **97.44%** |
+
+冻结集暴露了有价值的弱点：なきそ和すりぃ各 2 首均未命中，じん吸收了多首其他
+摇滚/短篇编曲作品；唯一被高置信接受的错误是すりぃ被判为とあ。这些失败被原样
+保留，避免把冻结集变成调参集。
+
+详细结果见 [27 类与冻结测试总报告](docs/P1_27_PRODUCERS_FROZEN_TEST_REPORT.md)。
+
+## API 与前端
 
 | 端点 | 方法 | 说明 |
-|------|:----:|------|
-| `/health` | GET | 健康检查 |
-| `/api/producers` | GET | 获取所有 P 主列表 |
-| `/api/producers/{slug}` | GET | 获取头像、别名和实际训练曲目 |
-| `/api/analyze` | POST | 上传音频 → 返回 Top-K P 主匹配结果 |
+|---|:---:|---|
+| `/health` | GET | 健康检查和当前模型状态 |
+| `/api/producers` | GET | 获取所有 P 主 |
+| `/api/producers/{slug}` | GET | 获取头像、别名、训练曲与冻结测试曲 |
+| `/api/analyze` | POST | 上传音频并返回 Top-K 候选 |
 
-```bash
-# 启动 API 服务
+P 主页面使用本地化头像，并明确区分可点击的训练曲和冻结测试曲。
+
+```powershell
+# 后端
 python scripts/06_run_api.py
-# → http://localhost:8000 (Swagger UI: /docs)
 
-# 启动前端开发服务器
-cd web && npm run dev
-# → http://localhost:5173 (Vite 代理 /api 到 :8000)
+# 前端
+Set-Location web
+npm run dev
 ```
 
-### 关键文件位置
+## 关键文件
 
 | 文件 | 说明 |
-|------|------|
-| `data/processed/profiles.pkl` | 旧检索原型文件；当前 API 使用 P1 LDA 模型 |
-| `data/processed/models/p1_selected_layer_lda.pkl` | 当前默认模型，本地生成且不提交 |
-| `data/processed/evaluations/p1_selected_layer.json` | 最终分组 CV 与校准结果 |
-| `data/processed/evaluations/p1_feature_ablations.json` | 多统计和 MIR 消融 |
-| `data/processed/curated/mert_95_p1/segments.jsonl` | P1 多层 embedding 清单 |
-| `data/processed/song_name_mapping.csv` | 初始 YouTube 数据的歌曲名映射 |
-| `data/interim/youtube_songs.jsonl` | 下载元数据 |
-| `data/interim/segments.jsonl` | 分段清单 |
-| `configs/producers.yaml` | P 主配置 |
-| `configs/training_catalog_additions.yaml` | 人工核验的新增歌曲与频道白名单 |
+|---|---|
+| `configs/producers.yaml` | 27 位 P 主、别名和来源配置 |
+| `configs/training_catalog_additions.yaml` | 人工核验的训练目录增量 |
+| `configs/frozen_test_catalog.yaml` | 严格隔离的冻结测试目录 |
+| `data/processed/curated/mert_95_p1/segments.jsonl` | 训练 MERT 缓存清单 |
+| `data/processed/frozen_test/catalog.jsonl` | 冻结测试下载清单 |
+| `data/processed/frozen_test/mert_95_layers/segments.jsonl` | 冻结测试 MERT 清单 |
+| `data/processed/evaluations/p1_selected_layer.json` | 27 类分组 CV 与校准结果 |
+| `data/processed/evaluations/p1_frozen_test.json` | 冻结测试结果 |
+| `data/processed/models/p1_selected_layer_lda.pkl` | 本地生成的默认模型，不提交 Git |
 
-## 技术路线
+## 复现数据与评估
 
-- **音频特征提取**：MERT-v1-95M 第 6 层
-- **分类**：歌曲均值 + Shrinkage LDA
-- **置信度**：temperature scaling、margin、归一化熵和拒识阈值
-- **后端**：FastAPI + Uvicorn
-- **前端**：Vite + React + Tailwind CSS + TypeScript
-- **数据源**：YouTube 音频 + VocaDB Original 条目核验 + 官方频道 ID 白名单
-- **图鉴**：本地化 VocaDB 头像、别名和可点击的实际训练曲目
-- **低置信 UI**：不再显示黄色英文警告框，改为非确定性的中文参考结果
+```powershell
+# 核验并补充训练目录
+python scripts/16_expand_training_catalog.py --ffmpeg-location <ffmpeg目录>
 
-## 开发阶段
+# 核验并准备冻结测试目录
+python scripts/18_prepare_frozen_test_catalog.py --ffmpeg-location <ffmpeg目录>
 
-| 阶段 | 内容 | 状态 |
-|------|------|:----:|
-| 0 | 项目初始化 + 设计文档 | ✅ |
-| 1 | 项目脚手架（目录/配置/依赖） | ✅ |
-| 2 | 核心包结构 + utils + schemas | ✅ |
-| 3 | 数据管线（YouTube 下载/清洗/验证） | ✅ |
-| 4 | 音频预处理 + 切片 | ✅ |
-| 5 | 模型加载 + Embedding 提取 | ✅ |
-| 6 | 检索系统（Profile/相似度/搜索） | ✅ |
-| 7 | FastAPI 后端服务 | ✅ |
-| 8 | 脚本 + 训练/测试划分 + 评估 | ✅ |
-| 9 | 前端开发 | ✅ |
+# 训练集全层 MERT 缓存
+python scripts/09_rebuild_p1_layer_embeddings.py
 
-## 项目结构
+# 冻结集全层 MERT 缓存
+python scripts/09_rebuild_p1_layer_embeddings.py `
+  --decisions data/processed/frozen_test/catalog.jsonl `
+  --audio-root data/frozen_test_audio `
+  --embedding-output data/processed/embeddings/mert_95_frozen_layers `
+  --manifest-output data/processed/frozen_test/mert_95_layers/segments.jsonl
 
-```text
-VocaP Test/
-  configs/         # YAML 配置文件
-  data/            # 原始/中间/处理后数据
-  external/        # 外部参考仓库
-  src/vocaptest/   # Python 核心包
-  web/             # 前端 (Vite + React + Tailwind)
-  scripts/         # 一键流程脚本
-  notebooks/       # 探索分析
-  tests/           # 测试
-  docs/            # 文档
+# 训练、交叉验证和冻结评估
+python scripts/13_train_p1_selected_layer.py
+python scripts/19_evaluate_frozen_test.py
 ```
+
+## 当前机器适配
+
+当前 RTX 4060 Ti 8GB、约 32GB 内存下，MERT-v1-95M 使用 batch size 4 稳定运行。
+本轮 70 首新增训练曲的缓存约 4 分钟，54 首冻结曲约 4 分钟，LDA 训练与重复评估
+约 1 分钟。现阶段瓶颈不是显存，而是每类作品覆盖、时期偏移和独立评估样本数。
 
 ## 已知问题
 
-1. 尚无永久冻结的外部测试集；层选择和拒识阈值仍可能对当前数据产生选择偏差。
-2. 校准拒识基于库内 OOF，不等同于完整的开放集识别保证。
-3. 歌声库、上传频道和母带风格仍可能成为作曲家标签的代理变量。
-4. じん当前 OOF F1 为 58.75%，主要问题是类别异质性和与其他摇滚作者的边界，
-   继续盲目加歌不一定有效，应先审计作品口径。
-5. Neru recall 已从 48% 升至 68%，但仍有 28% 的 OOF 预测落到 じん。
+1. 冻结集目前仅每类 2 首，逐类结果方差很大，下一步应扩至每类 4-5 首。
+2. 拒识由库内 OOF 校准，不构成完整的开放集识别保证。
+3. 歌声库、上传频道、母带与作品时期仍可能成为作者标签的代理变量。
+4. じん的 OOF F1 仅 54.66%，类别内部跨度和与其他摇滚作者的边界仍需审计。
+5. 冻结集中なきそ、すりぃ均为 0/2，提示短篇编曲和时期变化尚未被训练集覆盖。
+6. Neru 的 OOF 样本约 26% 被判为じん，是当前最明显的成对混淆之一。
 
-## 能否继续增加 P 主
-
-可以。当前 RTX 4060 Ti 8GB、31.7GB 内存下，MERT-v1-95M batch size 4
-运行稳定；本次新增 47 首的 13 层缓存约 2 分钟，LDA 训练约 23 秒。真正的
-限制是数据质量和评估设计：
-
-- 每位新 P 主建议至少准备 10 首互不重复的 canonical 作品，最好 12–15 首；
-- 另留 2–3 首从不参与层选择、训练和阈值选择的冻结外部测试作品；
-- 每次增加约 3–5 位 P 主后重跑分组 CV、逐类 F1、混淆矩阵和校准；
-- 优先选择创作身份明确、合作污染少、作品时期有覆盖的 P 主；
-- 不建议为了扩大名单使用翻唱、游戏剪辑、现场版或同一作品的多个上传版本。
-
-## 环境要求
-
-- Python 3.12+
-- PyTorch + CUDA（推荐 GPU，CPU 推理也可用但较慢）
-- 详见 `requirements.txt`
-
-## 快速开始
-
-```bash
-# 创建虚拟环境
-python -m venv .venv
-.venv\Scripts\Activate.ps1   # Windows
-# source .venv/bin/activate   # Linux/Mac
-
-# 安装依赖
-pip install -r requirements.txt
-
-# 首次生成 P1 缓存和模型
-python scripts/16_expand_training_catalog.py --ffmpeg-location <ffmpeg目录>
-python scripts/09_rebuild_p1_layer_embeddings.py
-python scripts/13_train_p1_selected_layer.py
-
-# 刷新本地头像
-python scripts/15_sync_producer_avatars.py
-
-# 启动 API
-python scripts/06_run_api.py
-```
-
-详细设计文档见 [agent.md](agent.md)。
+项目结构与早期设计见 [agent.md](agent.md)，历史 P1 消融见
+[P1 实施报告](docs/P1_IMPLEMENTATION_REPORT.md)。
