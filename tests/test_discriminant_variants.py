@@ -28,6 +28,28 @@ def test_regularized_discriminant_probabilities_are_normalized():
     assert np.mean(model.classes[probabilities.argmax(axis=1)] == labels) > 0.9
 
 
+def test_diagonal_regularized_discriminant_handles_wide_features():
+    rng = np.random.default_rng(5)
+    features = np.vstack([
+        rng.normal(-0.5, 0.4, size=(6, 20)),
+        rng.normal(0.5, 0.4, size=(6, 20)),
+    ])
+    labels = np.array(["a"] * 6 + ["b"] * 6)
+
+    model = RegularizedDiscriminantClassifier.fit(
+        features,
+        labels,
+        class_covariance_weight=0.5,
+        isotropic_weight=0.1,
+        diagonal=True,
+    )
+
+    assert model.precisions.shape == (2, 20)
+    assert np.mean(
+        model.classes[model.predict_proba(features).argmax(axis=1)] == labels
+    ) > 0.9
+
+
 def test_dual_prototype_classifier_models_bimodal_classes():
     rng = np.random.default_rng(7)
     features = np.vstack([

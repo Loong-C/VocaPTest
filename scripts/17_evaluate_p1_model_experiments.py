@@ -102,6 +102,7 @@ def select_rda_parameters(
     candidates = [
         {
             "pca_dim": dimension,
+            "covariance_structure": "full",
             "class_covariance_weight": class_weight,
             "isotropic_weight": isotropic_weight,
         }
@@ -109,6 +110,16 @@ def select_rda_parameters(
         for class_weight in class_weights
         for isotropic_weight in isotropic_weights
     ]
+    candidates.extend([
+        {
+            "pca_dim": None,
+            "covariance_structure": "diagonal",
+            "class_covariance_weight": class_weight,
+            "isotropic_weight": isotropic_weight,
+        }
+        for class_weight in class_weights
+        for isotropic_weight in isotropic_weights
+    ])
     classes = np.unique(labels)
     candidate_probabilities = [
         np.zeros((len(features), len(classes)), dtype=np.float64)
@@ -129,14 +140,25 @@ def select_rda_parameters(
         validation_projected = pca.transform(features[validation_indices])
         for index, candidate in enumerate(candidates):
             dimension = candidate["pca_dim"]
+            train_candidate = (
+                features[train_indices]
+                if dimension is None
+                else train_projected[:, :dimension]
+            )
+            validation_candidate = (
+                features[validation_indices]
+                if dimension is None
+                else validation_projected[:, :dimension]
+            )
             model = RegularizedDiscriminantClassifier.fit(
-                train_projected[:, :dimension],
+                train_candidate,
                 labels[train_indices],
                 class_covariance_weight=candidate["class_covariance_weight"],
                 isotropic_weight=candidate["isotropic_weight"],
+                diagonal=candidate["covariance_structure"] == "diagonal",
             )
             candidate_probabilities[index][validation_indices] = model.predict_proba(
-                validation_projected[:, :dimension]
+                validation_candidate
             )
 
     return max(
@@ -155,14 +177,19 @@ def predict_rda(
     parameters: dict,
 ) -> np.ndarray:
     dimension = parameters["pca_dim"]
-    pca = PCA(n_components=dimension, svd_solver="full")
-    train_projected = pca.fit_transform(train_features)
-    test_projected = pca.transform(test_features)
+    if dimension is None:
+        train_projected = train_features
+        test_projected = test_features
+    else:
+        pca = PCA(n_components=dimension, svd_solver="full")
+        train_projected = pca.fit_transform(train_features)
+        test_projected = pca.transform(test_features)
     model = RegularizedDiscriminantClassifier.fit(
         train_projected,
         train_labels,
         class_covariance_weight=parameters["class_covariance_weight"],
         isotropic_weight=parameters["isotropic_weight"],
+        diagonal=parameters["covariance_structure"] == "diagonal",
     )
     return model.predict_proba(test_projected)
 
@@ -188,6 +215,14 @@ def select_prototype_parameters(
         for standardize in standardization
         for distance_scale in distance_scales
     ]
+    candidate_indices = {
+        (
+            candidate["discriminant_dim"],
+            candidate["standardize"],
+            candidate["distance_scale"],
+        ): index
+        for index, candidate in enumerate(candidates)
+    }
     classes = np.unique(labels)
     candidate_probabilities = [
         np.zeros((len(features), len(classes)), dtype=np.float64)
@@ -204,18 +239,25 @@ def select_prototype_parameters(
         projection = fit_lda_projection(features[train_indices], labels[train_indices])
         train_projected = projection.transform(features[train_indices])
         validation_projected = projection.transform(features[validation_indices])
-        for index, candidate in enumerate(candidates):
-            dimension = candidate["discriminant_dim"]
-            model = DualPrototypeClassifier.fit(
-                train_projected[:, :dimension],
-                labels[train_indices],
-                standardize=candidate["standardize"],
-                distance_scale=candidate["distance_scale"],
-                seed=seed + fold * 100,
-            )
-            candidate_probabilities[index][validation_indices] = model.predict_proba(
-                validation_projected[:, :dimension]
-            )
+        for dimension in dimensions:
+            for standardize in standardization:
+                model = DualPrototypeClassifier.fit(
+                    train_projected[:, :dimension],
+                    labels[train_indices],
+                    standardize=standardize,
+                    distance_scale=1.0,
+                    seed=seed + fold * 100,
+                )
+                for distance_scale in distance_scales:
+                    model.distance_scale = distance_scale
+                    index = candidate_indices[
+                        (dimension, standardize, distance_scale)
+                    ]
+                    candidate_probabilities[index][validation_indices] = (
+                        model.predict_proba(
+                            validation_projected[:, :dimension]
+                        )
+                    )
 
     return max(
         zip(candidates, candidate_probabilities),

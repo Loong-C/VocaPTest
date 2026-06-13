@@ -22,6 +22,7 @@ class RegularizedDiscriminantClassifier:
     means: np.ndarray
     precisions: np.ndarray
     log_determinants: np.ndarray
+    diagonal: bool
 
     @classmethod
     def fit(
@@ -31,6 +32,7 @@ class RegularizedDiscriminantClassifier:
         *,
         class_covariance_weight: float,
         isotropic_weight: float,
+        diagonal: bool = False,
     ) -> "RegularizedDiscriminantClassifier":
         features = np.asarray(features, dtype=np.float64)
         labels = np.asarray(labels)
@@ -60,7 +62,6 @@ class RegularizedDiscriminantClassifier:
             pooled_scatter += scatter
 
         pooled_covariance = pooled_scatter / max(len(features) - len(classes), 1)
-        identity = np.eye(dimension, dtype=np.float64)
         precisions = []
         log_determinants = []
         for scatter, sample_count in zip(scatters, sample_counts):
@@ -69,23 +70,36 @@ class RegularizedDiscriminantClassifier:
                 (1.0 - class_covariance_weight) * pooled_covariance
                 + class_covariance_weight * class_covariance
             )
-            average_variance = max(float(np.trace(covariance) / dimension), 1e-8)
-            covariance = (
-                (1.0 - isotropic_weight) * covariance
-                + isotropic_weight * average_variance * identity
-            )
-            covariance = covariance + average_variance * 1e-6 * identity
-            sign, log_determinant = np.linalg.slogdet(covariance)
-            if sign <= 0:
-                raise ValueError("Regularized covariance is not positive definite")
-            precisions.append(np.linalg.inv(covariance))
-            log_determinants.append(log_determinant)
+            if diagonal:
+                variances = np.diag(covariance)
+                average_variance = max(float(variances.mean()), 1e-8)
+                variances = (
+                    (1.0 - isotropic_weight) * variances
+                    + isotropic_weight * average_variance
+                )
+                variances = variances + average_variance * 1e-6
+                precisions.append(1.0 / variances)
+                log_determinants.append(float(np.log(variances).sum()))
+            else:
+                identity = np.eye(dimension, dtype=np.float64)
+                average_variance = max(float(np.trace(covariance) / dimension), 1e-8)
+                covariance = (
+                    (1.0 - isotropic_weight) * covariance
+                    + isotropic_weight * average_variance * identity
+                )
+                covariance = covariance + average_variance * 1e-6 * identity
+                sign, log_determinant = np.linalg.slogdet(covariance)
+                if sign <= 0:
+                    raise ValueError("Regularized covariance is not positive definite")
+                precisions.append(np.linalg.inv(covariance))
+                log_determinants.append(log_determinant)
 
         return cls(
             classes=classes,
             means=np.stack(means),
             precisions=np.stack(precisions),
             log_determinants=np.asarray(log_determinants),
+            diagonal=diagonal,
         )
 
     def decision_function(self, features: np.ndarray) -> np.ndarray:
@@ -97,12 +111,15 @@ class RegularizedDiscriminantClassifier:
             self.log_determinants,
         ):
             centered = features - mean
-            squared_distance = np.einsum(
-                "ni,ij,nj->n",
-                centered,
-                precision,
-                centered,
-            )
+            if self.diagonal:
+                squared_distance = np.sum(centered ** 2 * precision, axis=1)
+            else:
+                squared_distance = np.einsum(
+                    "ni,ij,nj->n",
+                    centered,
+                    precision,
+                    centered,
+                )
             logits.append(-0.5 * (squared_distance + log_determinant))
         return np.stack(logits, axis=1)
 
