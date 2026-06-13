@@ -97,9 +97,9 @@ producers:
     avatar_url: /avatars/inabakumori.webp
   - slug: mimi
     display_name: MIMI
-    aliases: []
-    vocadb_artist_id: 16116
-    profile_url: https://vocadb.net/Ar/16116
+    aliases: [mimi_3mi]
+    vocadb_artist_id: 49431
+    profile_url: https://vocadb.net/Ar/49431
     avatar_url: /avatars/mimi.webp
   - slug: maretu
     display_name: MARETU

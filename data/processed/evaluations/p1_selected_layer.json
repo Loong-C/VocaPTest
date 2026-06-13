@@ -6,77 +6,283 @@
     "pooling": "uniform_segments_then_song_mean"
   },
   "dataset": {
-    "songs": 174,
-    "segments": 2086,
-    "classes": 18
+    "songs": 239,
+    "segments": 2866,
+    "classes": 20,
+    "class_names": [
+      "40mp",
+      "ayase",
+      "chinozo",
+      "cosmo",
+      "deco27",
+      "hachi",
+      "inabakumori",
+      "jin",
+      "kairikibear",
+      "kanaria",
+      "kemu",
+      "maretu",
+      "mimi",
+      "mitchie_m",
+      "n_buna",
+      "nayutan",
+      "neru",
+      "orangestar",
+      "pinocchiop",
+      "wowaka"
+    ]
   },
   "aggregate": {
     "top1_accuracy": {
-      "mean": 0.8747126436781609,
-      "std": 0.012459473211884349,
-      "min": 0.8563218390804598,
-      "max": 0.8908045977011494
+      "mean": 0.8820083682008368,
+      "std": 0.005455399502261671,
+      "min": 0.8786610878661087,
+      "max": 0.891213389121339
     },
     "top3_accuracy": {
-      "mean": 0.9563218390804596,
-      "std": 0.013840913308956653,
-      "min": 0.9367816091954023,
-      "max": 0.9712643678160919
+      "mean": 0.9556485355648536,
+      "std": 0.005613559776150089,
+      "min": 0.9456066945606695,
+      "max": 0.9581589958158996
     },
     "macro_f1": {
-      "mean": 0.8569905589782874,
-      "std": 0.016684702996488904,
-      "min": 0.8344222893711384,
-      "max": 0.8797670490652947
+      "mean": 0.884820943055834,
+      "std": 0.005473310016702373,
+      "min": 0.8792140324933582,
+      "max": 0.8920522094390195
     },
     "mrr": {
-      "mean": 0.917249503370193,
-      "std": 0.006982685613668296,
-      "min": 0.9059067688378031,
-      "max": 0.9220553871415941
+      "mean": 0.9229917401219394,
+      "std": 0.0028592739034826575,
+      "min": 0.9201417945141793,
+      "max": 0.926982857299126
     }
   },
   "repeat_metrics": [
     {
-      "top1_accuracy": 0.8735632183908046,
-      "top3_accuracy": 0.9712643678160919,
-      "macro_f1": 0.852047139232494,
-      "mrr": 0.9212231733783457
+      "top1_accuracy": 0.891213389121339,
+      "top3_accuracy": 0.9581589958158996,
+      "macro_f1": 0.8920522094390195,
+      "mrr": 0.926982857299126
     },
     {
-      "top1_accuracy": 0.8735632183908046,
-      "top3_accuracy": 0.9482758620689655,
-      "macro_f1": 0.8543694960774424,
-      "mrr": 0.9150524124662054
+      "top1_accuracy": 0.8786610878661087,
+      "top3_accuracy": 0.9581589958158996,
+      "macro_f1": 0.8792140324933582,
+      "mrr": 0.9201417945141793
     },
     {
-      "top1_accuracy": 0.8908045977011494,
-      "top3_accuracy": 0.9367816091954023,
-      "macro_f1": 0.8797670490652947,
-      "mrr": 0.9220097750270164
+      "top1_accuracy": 0.8786610878661087,
+      "top3_accuracy": 0.9581589958158996,
+      "macro_f1": 0.8829212816242757,
+      "mrr": 0.9226315002988642
     },
     {
-      "top1_accuracy": 0.8563218390804598,
-      "top3_accuracy": 0.9597701149425287,
-      "macro_f1": 0.8344222893711384,
-      "mrr": 0.9059067688378031
+      "top1_accuracy": 0.8786610878661087,
+      "top3_accuracy": 0.9456066945606695,
+      "macro_f1": 0.8809303691762693,
+      "mrr": 0.9205744685347197
     },
     {
-      "top1_accuracy": 0.8793103448275862,
-      "top3_accuracy": 0.9655172413793104,
-      "macro_f1": 0.8643468211450668,
-      "mrr": 0.9220553871415941
+      "top1_accuracy": 0.8828451882845189,
+      "top3_accuracy": 0.9581589958158996,
+      "macro_f1": 0.8889868225462472,
+      "mrr": 0.924628079962808
+    }
+  ],
+  "per_class": {
+    "40mp": {
+      "precision": 0.9491525423728814,
+      "recall": 0.9333333333333333,
+      "f1": 0.9411764705882353,
+      "support": 60
+    },
+    "ayase": {
+      "precision": 0.9803921568627451,
+      "recall": 0.9090909090909091,
+      "f1": 0.9433962264150944,
+      "support": 55
+    },
+    "chinozo": {
+      "precision": 0.8513513513513513,
+      "recall": 0.9692307692307692,
+      "f1": 0.9064748201438849,
+      "support": 65
+    },
+    "cosmo": {
+      "precision": 0.8169014084507042,
+      "recall": 0.8923076923076924,
+      "f1": 0.8529411764705882,
+      "support": 65
+    },
+    "deco27": {
+      "precision": 0.7340425531914894,
+      "recall": 0.9857142857142858,
+      "f1": 0.8414634146341463,
+      "support": 70
+    },
+    "hachi": {
+      "precision": 0.9583333333333334,
+      "recall": 0.7666666666666667,
+      "f1": 0.8518518518518519,
+      "support": 60
+    },
+    "inabakumori": {
+      "precision": 0.9333333333333333,
+      "recall": 1.0,
+      "f1": 0.9655172413793104,
+      "support": 70
+    },
+    "jin": {
+      "precision": 0.49473684210526314,
+      "recall": 0.7230769230769231,
+      "f1": 0.5875,
+      "support": 65
+    },
+    "kairikibear": {
+      "precision": 0.967741935483871,
+      "recall": 1.0,
+      "f1": 0.9836065573770492,
+      "support": 60
+    },
+    "kanaria": {
+      "precision": 1.0,
+      "recall": 0.7,
+      "f1": 0.8235294117647058,
+      "support": 50
+    },
+    "kemu": {
+      "precision": 0.8387096774193549,
+      "recall": 0.8666666666666667,
+      "f1": 0.8524590163934426,
+      "support": 60
+    },
+    "maretu": {
+      "precision": 0.9090909090909091,
+      "recall": 0.8333333333333334,
+      "f1": 0.8695652173913043,
+      "support": 60
+    },
+    "mimi": {
+      "precision": 1.0,
+      "recall": 0.9857142857142858,
+      "f1": 0.9928057553956835,
+      "support": 70
+    },
+    "mitchie_m": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 50
+    },
+    "n_buna": {
+      "precision": 0.9166666666666666,
+      "recall": 0.8,
+      "f1": 0.8543689320388349,
+      "support": 55
+    },
+    "nayutan": {
+      "precision": 0.9821428571428571,
+      "recall": 1.0,
+      "f1": 0.990990990990991,
+      "support": 55
+    },
+    "neru": {
+      "precision": 0.8292682926829268,
+      "recall": 0.68,
+      "f1": 0.7472527472527473,
+      "support": 50
+    },
+    "orangestar": {
+      "precision": 0.98,
+      "recall": 0.8166666666666667,
+      "f1": 0.8909090909090909,
+      "support": 60
+    },
+    "pinocchiop": {
+      "precision": 0.9655172413793104,
+      "recall": 0.8615384615384616,
+      "f1": 0.9105691056910569,
+      "support": 65
+    },
+    "wowaka": {
+      "precision": 0.9761904761904762,
+      "recall": 0.82,
+      "f1": 0.8913043478260869,
+      "support": 50
+    }
+  },
+  "most_common_confusions": [
+    {
+      "true": "neru",
+      "predicted": "jin",
+      "count": 14,
+      "rate": 0.28
+    },
+    {
+      "true": "kanaria",
+      "predicted": "chinozo",
+      "count": 10,
+      "rate": 0.2
+    },
+    {
+      "true": "jin",
+      "predicted": "deco27",
+      "count": 10,
+      "rate": 0.15384615384615385
+    },
+    {
+      "true": "hachi",
+      "predicted": "jin",
+      "count": 9,
+      "rate": 0.15
+    },
+    {
+      "true": "pinocchiop",
+      "predicted": "cosmo",
+      "count": 7,
+      "rate": 0.1076923076923077
+    },
+    {
+      "true": "n_buna",
+      "predicted": "jin",
+      "count": 6,
+      "rate": 0.10909090909090909
+    },
+    {
+      "true": "orangestar",
+      "predicted": "jin",
+      "count": 6,
+      "rate": 0.1
+    },
+    {
+      "true": "kanaria",
+      "predicted": "deco27",
+      "count": 5,
+      "rate": 0.1
+    },
+    {
+      "true": "wowaka",
+      "predicted": "jin",
+      "count": 5,
+      "rate": 0.1
+    },
+    {
+      "true": "n_buna",
+      "predicted": "maretu",
+      "count": 5,
+      "rate": 0.09090909090909091
     }
   ],
   "calibration": {
-    "temperature": 18.411676832609114,
-    "uncalibrated_log_loss": 3.0897543289817846,
-    "calibrated_log_loss": 0.5127950570431036,
+    "temperature": 13.6660044151895,
+    "uncalibrated_log_loss": 2.823525186497456,
+    "calibrated_log_loss": 0.4516024675772615,
     "target_precision": 0.95,
     "rejection": {
-      "threshold": 0.7076477242401515,
-      "coverage": 0.7758620689655172,
-      "precision": 0.9511111111111111
+      "threshold": 0.682986531206983,
+      "coverage": 0.8351464435146444,
+      "precision": 0.9509018036072144
     }
   }
 }

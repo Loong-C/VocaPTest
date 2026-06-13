@@ -8,7 +8,12 @@ from pathlib import Path
 
 import numpy as np
 import yaml
-from sklearn.metrics import f1_score, log_loss
+from sklearn.metrics import (
+    confusion_matrix,
+    f1_score,
+    log_loss,
+    precision_recall_fscore_support,
+)
 from sklearn.model_selection import StratifiedGroupKFold
 
 from vocaptest.data.curation import load_embedding_manifest
@@ -120,6 +125,39 @@ def main() -> None:
         target_precision=args.target_precision,
         minimum_coverage=0.1,
     )
+    flat_labels = np.tile(labels, args.repeats)
+    flat_predictions = classes[calibrated.argmax(axis=1)]
+    precision, recall, f1, support = precision_recall_fscore_support(
+        flat_labels,
+        flat_predictions,
+        labels=classes,
+        zero_division=0,
+    )
+    per_class = {
+        str(slug): {
+            "precision": float(precision[index]),
+            "recall": float(recall[index]),
+            "f1": float(f1[index]),
+            "support": int(support[index]),
+        }
+        for index, slug in enumerate(classes)
+    }
+    matrix = confusion_matrix(flat_labels, flat_predictions, labels=classes)
+    confusions = sorted(
+        (
+            {
+                "true": str(classes[row]),
+                "predicted": str(classes[column]),
+                "count": int(matrix[row, column]),
+                "rate": float(matrix[row, column] / matrix[row].sum()),
+            }
+            for row in range(len(classes))
+            for column in range(len(classes))
+            if row != column and matrix[row, column] > 0
+        ),
+        key=lambda item: (item["count"], item["rate"]),
+        reverse=True,
+    )
 
     final_estimator = SongMeanShrinkageLDA.fit(features, labels).estimator
     deployed = LayerFusionLDA(
@@ -158,9 +196,12 @@ def main() -> None:
             "songs": len(metadata),
             "segments": int(sum(item.segment_count for item in metadata)),
             "classes": len(classes),
+            "class_names": classes.tolist(),
         },
         "aggregate": aggregate,
         "repeat_metrics": repeat_metrics,
+        "per_class": per_class,
+        "most_common_confusions": confusions[:10],
         "calibration": {
             "temperature": calibrator.temperature,
             "uncalibrated_log_loss": float(log_loss(

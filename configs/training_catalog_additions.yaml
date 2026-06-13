@@ -1,0 +1,346 @@
+songs:
+  - producer_slug: wowaka
+    title: ワールズエンド・ダンスホール
+    vocadb_song_id: 20
+    youtube_id: ZB75e7vzX0I
+    allowed_channel_ids: [UCapHt19p6IJE_06CsVOYixw]
+  - producer_slug: wowaka
+    title: とおせんぼ
+    vocadb_song_id: 1506
+    youtube_id: uxNoOPetZ6g
+    allowed_channel_ids: [UCapHt19p6IJE_06CsVOYixw]
+  - producer_slug: wowaka
+    title: ずれていく
+    vocadb_song_id: 1510
+    youtube_id: e5JjR7XVtEo
+    allowed_channel_ids: [UCapHt19p6IJE_06CsVOYixw]
+  - producer_slug: wowaka
+    title: 僕のサイノウ
+    vocadb_song_id: 1503
+    youtube_id: 0aDhPfeNtwg
+    allowed_channel_ids: [UCapHt19p6IJE_06CsVOYixw]
+  - producer_slug: wowaka
+    title: 積み木の人形
+    vocadb_song_id: 1502
+    youtube_id: 6nrK6iTVkz4
+    allowed_channel_ids: [UCapHt19p6IJE_06CsVOYixw]
+
+  - producer_slug: kemu
+    title: インビジブル
+    vocadb_song_id: 8251
+    youtube_id: vXSpdipuiFs
+    allowed_channel_ids: [UCedZ1Nz4ZcBy6fb2YVyB0CQ]
+  - producer_slug: kemu
+    title: ぼくらの報復政策
+    vocadb_song_id: 10869
+    youtube_id: pIF_kTBBnuU
+    allowed_channel_ids: [UCzvI2mxhKVBTOHSulmL5Fvg]
+    source_kind: vocadb_reprint
+
+  - producer_slug: neru
+    title: 脱法ロック
+    vocadb_song_id: 127169
+    youtube_id: u5mHVUwDf_0
+    allowed_channel_ids: [UClxXuM2m0rIL9VCA1ds9HqA]
+  - producer_slug: neru
+    title: SNOBBISM
+    vocadb_song_id: 187408
+    youtube_id: f5jDVFmEIVQ
+    allowed_channel_ids: [UClxXuM2m0rIL9VCA1ds9HqA]
+  - producer_slug: neru
+    title: イドラのサーカス
+    vocadb_song_id: 29183
+    youtube_id: u6lHwB3e-z8
+    allowed_channel_ids: [UClxXuM2m0rIL9VCA1ds9HqA]
+  - producer_slug: neru
+    title: かなしみのなみにおぼれる
+    vocadb_song_id: 19092
+    youtube_id: 5R593n1W_HU
+    allowed_channel_ids: [UClxXuM2m0rIL9VCA1ds9HqA]
+  - producer_slug: neru
+    title: potatoになっていく
+    vocadb_song_id: 276642
+    youtube_id: Dun11cIEo9s
+    allowed_channel_ids: [UClxXuM2m0rIL9VCA1ds9HqA]
+
+  - producer_slug: deco27
+    title: ゴーストルール
+    vocadb_song_id: 112085
+    youtube_id: KushW6zvazM
+    allowed_channel_ids: [UCGmO0S4S-AunjRdmxA6TQYg]
+  - producer_slug: deco27
+    title: 乙女解剖
+    vocadb_song_id: 222749
+    youtube_id: 7zwCIz-Ohn4
+    allowed_channel_ids: [UCGmO0S4S-AunjRdmxA6TQYg]
+
+  - producer_slug: pinocchiop
+    title: すろぉもぉしょん
+    vocadb_song_id: 56903
+    youtube_id: ARt2fVT33Lw
+    allowed_channel_ids: [UCMMBGMjrrWcRZmG_lW4jC-Q]
+  - producer_slug: pinocchiop
+    title: 腐れ外道とチョコレゐト
+    vocadb_song_id: 136
+    youtube_id: sHnvEsNU1X0
+    allowed_channel_ids: [UCMMBGMjrrWcRZmG_lW4jC-Q]
+
+  - producer_slug: mitchie_m
+    title: ビバハピ
+    vocadb_song_id: 35603
+    youtube_id: WiUjG9fF3zw
+    allowed_channel_ids: [UCE0uNSkGhhsNMwAZcIQY7rw]
+  - producer_slug: mitchie_m
+    title: FREELY TOMORROW
+    vocadb_song_id: 5364
+    youtube_id: VTqQ6ZgjpNk
+    allowed_channel_ids: [UCE0uNSkGhhsNMwAZcIQY7rw]
+
+  - producer_slug: jin
+    title: アウターサイエンス
+    vocadb_song_id: 28646
+    youtube_id: HswIHVN5D4o
+    allowed_channel_ids: [UCu33JdVED-0vqaNyw_bCTKg]
+  - producer_slug: jin
+    title: 如月アテンション
+    vocadb_song_id: 12518
+    youtube_id: -y3BSoHOT9A
+    allowed_channel_ids: [UCu33JdVED-0vqaNyw_bCTKg]
+
+  - producer_slug: orangestar
+    title: Henceforth
+    vocadb_song_id: 282574
+    youtube_id: L13gCEZJVRU
+    allowed_channel_ids: [UCgBPuTX7crv_2jKAkH5z7bA]
+  - producer_slug: orangestar
+    title: Alice in 冷凍庫
+    vocadb_song_id: 114987
+    youtube_id: jQmYZWjLwzw
+    allowed_channel_ids: [UCgBPuTX7crv_2jKAkH5z7bA]
+
+  - producer_slug: cosmo
+    title: リアル初音ミクの消失
+    vocadb_song_id: 96567
+    youtube_id: Qs1spSzwSPE
+    allowed_channel_ids: [UC9AYHlE2OLcMlZJo3MBlfkQ]
+  - producer_slug: cosmo
+    title: マシンガンポエムドール
+    vocadb_song_id: 357469
+    youtube_id: UgZFpO_Y6qo
+    allowed_channel_ids: [UC9AYHlE2OLcMlZJo3MBlfkQ]
+
+  - producer_slug: hachi
+    title: 沙上の夢喰い少女
+    vocadb_song_id: 3154
+    youtube_id: mq3t6aCbb8o
+    allowed_channel_ids: [UCUCeZaZeJbEYAAzvMgrKOPQ]
+  - producer_slug: hachi
+    title: Mrs.Pumpkinの滑稽な夢
+    vocadb_song_id: 1573
+    youtube_id: _xs6LjWf3sM
+    allowed_channel_ids: [UCC_OGcKdYY-aWFvVMFVGbzw]
+
+  - producer_slug: 40mp
+    title: ドレミファロンド
+    vocadb_song_id: 8601
+    youtube_id: bphS6_wayug
+    allowed_channel_ids: [UCG09qajPDZdPtLsTkW7mJQA]
+  - producer_slug: 40mp
+    title: キリトリセン
+    vocadb_song_id: 1370
+    youtube_id: EjYwEoZHKvQ
+    allowed_channel_ids: [UCG09qajPDZdPtLsTkW7mJQA]
+
+  - producer_slug: nayutan
+    title: 明星ギャラクティカ
+    vocadb_song_id: 184758
+    youtube_id: pIDodd6Ac2Q
+    allowed_channel_ids: [UChK8kgGU767nKTxp4f4GD6g]
+  - producer_slug: nayutan
+    title: ひみつのユーフォー
+    vocadb_song_id: 347880
+    youtube_id: h-HMdNsCFus
+    allowed_channel_ids: [UChK8kgGU767nKTxp4f4GD6g]
+
+  - producer_slug: kairikibear
+    title: ヒトサマアレルギー
+    vocadb_song_id: 113086
+    youtube_id: lEGG_JPE3UQ
+    allowed_channel_ids: [UCp13SxKXbhCS0lb6Ty774iQ]
+  - producer_slug: kairikibear
+    title: レミングミング
+    vocadb_song_id: 173242
+    youtube_id: 4oCuGeHWzCo
+    allowed_channel_ids: [UCp13SxKXbhCS0lb6Ty774iQ]
+
+  - producer_slug: kanaria
+    title: エンヴィーベイビー
+    vocadb_song_id: 315198
+    youtube_id: dgS6HvEohsw
+    allowed_channel_ids: [UC10BM9XdLdrvB8japwmRUvA]
+  - producer_slug: kanaria
+    title: EYE
+    vocadb_song_id: 345108
+    youtube_id: sSHkXxADtaE
+    allowed_channel_ids: [UC10BM9XdLdrvB8japwmRUvA]
+  - producer_slug: kanaria
+    title: MIRA
+    vocadb_song_id: 321965
+    youtube_id: QF-PvlyheVc
+    allowed_channel_ids: [UC10BM9XdLdrvB8japwmRUvA]
+
+  - producer_slug: chinozo
+    title: ジェラシス
+    vocadb_song_id: 323126
+    youtube_id: UxUe_CIYqWE
+    allowed_channel_ids: [UCft5HulDeuKloukyShxyOZA]
+  - producer_slug: chinozo
+    title: Flyer!
+    vocadb_song_id: 385831
+    youtube_id: nfpYhYtHuKo
+    allowed_channel_ids: [UCft5HulDeuKloukyShxyOZA]
+
+  - producer_slug: inabakumori
+    title: レイニーブーツ
+    vocadb_song_id: 340399
+    youtube_id: G5hScSFkib4
+    allowed_channel_ids: [UCNElM45JypxqAR73RoUQ10g]
+  - producer_slug: inabakumori
+    title: きみに回帰線
+    vocadb_song_id: 387825
+    youtube_id: 3NLsyjOH92k
+    allowed_channel_ids: [UCNElM45JypxqAR73RoUQ10g]
+
+  - producer_slug: mimi
+    title: いっせーのーで
+    vocadb_song_id: 346638
+    youtube_id: vLigCJOcHOE
+    allowed_channel_ids: [UCam3IAA-nyfxRL8_wDQ35VA]
+  - producer_slug: mimi
+    title: ルルージュ
+    vocadb_song_id: 292206
+    youtube_id: Ziz_ckzVjyA
+    allowed_channel_ids: [UCam3IAA-nyfxRL8_wDQ35VA]
+
+  - producer_slug: maretu
+    title: コインロッカーベイビー
+    vocadb_song_id: 22421
+    youtube_id: QA5zuzc1WYA
+    allowed_channel_ids: [UCmj0YkPwo47bPoBt9ma-bxg]
+  - producer_slug: maretu
+    title: ホワイトハッピー
+    vocadb_song_id: 160508
+    youtube_id: rYymKe82y0c
+    allowed_channel_ids: [UCmj0YkPwo47bPoBt9ma-bxg]
+
+  - producer_slug: n_buna
+    title: ウミユリ海底譚
+    vocadb_song_id: 49871
+    youtube_id: 7JANm3jOb2k
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: メリュー
+    vocadb_song_id: 87458
+    youtube_id: Jak2qiq_jJo
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: 透明エレジー
+    vocadb_song_id: 23473
+    youtube_id: U2-K_eFGtJM
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: 夜明けと蛍
+    vocadb_song_id: 67776
+    youtube_id: 3Hh2XpL1P0Q
+    allowed_channel_ids: [UCu33JdVED-0vqaNyw_bCTKg]
+  - producer_slug: n_buna
+    title: 始発とカフカ
+    vocadb_song_id: 87453
+    youtube_id: j-cQ97A0OPM
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: 白ゆき
+    vocadb_song_id: 119843
+    youtube_id: oAVDdEfiy4o
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: ラプンツェル
+    vocadb_song_id: 127419
+    youtube_id: 1okLHuZUftU
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: 花降らし
+    vocadb_song_id: 124846
+    youtube_id: z8IpY_XeusQ
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: アイラ
+    vocadb_song_id: 54261
+    youtube_id: Qyjy_-mSsB4
+    allowed_channel_ids: [UCpxF5nPX36beclDXDovCVlw]
+  - producer_slug: n_buna
+    title: 無人駅
+    vocadb_song_id: 87452
+    youtube_id: G8PFPUCNOg4
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+  - producer_slug: n_buna
+    title: ヨヒラ
+    vocadb_song_id: 186287
+    youtube_id: ZgC5umCFkp0
+    allowed_channel_ids: [UCRIgIJQWuBJ0Cv_VlU3USNA]
+
+  - producer_slug: ayase
+    title: 幽霊東京
+    vocadb_song_id: 262740
+    youtube_id: lWl5viCqGSc
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: シニカルナイトプラン
+    vocadb_song_id: 275995
+    youtube_id: zyRt-nBM3dY
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: ラストリゾート
+    vocadb_song_id: 236272
+    youtube_id: eZ0E3Rkv0NA
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: キラークイーン
+    vocadb_song_id: 221679
+    youtube_id: XliDhKawJuo
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: よくばり
+    vocadb_song_id: 285651
+    youtube_id: RXRrsrjy3_8
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: フィクションブルー
+    vocadb_song_id: 251721
+    youtube_id: tqR74vsc6Mc
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: 人間モドキ
+    vocadb_song_id: 240765
+    youtube_id: RyxVIhTR8ag
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: 夜撫でるメノウ
+    vocadb_song_id: 225817
+    youtube_id: 2sHKKjeKfVM
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: ハッピーエンダー
+    vocadb_song_id: 224353
+    youtube_id: kXS1AlhlK_4
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: シネマ
+    vocadb_song_id: 333025
+    youtube_id: EEbWRjavSVw
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+  - producer_slug: ayase
+    title: ワンダラー
+    vocadb_song_id: 293245
+    youtube_id: mis6UJkoemw
+    allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]

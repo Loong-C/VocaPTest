@@ -27,6 +27,12 @@ def main() -> None:
         default=root / "web" / "public" / "avatars",
     )
     parser.add_argument("--size", type=int, default=320)
+    parser.add_argument(
+        "--slug",
+        action="append",
+        default=[],
+        help="Only sync the selected producer slug; may be repeated.",
+    )
     args = parser.parse_args()
 
     with open(args.config, "r", encoding="utf-8") as handle:
@@ -36,7 +42,22 @@ def main() -> None:
     session = requests.Session()
     session.headers["User-Agent"] = "VocaPTest/0.1 avatar sync"
 
-    for producer in config.get("producers", []):
+    producers = config.get("producers", [])
+    if args.slug:
+        requested = set(args.slug)
+        producers = [
+            producer
+            for producer in producers
+            if producer["slug"] in requested
+        ]
+        missing = requested.difference(
+            producer["slug"]
+            for producer in producers
+        )
+        if missing:
+            raise ValueError(f"Unknown producer slug(s): {sorted(missing)}")
+
+    for producer in producers:
         artist_id = producer["vocadb_artist_id"]
         response = session.get(
             f"https://vocadb.net/api/artists/{artist_id}",

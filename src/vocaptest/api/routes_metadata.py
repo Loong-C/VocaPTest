@@ -27,7 +27,7 @@ def _producer_info(
             "display_name",
             model_info.get("display_name", slug),
         ),
-        song_count=model_info.get("song_count"),
+        song_count=len(songs) if include_songs else model_info.get("song_count"),
         segment_count=model_info.get("segment_count"),
         avatar_url=metadata.get("avatar_url"),
         aliases=metadata.get("aliases", []),

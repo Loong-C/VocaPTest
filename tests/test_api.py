@@ -50,7 +50,7 @@ def test_get_producer_includes_metadata_and_training_songs(monkeypatch):
     data = response.json()
     assert data["avatar_url"] == "/avatars/wowaka.webp"
     assert "現実逃避P" in data["aliases"]
-    assert len(data["songs"]) == 5
+    assert data["song_count"] == len(data["songs"]) == 10
     assert all(
         song["source_url"].startswith("https://www.youtube.com/")
         for song in data["songs"]
