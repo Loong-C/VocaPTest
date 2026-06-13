@@ -1,6 +1,10 @@
 import numpy as np
 
-from vocaptest.features.layer_features import pool_segment_layers
+from vocaptest.data.metadata_schema import EmbeddingRecord
+from vocaptest.features.layer_features import (
+    build_song_segment_feature_tensor,
+    pool_segment_layers,
+)
 from vocaptest.models.calibration import TemperatureScaler
 from vocaptest.models.layer_fusion import LayerFusionLDA, optimize_nonnegative_weights
 from vocaptest.models.song_lda import SongMeanShrinkageLDA
@@ -56,3 +60,47 @@ def test_selected_layer_model_uses_requested_hidden_layer():
 
     assert prediction.results[0].producer_slug == "a"
     assert prediction.accepted
+
+
+def test_build_song_segment_feature_tensor(monkeypatch):
+    records = [
+        EmbeddingRecord(
+            segment_id="song_a_001",
+            song_id="song_a",
+            producer_slug="producer",
+            model_backend="test",
+            embedding_path="one.npy",
+            embedding_dim=2,
+            work_id="work_a",
+            layer_count=2,
+        ),
+        EmbeddingRecord(
+            segment_id="song_a_002",
+            song_id="song_a",
+            producer_slug="producer",
+            model_backend="test",
+            embedding_path="two.npy",
+            embedding_dim=2,
+            work_id="work_a",
+            layer_count=2,
+        ),
+    ]
+    arrays = {
+        "one.npy": np.array([[1.0, 2.0], [3.0, 4.0]], dtype=np.float32),
+        "two.npy": np.array([[5.0, 6.0], [7.0, 8.0]], dtype=np.float32),
+    }
+    monkeypatch.setattr(
+        "vocaptest.features.layer_features.resolve_embedding_path",
+        lambda record: record.embedding_path,
+    )
+    monkeypatch.setattr(
+        "vocaptest.features.layer_features.np.load",
+        lambda path: arrays[path],
+    )
+
+    features, masks, metadata = build_song_segment_feature_tensor(records, layer=1)
+
+    assert features.shape == (1, 2, 2)
+    assert np.array_equal(features[0], [[3.0, 4.0], [7.0, 8.0]])
+    assert masks.tolist() == [[True, True]]
+    assert metadata[0].work_id == "work_a"
