@@ -119,3 +119,45 @@ producers:
     vocadb_artist_id: 70347
     profile_url: https://vocadb.net/Ar/70347
     avatar_url: /avatars/ayase.webp
+  - slug: iyowa
+    display_name: いよわ
+    aliases: [iyowa]
+    vocadb_artist_id: 65229
+    profile_url: https://vocadb.net/Ar/65229
+    avatar_url: /avatars/iyowa.webp
+  - slug: syudou
+    display_name: syudou
+    aliases: [しゅどう]
+    vocadb_artist_id: 4834
+    profile_url: https://vocadb.net/Ar/4834
+    avatar_url: /avatars/syudou.webp
+  - slug: nakiso
+    display_name: なきそ
+    aliases: [NAKISO]
+    vocadb_artist_id: 64141
+    profile_url: https://vocadb.net/Ar/64141
+    avatar_url: /avatars/nakiso.webp
+  - slug: surii
+    display_name: すりぃ
+    aliases: [Surii, Three]
+    vocadb_artist_id: 64856
+    profile_url: https://vocadb.net/Ar/64856
+    avatar_url: /avatars/surii.webp
+  - slug: r_sound_design
+    display_name: R Sound Design
+    aliases: [usugeP]
+    vocadb_artist_id: 51589
+    profile_url: https://vocadb.net/Ar/51589
+    avatar_url: /avatars/r_sound_design.webp
+  - slug: toa
+    display_name: とあ
+    aliases: [Toa]
+    vocadb_artist_id: 7538
+    profile_url: https://vocadb.net/Ar/7538
+    avatar_url: /avatars/toa.webp
+  - slug: teniwoha
+    display_name: てにをは
+    aliases: [Teniwoha]
+    vocadb_artist_id: 1346
+    profile_url: https://vocadb.net/Ar/1346
+    avatar_url: /avatars/teniwoha.webp

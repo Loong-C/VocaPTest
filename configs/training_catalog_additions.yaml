@@ -344,3 +344,360 @@ songs:
     vocadb_song_id: 293245
     youtube_id: mis6UJkoemw
     allowed_channel_ids: [UCvpredjG93ifbCP1Y77JyFA]
+
+  - producer_slug: iyowa
+    title: 熱異常
+    vocadb_song_id: 443534
+    youtube_id: b2NTglk9tvI
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: きゅうくらりん
+    vocadb_song_id: 349763
+    youtube_id: 2b1IexhKPz4
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: 1000年生きてる
+    vocadb_song_id: 306287
+    youtube_id: 3em-J9yYPAo
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: IMAWANOKIWA
+    vocadb_song_id: 259741
+    youtube_id: OVwCr2MESfo
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: 一千光年
+    vocadb_song_id: 483406
+    youtube_id: uB_jQ8H2Yeg
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: アプリコット
+    vocadb_song_id: 363570
+    youtube_id: _uMDEIPgmFI
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: バベル
+    vocadb_song_id: 495793
+    youtube_id: zSKwxQqrac0
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: ももいろの鍵
+    vocadb_song_id: 495666
+    youtube_id: sAUdWpemfGw
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: うわがき
+    vocadb_song_id: 666063
+    youtube_id: T3Son6CzPUk
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+  - producer_slug: iyowa
+    title: 地球の裏
+    vocadb_song_id: 456845
+    youtube_id: ruBxsq03FZo
+    allowed_channel_ids: [UCLz6MG2kx_0xeaW0LowYnMQ]
+
+  - producer_slug: syudou
+    title: ビターチョコデコレーション
+    vocadb_song_id: 221277
+    youtube_id: XCyKJD6uQyg
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: キュートなカノジョ
+    vocadb_song_id: 316298
+    youtube_id: oFmup8lxUHw
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: ジャックポットサッドガール
+    vocadb_song_id: 299484
+    youtube_id: B2llCEKbxwA
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: コールボーイ
+    vocadb_song_id: 231791
+    youtube_id: FXnzOGTEcuc
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: 馬鹿
+    vocadb_song_id: 187404
+    youtube_id: dXb7ItXXX5Q
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: カレシのジュード
+    vocadb_song_id: 347355
+    youtube_id: 8r-_K32fsSU
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: 孤独の宗教
+    vocadb_song_id: 271693
+    youtube_id: EP_3-Qkrq60
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: 邪魔
+    vocadb_song_id: 182313
+    youtube_id: GTgMgxtl0Eg
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: デイバイデイズ
+    vocadb_song_id: 411302
+    youtube_id: p00a6QGVjP0
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+  - producer_slug: syudou
+    title: 孤独毒毒
+    vocadb_song_id: 367728
+    youtube_id: _FhgjDhBAWI
+    allowed_channel_ids: [UCraC7460yGQF4GDmSjCecpQ]
+
+  - producer_slug: nakiso
+    title: いますぐ輪廻
+    vocadb_song_id: 819926
+    youtube_id: 3iUgKH8c7p4
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: 化けの花
+    vocadb_song_id: 685575
+    youtube_id: jaSJ4t2ITW8
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: ド屑
+    vocadb_song_id: 389724
+    youtube_id: 5XehRIb81k8
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: お呪い
+    vocadb_song_id: 473663
+    youtube_id: zxYdPypVQvQ
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: みなごろし
+    vocadb_song_id: 583464
+    youtube_id: FHqNfBnObiY
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: 超常体験
+    vocadb_song_id: 849931
+    youtube_id: 3AHCTvdWO9E
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: 触れたら最後
+    vocadb_song_id: 362088
+    youtube_id: mZcvvII3SZc
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: 毒して頂戴
+    vocadb_song_id: 338793
+    youtube_id: l2ljDXGojo4
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: ひみつ気分
+    vocadb_song_id: 646432
+    youtube_id: XayANTAYcTI
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+  - producer_slug: nakiso
+    title: みまま
+    vocadb_song_id: 447490
+    youtube_id: LPsGQSMC-eo
+    allowed_channel_ids: [UC7d3Y_v5O202eo006uvvPzw]
+
+  - producer_slug: surii
+    title: ジャンキーナイトタウンオーケストラ
+    vocadb_song_id: 265022
+    youtube_id: E1PGiyRjqkU
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: ラヴィ
+    vocadb_song_id: 449282
+    youtube_id: mq88yUFdVng
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: 限りなく灰色へ
+    vocadb_song_id: 317204
+    youtube_id: cwLlHFMlBNQ
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: おべか
+    vocadb_song_id: 662691
+    youtube_id: 232n-oXTksY
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: ビーバー
+    vocadb_song_id: 280527
+    youtube_id: NArXe-Wg2D0
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: エゴロック
+    vocadb_song_id: 202936
+    youtube_id: pAgnrvo-hb4
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: テレキャスタービーボーイ
+    vocadb_song_id: 233017
+    youtube_id: pWLhidOSYOs
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: カメレオン
+    vocadb_song_id: 368048
+    youtube_id: 6U-5xAh3cKg
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: バニー
+    vocadb_song_id: 387843
+    youtube_id: UOcKAfS1x1o
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+  - producer_slug: surii
+    title: フクロウさん
+    vocadb_song_id: 375939
+    youtube_id: dby7Z3_N_3U
+    allowed_channel_ids: [UCHGKS3VDKxu3N1u9naM0XYA]
+
+  - producer_slug: r_sound_design
+    title: 帝国少女
+    vocadb_song_id: 150952
+    youtube_id: hUaVxNUCbc4
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: flos
+    vocadb_song_id: 186227
+    youtube_id: bUbOc97FpUA
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: Forward
+    vocadb_song_id: 306252
+    youtube_id: crCS77wqxTI
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: blender
+    vocadb_song_id: 606571
+    youtube_id: SjSlCJG4CxU
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: レトロポリス
+    vocadb_song_id: 322146
+    youtube_id: YGlAWg1YmQ8
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: 神曲
+    vocadb_song_id: 194549
+    youtube_id: _n-IayJaLt8
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: Lust Blue
+    vocadb_song_id: 188407
+    youtube_id: U7NUU12t2ms
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: アリス？
+    vocadb_song_id: 781447
+    youtube_id: eUa3vltUnnU
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: ブルベ、恋をする
+    vocadb_song_id: 514213
+    youtube_id: HPfURUnV3Oo
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+  - producer_slug: r_sound_design
+    title: 妄想論者
+    vocadb_song_id: 492236
+    youtube_id: g8wmm_Upi7o
+    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
+
+  - producer_slug: toa
+    title: ツギハギスタッカート
+    vocadb_song_id: 58632
+    youtube_id: p2Irc9NPCtk
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: アイディスマイル
+    vocadb_song_id: 331459
+    youtube_id: X_6EPkvIAGg
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: ミュージックミュージック
+    vocadb_song_id: 66167
+    youtube_id: lPk23PNrRHU
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: ピチカートドロップス
+    vocadb_song_id: 127434
+    youtube_id: eYKAwm-sZ-o
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: ステンドノクターン
+    vocadb_song_id: 382692
+    youtube_id: TYNOWjT84E4
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: トワイライトライト
+    vocadb_song_id: 542491
+    youtube_id: ydb05OX2U7M
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: サラバイサラバイ
+    vocadb_song_id: 154969
+    youtube_id: xeSbPuv4ZnE
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: パズルガール
+    vocadb_song_id: 84198
+    youtube_id: _KdOCU-qxrg
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: スカーティシュー
+    vocadb_song_id: 574009
+    youtube_id: HV-TmChulGo
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+  - producer_slug: toa
+    title: ハナレバナシ
+    vocadb_song_id: 113087
+    youtube_id: dwM39x7JLnE
+    allowed_channel_ids: [UCEoSVgHlCKPVEHDIve3K7NA]
+
+  - producer_slug: teniwoha
+    title: ヴィラン
+    vocadb_song_id: 271917
+    youtube_id: p9FJXfGHtDA
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: ザムザ
+    vocadb_song_id: 490444
+    youtube_id: q90SFMi8aUg
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: 一角獣
+    vocadb_song_id: 281902
+    youtube_id: jBXbmql5JCU
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: 修羅薔薇
+    vocadb_song_id: 643745
+    youtube_id: SkzHGOLdvsA
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: デビル
+    vocadb_song_id: 356767
+    youtube_id: N_W38cOlEnc
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: 古書屋敷殺人事件
+    vocadb_song_id: 13908
+    youtube_id: VKETQAo0v9Y
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: 夜祭
+    vocadb_song_id: 520351
+    youtube_id: VSHzeauAwaI
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: お行儀よくね
+    vocadb_song_id: 415845
+    youtube_id: DJc18duo-U4
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: ザネリ
+    vocadb_song_id: 348815
+    youtube_id: 6t0NXuDGqak
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
+  - producer_slug: teniwoha
+    title: ファントマ
+    vocadb_song_id: 500593
+    youtube_id: yDNJnBSFnpY
+    allowed_channel_ids: [UCQAdXyrF2fYcqdXUUW3YxUg]
