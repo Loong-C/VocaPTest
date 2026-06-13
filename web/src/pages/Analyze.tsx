@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, AlertTriangle, RefreshCw, FileAudio } from "lucide-react";
+import { Sparkles, AlertTriangle, RefreshCw, FileAudio, Info } from "lucide-react";
 import AudioUploader from "@/components/AudioUploader";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ScoreBar from "@/components/ScoreBar";
@@ -146,8 +146,10 @@ export default function Analyze() {
 
 /* ── Result View ── */
 function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () => void }) {
-  // Show warnings
-  const hasWarnings = result.warnings.length > 0;
+  const lowConfidence = result.accepted === false;
+  const extraWarnings = result.warnings.filter(
+    (warning) => !warning.startsWith("Low-confidence result:")
+  );
 
   return (
     <motion.div
@@ -159,12 +161,18 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
     >
       {/* Top match highlight card */}
       {result.top_k.length > 0 && (
-        <TopMatchCard item={result.top_k[0]!} />
+        <TopMatchCard
+          item={result.top_k[0]!}
+          accepted={!lowConfidence}
+          confidence={result.confidence}
+        />
       )}
 
       {/* All rankings */}
       <div className="card p-6 space-y-5 stagger">
-        <h3 className="font-display text-lg text-text text-center">匹配排名</h3>
+        <h3 className="font-display text-lg text-text text-center">
+          {lowConfidence ? "参考排名" : "匹配排名"}
+        </h3>
 
         {result.top_k.length === 0 && (
           <p className="text-text-muted text-sm text-center py-4">
@@ -215,14 +223,29 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
         })}
       </div>
 
-      {/* Warnings */}
-      {hasWarnings && (
-        <div className="flex items-start gap-2 p-4 rounded-xl bg-amber-50 border border-amber-200
-                        text-amber-700 text-sm">
-          <AlertTriangle size={16} className="shrink-0 mt-0.5" />
+      {lowConfidence && (
+        <div className="card flex items-start gap-3 p-4 bg-white/65 border border-purple/10
+                        text-text-light text-sm">
+          <div className="w-8 h-8 rounded-full bg-purple/10 text-purple
+                          flex items-center justify-center shrink-0">
+            <Info size={16} />
+          </div>
           <div>
-            {result.warnings.map((w, i) => (
-              <p key={i}>{w}</p>
+            <p className="font-medium text-text mb-1">这次更适合作为参考</p>
+            <p>
+              上传歌曲与当前资料库中的风格都不够接近，因此不做确定归类。
+              下方保留最接近的候选，方便继续比较。
+            </p>
+          </div>
+        </div>
+      )}
+
+      {extraWarnings.length > 0 && (
+        <div className="card flex items-start gap-3 p-4 bg-white/65 text-text-light text-sm">
+          <Info size={16} className="shrink-0 mt-0.5 text-text-muted" />
+          <div className="space-y-1">
+            {extraWarnings.map((warning, index) => (
+              <p key={index}>{warning}</p>
             ))}
           </div>
         </div>
@@ -240,9 +263,17 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
 }
 
 /* ── Top Match Hero Card ── */
-function TopMatchCard({ item }: { item: SearchResultItem }) {
+function TopMatchCard({
+  item,
+  accepted,
+  confidence,
+}: {
+  item: SearchResultItem;
+  accepted: boolean;
+  confidence: number | null;
+}) {
   const meta = getProducerMeta(item.producer_slug);
-  const pct = Math.round(item.score * 100);
+  const pct = Math.round((confidence ?? item.score) * 100);
 
   return (
     <motion.div
@@ -251,7 +282,9 @@ function TopMatchCard({ item }: { item: SearchResultItem }) {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="card overflow-hidden"
     >
-      <div className={`h-28 bg-gradient-to-r ${meta.gradient} relative
+      <div className={`h-28 bg-gradient-to-r ${
+        accepted ? meta.gradient : "from-slate-400 to-purple-400"
+      } relative
                        flex items-center justify-center`}>
         {/* Animated rings */}
         <div className="absolute inset-0 opacity-20">
@@ -270,7 +303,9 @@ function TopMatchCard({ item }: { item: SearchResultItem }) {
         </div>
 
         <div className="relative z-10 text-center">
-          <p className="text-white/80 text-sm mb-1">最匹配 🎯</p>
+          <p className="text-white/80 text-sm mb-1">
+            {accepted ? "最匹配" : "最接近的参考"}
+          </p>
           <p className="text-white text-2xl font-display drop-shadow-lg">
             {item.display_name}
           </p>
@@ -279,7 +314,7 @@ function TopMatchCard({ item }: { item: SearchResultItem }) {
 
       <div className="p-5 text-center">
         <p className="text-text text-sm mb-3">
-          你的曲风听起来最像{" "}
+          {accepted ? "你的曲风听起来最像 " : "在当前资料库中，最接近的是 "}
           <span className="font-semibold text-pink-dark">{item.display_name}</span>
         </p>
 
@@ -300,7 +335,7 @@ function TopMatchCard({ item }: { item: SearchResultItem }) {
           <span className="text-4xl font-display text-text">{pct}</span>
           <span className="text-xl text-text-muted">%</span>
         </div>
-        <p className="text-xs text-text-muted mt-1">相似度</p>
+        <p className="text-xs text-text-muted mt-1">模型置信度</p>
       </div>
     </motion.div>
   );

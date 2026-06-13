@@ -1,75 +1,121 @@
 producers:
-- aliases:
-  - 現実逃避P
-  display_name: wowaka
-  slug: wowaka
-  vocadb_artist_id: 53
-- aliases: []
-  display_name: kemu
-  slug: kemu
-  vocadb_artist_id: 735
-- aliases:
-  - 押入れP
-  display_name: Neru
-  slug: neru
-  vocadb_artist_id: 137
-- aliases: []
-  display_name: DECO*27
-  slug: deco27
-  vocadb_artist_id: 45
-- aliases: []
-  display_name: ピノキオピー
-  slug: pinocchiop
-  vocadb_artist_id: 28
-- aliases: []
-  display_name: Mitchie M
-  slug: mitchie_m
-  vocadb_artist_id: 624
-- aliases: []
-  display_name: じん
-  slug: jin
-  vocadb_artist_id: 136320
-- aliases: []
-  display_name: Orangestar
-  slug: orangestar
-  vocadb_artist_id: 11630
-- aliases: []
-  display_name: cosMo@暴走P
-  slug: cosmo
-  vocadb_artist_id: 85
-- aliases: []
-  display_name: ハチ
-  slug: hachi
-  vocadb_artist_id: 49
-- aliases: []
-  display_name: 40mP
-  slug: 40mp
-  vocadb_artist_id: 8
-- aliases: []
-  display_name: ナユタン星人
-  slug: nayutan
-  vocadb_artist_id: 36280
-- aliases: []
-  display_name: かいりきベア
-  slug: kairikibear
-  vocadb_artist_id: 885
-- aliases: []
-  display_name: Kanaria
-  slug: kanaria
-  vocadb_artist_id: 80976
-- aliases: []
-  display_name: Chinozo
-  slug: chinozo
-  vocadb_artist_id: 67910
-- aliases: []
-  display_name: 稲葉曇
-  slug: inabakumori
-  vocadb_artist_id: 46824
-- aliases: []
-  display_name: MIMI
-  slug: mimi
-  vocadb_artist_id: 16116
-- aliases: []
-  display_name: MARETU
-  slug: maretu
-  vocadb_artist_id: 1665
+  - slug: wowaka
+    display_name: wowaka
+    aliases: [現実逃避P, GenjitsutouhiP]
+    vocadb_artist_id: 53
+    profile_url: https://vocadb.net/Ar/53
+    avatar_url: /avatars/wowaka.webp
+  - slug: kemu
+    display_name: kemu
+    aliases: [堀江晶太]
+    vocadb_artist_id: 735
+    profile_url: https://vocadb.net/Ar/735
+    avatar_url: /avatars/kemu.webp
+  - slug: neru
+    display_name: Neru
+    aliases: [押入れP]
+    vocadb_artist_id: 137
+    profile_url: https://vocadb.net/Ar/137
+    avatar_url: /avatars/neru.webp
+  - slug: deco27
+    display_name: DECO*27
+    aliases: []
+    vocadb_artist_id: 45
+    profile_url: https://vocadb.net/Ar/45
+    avatar_url: /avatars/deco27.webp
+  - slug: pinocchiop
+    display_name: ピノキオピー
+    aliases: [PinocchioP, ピノキオP]
+    vocadb_artist_id: 28
+    profile_url: https://vocadb.net/Ar/28
+    avatar_url: /avatars/pinocchiop.webp
+  - slug: mitchie_m
+    display_name: Mitchie M
+    aliases: []
+    vocadb_artist_id: 624
+    profile_url: https://vocadb.net/Ar/624
+    avatar_url: /avatars/mitchie_m.webp
+  - slug: jin
+    display_name: じん
+    aliases: [自然の敵P, Jin]
+    vocadb_artist_id: 552
+    profile_url: https://vocadb.net/Ar/552
+    avatar_url: /avatars/jin.webp
+  - slug: orangestar
+    display_name: Orangestar
+    aliases: [蜜柑星P]
+    vocadb_artist_id: 11630
+    profile_url: https://vocadb.net/Ar/11630
+    avatar_url: /avatars/orangestar.webp
+  - slug: cosmo
+    display_name: cosMo@暴走P
+    aliases: [cosMo, 暴走P]
+    vocadb_artist_id: 85
+    profile_url: https://vocadb.net/Ar/85
+    avatar_url: /avatars/cosmo.webp
+  - slug: hachi
+    display_name: ハチ
+    aliases: [Hachi, 米津玄師]
+    vocadb_artist_id: 49
+    profile_url: https://vocadb.net/Ar/49
+    avatar_url: /avatars/hachi.webp
+  - slug: 40mp
+    display_name: 40mP
+    aliases: [40㍍P]
+    vocadb_artist_id: 8
+    profile_url: https://vocadb.net/Ar/8
+    avatar_url: /avatars/40mp.webp
+  - slug: nayutan
+    display_name: ナユタン星人
+    aliases: [NayutalieN]
+    vocadb_artist_id: 36280
+    profile_url: https://vocadb.net/Ar/36280
+    avatar_url: /avatars/nayutan.webp
+  - slug: kairikibear
+    display_name: かいりきベア
+    aliases: [Kairiki Bear]
+    vocadb_artist_id: 885
+    profile_url: https://vocadb.net/Ar/885
+    avatar_url: /avatars/kairikibear.webp
+  - slug: kanaria
+    display_name: Kanaria
+    aliases: []
+    vocadb_artist_id: 80976
+    profile_url: https://vocadb.net/Ar/80976
+    avatar_url: /avatars/kanaria.webp
+  - slug: chinozo
+    display_name: Chinozo
+    aliases: []
+    vocadb_artist_id: 67910
+    profile_url: https://vocadb.net/Ar/67910
+    avatar_url: /avatars/chinozo.webp
+  - slug: inabakumori
+    display_name: 稲葉曇
+    aliases: [Inabakumori]
+    vocadb_artist_id: 46824
+    profile_url: https://vocadb.net/Ar/46824
+    avatar_url: /avatars/inabakumori.webp
+  - slug: mimi
+    display_name: MIMI
+    aliases: []
+    vocadb_artist_id: 16116
+    profile_url: https://vocadb.net/Ar/16116
+    avatar_url: /avatars/mimi.webp
+  - slug: maretu
+    display_name: MARETU
+    aliases: [極悪P]
+    vocadb_artist_id: 1665
+    profile_url: https://vocadb.net/Ar/1665
+    avatar_url: /avatars/maretu.webp
+  - slug: n_buna
+    display_name: n-buna
+    aliases: [ナブナ, Nabuna]
+    vocadb_artist_id: 3258
+    profile_url: https://vocadb.net/Ar/3258
+    avatar_url: /avatars/n_buna.webp
+  - slug: ayase
+    display_name: Ayase
+    aliases: [Ayase_0404]
+    vocadb_artist_id: 70347
+    profile_url: https://vocadb.net/Ar/70347
+    avatar_url: /avatars/ayase.webp

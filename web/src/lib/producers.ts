@@ -1,4 +1,4 @@
-import type { ProducerDisplay } from "@/lib/types";
+import type { ProducerDisplay, ProducerSong } from "@/lib/types";
 
 /**
  * Producer metadata: gradients, style tags, and display info.
@@ -23,6 +23,8 @@ const PRODUCER_META: Record<string, { gradient: string; tags: string[] }> = {
   inabakumori:    { gradient: "from-indigo-400 to-violet-500",  tags: ["和风", "抒情", "透明感"] },
   mimi:           { gradient: "from-green-400 to-lime-500",     tags: ["治愈", "轻快", "日常"] },
   maretu:         { gradient: "from-red-600 to-rose-700",       tags: ["暗黑", "重摇滚", "狂气"] },
+  n_buna:         { gradient: "from-cyan-500 to-blue-600",      tags: ["清澈", "吉他", "叙情"] },
+  ayase:          { gradient: "from-indigo-500 to-fuchsia-600", tags: ["都市感", "电子流行", "夜色"] },
 };
 
 export function getProducerMeta(slug: string): { gradient: string; tags: string[] } {
@@ -35,6 +37,9 @@ export function enrichProducer(producer: {
   song_count: number | null;
   segment_count: number | null;
   avatar_url?: string | null;
+  aliases?: string[];
+  profile_url?: string | null;
+  songs?: ProducerSong[];
 }): ProducerDisplay {
   const meta = getProducerMeta(producer.slug);
   return {
@@ -42,5 +47,8 @@ export function enrichProducer(producer: {
     gradient: meta.gradient,
     style_tags: meta.tags,
     avatar_url: producer.avatar_url ?? null,
+    aliases: producer.aliases ?? [],
+    profile_url: producer.profile_url ?? null,
+    songs: producer.songs ?? [],
   };
 }

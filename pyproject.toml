@@ -28,6 +28,7 @@ dependencies = [
     "faiss-cpu",
     "hnswlib",
     "matplotlib",
+    "pillow",
     "umap-learn",
     "requests",
     "httpx",

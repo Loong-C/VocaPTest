@@ -3,6 +3,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from vocaptest.api.main import app
+from vocaptest.api import routes_metadata
 
 client = TestClient(app)
 
@@ -25,6 +26,35 @@ def test_list_producers():
 def test_get_producer_not_found():
     response = client.get("/api/producers/nonexistent")
     assert response.status_code == 404
+
+
+def test_get_producer_includes_metadata_and_training_songs(monkeypatch):
+    monkeypatch.setattr(
+        routes_metadata,
+        "get_reference_library",
+        lambda: {
+            "backend": "test",
+            "producers": {
+                "wowaka": {
+                    "display_name": "wowaka",
+                    "song_count": 5,
+                    "segment_count": 60,
+                }
+            },
+        },
+    )
+
+    response = client.get("/api/producers/wowaka")
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["avatar_url"] == "/avatars/wowaka.webp"
+    assert "現実逃避P" in data["aliases"]
+    assert len(data["songs"]) == 5
+    assert all(
+        song["source_url"].startswith("https://www.youtube.com/")
+        for song in data["songs"]
+    )
 
 
 def test_analyze_no_file():

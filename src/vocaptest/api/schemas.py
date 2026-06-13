@@ -24,7 +24,13 @@ class AnalyzeResult(BaseModel):
     confidence: float | None = None
     margin: float | None = None
     entropy: float | None = None
-    warnings: list[str] = []
+    warnings: list[str] = Field(default_factory=list)
+
+
+class ProducerSong(BaseModel):
+    song_id: str
+    title: str
+    source_url: str | None = None
 
 
 class ProducerInfo(BaseModel):
@@ -33,6 +39,9 @@ class ProducerInfo(BaseModel):
     song_count: int | None = None
     segment_count: int | None = None
     avatar_url: str | None = None
+    aliases: list[str] = Field(default_factory=list)
+    profile_url: str | None = None
+    songs: list[ProducerSong] = Field(default_factory=list)
 
 
 class ProducerListResponse(BaseModel):

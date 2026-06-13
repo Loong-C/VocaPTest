@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Music } from "lucide-react";
 import type { ProducerDisplay } from "@/lib/types";
 
@@ -9,10 +10,13 @@ interface Props {
 
 export default function ProducerCard({ producer, onClick, className = "" }: Props) {
   const initials = producer.display_name.slice(0, 2);
+  const [imageAvailable, setImageAvailable] = useState(Boolean(producer.avatar_url));
 
   return (
     <button
+      type="button"
       onClick={onClick}
+      aria-haspopup="dialog"
       className={`card-hover w-full text-left group cursor-pointer
                   overflow-hidden ${className}`}
     >
@@ -34,20 +38,18 @@ export default function ProducerCard({ producer, onClick, className = "" }: Prop
                         flex items-center justify-center overflow-hidden
                         border-2 border-white/50 shadow-lg
                         group-hover:scale-110 transition-transform duration-300">
-          {producer.avatar_url ? (
+          {producer.avatar_url && imageAvailable ? (
             <img
               src={producer.avatar_url}
               alt={producer.display_name}
               className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = "none";
-              }}
+              onError={() => setImageAvailable(false)}
             />
-          ) : null}
-          <span className={`text-white font-display text-lg drop-shadow-md
-                           ${producer.avatar_url ? "hidden" : ""}`}>
-            {initials}
-          </span>
+          ) : (
+            <span className="text-white font-display text-lg drop-shadow-md">
+              {initials}
+            </span>
+          )}
         </div>
       </div>
 

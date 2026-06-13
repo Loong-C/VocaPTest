@@ -9,6 +9,10 @@ export interface SearchResultItem {
 
 export interface AnalyzeResult {
   top_k: SearchResultItem[];
+  accepted: boolean | null;
+  confidence: number | null;
+  margin: number | null;
+  entropy: number | null;
   warnings: string[];
 }
 
@@ -25,6 +29,15 @@ export interface ProducerInfo {
   song_count: number | null;
   segment_count: number | null;
   avatar_url: string | null;
+  aliases: string[];
+  profile_url: string | null;
+  songs: ProducerSong[];
+}
+
+export interface ProducerSong {
+  song_id: string;
+  title: string;
+  source_url: string | null;
 }
 
 export interface ProducerListResponse {
