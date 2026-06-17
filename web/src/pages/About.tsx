@@ -19,7 +19,7 @@ const TECH_ITEMS = [
   {
     icon: Database,
     title: "参考库",
-    desc: "27 位 P 主、309 首训练作品与 54 首严格隔离的冻结测试作品",
+    desc: "31 位 P 主、376 首训练作品、62 首开发验证曲与 124 首最终冻结测试曲",
     color: "text-sky",
     bg: "bg-sky/10",
   },
@@ -37,7 +37,8 @@ const PRODUCER_LIST = [
   "じん", "Orangestar", "cosMo@暴走P", "ハチ", "40mP", "ナユタン星人",
   "かいりきベア", "Kanaria", "Chinozo", "稲葉曇", "MIMI", "MARETU",
   "n-buna", "Ayase", "いよわ", "syudou", "なきそ", "すりぃ",
-  "R Sound Design", "とあ", "てにをは",
+  "R Sound Design", "とあ", "てにをは", "煮ル果実", "はるまきごはん",
+  "r-906", "sasakure.UK",
 ];
 
 export default function About() {
@@ -66,13 +67,14 @@ export default function About() {
         <h2 className="font-display text-lg text-text mb-3">🎀 项目简介</h2>
         <p className="text-text-light text-sm leading-relaxed mb-3">
           VocaP Test 是一个娱乐向的 Vocaloid Producer 风格相似度系统。
-          用户上传一段音乐，系统在预先构建的 27 位 P 主参考库中寻找听感最接近的 Producer，
+          用户上传一段音乐，系统在预先构建的 31 位 P 主参考库中寻找听感最接近的 Producer，
           输出 Top-K 相似结果。
         </p>
         <p className="text-text-light text-sm leading-relaxed">
           项目不追求严肃的"作者识别"，也不声称模型真正理解了作曲家的音乐学风格。
           当前模型把歌曲映射为 MERT 音频表征，再由歌曲级 Shrinkage LDA 给出候选结果。
-          54 首冻结测试曲从不参与训练、层选择或校准，用于监测扩类后的真实泛化表现。
+          dev holdout 用于模型开发验证，final frozen 从不参与训练、模型选择或校准，
+          用于监测扩类后的真实泛化表现。
         </p>
       </motion.div>
 

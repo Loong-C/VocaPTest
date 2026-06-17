@@ -32,6 +32,10 @@ const PRODUCER_META: Record<string, { gradient: string; tags: string[] }> = {
   r_sound_design: { gradient: "from-blue-500 to-violet-600",    tags: ["都市电子", "氛围感", "精致编曲"] },
   toa:            { gradient: "from-sky-300 to-pink-400",       tags: ["轻柔电子", "透明感", "细腻"] },
   teniwoha:       { gradient: "from-emerald-600 to-slate-700",  tags: ["和风", "文学性", "戏剧感"] },
+  niru_kajitsu:   { gradient: "from-stone-700 to-amber-600",    tags: ["暗黑流行", "寓言感", "锐利节奏"] },
+  harumaki_gohan: { gradient: "from-indigo-300 to-sky-500",     tags: ["梦幻电子", "叙情", "动画感"] },
+  r_906:          { gradient: "from-cyan-600 to-teal-700",      tags: ["极简电子", "循环律动", "低温感"] },
+  sasakure_uk:    { gradient: "from-violet-600 to-cyan-500",    tags: ["芯片音", "复杂节奏", "科幻童话"] },
 };
 
 export function getProducerMeta(slug: string): { gradient: string; tags: string[] } {
@@ -47,6 +51,11 @@ export function enrichProducer(producer: {
   aliases?: string[];
   profile_url?: string | null;
   songs?: ProducerSong[];
+  training_songs?: ProducerSong[];
+  dev_song_count?: number;
+  dev_songs?: ProducerSong[];
+  frozen_song_count?: number;
+  frozen_songs?: ProducerSong[];
   test_song_count?: number;
   test_songs?: ProducerSong[];
 }): ProducerDisplay {
@@ -59,6 +68,11 @@ export function enrichProducer(producer: {
     aliases: producer.aliases ?? [],
     profile_url: producer.profile_url ?? null,
     songs: producer.songs ?? [],
+    training_songs: producer.training_songs ?? producer.songs ?? [],
+    dev_song_count: producer.dev_song_count ?? 0,
+    dev_songs: producer.dev_songs ?? [],
+    frozen_song_count: producer.frozen_song_count ?? producer.test_song_count ?? 0,
+    frozen_songs: producer.frozen_songs ?? producer.test_songs ?? [],
     test_song_count: producer.test_song_count ?? 0,
     test_songs: producer.test_songs ?? [],
   };

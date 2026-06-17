@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ExternalLink, LockKeyhole, Music, Search, Users, X } from "lucide-react";
+import { ExternalLink, FlaskConical, LockKeyhole, Music, Search, Users, X } from "lucide-react";
 import ProducerCard from "@/components/ProducerCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { getProducer, listProducers } from "@/lib/api";
@@ -198,7 +198,7 @@ function ProducerDialog({
       <motion.section
         role="dialog"
         aria-modal="true"
-        aria-label={`${producer.display_name} 的训练与冻结测试曲目`}
+        aria-label={`${producer.display_name} 的训练、开发验证与最终冻结测试曲目`}
         initial={{ opacity: 0, y: 24, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -224,8 +224,9 @@ function ProducerDialog({
                 </p>
               )}
               <p className="text-white/80 text-xs mt-2">
-                {producer.song_count ?? 0} 首训练曲目 ·{" "}
-                {details?.test_song_count ?? producer.test_song_count} 首冻结测试曲目 ·{" "}
+                {producer.song_count ?? 0} 首训练 ·{" "}
+                {details?.dev_song_count ?? producer.dev_song_count} 首开发验证 ·{" "}
+                {details?.frozen_song_count ?? producer.frozen_song_count ?? producer.test_song_count} 首最终冻结 ·{" "}
                 {producer.segment_count ?? 0} 个训练片段
               </p>
             </div>
@@ -235,9 +236,9 @@ function ProducerDialog({
         <div className="p-6 overflow-y-auto max-h-[58vh]">
           <div className="flex items-center justify-between gap-4 mb-4">
             <div>
-              <h3 className="font-display text-lg text-text">用于模型学习的曲目</h3>
+              <h3 className="font-display text-lg text-text">曲目分区</h3>
               <p className="text-xs text-text-muted mt-1">
-                点击曲名可打开对应的公开视频来源
+                点击曲名可打开对应的公开视频来源；三类曲目在训练和评估中严格隔离
               </p>
             </div>
             {details?.profile_url && (
@@ -260,7 +261,9 @@ function ProducerDialog({
           )}
 
           {!loading && !error && details &&
-            details.songs.length === 0 && details.test_songs.length === 0 && (
+            details.training_songs.length === 0 &&
+            details.dev_songs.length === 0 &&
+            details.frozen_songs.length === 0 && (
             <p className="text-text-muted text-sm py-8 text-center">
               暂未记录曲目
             </p>
@@ -268,18 +271,43 @@ function ProducerDialog({
 
           {!loading && !error && details && (
             <>
-              <SongGrid songs={details.songs} tone="training" />
+              <section>
+                <div className="mb-4">
+                  <h3 className="font-display text-lg text-text flex items-center gap-2">
+                    <Music size={17} className="text-pink-dark" />
+                    学习曲目
+                  </h3>
+                  <p className="text-xs text-text-muted mt-1">
+                    实际参与当前模型训练的作品
+                  </p>
+                </div>
+                <SongGrid songs={details.training_songs} tone="training" />
+              </section>
+
+              <div className="mt-7 pt-6 border-t border-purple/10">
+                <div className="mb-4">
+                  <h3 className="font-display text-lg text-text flex items-center gap-2">
+                    <FlaskConical size={17} className="text-sky" />
+                    开发验证曲目
+                  </h3>
+                  <p className="text-xs text-text-muted mt-1">
+                    不参与训练，用于比较模型方案和观察错误
+                  </p>
+                </div>
+                <SongGrid songs={details.dev_songs} tone="dev" />
+              </div>
+
               <div className="mt-7 pt-6 border-t border-purple/10">
                 <div className="mb-4">
                   <h3 className="font-display text-lg text-text flex items-center gap-2">
                     <LockKeyhole size={17} className="text-purple" />
-                    冻结测试曲目
+                    最终冻结测试曲目
                   </h3>
                   <p className="text-xs text-text-muted mt-1">
-                    仅用于最终评估，从未参与训练、层选择或置信度校准
+                    仅用于最终验收，从未参与训练、模型选择或置信度校准
                   </p>
                 </div>
-                <SongGrid songs={details.test_songs} tone="test" />
+                <SongGrid songs={details.frozen_songs} tone="frozen" />
               </div>
             </>
           )}
@@ -294,12 +322,17 @@ function SongGrid({
   tone,
 }: {
   songs: ProducerInfo["songs"];
-  tone: "training" | "test";
+  tone: "training" | "dev" | "frozen";
 }) {
   if (songs.length === 0) {
+    const label = tone === "training"
+      ? "训练"
+      : tone === "dev"
+      ? "开发验证"
+      : "最终冻结测试";
     return (
       <p className="text-text-muted text-sm py-4 text-center">
-        暂未记录{tone === "training" ? "训练" : "冻结测试"}曲目
+        暂未记录{label}曲目
       </p>
     );
   }
@@ -312,6 +345,8 @@ function SongGrid({
                               text-[11px] shrink-0 ${
               tone === "training"
                 ? "bg-pink/10 text-pink-dark"
+                : tone === "dev"
+                ? "bg-sky/10 text-sky"
                 : "bg-purple/10 text-purple"
             }`}>
               {index + 1}
@@ -325,7 +360,11 @@ function SongGrid({
         const className =
           "flex items-center gap-2.5 rounded-xl hover:bg-white " +
           "border border-pink/5 px-3 py-2.5 text-sm text-text transition-colors " +
-          (tone === "training" ? "bg-white/55" : "bg-purple/[0.04]");
+          (tone === "training"
+            ? "bg-white/55"
+            : tone === "dev"
+            ? "bg-sky/[0.05]"
+            : "bg-purple/[0.04]");
         return song.source_url ? (
           <a
             key={song.song_id}
