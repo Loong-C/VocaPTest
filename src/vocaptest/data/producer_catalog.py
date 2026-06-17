@@ -68,15 +68,10 @@ def load_training_song_catalog() -> dict[str, list[dict]]:
     }
 
 
-@lru_cache(maxsize=1)
-def load_frozen_test_song_catalog() -> dict[str, list[dict]]:
-    """Return the validated songs that never participate in model fitting."""
+def _load_jsonl_song_catalog(path_parts: tuple[str, ...]) -> dict[str, list[dict]]:
     path = (
         project_root()
-        / "data"
-        / "processed"
-        / "frozen_test"
-        / "catalog.jsonl"
+        .joinpath(*path_parts)
     )
     if not path.exists():
         return {}
@@ -102,3 +97,25 @@ def load_frozen_test_song_catalog() -> dict[str, list[dict]]:
         )
         for slug, songs in songs_by_producer.items()
     }
+
+
+@lru_cache(maxsize=1)
+def load_dev_holdout_song_catalog() -> dict[str, list[dict]]:
+    """Return validation songs reserved for model development."""
+    return _load_jsonl_song_catalog((
+        "data",
+        "processed",
+        "dev_holdout",
+        "catalog.jsonl",
+    ))
+
+
+@lru_cache(maxsize=1)
+def load_frozen_test_song_catalog() -> dict[str, list[dict]]:
+    """Return final-test songs that never participate in model development."""
+    return _load_jsonl_song_catalog((
+        "data",
+        "processed",
+        "frozen_test",
+        "catalog.jsonl",
+    ))

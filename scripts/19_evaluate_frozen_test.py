@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Evaluate the deployed P1 model on the untouched frozen song catalog."""
+"""Evaluate the deployed P1 model on a held-out song catalog."""
 from __future__ import annotations
 
 import argparse
@@ -84,6 +84,8 @@ def main() -> None:
             / "p1_frozen_test.json"
         ),
     )
+    parser.add_argument("--protocol-name", default="strict_frozen_song_holdout")
+    parser.add_argument("--expected-per-class", type=int, default=4)
     args = parser.parse_args()
 
     records = load_embedding_manifest(args.manifest.resolve())
@@ -94,9 +96,10 @@ def main() -> None:
     if unknown:
         raise ValueError(f"Frozen labels missing from model: {sorted(unknown)}")
     counts = Counter(labels)
-    if set(counts.values()) != {2}:
+    if set(counts.values()) != {args.expected_per_class}:
         raise ValueError(
-            f"Expected exactly two frozen songs per class: {dict(counts)}"
+            f"Expected exactly {args.expected_per_class} held-out songs "
+            f"per class: {dict(counts)}"
         )
 
     probabilities = model.predict_proba_from_layer_features(all_layers)
@@ -152,7 +155,7 @@ def main() -> None:
 
     evaluation = {
         "protocol": {
-            "name": "strict_frozen_song_holdout",
+            "name": args.protocol_name,
             "training_overlap": False,
             "used_for_model_selection": False,
             "used_for_calibration": False,

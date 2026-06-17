@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Validate and download the strictly held-out frozen test catalog."""
+"""Validate and download a strictly held-out evaluation catalog."""
 from __future__ import annotations
 
 import argparse
@@ -26,6 +26,13 @@ def load_jsonl(path: Path) -> list[dict]:
         return []
     with open(path, "r", encoding="utf-8") as handle:
         return [json.loads(line) for line in handle if line.strip()]
+
+
+def load_yaml_songs(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    with open(path, "r", encoding="utf-8") as handle:
+        return (yaml.safe_load(handle) or {}).get("songs", [])
 
 
 def write_jsonl(path: Path, records: list[dict]) -> None:
@@ -72,6 +79,15 @@ def main() -> None:
         type=Path,
         default=root / "data" / "processed" / "frozen_test" / "catalog.jsonl",
     )
+    parser.add_argument("--category", default="frozen_test")
+    parser.add_argument("--expected-per-class", type=int, default=4)
+    parser.add_argument(
+        "--exclude-catalog",
+        action="append",
+        default=[],
+        type=Path,
+        help="Additional YAML song catalogs that must not overlap this catalog.",
+    )
     parser.add_argument(
         "--ffmpeg-location",
         type=Path,
@@ -86,8 +102,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    with open(args.catalog, "r", encoding="utf-8") as handle:
-        songs = (yaml.safe_load(handle) or {}).get("songs", [])
+    songs = load_yaml_songs(args.catalog)
     with open(root / "configs" / "producers.yaml", "r", encoding="utf-8") as handle:
         producers = {
             item["slug"]: item
@@ -104,18 +119,16 @@ def main() -> None:
         )
     wrong_counts = {
         slug: count for slug, count in counts.items()
-        if count != 2
+        if count != args.expected_per_class
     }
     if wrong_counts:
         raise ValueError(
-            f"Each producer needs exactly two frozen songs: {wrong_counts}"
+            f"Each producer needs exactly {args.expected_per_class} "
+            f"{args.category} songs: {wrong_counts}"
         )
 
     training = load_jsonl(args.training_decisions)
-    with open(args.training_catalog, "r", encoding="utf-8") as handle:
-        configured_training = (
-            yaml.safe_load(handle) or {}
-        ).get("songs", [])
+    configured_training = load_yaml_songs(args.training_catalog)
     training_youtube = {
         item["song_id"].removeprefix("youtube_")
         for item in training
@@ -134,6 +147,10 @@ def main() -> None:
     training_vocadb.update(
         int(item["vocadb_song_id"]) for item in configured_training
     )
+    for catalog_path in args.exclude_catalog:
+        excluded = load_yaml_songs(catalog_path)
+        training_youtube.update(item["youtube_id"] for item in excluded)
+        training_vocadb.update(int(item["vocadb_song_id"]) for item in excluded)
     frozen_youtube = [item["youtube_id"] for item in songs]
     frozen_vocadb = [int(item["vocadb_song_id"]) for item in songs]
     if len(frozen_youtube) != len(set(frozen_youtube)):
@@ -180,6 +197,8 @@ def main() -> None:
             allowed_pv_types=(
                 ("Reprint",)
                 if source_kind == "vocadb_reprint"
+                else ("Other",)
+                if source_kind == "vocadb_other_pv"
                 else ("Original",)
             ),
         )
@@ -211,7 +230,7 @@ def main() -> None:
             "producer_slug": slug,
             "title": item["title"],
             "status": "accepted",
-            "category": "frozen_test",
+            "category": args.category,
             "reason": source_reason(source_kind),
             "work_id": f"vocadb_song_{item['vocadb_song_id']}",
             "canonical_song_id": song_id,
@@ -233,7 +252,7 @@ def main() -> None:
                 ),
             ),
         )
-        print(f"verified frozen {slug}/{item['title']} ({video_id})")
+        print(f"verified {args.category} {slug}/{item['title']} ({video_id})")
 
     print(json.dumps(
         {

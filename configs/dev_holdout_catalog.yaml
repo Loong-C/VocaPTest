@@ -1,0 +1,435 @@
+songs:
+  - producer_slug: wowaka
+    title: and I'm home
+    vocadb_song_id: 421046
+    youtube_id: GIlMPJNk-pU
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCbByka32eZ-p2b-6o3IHcuA
+  - producer_slug: kemu
+    title: 88☆彡
+    vocadb_song_id: 400359
+    youtube_id: 505rBX9MNcQ
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCcvLSRIWJIAGFDyWtzkbiHA
+  - producer_slug: kemu
+    title: セカイ
+    vocadb_song_id: 290231
+    youtube_id: 9vyIPWBeRes
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCGmO0S4S-AunjRdmxA6TQYg
+  - producer_slug: neru
+    title: 少年少女カメレオンシンプトム
+    vocadb_song_id: 11561
+    youtube_id: HvFsRQ2X9-4
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UClxXuM2m0rIL9VCA1ds9HqA
+  - producer_slug: neru
+    title: 命のユースティティア
+    vocadb_song_id: 40555
+    youtube_id: 4lJ1zps776k
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UClxXuM2m0rIL9VCA1ds9HqA
+  - producer_slug: deco27
+    title: モザイクロール
+    vocadb_song_id: 1381
+    youtube_id: DnLFVUi3oOU
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCtGmulznR7e0KxpEdKu_nqw
+  - producer_slug: deco27
+    title: 二息歩行
+    vocadb_song_id: 5859
+    youtube_id: O4ygRYdrwWk
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCEAh-jw5U5L-Lx2zz0So-Eg
+  - producer_slug: pinocchiop
+    title: 魔法少女とチョコレゐト
+    vocadb_song_id: 387848
+    youtube_id: T2kS1gAbxhc
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCMMBGMjrrWcRZmG_lW4jC-Q
+  - producer_slug: pinocchiop
+    title: アップルドットコム
+    vocadb_song_id: 160589
+    youtube_id: h1pSSrmdEtw
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCMMBGMjrrWcRZmG_lW4jC-Q
+  - producer_slug: mitchie_m
+    title: イージーデンス
+    vocadb_song_id: 8623
+    youtube_id: gU_LDY91_sE
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCh5pu-3Y1FhEqOmSmfCQf4Q
+  - producer_slug: mitchie_m
+    title: ワーワーワールド
+    vocadb_song_id: 290577
+    youtube_id: okJ9Vk6owG8
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCE0uNSkGhhsNMwAZcIQY7rw
+  - producer_slug: jin
+    title: 夕景イエスタデイ
+    vocadb_song_id: 25898
+    youtube_id: YgnuJLo9S-Y
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCu33JdVED-0vqaNyw_bCTKg
+  - producer_slug: jin
+    title: コノハの世界事情
+    vocadb_song_id: 10614
+    youtube_id: 8rqCABzT9Q8
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCu33JdVED-0vqaNyw_bCTKg
+  - producer_slug: orangestar
+    title: スターナイトスノウ
+    vocadb_song_id: 143132
+    youtube_id: ZuT3xYLW7vA
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCJwGWV914kBlV4dKRn7AEFA
+  - producer_slug: orangestar
+    title: イヤホンと蝉時雨
+    vocadb_song_id: 60924
+    youtube_id: UBqPPkB_Ybc
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCgBPuTX7crv_2jKAkH5z7bA
+  - producer_slug: cosmo
+    title: ダイジョブですか？
+    vocadb_song_id: 533777
+    youtube_id: 2AD1jTs516E
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UC9AYHlE2OLcMlZJo3MBlfkQ
+  - producer_slug: cosmo
+    title: ギザバ怪文書
+    vocadb_song_id: 479553
+    youtube_id: rf-hjy8W2OI
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UC9AYHlE2OLcMlZJo3MBlfkQ
+  - producer_slug: hachi
+    title: clock lock works
+    vocadb_song_id: 3719
+    youtube_id: Vg3eyKgfYFw
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCKIZ6cfeZ3YHKWcwek7C0PQ
+  - producer_slug: hachi
+    title: KICK BACK
+    vocadb_song_id: 454815
+    youtube_id: M2cckDmNLMI
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCUCeZaZeJbEYAAzvMgrKOPQ
+  - producer_slug: 40mp
+    title: Snow Fairy Story
+    vocadb_song_id: 79094
+    youtube_id: _of2sKbRUko
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCJwGWV914kBlV4dKRn7AEFA
+  - producer_slug: 40mp
+    title: Color of Drops
+    vocadb_song_id: 313451
+    youtube_id: i5rl-NGSYoo
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCG09qajPDZdPtLsTkW7mJQA
+  - producer_slug: nayutan
+    title: モア！ジャンプ！モア！
+    vocadb_song_id: 303273
+    youtube_id: SKbutknpQ_I
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCdMGYXL38w6htx6Yf9YJa-w
+  - producer_slug: nayutan
+    title: 'オペラ！スペースオペラ！ '
+    vocadb_song_id: 634592
+    youtube_id: rmRHecZZGvs
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCdMGYXL38w6htx6Yf9YJa-w
+  - producer_slug: kairikibear
+    title: アイ情劣等生
+    vocadb_song_id: 286106
+    youtube_id: eEuIHatfgkE
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCp13SxKXbhCS0lb6Ty774iQ
+  - producer_slug: kairikibear
+    title: アナタサマ
+    vocadb_song_id: 402883
+    youtube_id: mSBZ19bc-sE
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCp13SxKXbhCS0lb6Ty774iQ
+  - producer_slug: kanaria
+    title: チャンピオン
+    vocadb_song_id: 650687
+    youtube_id: VxjledMkwyk
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UC10BM9XdLdrvB8japwmRUvA
+  - producer_slug: kanaria
+    title: 百鬼祭
+    vocadb_song_id: 281763
+    youtube_id: Fk4FLklyPWk
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UC10BM9XdLdrvB8japwmRUvA
+  - producer_slug: chinozo
+    title: タクシィ
+    vocadb_song_id: 588190
+    youtube_id: l2JKO8sPPsU
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCft5HulDeuKloukyShxyOZA
+  - producer_slug: chinozo
+    title: 武装乙女
+    vocadb_song_id: 793090
+    youtube_id: 00aZ4S_l7-0
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCft5HulDeuKloukyShxyOZA
+  - producer_slug: inabakumori
+    title: ループスピナ
+    vocadb_song_id: 124517
+    youtube_id: ffGcA4Kj-rk
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCNElM45JypxqAR73RoUQ10g
+  - producer_slug: inabakumori
+    title: パスカルビーツ
+    vocadb_song_id: 132784
+    youtube_id: M8ZGGCqJduU
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCNElM45JypxqAR73RoUQ10g
+  - producer_slug: mimi
+    title: カラバコにアイ
+    vocadb_song_id: 274835
+    youtube_id: 89p7DWIqOu8
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCam3IAA-nyfxRL8_wDQ35VA
+  - producer_slug: mimi
+    title: Pale
+    vocadb_song_id: 306258
+    youtube_id: 06YWg6Y1kxo
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCam3IAA-nyfxRL8_wDQ35VA
+  - producer_slug: maretu
+    title: 少女ケシゴム
+    vocadb_song_id: 45753
+    youtube_id: 5LTGP9HmGrg
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCLSqAlcWmR3FcxqBlM8f4sQ
+  - producer_slug: maretu
+    title: スヂ
+    vocadb_song_id: 108829
+    youtube_id: f0Y8Mo7nhC8
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCmj0YkPwo47bPoBt9ma-bxg
+  - producer_slug: n_buna
+    title: 言って。
+    vocadb_song_id: 331812
+    youtube_id: F64yFFnZfkI
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCRIgIJQWuBJ0Cv_VlU3USNA
+  - producer_slug: n_buna
+    title: 劇場愛歌
+    vocadb_song_id: 54308
+    youtube_id: YDPcIYNxu5s
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCpxF5nPX36beclDXDovCVlw
+  - producer_slug: ayase
+    title: HERO
+    vocadb_song_id: 501613
+    youtube_id: o4AxMk3SGUY
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCvpredjG93ifbCP1Y77JyFA
+  - producer_slug: ayase
+    title: アイドル
+    vocadb_song_id: 492341
+    youtube_id: ZRtdQ81jPUQ
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCvpredjG93ifbCP1Y77JyFA
+  - producer_slug: iyowa
+    title: オーバー！
+    vocadb_song_id: 315318
+    youtube_id: _ZKSftirY3A
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCLz6MG2kx_0xeaW0LowYnMQ
+  - producer_slug: iyowa
+    title: たぶん終わり
+    vocadb_song_id: 324307
+    youtube_id: GiDo4s1x9Mw
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCLz6MG2kx_0xeaW0LowYnMQ
+  - producer_slug: syudou
+    title: うっせぇわ
+    vocadb_song_id: 366767
+    youtube_id: Qp3b-RXtz4w
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCln9P4Qm3-EAY4aiEPmRwEA
+  - producer_slug: syudou
+    title: アメイジングハッピーハロウィンナイト
+    vocadb_song_id: 676307
+    youtube_id: CeqLqlr5ba4
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCraC7460yGQF4GDmSjCecpQ
+  - producer_slug: nakiso
+    title: 惡ふざけ
+    vocadb_song_id: 289278
+    youtube_id: weDV0xMNXmw
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UC7d3Y_v5O202eo006uvvPzw
+  - producer_slug: nakiso
+    title: 今は限り
+    vocadb_song_id: 322504
+    youtube_id: Difu9Qqs-bU
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UC7d3Y_v5O202eo006uvvPzw
+  - producer_slug: surii
+    title: メンヘラ取扱説明書
+    vocadb_song_id: 214181
+    youtube_id: 6dc4RUsKMXI
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCHGKS3VDKxu3N1u9naM0XYA
+  - producer_slug: surii
+    title: ノルア・ドルア・エー
+    vocadb_song_id: 217903
+    youtube_id: eNiDOE3Nf0g
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCHGKS3VDKxu3N1u9naM0XYA
+  - producer_slug: r_sound_design
+    title: レテノール
+    vocadb_song_id: 228789
+    youtube_id: GOkdbXhdJjk
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCID4elKLzUCZVIVtXiXKA-w
+  - producer_slug: r_sound_design
+    title: EDIBLE
+    vocadb_song_id: 243541
+    youtube_id: oLKHaqImjVQ
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCID4elKLzUCZVIVtXiXKA-w
+  - producer_slug: toa
+    title: さよならスーヴェニア
+    vocadb_song_id: 110348
+    youtube_id: wapEYJo5QXE
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCEoSVgHlCKPVEHDIve3K7NA
+  - producer_slug: toa
+    title: アイシテ
+    vocadb_song_id: 106968
+    youtube_id: IlQrRI_Kkw4
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCEoSVgHlCKPVEHDIve3K7NA
+  - producer_slug: teniwoha
+    title: ギラギラ
+    vocadb_song_id: 361940
+    youtube_id: sOiMD45QGLs
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCln9P4Qm3-EAY4aiEPmRwEA
+  - producer_slug: teniwoha
+    title: 名探偵連続殺人事件
+    vocadb_song_id: 130025
+    youtube_id: j3y7bJxOUZQ
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCQAdXyrF2fYcqdXUUW3YxUg
+  - producer_slug: niru_kajitsu
+    title: イヱスマン
+    vocadb_song_id: 285860
+    youtube_id: iZ6lpTC16_Q
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCkltfvjVoojq0BGRt4pmlig
+  - producer_slug: niru_kajitsu
+    title: ヘイヴン
+    vocadb_song_id: 737695
+    youtube_id: MJa46AEGMb4
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCkltfvjVoojq0BGRt4pmlig
+  - producer_slug: harumaki_gohan
+    title: 蛍はいなかった
+    vocadb_song_id: 377323
+    youtube_id: gUGmed-NOow
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCgbTJ0Qb1OpA0GEocaJ7qrw
+  - producer_slug: harumaki_gohan
+    title: ディナーベル
+    vocadb_song_id: 488193
+    youtube_id: 162OOsh9PpQ
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCgbTJ0Qb1OpA0GEocaJ7qrw
+  - producer_slug: r_906
+    title: Catchy !?
+    vocadb_song_id: 484025
+    youtube_id: QWFw2ueFdnQ
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCtwSCTpftyPm4-TBf9S6kfQ
+  - producer_slug: r_906
+    title: JUMPIN’ OVER !
+    vocadb_song_id: 592237
+    youtube_id: P2KRg60WPvE
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCtwSCTpftyPm4-TBf9S6kfQ
+  - producer_slug: sasakure_uk
+    title: ツギハギエデン
+    vocadb_song_id: 26612
+    youtube_id: 5dE7uwPy0qM
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UCpTpszeiaSs938KEIXZRNcQ
+  - producer_slug: sasakure_uk
+    title: アフターエポックス
+    vocadb_song_id: 625986
+    youtube_id: pykE4kMhUUU
+    source_kind: vocadb_original_pv
+    allowed_channel_ids:
+    - UClkc2M0xPFhoOzzHlgZDMfw
+  - producer_slug: wowaka
+    title: 少女について
+    vocadb_song_id: 5276
+    youtube_id: QLEBt6WqOaI
+    source_kind: vocadb_reprint
+    allowed_channel_ids:
+    - UCnfTQgRt5qRZCmJs-z7mBLQ

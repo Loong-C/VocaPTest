@@ -12,6 +12,7 @@ venv/
 # Data (large files)
 data/raw/audio/
 data/audio/
+data/dev_holdout_audio/
 data/frozen_test_audio/
 data/raw_jsonl/
 data/interim/

@@ -180,6 +180,9 @@ def source_reason(source_kind: str) -> str:
         "vocadb_reprint": (
             "VocaDB Original work with a VocaDB-listed YouTube reprint"
         ),
+        "vocadb_other_pv": (
+            "VocaDB Original work with a VocaDB-listed non-original YouTube PV"
+        ),
     }
     try:
         return reasons[source_kind]
