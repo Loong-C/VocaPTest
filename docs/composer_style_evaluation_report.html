@@ -132,20 +132,20 @@
 <main>
   <header>
     <h1>VocaP Test 作曲家风格识别评估与优化报告</h1>
-    <p class="subtitle">初始技术审计基线与 2026-06-13 的 27 类生产状态更新</p>
-    <p class="meta">初始报告日期：2026-06-11；当前状态更新至：2026-06-13。早期章节保留当时仓库事实，最新结果以“P1 当前实施结果”为准。</p>
+    <p class="subtitle">初始技术审计基线与 2026-06-17 的 31 类 P2 数据扩充状态</p>
+    <p class="meta">初始报告日期：2026-06-11；当前状态更新至：2026-06-17。早期章节保留当时仓库事实，最新结果以“P2 当前实施结果”为准。</p>
   </header>
 
   <section class="summary" data-contract-section="technical-summary">
     <h2>技术结论</h2>
-    <p><strong>当前项目已经完成了可运行的音乐相似度 MVP，但还不能可靠声称实现了“作曲家风格识别”。</strong> 现有歌曲级测试 Top-1 为 30.6%，明显高于 18 类随机基线 5.6%；然而测试仅 36 首，Wilson 95% 区间约为 18.0% 至 46.9%，且数据中存在翻唱、卡拉 OK、非目标作品、同一录音多上传及作品级跨集合近重复。</p>
-    <p><strong>最优先的提升不是换更大的预训练模型，而是修复数据和评估，再替换歌曲级判别头。</strong> 在本机使用现有 embedding 的 50 次清洗后作品分组实验中，当前 KMeans 方法 Top-1 均值为 31.4%，Shrinkage LDA 达到 62.2%，Top-3 达到 77.7%。该结果是强烈的工程信号，但仍需在人工确认的作品 ID、冻结测试集和嵌套交叉验证上复核。</p>
-    <p><strong>硬件适合“小模型精修”，不适合“大模型豪赌”。</strong> i7-14700、31.7GB 内存、RTX 4060 Ti 8GB 足以完成 MERT-95M 多层冻结特征、歌曲级统计模型、小型 MLP/投影头、混合精度推理和有限 LoRA；不宜把 MERT-330M 或 MuQ-large 全参数微调、在线 Demucs 分离作为近期主线。</p>
+    <p><strong>当前项目已经从早期审计基线推进到可复现的 31 类娱乐向风格候选系统。</strong> 目前目录包含 376 首训练曲、62 首 development holdout 和 124 首 final frozen，训练、dev、final 三个分区按 YouTube ID 与 VocaDB work_id 双重隔离。</p>
+    <p><strong>默认模型仍是当前最合适的轻量强基线。</strong> MERT-v1-95M 第 6 层歌曲均值 + Shrinkage LDA 在 31 类分组 CV 上 Top-1 为 84.95%，dev holdout Top-1 为 75.81%，final frozen Top-1 为 78.23%；final frozen 被阈值接受样本准确率为 96.25%。新增困难类后分数下降是合理代价，也暴露出じん、Neru、すりぃ、sasakure.UK/cosMo 等真实边界。</p>
+    <p><strong>硬件仍适合“小模型精修”，不适合“大模型豪赌”。</strong> i7-14700、约 32GB 内存、RTX 4060 Ti 8GB 足以完成 MERT-95M 冻结特征、歌曲级统计模型、轻量融合和有限投影头；近期不宜把 MERT-330M 或 MuQ-large 全参数微调、在线 Demucs 分离作为主线。</p>
     <div class="grid">
-      <div class="metric"><span class="value">211</span><span class="label">已接受歌曲</span></div>
-      <div class="metric"><span class="value">36</span><span class="label">当前测试歌曲</span></div>
-      <div class="metric"><span class="value">30.6%</span><span class="label">当前单次 Top-1</span></div>
-      <div class="metric"><span class="value">62.2%</span><span class="label">清洗分组 LDA 均值</span></div>
+      <div class="metric"><span class="value">376</span><span class="label">训练歌曲</span></div>
+      <div class="metric"><span class="value">62</span><span class="label">Dev holdout</span></div>
+      <div class="metric"><span class="value">124</span><span class="label">Final frozen</span></div>
+      <div class="metric"><span class="value">96.25%</span><span class="label">Final 接受样本准确率</span></div>
     </div>
   </section>
 
@@ -257,19 +257,19 @@
     </ul>
   </section>
 
-  <section data-contract-section="p1-implementation-results">
-    <h2>P1 当前实施结果（更新至 2026-06-13）</h2>
-    <div class="callout positive"><strong>当前生产状态：</strong>27 位 P 主、309 首训练曲、54 首严格隔离的冻结测试曲。默认模型仍为 MERT-95M 第 6 层、歌曲均值、Shrinkage LDA、logit temperature scaling 与低置信拒识。</div>
+  <section data-contract-section="p2-implementation-results">
+    <h2>P2 当前实施结果（更新至 2026-06-17）</h2>
+    <div class="callout positive"><strong>当前生产状态：</strong>31 位 P 主、376 首训练曲、62 首 development holdout、124 首 final frozen。默认模型仍为 MERT-95M 第 6 层、歌曲均值、Shrinkage LDA、logit temperature scaling 与低置信拒识。</div>
     <table>
-      <thead><tr><th>评估</th><th>Top-1</th><th>Top-3</th><th>Macro-F1</th></tr></thead>
+      <thead><tr><th>评估</th><th>Top-1</th><th>Top-3</th><th>Macro-F1</th><th>MRR</th></tr></thead>
       <tbody>
-        <tr><td>20 类 / 239 首分组 CV</td><td>88.20% ± 0.55%</td><td>95.56% ± 0.56%</td><td>88.48% ± 0.55%</td></tr>
-        <tr><td>27 类 / 309 首分组 CV</td><td>86.73% ± 0.86%</td><td>93.92% ± 0.58%</td><td>87.00% ± 0.80%</td></tr>
-        <tr><td>27 类 / 54 首冻结测试</td><td>87.04%</td><td>92.59%</td><td>84.59%</td></tr>
+        <tr><td>31 类 / 376 首分组 CV</td><td>84.95% ± 0.89%</td><td>93.51% ± 0.48%</td><td>86.17% ± 0.88%</td><td>89.75% ± 0.40%</td></tr>
+        <tr><td>Dev holdout / 62 首</td><td>75.81%</td><td>80.65%</td><td>74.42%</td><td>80.32%</td></tr>
+        <tr><td>Final frozen / 124 首</td><td>78.23%</td><td>92.74%</td><td>78.24%</td><td>86.02%</td></tr>
       </tbody>
     </table>
-    <p>27 类 OOF 阈值覆盖 81.04%，接受样本精度 95.05%；冻结测试覆盖 72.22%，接受样本准确率 97.44%。冻结集中なきそ和すりぃ均为 0/2，じん仍是主要吸收类，这些失败被保留用于后续方法研究。</p>
-    <p class="small">完整实现、错误分析与复现命令见 <a href="P1_27_PRODUCERS_FROZEN_TEST_REPORT.md"><code>docs/P1_27_PRODUCERS_FROZEN_TEST_REPORT.md</code></a>。冻结集未参与模型选择或校准。</p>
+    <p>OOF 阈值覆盖 81.28%，接受样本精度 95.03%；dev holdout 覆盖 69.35%，接受样本准确率 86.05%；final frozen 覆盖 64.52%，接受样本准确率 96.25%。这些结果说明当前拒识偏保守，但能明显保护低置信场景。</p>
+    <p class="small">完整实现、错误分析与复现命令见 <a href="P2_DATA_EXPANSION_REPORT.md"><code>docs/P2_DATA_EXPANSION_REPORT.md</code></a>。Final frozen 未参与模型选择或校准。</p>
   </section>
 
   <section data-contract-section="limitations">
