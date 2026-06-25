@@ -1,0 +1,22 @@
+[Unit]
+Description=VocaPTest FastAPI service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/srv/vocaptest/app
+Environment=PYTHONPATH=/srv/vocaptest/app/src
+Environment=HF_HOME=/srv/vocaptest/shared/huggingface
+Environment=TRANSFORMERS_CACHE=/srv/vocaptest/shared/huggingface
+Environment=OMP_NUM_THREADS=2
+Environment=MKL_NUM_THREADS=2
+ExecStart=/srv/vocaptest/venv/bin/python -m uvicorn vocaptest.api.main:app --host 127.0.0.1 --port 8000 --proxy-headers
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target
