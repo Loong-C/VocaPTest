@@ -98,6 +98,10 @@ P 主页面三段式展示：
 - 开发验证曲目：用于模型开发验证。
 - 最终冻结测试曲目：用于最终验收。
 
+P 主风格标签来自 `configs/producer_style_tags.yaml` 中缓存的 VocaDB song tags，
+仅用于页面展示和搜索提示，不参与模型训练或评估。维护口径见
+[P 主风格标签来源](docs/STYLE_TAG_SOURCES.md)。
+
 前端导航保留首页、分析页和 P 主图鉴页；顶部 GitHub 图标指向仓库，不再提供独立“关于”页面。
 
 ## VPS 部署
@@ -135,6 +139,7 @@ bash deploy/harden_vps_security.sh
 | 文件 | 说明 |
 |---|---|
 | `configs/producers.yaml` | 31 位 P 主配置 |
+| `configs/producer_style_tags.yaml` | VocaDB song tags 风格标签缓存 |
 | `configs/training_catalog_additions.yaml` | 人工核验的训练目录增量 |
 | `configs/dev_holdout_catalog.yaml` | development holdout 配置 |
 | `configs/frozen_test_catalog.yaml` | final frozen 配置 |

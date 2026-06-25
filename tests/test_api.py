@@ -50,6 +50,9 @@ def test_get_producer_includes_metadata_and_training_songs(monkeypatch):
     data = response.json()
     assert data["avatar_url"] == "/avatars/wowaka.webp"
     assert "現実逃避P" in data["aliases"]
+    assert data["style_tags"]
+    assert data["style_tag_source"] == "VocaDB song tags"
+    assert data["style_tag_source_url"] == "https://vocadb.net/Ar/53"
     assert data["song_count"] == len(data["songs"]) == 10
     assert data["song_count"] == len(data["training_songs"]) == 10
     assert data["dev_song_count"] == len(data["dev_songs"]) == 2

@@ -5,6 +5,7 @@ export interface SearchResultItem {
   display_name: string;
   score: number;
   rank: number;
+  style_tags: string[];
 }
 
 export interface AnalyzeResult {
@@ -31,6 +32,9 @@ export interface ProducerInfo {
   avatar_url: string | null;
   aliases: string[];
   profile_url: string | null;
+  style_tags: string[];
+  style_tag_source: string | null;
+  style_tag_source_url: string | null;
   songs: ProducerSong[];
   training_songs: ProducerSong[];
   dev_song_count: number;
@@ -64,8 +68,6 @@ export interface HealthResponse {
 export interface ProducerDisplay extends ProducerInfo {
   /** Gradient colors for avatar placeholder */
   gradient: string;
-  /** Short description */
-  style_tags: string[];
 }
 
 /** Upload state machine */

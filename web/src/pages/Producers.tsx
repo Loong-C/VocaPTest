@@ -184,6 +184,10 @@ function ProducerDialog({
   error: string | null;
   onClose: () => void;
 }) {
+  const styleTags = details?.style_tags ?? producer.style_tags;
+  const tagSource = details?.style_tag_source ?? producer.style_tag_source;
+  const tagSourceUrl = details?.style_tag_source_url ?? producer.style_tag_source_url;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -229,6 +233,18 @@ function ProducerDialog({
                 {details?.frozen_song_count ?? producer.frozen_song_count ?? producer.test_song_count} 首最终冻结 ·{" "}
                 {producer.segment_count ?? 0} 个训练片段
               </p>
+              {styleTags.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {styleTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-white/20 px-2.5 py-1 text-xs text-white"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -241,17 +257,30 @@ function ProducerDialog({
                 点击曲名可打开对应的公开视频来源；三类曲目在训练和评估中严格隔离
               </p>
             </div>
-            {details?.profile_url && (
-              <a
-                href={details.profile_url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs text-purple hover:text-pink-dark flex items-center gap-1"
-              >
-                VocaDB 资料
-                <ExternalLink size={12} />
-              </a>
-            )}
+            <div className="flex shrink-0 flex-col items-end gap-1.5">
+              {details?.profile_url && (
+                <a
+                  href={details.profile_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs text-purple hover:text-pink-dark flex items-center gap-1"
+                >
+                  VocaDB 资料
+                  <ExternalLink size={12} />
+                </a>
+              )}
+              {tagSourceUrl && (
+                <a
+                  href={tagSourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs text-text-muted hover:text-pink-dark flex items-center gap-1"
+                >
+                  {tagSource ?? "VocaDB 标签"}
+                  <ExternalLink size={12} />
+                </a>
+              )}
+            </div>
           </div>
 
           {loading && <LoadingSpinner text="加载训练曲目..." />}

@@ -9,6 +9,7 @@ from vocaptest.data.producer_catalog import (
     load_dev_holdout_song_catalog,
     load_frozen_test_song_catalog,
     load_producer_metadata,
+    load_producer_style_tags,
     load_training_song_catalog,
 )
 
@@ -22,6 +23,7 @@ def _producer_info(
     include_songs: bool,
 ) -> ProducerInfo:
     metadata = load_producer_metadata().get(slug, {})
+    style_meta = load_producer_style_tags().get(slug, {})
     songs = load_training_song_catalog().get(slug, []) if include_songs else []
     dev_catalog = load_dev_holdout_song_catalog()
     dev_songs = dev_catalog.get(slug, []) if include_songs else []
@@ -38,6 +40,9 @@ def _producer_info(
         avatar_url=metadata.get("avatar_url"),
         aliases=metadata.get("aliases", []),
         profile_url=metadata.get("profile_url"),
+        style_tags=style_meta.get("style_tags", []),
+        style_tag_source=style_meta.get("style_tag_source"),
+        style_tag_source_url=style_meta.get("style_tag_source_url"),
         songs=[ProducerSong(**song) for song in songs],
         training_songs=[ProducerSong(**song) for song in songs],
         dev_song_count=len(dev_catalog.get(slug, [])),

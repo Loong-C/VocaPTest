@@ -10,6 +10,7 @@ from fastapi import APIRouter, File, UploadFile, HTTPException
 
 from vocaptest.api.dependencies import get_search_engine, get_config
 from vocaptest.api.schemas import AnalyzeResponse, AnalyzeResult, SearchResultItem
+from vocaptest.data.producer_catalog import load_producer_style_tags
 from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
@@ -54,12 +55,14 @@ async def analyze_audio(file: UploadFile = File(...)):
 
         logger.info("Job %s: analyzed in %.2fs, %d results", job_id, elapsed, len(results))
 
+        style_tags = load_producer_style_tags()
         top_k = [
             SearchResultItem(
                 producer_slug=r.producer_slug,
                 display_name=r.display_name,
                 score=r.score,
                 rank=r.rank,
+                style_tags=style_tags.get(r.producer_slug, {}).get("style_tags", []),
             )
             for r in results
         ]

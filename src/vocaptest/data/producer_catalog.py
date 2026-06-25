@@ -21,6 +21,34 @@ def load_producer_metadata() -> dict[str, dict]:
     }
 
 
+@lru_cache(maxsize=1)
+def load_producer_style_tags() -> dict[str, dict]:
+    """Return cached VocaDB-backed display style tags keyed by producer slug."""
+    path = project_root() / "configs" / "producer_style_tags.yaml"
+    if not path.exists():
+        return {}
+
+    with open(path, "r", encoding="utf-8") as handle:
+        config = yaml.safe_load(handle) or {}
+
+    source = config.get("source", {})
+    producers = {}
+    for slug, item in (config.get("producers") or {}).items():
+        raw_tags = item.get("style_tags") or []
+        display_tags = []
+        for tag in raw_tags:
+            if isinstance(tag, str):
+                display_tags.append(tag)
+            elif isinstance(tag, dict):
+                display_tags.append(tag.get("display_zh") or tag.get("label"))
+        producers[slug] = {
+            "style_tags": [tag for tag in display_tags if tag],
+            "style_tag_source": source.get("name"),
+            "style_tag_source_url": item.get("source_url") or source.get("url"),
+        }
+    return producers
+
+
 def _youtube_url(song_id: str) -> str | None:
     prefix = "youtube_"
     if not song_id.startswith(prefix):

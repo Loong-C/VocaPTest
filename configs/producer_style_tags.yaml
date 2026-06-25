@@ -1,0 +1,291 @@
+source:
+  name: VocaDB song tags
+  url: https://vocadb.net/
+  api_url: https://vocadb.net/api
+  refresh_script: scripts/22_refresh_vocadb_style_tags.py
+  last_reviewed: '2026-06-25'
+  notes:
+  - Runtime never calls VocaDB; tags are cached in this file for stable deployment.
+  - Tags are display-only descriptors and are not used by the audio model.
+  - Re-run the refresh script from an environment that can access VocaDB or from browser-exported
+    raw JSONL.
+producers:
+  wowaka:
+    source_url: https://vocadb.net/Ar/53
+    style_tags:
+    - label: vocarock
+      display_zh: VOCAROCK
+    - label: rock
+      display_zh: 摇滚
+    - label: high tempo
+      display_zh: 高速感
+  kemu:
+    source_url: https://vocadb.net/Ar/735
+    style_tags:
+    - label: vocarock
+      display_zh: VOCAROCK
+    - label: rock
+      display_zh: 摇滚
+    - label: story
+      display_zh: 叙事
+  neru:
+    source_url: https://vocadb.net/Ar/137
+    style_tags:
+    - label: vocarock
+      display_zh: VOCAROCK
+    - label: guitar
+      display_zh: 吉他
+    - label: dark
+      display_zh: 暗色
+  deco27:
+    source_url: https://vocadb.net/Ar/45
+    style_tags:
+    - label: pop
+      display_zh: 流行
+    - label: rock
+      display_zh: 摇滚
+    - label: electropop
+      display_zh: 电子流行
+  pinocchiop:
+    source_url: https://vocadb.net/Ar/28
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: denpa song
+      display_zh: 电波
+    - label: satire
+      display_zh: 讽刺
+  mitchie_m:
+    source_url: https://vocadb.net/Ar/624
+    style_tags:
+    - label: pop
+      display_zh: 流行
+    - label: dance-pop
+      display_zh: 舞曲流行
+    - label: electropop
+      display_zh: 电子流行
+  jin:
+    source_url: https://vocadb.net/Ar/552
+    style_tags:
+    - label: vocarock
+      display_zh: VOCAROCK
+    - label: piano
+      display_zh: 钢琴
+    - label: story
+      display_zh: 叙事
+  orangestar:
+    source_url: https://vocadb.net/Ar/11630
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+    - label: guitar
+      display_zh: 吉他
+    - label: summer
+      display_zh: 夏日
+  cosmo:
+    source_url: https://vocadb.net/Ar/85
+    style_tags:
+    - label: electronic
+      display_zh: 电子
+    - label: techno
+      display_zh: Techno
+    - label: high tempo
+      display_zh: 高BPM
+  hachi:
+    source_url: https://vocadb.net/Ar/49
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+    - label: alternative rock
+      display_zh: 另类摇滚
+    - label: folk
+      display_zh: 民谣
+  40mp:
+    source_url: https://vocadb.net/Ar/8
+    style_tags:
+    - label: pop
+      display_zh: 流行
+    - label: acoustic
+      display_zh: 原声
+    - label: ballad
+      display_zh: Ballad
+  nayutan:
+    source_url: https://vocadb.net/Ar/36280
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: denpa song
+      display_zh: 电波
+    - label: dance
+      display_zh: Dance
+  kairikibear:
+    source_url: https://vocadb.net/Ar/885
+    style_tags:
+    - label: vocarock
+      display_zh: VOCAROCK
+    - label: rock
+      display_zh: 摇滚
+    - label: dark
+      display_zh: 暗色
+  kanaria:
+    source_url: https://vocadb.net/Ar/80976
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: dance
+      display_zh: Dance
+    - label: dark
+      display_zh: 暗色
+  chinozo:
+    source_url: https://vocadb.net/Ar/67910
+    style_tags:
+    - label: pop
+      display_zh: 流行
+    - label: electropop
+      display_zh: 电子流行
+    - label: rock
+      display_zh: 摇滚
+  inabakumori:
+    source_url: https://vocadb.net/Ar/46824
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: rock
+      display_zh: 摇滚
+    - label: melancholy
+      display_zh: Melancholy
+  mimi:
+    source_url: https://vocadb.net/Ar/49431
+    style_tags:
+    - label: piano
+      display_zh: 钢琴
+    - label: ballad
+      display_zh: Ballad
+    - label: pop
+      display_zh: 流行
+  maretu:
+    source_url: https://vocadb.net/Ar/1665
+    style_tags:
+    - label: dark
+      display_zh: 暗色
+    - label: metal
+      display_zh: Metal
+    - label: rock
+      display_zh: 摇滚
+  n_buna:
+    source_url: https://vocadb.net/Ar/3258
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+    - label: guitar
+      display_zh: 吉他
+    - label: ballad
+      display_zh: Ballad
+  ayase:
+    source_url: https://vocadb.net/Ar/70347
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: pop
+      display_zh: 流行
+    - label: edm
+      display_zh: EDM
+  iyowa:
+    source_url: https://vocadb.net/Ar/65229
+    style_tags:
+    - label: experimental
+      display_zh: 实验
+    - label: electropop
+      display_zh: 电子流行
+    - label: progressive
+      display_zh: Progressive
+  syudou:
+    source_url: https://vocadb.net/Ar/4834
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+    - label: dark
+      display_zh: 暗色
+    - label: pop
+      display_zh: 流行
+  nakiso:
+    source_url: https://vocadb.net/Ar/64141
+    style_tags:
+    - label: dark
+      display_zh: 暗色
+    - label: minimal
+      display_zh: Minimal
+    - label: pop
+      display_zh: 流行
+  surii:
+    source_url: https://vocadb.net/Ar/64856
+    style_tags:
+    - label: vocarock
+      display_zh: VOCAROCK
+    - label: rock
+      display_zh: 摇滚
+    - label: pop rock
+      display_zh: Pop Rock
+  r_sound_design:
+    source_url: https://vocadb.net/Ar/51589
+    style_tags:
+    - label: edm
+      display_zh: EDM
+    - label: electropop
+      display_zh: 电子流行
+    - label: city pop
+      display_zh: City Pop
+  toa:
+    source_url: https://vocadb.net/Ar/7538
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: pop
+      display_zh: 流行
+    - label: piano
+      display_zh: 钢琴
+  teniwoha:
+    source_url: https://vocadb.net/Ar/1346
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+    - label: jazz
+      display_zh: Jazz
+    - label: traditional japanese
+      display_zh: 和风
+  niru_kajitsu:
+    source_url: https://vocadb.net/Ar/64434
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: dark
+      display_zh: 暗色
+    - label: rock
+      display_zh: 摇滚
+  harumaki_gohan:
+    source_url: https://vocadb.net/Ar/28208
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+    - label: ballad
+      display_zh: Ballad
+    - label: story
+      display_zh: 叙事
+  r_906:
+    source_url: https://vocadb.net/Ar/66139
+    style_tags:
+    - label: techno
+      display_zh: Techno
+    - label: minimal
+      display_zh: Minimal
+    - label: electronic
+      display_zh: 电子
+  sasakure_uk:
+    source_url: https://vocadb.net/Ar/51
+    style_tags:
+    - label: chiptune
+      display_zh: Chiptune
+    - label: electronic
+      display_zh: 电子
+    - label: progressive
+      display_zh: Progressive
