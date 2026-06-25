@@ -83,15 +83,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           仅供娱乐，不代表模型能真正识别作曲家风格
         </p>
         <p className="mt-1">
-          Made with 💖 + FastAPI + MERT &nbsp;|&nbsp;
-          <a
-            href={REPOSITORY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-pink-dark hover:underline"
-          >
-            GitHub
-          </a>
+          上传音频仅用于本次分析，分析完成后删除临时文件，不长期保存。
         </p>
       </footer>
     </div>

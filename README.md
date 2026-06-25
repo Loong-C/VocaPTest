@@ -117,6 +117,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1 `
 
 脚本默认在 VPS 上以后台任务执行更新，并轮询 `/tmp/vocaptest-deploy-*.log`；如需保持单个 SSH 前台会话，可追加 `-RunUpdateInForeground`。
 
+生产部署包含：
+- `/VocaPTest/api/analyze` 每 IP 每分钟 10 次、突发 5 次的 Nginx 限流。
+- HSTS、CSP、X-Frame-Options、X-Content-Type-Options 等基础安全响应头。
+- FastAPI 服务以 `vocaptest` 低权限用户运行。
+
+VPS 首次安全加固可执行：
+
+```bash
+bash deploy/harden_vps_security.sh
+```
+
+该脚本会禁用 SSH 密码登录、保留 root 公钥登录、开启 UFW，仅放行 22/80/443，并启用 fail2ban。
+
 ## 关键文件
 
 | 文件 | 说明 |

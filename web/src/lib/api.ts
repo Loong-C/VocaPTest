@@ -5,10 +5,12 @@ import type {
   AnalyzeResponse,
 } from "./types";
 
-const BASE = ""; // Vite proxy handles /api → localhost:8000
+const APP_BASE = import.meta.env.BASE_URL === "/"
+  ? ""
+  : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${BASE}${url}`, {
+  const res = await fetch(url, {
     headers: { "Content-Type": "application/json" },
     ...options,
   });
@@ -24,11 +26,11 @@ export async function checkHealth(): Promise<HealthResponse> {
 }
 
 export async function listProducers(): Promise<ProducerListResponse> {
-  return request<ProducerListResponse>("/api/producers");
+  return request<ProducerListResponse>(`${APP_BASE}/api/producers`);
 }
 
 export async function getProducer(slug: string): Promise<ProducerInfo> {
-  return request<ProducerInfo>(`/api/producers/${slug}`);
+  return request<ProducerInfo>(`${APP_BASE}/api/producers/${slug}`);
 }
 
 export async function analyzeAudio(
@@ -47,6 +49,10 @@ export async function analyzeAudio(
       }
     });
 
+    xhr.upload.addEventListener("load", () => {
+      onProgress?.(100);
+    });
+
     xhr.addEventListener("load", () => {
       if (xhr.status >= 200 && xhr.status < 300) {
         try {
@@ -61,7 +67,7 @@ export async function analyzeAudio(
 
     xhr.addEventListener("error", () => reject(new Error("Network error")));
 
-    xhr.open("POST", `${BASE}/api/analyze`);
+    xhr.open("POST", `${APP_BASE}/api/analyze`);
     xhr.send(formData);
   });
 }

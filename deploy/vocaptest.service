@@ -5,8 +5,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=root
-Group=root
+User=vocaptest
+Group=vocaptest
 WorkingDirectory=/srv/vocaptest/app
 Environment=PYTHONPATH=/srv/vocaptest/app/src
 Environment=HF_HOME=/srv/vocaptest/shared/huggingface
@@ -17,6 +17,12 @@ ExecStart=/srv/vocaptest/venv/bin/python -m uvicorn vocaptest.api.main:app --hos
 Restart=on-failure
 RestartSec=5
 TimeoutStartSec=120
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/srv/vocaptest
+UMask=0077
 
 [Install]
 WantedBy=multi-user.target

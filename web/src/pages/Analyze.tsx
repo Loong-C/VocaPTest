@@ -1,12 +1,12 @@
-import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, AlertTriangle, RefreshCw, FileAudio, Info } from "lucide-react";
+import { useCallback, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { AlertTriangle, FileAudio, Info, RefreshCw, Sparkles } from "lucide-react";
 import AudioUploader from "@/components/AudioUploader";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ScoreBar from "@/components/ScoreBar";
 import { analyzeAudio } from "@/lib/api";
 import { getProducerMeta } from "@/lib/producers";
-import type { UploadState, AnalyzeResult, SearchResultItem } from "@/lib/types";
+import type { AnalyzeResult, SearchResultItem, UploadState } from "@/lib/types";
 
 const RESULT_GRADIENTS = [
   "from-pink to-purple",
@@ -18,7 +18,7 @@ const RESULT_GRADIENTS = [
 
 export default function Analyze() {
   const [state, setState] = useState<UploadState>({ phase: "idle" });
-  const [fileName, setFileName] = useState<string>("");
+  const [fileName, setFileName] = useState("");
 
   const handleFile = useCallback(async (file: File) => {
     setFileName(file.name);
@@ -26,13 +26,12 @@ export default function Analyze() {
 
     try {
       const response = await analyzeAudio(file, (pct) => {
-        setState({ phase: "uploading", progress: pct });
+        if (pct >= 100) {
+          setState({ phase: "analyzing" });
+        } else {
+          setState({ phase: "uploading", progress: pct });
+        }
       });
-
-      setState({ phase: "analyzing" });
-
-      // Simulate a brief analysis phase for UX feel
-      await new Promise((r) => setTimeout(r, 800));
 
       if (response.result) {
         setState({ phase: "done", result: response.result });
@@ -55,18 +54,17 @@ export default function Analyze() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
-      {/* Header */}
+    <div className="mx-auto max-w-2xl px-4 py-10">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-8"
+        className="mb-8 text-center"
       >
-        <h1 className="text-3xl font-display text-text mb-2">
-          <Sparkles className="inline w-6 h-6 text-pink mr-1" />
+        <h1 className="mb-2 font-display text-3xl text-text">
+          <Sparkles className="mr-1 inline h-6 w-6 text-pink" />
           曲风分析
         </h1>
-        <p className="text-text-light text-sm">上传一段音乐，发现你的风格匹配</p>
+        <p className="text-sm text-text-light">上传一段音乐，发现你的风格匹配</p>
       </motion.div>
 
       <AnimatePresence mode="wait">
@@ -78,6 +76,9 @@ export default function Analyze() {
             exit={{ opacity: 0, scale: 0.95 }}
           >
             <AudioUploader onFile={handleFile} />
+            <p className="mt-4 text-center text-xs leading-relaxed text-text-muted">
+              上传音频仅用于本次分析，分析完成后会删除临时文件，不会长期保存。
+            </p>
           </motion.div>
         )}
 
@@ -89,19 +90,19 @@ export default function Analyze() {
             exit={{ opacity: 0 }}
             className="card p-8 text-center"
           >
-            <FileAudio className="w-12 h-12 text-pink mx-auto mb-4 animate-pulse" />
-            <p className="text-text font-medium mb-3">
+            <FileAudio className="mx-auto mb-4 h-12 w-12 animate-pulse text-pink" />
+            <p className="mb-3 font-medium text-text">
               正在上传 <span className="text-pink-dark">{fileName}</span>
             </p>
-            <div className="h-2 bg-pink/10 rounded-full overflow-hidden mb-2">
+            <div className="mb-2 h-2 overflow-hidden rounded-full bg-pink/10">
               <motion.div
-                className="h-full bg-gradient-to-r from-pink to-purple rounded-full"
+                className="h-full rounded-full bg-gradient-to-r from-pink to-purple"
                 initial={{ width: 0 }}
                 animate={{ width: `${state.progress}%` }}
                 transition={{ duration: 0.3 }}
               />
             </div>
-            <p className="text-text-muted text-xs">{state.progress}%</p>
+            <p className="text-xs text-text-muted">{state.progress}%</p>
           </motion.div>
         )}
 
@@ -111,13 +112,16 @@ export default function Analyze() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="card p-12"
+            className="card p-10 text-center"
           >
-            <LoadingSpinner size="lg" text="AI 正在分析音频特征..." />
+            <LoadingSpinner size="lg" text="上传完成，正在分析音频特征..." />
+            <p className="mt-4 text-xs leading-relaxed text-text-muted">
+              这一步会把音频切段并提取特征，通常比上传更久，请稍等片刻。
+            </p>
           </motion.div>
         )}
 
-        {state.phase === "done" && <ResultView result={state.result!} onReset={reset} />}
+        {state.phase === "done" && <ResultView result={state.result} onReset={reset} />}
 
         {state.phase === "error" && (
           <motion.div
@@ -127,12 +131,11 @@ export default function Analyze() {
             exit={{ opacity: 0 }}
             className="card p-8 text-center"
           >
-            <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-red-50
-                            flex items-center justify-center">
-              <AlertTriangle className="w-7 h-7 text-red-400" />
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-50">
+              <AlertTriangle className="h-7 w-7 text-red-400" />
             </div>
-            <h3 className="text-text font-semibold mb-1">分析失败</h3>
-            <p className="text-text-light text-sm mb-5">{state.message}</p>
+            <h3 className="mb-1 font-semibold text-text">分析失败</h3>
+            <p className="mb-5 text-sm text-text-light">{state.message}</p>
             <button onClick={reset} className="btn-secondary">
               <RefreshCw size={16} />
               重新上传
@@ -144,11 +147,10 @@ export default function Analyze() {
   );
 }
 
-/* ── Result View ── */
 function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () => void }) {
   const lowConfidence = result.accepted === false;
   const extraWarnings = result.warnings.filter(
-    (warning) => !warning.startsWith("Low-confidence result:")
+    (warning) => !warning.includes("Low-confidence result")
   );
 
   return (
@@ -159,7 +161,6 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
       exit={{ opacity: 0 }}
       className="space-y-4"
     >
-      {/* Top match highlight card */}
       {result.top_k.length > 0 && (
         <TopMatchCard
           item={result.top_k[0]!}
@@ -168,14 +169,13 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
         />
       )}
 
-      {/* All rankings */}
-      <div className="card p-6 space-y-5 stagger">
-        <h3 className="font-display text-lg text-text text-center">
-          {lowConfidence ? "参考排名" : "匹配排名"}
+      <div className="card space-y-5 p-6 stagger">
+        <h3 className="text-center font-display text-lg text-text">
+          {lowConfidence ? "灵感参考" : "匹配排名"}
         </h3>
 
         {result.top_k.length === 0 && (
-          <p className="text-text-muted text-sm text-center py-4">
+          <p className="py-4 text-center text-sm text-text-muted">
             未找到匹配的 P 主，请尝试上传更长的音频片段
           </p>
         )}
@@ -188,25 +188,26 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.08 }}
-              className="flex items-center gap-4 p-3 rounded-xl
-                         bg-white/50 hover:bg-white/80 transition-colors"
+              className="flex items-center gap-4 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80"
             >
-              {/* Avatar */}
               <div
-                className={`w-12 h-12 rounded-full bg-gradient-to-br ${meta.gradient}
-                            flex items-center justify-center shadow-md shrink-0`}
+                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${meta.gradient} shadow-md`}
               >
-                <span className="text-white font-display text-sm">
+                <span className="font-display text-sm text-white">
                   {item.display_name.slice(0, 2)}
                 </span>
               </div>
 
-              <div className="flex-1 min-w-0">
-                <p className="font-semibold text-text text-sm">{item.display_name}</p>
-                <div className="flex gap-1 mt-0.5">
-                  {meta.tags.slice(0, 3).map((t) => (
-                    <span key={t} className="text-[10px] text-text-muted bg-pink/5
-                                            px-1.5 py-0.5 rounded-full">{t}</span>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-semibold text-text">{item.display_name}</p>
+                <div className="mt-0.5 flex gap-1">
+                  {meta.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-pink/5 px-1.5 py-0.5 text-[10px] text-text-muted"
+                    >
+                      {tag}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -224,25 +225,23 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
       </div>
 
       {lowConfidence && (
-        <div className="card flex items-start gap-3 p-4 bg-white/65 border border-purple/10
-                        text-text-light text-sm">
-          <div className="w-8 h-8 rounded-full bg-purple/10 text-purple
-                          flex items-center justify-center shrink-0">
+        <div className="card flex items-start gap-3 border border-purple/10 bg-white/65 p-4 text-sm text-text-light">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-purple/10 text-purple">
             <Info size={16} />
           </div>
           <div>
-            <p className="font-medium text-text mb-1">这次更适合作为参考</p>
+            <p className="mb-1 font-medium text-text">你的音乐很有风格！</p>
             <p>
-              上传歌曲与当前资料库中的风格都不够接近，因此不做确定归类。
-              下方保留最接近的候选，方便继续比较。
+              它和当前资料库里的典型 P 主风格都不太像，所以这里把最接近的候选当作灵感参考。
+              这不代表作品质量低，也不代表分析失败。
             </p>
           </div>
         </div>
       )}
 
       {extraWarnings.length > 0 && (
-        <div className="card flex items-start gap-3 p-4 bg-white/65 text-text-light text-sm">
-          <Info size={16} className="shrink-0 mt-0.5 text-text-muted" />
+        <div className="card flex items-start gap-3 bg-white/65 p-4 text-sm text-text-light">
+          <Info size={16} className="mt-0.5 shrink-0 text-text-muted" />
           <div className="space-y-1">
             {extraWarnings.map((warning, index) => (
               <p key={index}>{warning}</p>
@@ -251,8 +250,7 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
         </div>
       )}
 
-      {/* Reset */}
-      <div className="text-center pt-2">
+      <div className="pt-2 text-center">
         <button onClick={onReset} className="btn-secondary">
           <RefreshCw size={16} />
           分析另一首歌
@@ -262,7 +260,6 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
   );
 }
 
-/* ── Top Match Hero Card ── */
 function TopMatchCard({
   item,
   accepted,
@@ -282,60 +279,58 @@ function TopMatchCard({
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="card overflow-hidden"
     >
-      <div className={`h-28 bg-gradient-to-r ${
-        accepted ? meta.gradient : "from-slate-400 to-purple-400"
-      } relative
-                       flex items-center justify-center`}>
-        {/* Animated rings */}
+      <div
+        className={`relative flex h-28 items-center justify-center bg-gradient-to-r ${
+          accepted ? meta.gradient : "from-slate-400 to-purple-400"
+        }`}
+      >
         <div className="absolute inset-0 opacity-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                        w-48 h-48 rounded-full border-2 border-white/40"
+            className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white/40"
           />
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                        w-36 h-36 rounded-full border border-white/25"
+            className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/25"
           />
         </div>
 
         <div className="relative z-10 text-center">
-          <p className="text-white/80 text-sm mb-1">
-            {accepted ? "最匹配" : "最接近的参考"}
+          <p className="mb-1 text-sm text-white/80">
+            {accepted ? "最匹配" : "最接近的灵感参考"}
           </p>
-          <p className="text-white text-2xl font-display drop-shadow-lg">
+          <p className="font-display text-2xl text-white drop-shadow-lg">
             {item.display_name}
           </p>
         </div>
       </div>
 
       <div className="p-5 text-center">
-        <p className="text-text text-sm mb-3">
-          {accepted ? "你的曲风听起来最像 " : "在当前资料库中，最接近的是 "}
+        <p className="mb-3 text-sm text-text">
+          {accepted ? "你的曲风听起来最像 " : "资料库里最接近的是 "}
           <span className="font-semibold text-pink-dark">{item.display_name}</span>
         </p>
 
-        {/* Tags */}
-        <div className="flex flex-wrap justify-center gap-1.5 mb-4">
+        <div className="mb-4 flex flex-wrap justify-center gap-1.5">
           {meta.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 text-xs rounded-full bg-pink/10 text-pink-dark font-medium"
+              className="rounded-full bg-pink/10 px-2.5 py-1 text-xs font-medium text-pink-dark"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Big score */}
         <div className="inline-flex items-baseline gap-1">
-          <span className="text-4xl font-display text-text">{pct}</span>
+          <span className="font-display text-4xl text-text">{pct}</span>
           <span className="text-xl text-text-muted">%</span>
         </div>
-        <p className="text-xs text-text-muted mt-1">模型置信度</p>
+        <p className="mt-1 text-xs text-text-muted">
+          {accepted ? "模型置信度" : "参考置信度"}
+        </p>
       </div>
     </motion.div>
   );

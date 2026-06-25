@@ -7,9 +7,12 @@ VENV_DIR="${VENV_DIR:-$APP_ROOT/venv}"
 REPO_URL="${REPO_URL:-https://github.com/Loong-C/VocaPTest.git}"
 BRANCH="${BRANCH:-master}"
 SERVICE_NAME="${SERVICE_NAME:-vocaptest}"
+SERVICE_USER="${SERVICE_USER:-vocaptest}"
 VITE_BASE_PATH="${VITE_BASE_PATH:-/VocaPTest/}"
 NGINX_SITE="${NGINX_SITE:-/etc/nginx/sites-available/bookstore}"
 NGINX_SNIPPET="${NGINX_SNIPPET:-/etc/nginx/snippets/vocaptest-locations.conf}"
+NGINX_SECURITY_SNIPPET="${NGINX_SECURITY_SNIPPET:-/etc/nginx/snippets/vocaptest-security-headers.conf}"
+NGINX_RATE_LIMIT_CONF="${NGINX_RATE_LIMIT_CONF:-/etc/nginx/conf.d/vocaptest-rate-limit.conf}"
 SKIP_SYSTEM_PACKAGES="${SKIP_SYSTEM_PACKAGES:-0}"
 SKIP_PYTHON_DEPS="${SKIP_PYTHON_DEPS:-0}"
 SKIP_SERVICE_INSTALL="${SKIP_SERVICE_INSTALL:-0}"
@@ -83,15 +86,22 @@ build_frontend() {
 
 install_service() {
   log "Installing systemd service"
+  if ! getent passwd "$SERVICE_USER" >/dev/null; then
+    useradd --system --home "$APP_ROOT" --shell /usr/sbin/nologin "$SERVICE_USER"
+  fi
+
   install -m 0644 "$APP_DIR/deploy/vocaptest.service" "/etc/systemd/system/$SERVICE_NAME.service"
   mkdir -p "$APP_ROOT/shared/huggingface"
+  chown -R "$SERVICE_USER:$SERVICE_USER" "$APP_ROOT"
   systemctl daemon-reload
   systemctl enable "$SERVICE_NAME.service"
   systemctl restart "$SERVICE_NAME.service"
 }
 
 install_nginx() {
-  log "Installing Nginx location snippet"
+  log "Installing Nginx snippets"
+  install -m 0644 "$APP_DIR/deploy/nginx-vocaptest-security-headers.conf" "$NGINX_SECURITY_SNIPPET"
+  install -m 0644 "$APP_DIR/deploy/nginx-vocaptest-rate-limit.conf" "$NGINX_RATE_LIMIT_CONF"
   install -m 0644 "$APP_DIR/deploy/nginx-vocaptest-locations.conf" "$NGINX_SNIPPET"
 
   if [ ! -f "$NGINX_SITE" ]; then
