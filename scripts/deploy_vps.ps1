@@ -49,7 +49,8 @@ function Invoke-Scp {
 function Invoke-SshTransfer {
     param(
         [string]$Source,
-        [string]$Destination
+        [string]$Destination,
+        [switch]$StripCR
     )
 
     $remoteCmd = "cat > '$Destination'"
@@ -63,8 +64,25 @@ function Invoke-SshTransfer {
     $proc = [System.Diagnostics.Process]::Start($psi)
     $fileStream = [System.IO.File]::OpenRead($Source)
     $buf = New-Object byte[] (1MB)
-    while (($read = $fileStream.Read($buf, 0, $buf.Length)) -gt 0) {
-        $proc.StandardInput.BaseStream.Write($buf, 0, $read)
+    if ($StripCR) {
+        $outBuf = New-Object byte[] (1MB)
+        while (($read = $fileStream.Read($buf, 0, $buf.Length)) -gt 0) {
+            $outLen = 0
+            for ($i = 0; $i -lt $read; $i++) {
+                if ($buf[$i] -ne 13) {
+                    $outBuf[$outLen] = $buf[$i]
+                    $outLen++
+                }
+            }
+            if ($outLen -gt 0) {
+                $proc.StandardInput.BaseStream.Write($outBuf, 0, $outLen)
+            }
+        }
+    }
+    else {
+        while (($read = $fileStream.Read($buf, 0, $buf.Length)) -gt 0) {
+            $proc.StandardInput.BaseStream.Write($buf, 0, $read)
+        }
     }
     $fileStream.Close()
     $proc.StandardInput.Close()
@@ -117,7 +135,7 @@ function Invoke-RemoteUpdate {
 }
 
 Write-Host "[vocaptest-deploy] Uploading update script to $remote"
-Invoke-Scp $localUpdateScript "${remote}:$remoteTmp"
+Invoke-SshTransfer -StripCR $localUpdateScript $remoteTmp
 
 Write-Host "[vocaptest-deploy] Running server update on $remote"
 $remoteEnv = @(
