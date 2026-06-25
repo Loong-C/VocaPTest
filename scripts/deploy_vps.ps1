@@ -59,8 +59,8 @@ function Invoke-RemoteUpdate {
     $remoteStatus = "$remoteLog.status"
     $startCommand = "bash -lc 'rm -f $remoteLog $remoteStatus; ( $Command > $remoteLog 2>&1; echo `$? > $remoteStatus ) </dev/null >/dev/null 2>&1 & echo `$!'"
 
-    $pid = Invoke-Remote $startCommand | Select-Object -Last 1
-    Write-Host "[vocaptest-deploy] Remote update PID: $pid"
+    $remotePid = Invoke-Remote $startCommand | Select-Object -Last 1
+    Write-Host "[vocaptest-deploy] Remote update PID: $remotePid"
     Write-Host "[vocaptest-deploy] Remote update log: $remoteLog"
 
     $deadline = (Get-Date).AddMinutes($RemoteUpdateTimeoutMinutes)
