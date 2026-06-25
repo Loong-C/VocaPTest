@@ -24,6 +24,42 @@ _p1_model: Optional[LayerFusionLDA] = None
 _search_engine: Optional[ProducerSearch] = None
 
 
+def _resolve_model_device(configured_device: str | None) -> str:
+    """Resolve a configured torch device, falling back safely on CPU-only hosts."""
+    requested = (configured_device or "auto").strip().lower()
+    if requested == "auto":
+        import torch
+
+        if torch.cuda.is_available():
+            return "cuda"
+        mps = getattr(torch.backends, "mps", None)
+        if mps is not None and mps.is_available():
+            return "mps"
+        return "cpu"
+
+    if requested.startswith("cuda"):
+        import torch
+
+        if not torch.cuda.is_available():
+            logger.warning(
+                "Configured model.device=%s but CUDA is unavailable; falling back to CPU",
+                configured_device,
+            )
+            return "cpu"
+
+    if requested == "mps":
+        import torch
+
+        mps = getattr(torch.backends, "mps", None)
+        if mps is None or not mps.is_available():
+            logger.warning(
+                "Configured model.device=mps but MPS is unavailable; falling back to CPU",
+            )
+            return "cpu"
+
+    return configured_device or "cpu"
+
+
 @lru_cache
 def get_config():
     """Load merged config from configs directory."""
@@ -41,18 +77,19 @@ def get_embedder() -> AudioEmbedder:
     if _embedder is None:
         cfg = get_config()
         backend = cfg.model.backend
+        device = _resolve_model_device(cfg.model.get("device", "auto"))
 
         if backend == "muq":
             from vocaptest.models.muq_embedder import MuQEmbedder
             _embedder = MuQEmbedder(
                 model_name=cfg.model.hf_name,
-                device=cfg.model.get("device", "cuda"),
+                device=device,
             )
         else:
             from vocaptest.models.mert_embedder import MERTEmbedder
             _embedder = MERTEmbedder(
                 model_name=cfg.model.get("hf_name", "m-a-p/MERT-v1-95M"),
-                device=cfg.model.get("device", "cuda"),
+                device=device,
                 layer_strategy=cfg.model.get("layer_strategy", "mean_last_hidden"),
             )
     return _embedder

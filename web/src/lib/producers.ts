@@ -42,6 +42,19 @@ export function getProducerMeta(slug: string): { gradient: string; tags: string[
   return PRODUCER_META[slug] ?? { gradient: "from-pink-300 to-purple-400", tags: [] };
 }
 
+function withBasePath(url?: string | null): string | null {
+  if (!url) return null;
+  if (/^(https?:)?\/\//.test(url) || url.startsWith("data:") || url.startsWith("blob:")) {
+    return url;
+  }
+  if (!url.startsWith("/")) return url;
+
+  const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${baseUrl}${url.replace(/^\/+/, "")}`;
+}
+
 export function enrichProducer(producer: {
   slug: string;
   display_name: string;
@@ -64,7 +77,7 @@ export function enrichProducer(producer: {
     ...producer,
     gradient: meta.gradient,
     style_tags: meta.tags,
-    avatar_url: producer.avatar_url ?? null,
+    avatar_url: withBasePath(producer.avatar_url),
     aliases: producer.aliases ?? [],
     profile_url: producer.profile_url ?? null,
     songs: producer.songs ?? [],

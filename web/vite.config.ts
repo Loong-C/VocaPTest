@@ -5,7 +5,16 @@ import path from "node:path";
 
 const __dirname = import.meta.dirname;
 
+function normalizeBasePath(value: string | undefined): string {
+  const raw = value?.trim() || "/VocaPTest/";
+  if (raw === "/") return raw;
+  return `/${raw.replace(/^\/+|\/+$/g, "")}/`;
+}
+
+const basePath = normalizeBasePath(process.env.VITE_BASE_PATH);
+
 export default defineConfig({
+  base: basePath,
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
