@@ -115,9 +115,6 @@ export default function Analyze() {
             className="card p-10 text-center"
           >
             <LoadingSpinner size="lg" text="上传完成，正在分析音频特征..." />
-            <p className="mt-4 text-xs leading-relaxed text-text-muted">
-              这一步会把音频切段并提取特征，通常比上传更久，请稍等片刻。
-            </p>
           </motion.div>
         )}
 
@@ -232,8 +229,7 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
           <div>
             <p className="mb-1 font-medium text-text">你的音乐很有风格！</p>
             <p>
-              它和当前资料库里的典型 P 主风格都不太像，所以这里把最接近的候选当作灵感参考。
-              这不代表作品质量低，也不代表分析失败。
+              它和当前资料库里的典型 P 主风格都不太像，仅列出最接近的候选作为参考。
             </p>
           </div>
         </div>
