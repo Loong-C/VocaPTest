@@ -46,15 +46,33 @@ function Invoke-Scp {
     }
 }
 
-function New-LfTempFile {
-    param([string]$Source)
+function Invoke-SshTransfer {
+    param(
+        [string]$Source,
+        [string]$Destination
+    )
 
-    $name = "vocaptest-" + [System.IO.Path]::GetRandomFileName() + ".sh"
-    $target = Join-Path ([System.IO.Path]::GetTempPath()) $name
-    $content = (Get-Content -LiteralPath $Source -Raw).Replace("`r`n", "`n").Replace("`r", "`n")
-    $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
-    [System.IO.File]::WriteAllText($target, $content, $utf8NoBom)
-    return $target
+    $remoteCmd = "cat > '$Destination'"
+    $psi = New-Object System.Diagnostics.ProcessStartInfo
+    $psi.FileName = "ssh"
+    $psi.Arguments = "-o ServerAliveInterval=15 -o ServerAliveCountMax=20 $remote $remoteCmd"
+    $psi.RedirectStandardInput = $true
+    $psi.UseShellExecute = $false
+    $psi.CreateNoWindow = $true
+
+    $proc = [System.Diagnostics.Process]::Start($psi)
+    $fileStream = [System.IO.File]::OpenRead($Source)
+    $buf = New-Object byte[] (1MB)
+    while (($read = $fileStream.Read($buf, 0, $buf.Length)) -gt 0) {
+        $proc.StandardInput.BaseStream.Write($buf, 0, $read)
+    }
+    $fileStream.Close()
+    $proc.StandardInput.Close()
+    $proc.WaitForExit()
+
+    if ($proc.ExitCode -ne 0) {
+        throw "SSH file transfer failed with exit code $($proc.ExitCode)"
+    }
 }
 
 function Invoke-RemoteUpdate {
@@ -99,13 +117,7 @@ function Invoke-RemoteUpdate {
 }
 
 Write-Host "[vocaptest-deploy] Uploading update script to $remote"
-$normalizedUpdateScript = New-LfTempFile $localUpdateScript
-try {
-    Invoke-Scp $normalizedUpdateScript "${remote}:$remoteTmp"
-}
-finally {
-    Remove-Item -LiteralPath $normalizedUpdateScript -ErrorAction SilentlyContinue
-}
+Invoke-Scp $localUpdateScript "${remote}:$remoteTmp"
 
 Write-Host "[vocaptest-deploy] Running server update on $remote"
 $remoteEnv = @(
@@ -133,7 +145,9 @@ if (-not $SkipModelSync) {
     Write-Host "[vocaptest-deploy] Syncing model artifacts"
     Invoke-Remote "mkdir -p '$remoteAppDir/data/processed/models'"
     foreach ($model in $models) {
-        Invoke-Scp $model.FullName "${remote}:$remoteAppDir/data/processed/models/"
+        Write-Host "[vocaptest-deploy]   Transferring $($model.Name) ($([math]::Round($model.Length/1MB, 1)) MB)..."
+        $remoteModelPath = "$remoteAppDir/data/processed/models/$($model.Name)"
+        Invoke-SshTransfer $model.FullName $remoteModelPath
     }
 
     Write-Host "[vocaptest-deploy] Restarting service after model sync"
