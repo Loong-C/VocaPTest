@@ -100,6 +100,21 @@ P 主页面三段式展示：
 
 前端导航保留首页、分析页和 P 主图鉴页；顶部 GitHub 图标指向仓库，不再提供独立“关于”页面。
 
+## VPS 部署
+
+完整部署会拉取指定分支、安装依赖、构建前端、安装 systemd 服务并刷新 Nginx：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1
+```
+
+页面或文档更新可使用较快的更新路径，跳过系统包、Python 依赖和服务安装，只重新拉取代码并构建前端：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1 `
+  -SkipModelSync -SkipSystemPackages -SkipPythonDeps -SkipServiceInstall -SkipNginxInstall
+```
+
 ## 关键文件
 
 | 文件 | 说明 |

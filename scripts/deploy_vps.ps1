@@ -4,7 +4,11 @@ param(
     [string]$Branch = "master",
     [string]$RepoUrl = "https://github.com/Loong-C/VocaPTest.git",
     [string]$AppRoot = "/srv/vocaptest",
-    [switch]$SkipModelSync
+    [switch]$SkipModelSync,
+    [switch]$SkipSystemPackages,
+    [switch]$SkipPythonDeps,
+    [switch]$SkipServiceInstall,
+    [switch]$SkipNginxInstall
 )
 
 $ErrorActionPreference = "Stop"
@@ -17,19 +21,42 @@ $localUpdateScript = Join-Path $repoRoot "deploy/update_server.sh"
 $localModelDir = Join-Path $repoRoot "data/processed/models"
 $SshOptions = @(
     "-o", "ServerAliveInterval=15",
-    "-o", "ServerAliveCountMax=6"
+    "-o", "ServerAliveCountMax=20"
 )
 
 function Invoke-Remote {
     param([string]$Command)
     ssh @SshOptions $remote $Command
+    if ($LASTEXITCODE -ne 0) {
+        throw "Remote command failed with exit code $LASTEXITCODE"
+    }
+}
+
+function Invoke-Scp {
+    param(
+        [string]$Source,
+        [string]$Destination
+    )
+    scp @SshOptions $Source $Destination
+    if ($LASTEXITCODE -ne 0) {
+        throw "SCP failed with exit code $LASTEXITCODE"
+    }
 }
 
 Write-Host "[vocaptest-deploy] Uploading update script to $remote"
-scp @SshOptions $localUpdateScript "${remote}:$remoteTmp"
+Invoke-Scp $localUpdateScript "${remote}:$remoteTmp"
 
 Write-Host "[vocaptest-deploy] Running server update on $remote"
-$remoteCommand = "chmod +x $remoteTmp && APP_ROOT='$AppRoot' REPO_URL='$RepoUrl' BRANCH='$Branch' $remoteTmp"
+$remoteEnv = @(
+    "APP_ROOT='$AppRoot'",
+    "REPO_URL='$RepoUrl'",
+    "BRANCH='$Branch'"
+)
+if ($SkipSystemPackages) { $remoteEnv += "SKIP_SYSTEM_PACKAGES=1" }
+if ($SkipPythonDeps) { $remoteEnv += "SKIP_PYTHON_DEPS=1" }
+if ($SkipServiceInstall) { $remoteEnv += "SKIP_SERVICE_INSTALL=1" }
+if ($SkipNginxInstall) { $remoteEnv += "SKIP_NGINX_INSTALL=1" }
+$remoteCommand = "chmod +x '$remoteTmp' && $($remoteEnv -join ' ') '$remoteTmp'"
 Invoke-Remote $remoteCommand
 
 if (-not $SkipModelSync) {
@@ -45,7 +72,7 @@ if (-not $SkipModelSync) {
     Write-Host "[vocaptest-deploy] Syncing model artifacts"
     Invoke-Remote "mkdir -p '$remoteAppDir/data/processed/models'"
     foreach ($model in $models) {
-        scp @SshOptions $model.FullName "${remote}:$remoteAppDir/data/processed/models/"
+        Invoke-Scp $model.FullName "${remote}:$remoteAppDir/data/processed/models/"
     }
 
     Write-Host "[vocaptest-deploy] Restarting service after model sync"

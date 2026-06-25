@@ -10,6 +10,10 @@ SERVICE_NAME="${SERVICE_NAME:-vocaptest}"
 VITE_BASE_PATH="${VITE_BASE_PATH:-/VocaPTest/}"
 NGINX_SITE="${NGINX_SITE:-/etc/nginx/sites-available/bookstore}"
 NGINX_SNIPPET="${NGINX_SNIPPET:-/etc/nginx/snippets/vocaptest-locations.conf}"
+SKIP_SYSTEM_PACKAGES="${SKIP_SYSTEM_PACKAGES:-0}"
+SKIP_PYTHON_DEPS="${SKIP_PYTHON_DEPS:-0}"
+SKIP_SERVICE_INSTALL="${SKIP_SERVICE_INSTALL:-0}"
+SKIP_NGINX_INSTALL="${SKIP_NGINX_INSTALL:-0}"
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -126,12 +130,34 @@ PY
 
 main() {
   require_root
-  install_system_packages
+  if [ "$SKIP_SYSTEM_PACKAGES" = "1" ]; then
+    log "Skipping system package install"
+  else
+    install_system_packages
+  fi
+
   sync_repo
-  install_python_deps
+
+  if [ "$SKIP_PYTHON_DEPS" = "1" ]; then
+    log "Skipping Python dependency install"
+  else
+    install_python_deps
+  fi
+
   build_frontend
-  install_service
-  install_nginx
+
+  if [ "$SKIP_SERVICE_INSTALL" = "1" ]; then
+    log "Skipping systemd service install/restart"
+  else
+    install_service
+  fi
+
+  if [ "$SKIP_NGINX_INSTALL" = "1" ]; then
+    log "Skipping Nginx snippet install/reload"
+  else
+    install_nginx
+  fi
+
   log "Done"
 }
 
