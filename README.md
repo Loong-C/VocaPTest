@@ -115,6 +115,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1 `
   -SkipModelSync -SkipSystemPackages -SkipPythonDeps -SkipServiceInstall -SkipNginxInstall
 ```
 
+脚本默认在 VPS 上以后台任务执行更新，并轮询 `/tmp/vocaptest-deploy-*.log`；如需保持单个 SSH 前台会话，可追加 `-RunUpdateInForeground`。
+
 ## 关键文件
 
 | 文件 | 说明 |

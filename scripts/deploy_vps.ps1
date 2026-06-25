@@ -8,7 +8,10 @@ param(
     [switch]$SkipSystemPackages,
     [switch]$SkipPythonDeps,
     [switch]$SkipServiceInstall,
-    [switch]$SkipNginxInstall
+    [switch]$SkipNginxInstall,
+    [switch]$RunUpdateInForeground,
+    [int]$RemoteUpdateTimeoutMinutes = 20,
+    [int]$RemotePollSeconds = 5
 )
 
 $ErrorActionPreference = "Stop"
@@ -43,21 +46,62 @@ function Invoke-Scp {
     }
 }
 
+function Invoke-RemoteUpdate {
+    param([string]$Command)
+
+    if ($RunUpdateInForeground) {
+        Invoke-Remote $Command
+        return
+    }
+
+    $stamp = Get-Date -Format "yyyyMMddHHmmss"
+    $remoteLog = "/tmp/vocaptest-deploy-$stamp.log"
+    $remoteStatus = "$remoteLog.status"
+    $startCommand = "bash -lc 'rm -f $remoteLog $remoteStatus; ( $Command > $remoteLog 2>&1; echo `$? > $remoteStatus ) </dev/null >/dev/null 2>&1 & echo `$!'"
+
+    $pid = Invoke-Remote $startCommand | Select-Object -Last 1
+    Write-Host "[vocaptest-deploy] Remote update PID: $pid"
+    Write-Host "[vocaptest-deploy] Remote update log: $remoteLog"
+
+    $deadline = (Get-Date).AddMinutes($RemoteUpdateTimeoutMinutes)
+    $lastTail = ""
+    while ((Get-Date) -lt $deadline) {
+        Start-Sleep -Seconds $RemotePollSeconds
+
+        $status = Invoke-Remote "test -f $remoteStatus && cat $remoteStatus || echo RUNNING" | Select-Object -Last 1
+        $tail = Invoke-Remote "tail -40 $remoteLog 2>/dev/null || true"
+        $tailText = $tail -join "`n"
+        if ($tailText -and $tailText -ne $lastTail) {
+            Write-Host $tailText
+            $lastTail = $tailText
+        }
+
+        if ($status -ne "RUNNING") {
+            if ($status -ne "0") {
+                throw "Remote update failed with exit code $status. See $remoteLog"
+            }
+            return
+        }
+    }
+
+    throw "Remote update timed out after $RemoteUpdateTimeoutMinutes minutes. See $remoteLog"
+}
+
 Write-Host "[vocaptest-deploy] Uploading update script to $remote"
 Invoke-Scp $localUpdateScript "${remote}:$remoteTmp"
 
 Write-Host "[vocaptest-deploy] Running server update on $remote"
 $remoteEnv = @(
-    "APP_ROOT='$AppRoot'",
-    "REPO_URL='$RepoUrl'",
-    "BRANCH='$Branch'"
+    "APP_ROOT=$AppRoot",
+    "REPO_URL=$RepoUrl",
+    "BRANCH=$Branch"
 )
 if ($SkipSystemPackages) { $remoteEnv += "SKIP_SYSTEM_PACKAGES=1" }
 if ($SkipPythonDeps) { $remoteEnv += "SKIP_PYTHON_DEPS=1" }
 if ($SkipServiceInstall) { $remoteEnv += "SKIP_SERVICE_INSTALL=1" }
 if ($SkipNginxInstall) { $remoteEnv += "SKIP_NGINX_INSTALL=1" }
-$remoteCommand = "chmod +x '$remoteTmp' && $($remoteEnv -join ' ') '$remoteTmp'"
-Invoke-Remote $remoteCommand
+$remoteCommand = "chmod +x $remoteTmp && $($remoteEnv -join ' ') $remoteTmp"
+Invoke-RemoteUpdate $remoteCommand
 
 if (-not $SkipModelSync) {
     if (-not (Test-Path $localModelDir)) {
