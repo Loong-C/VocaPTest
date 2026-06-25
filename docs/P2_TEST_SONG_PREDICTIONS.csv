@@ -1,0 +1,187 @@
+﻿split,true_author,title,prediction,rank,top1_correct,accepted,confidence,margin,top3,true_slug,prediction_slug,song_id,work_id
+final_frozen,40mP,Initial Song,すりぃ,2,False,False,0.39617120786606297,0.07600229184837942,すりぃ 39.62% / 40mP 32.02% / じん 14.68%,40mp,surii,youtube_PRsXzHI-n8k,vocadb_song_161771
+final_frozen,40mP,Warning!,40mP,1,True,True,0.7293757959626778,0.634393252537538,40mP 72.94% / すりぃ 9.50% / Chinozo 7.09%,40mp,40mp,youtube_uG2rbxfvV80,vocadb_song_84300
+final_frozen,40mP,だんだん早くなる,40mP,1,True,True,0.9959269501051414,0.9939971068390435,40mP 99.59% / とあ 0.19% / Neru 0.08%,40mp,40mp,youtube_ggkRMKbb89A,vocadb_song_81641
+final_frozen,40mP,タイムマシン,n-buna,2,False,False,0.4716062742976061,0.010591239511525963,n-buna 47.16% / 40mP 46.10% / Neru 2.17%,40mp,n_buna,youtube_EgOWe9ByNaE,vocadb_song_1354
+final_frozen,Ayase,ヴァイオレッタ,Ayase,1,True,True,0.9643939890591509,0.955669906167848,Ayase 96.44% / はるまきごはん 0.87% / すりぃ 0.71%,ayase,ayase,youtube_tI47fWu0r_s,vocadb_song_259150
+final_frozen,Ayase,先天性アサルトガール,cosMo@暴走P,3,False,False,0.3314518790615041,0.1472243013168958,cosMo@暴走P 33.15% / じん 18.42% / Ayase 13.53%,ayase,cosmo,youtube_1VZKxIgqlZ8,vocadb_song_219883
+final_frozen,Ayase,怪物,DECO*27,6,False,False,0.3099241120337287,0.004426038743249094,DECO*27 30.99% / すりぃ 30.55% / じん 11.65%,ayase,deco27,youtube_dy90tA3TT1c,vocadb_song_371589
+final_frozen,Ayase,泣いてない,Ayase,1,True,True,0.8911018538251847,0.8623803866804927,Ayase 89.11% / とあ 2.87% / はるまきごはん 2.45%,ayase,ayase,youtube__lmwvFgV_04,vocadb_song_223351
+final_frozen,Chinozo,TAMAYA,Chinozo,1,True,True,0.8064975254019213,0.6417526643204384,Chinozo 80.65% / すりぃ 16.47% / てにをは 1.77%,chinozo,chinozo,youtube_H_WXMJ6dUGY,vocadb_song_306058
+final_frozen,Chinozo,だまってちゃん,Chinozo,1,True,True,0.6564970700310578,0.5261200607430816,Chinozo 65.65% / DECO*27 13.04% / てにをは 9.08%,chinozo,chinozo,youtube_uOeOZQ5eCZ0,vocadb_song_661302
+final_frozen,Chinozo,ミィハー,Chinozo,1,True,False,0.5103329721768929,0.39586272987316606,Chinozo 51.03% / DECO*27 11.45% / ピノキオピー 10.30%,chinozo,chinozo,youtube_oePX92KTE_M,vocadb_song_511160
+final_frozen,Chinozo,ムシ,Chinozo,1,True,False,0.40891799294853404,0.1332480411995502,Chinozo 40.89% / Neru 27.57% / てにをは 11.45%,chinozo,chinozo,youtube_j4ZuoUOkjSY,vocadb_song_409013
+final_frozen,cosMo@暴走P,#誰かこの痛みに名前をつけてください,cosMo@暴走P,1,True,True,0.6859586052885391,0.5803830786000921,cosMo@暴走P 68.60% / kemu 10.56% / すりぃ 6.58%,cosmo,cosmo,youtube_Mjv4hjR7xZk,vocadb_song_125099
+final_frozen,cosMo@暴走P,Anti the EuphoriaHOLiC,cosMo@暴走P,1,True,True,0.9897863633170928,0.9856116445232572,cosMo@暴走P 98.98% / ハチ 0.42% / いよわ 0.11%,cosmo,cosmo,youtube_Y_MK08x4rJA,vocadb_song_47433
+final_frozen,cosMo@暴走P,ウシノヒ☆アブダクション,cosMo@暴走P,1,True,True,0.9733255955547853,0.961078339006193,cosMo@暴走P 97.33% / MARETU 1.22% / Mitchie M 0.63%,cosmo,cosmo,youtube_zPp2GraE6LU,vocadb_song_207432
+final_frozen,cosMo@暴走P,キノコがはえてる!!,cosMo@暴走P,1,True,True,0.9391775015582242,0.917316576964122,cosMo@暴走P 93.92% / MARETU 2.19% / sasakure.UK 1.43%,cosmo,cosmo,youtube_XwCv6Gm3Q3Q,vocadb_song_583745
+final_frozen,DECO*27,ストリーミングハート,DECO*27,1,True,False,0.5299578160711055,0.41450869162376835,DECO*27 53.00% / じん 11.54% / cosMo@暴走P 9.92%,deco27,deco27,youtube_9DD6JvY06Ok,vocadb_song_48029
+final_frozen,DECO*27,ヒバナ,Neru,2,False,False,0.41919105456162226,0.2031805644549854,Neru 41.92% / DECO*27 21.60% / すりぃ 21.16%,deco27,neru,youtube_hxSg2Ioz3LM,vocadb_song_164074
+final_frozen,DECO*27,弱虫モンブラン,40mP,6,False,True,0.8064315117795806,0.7706047554418669,40mP 80.64% / すりぃ 3.58% / はるまきごはん 2.38%,deco27,40mp,youtube_B-A2eYlbrwQ,vocadb_song_1268
+final_frozen,DECO*27,愛言葉,R Sound Design,3,False,False,0.2522043481693263,0.07102619197759694,R Sound Design 25.22% / 40mP 18.12% / DECO*27 11.95%,deco27,r_sound_design,youtube_I0eeS5wYGzI,vocadb_song_3019
+final_frozen,Kanaria,Dec.,Kanaria,1,True,True,0.9773366779946991,0.9708697085202133,Kanaria 97.73% / DECO*27 0.65% / Chinozo 0.56%,kanaria,kanaria,youtube_9xbT8OZcDJQ,vocadb_song_617368
+final_frozen,Kanaria,アイロニック,Kanaria,1,True,False,0.5823559216026111,0.5005308932807355,Kanaria 58.24% / すりぃ 8.18% / Ayase 7.29%,kanaria,kanaria,youtube_Xff61DKSZYQ,vocadb_song_372154
+final_frozen,Kanaria,エッサホイサ,じん,17,False,False,0.2008700108066541,0.005510348607720927,じん 20.09% / すりぃ 19.54% / sasakure.UK 10.76%,kanaria,jin,youtube_Wj4gT3fSf8U,vocadb_song_300436
+final_frozen,Kanaria,デーモンロード,Kanaria,1,True,True,0.972921660062785,0.9658155345465298,Kanaria 97.29% / ハチ 0.71% / ピノキオピー 0.48%,kanaria,kanaria,youtube_L5t_TkogtDM,vocadb_song_511528
+final_frozen,kemu,Buzzing,kemu,1,True,True,0.6667272208504912,0.5643798714577917,kemu 66.67% / MARETU 10.23% / n-buna 5.41%,kemu,kemu,youtube_B_3cT-2YDLU,vocadb_song_24304
+final_frozen,kemu,ラットホープ,r-906,2,False,False,0.4710372544834161,0.2361379255199675,r-906 47.10% / kemu 23.49% / とあ 14.61%,kemu,r_906,youtube_imFxSJdKlww,vocadb_song_760055
+final_frozen,kemu,十年越しのラストピース,cosMo@暴走P,2,False,False,0.28409946737938446,0.026730858635243993,cosMo@暴走P 28.41% / kemu 25.74% / じん 18.87%,kemu,cosmo,youtube_tvktnCgmGwU,vocadb_song_293738
+final_frozen,kemu,花呼ぶ声,kemu,1,True,False,0.37733163355279337,0.07211289202841586,kemu 37.73% / じん 30.52% / DECO*27 22.10%,kemu,kemu,youtube_cLt8P7lhbw8,vocadb_song_462054
+final_frozen,MARETU,うみたがり,MARETU,1,True,True,0.7670851278003001,0.6978117255567504,MARETU 76.71% / すりぃ 6.93% / Neru 6.09%,maretu,maretu,youtube_cqTgOnIMaJM,vocadb_song_86961
+final_frozen,MARETU,しう,MARETU,1,True,True,0.9945384603347465,0.9929470092741199,MARETU 99.45% / すりぃ 0.16% / じん 0.12%,maretu,maretu,youtube_LCOItseOsFE,vocadb_song_260455
+final_frozen,MARETU,ゴキブリの味,MARETU,1,True,True,0.9944545223442918,0.9933586051734324,MARETU 99.45% / sasakure.UK 0.11% / すりぃ 0.10%,maretu,maretu,youtube_Hmc41Zsb2Ns,vocadb_song_251219
+final_frozen,MARETU,ダーリン,MARETU,1,True,True,0.9587009548381765,0.9456639802080392,MARETU 95.87% / すりぃ 1.30% / じん 0.97%,maretu,maretu,youtube_YFg48Ai1SSo,vocadb_song_168886
+final_frozen,MIMI,だきしめるまで。,MIMI,1,True,True,0.7663856304291178,0.5527584170803266,MIMI 76.64% / とあ 21.36% / sasakure.UK 0.75%,mimi,mimi,youtube_yIo2ePCm4bY,vocadb_song_383427
+final_frozen,MIMI,はぐ,MIMI,1,True,True,0.9945993896295888,0.9925764080052607,MIMI 99.46% / すりぃ 0.20% / Ayase 0.17%,mimi,mimi,youtube_PAwZl3Up-hc,vocadb_song_549505
+final_frozen,MIMI,もーいいかい,MIMI,1,True,True,0.9710205108990004,0.9613087787486142,MIMI 97.10% / Ayase 0.97% / すりぃ 0.81%,mimi,mimi,youtube_exo3XdtPrgs,vocadb_song_371954
+final_frozen,MIMI,ヒミツ,MIMI,1,True,True,0.9918777950150499,0.9883313712025086,MIMI 99.19% / Ayase 0.35% / すりぃ 0.23%,mimi,mimi,youtube_1gSMjPLRJik,vocadb_song_419160
+final_frozen,Mitchie M,アイドルを咲かせ,Mitchie M,1,True,True,0.9974934930782725,0.9960720837635798,Mitchie M 99.75% / MARETU 0.14% / かいりきベア 0.06%,mitchie_m,mitchie_m,youtube_9bnFEb3qrT0,vocadb_song_18847
+final_frozen,Mitchie M,好き！雪！本気マジック,Mitchie M,1,True,True,0.9986860425320364,0.9984445558197237,Mitchie M 99.87% / 煮ル果実 0.02% / DECO*27 0.02%,mitchie_m,mitchie_m,youtube_79N1O0lF0GY,vocadb_song_47354
+final_frozen,Mitchie M,徳川カップヌードル禁止令,Mitchie M,1,True,True,0.9516207156753076,0.9436166231939471,Mitchie M 95.16% / ハチ 0.80% / かいりきベア 0.65%,mitchie_m,mitchie_m,youtube_jPXAgWkqbo4,vocadb_song_385757
+final_frozen,Mitchie M,愛Dee,Mitchie M,1,True,True,0.999900859004864,0.9998615819062616,Mitchie M 99.99% / MARETU 0.00% / DECO*27 0.00%,mitchie_m,mitchie_m,youtube_8I0H1dXQxEo,vocadb_song_13086
+final_frozen,n-buna,さよならワンダーノイズ,n-buna,1,True,True,0.8485346717181338,0.782966229576539,n-buna 84.85% / じん 6.56% / Neru 2.32%,n_buna,n_buna,youtube_Xy003ATZLsA,vocadb_song_31098
+final_frozen,n-buna,ただ君に晴れ,n-buna,1,True,False,0.3636648456456562,0.019238930637941354,n-buna 36.37% / Neru 34.44% / じん 14.26%,n_buna,n_buna,youtube_-VKIqrvVOpo,vocadb_song_469774
+final_frozen,n-buna,もうじき夏が終わるから,n-buna,1,True,False,0.4661573403328308,0.3584333173806622,n-buna 46.62% / Orangestar 10.77% / Neru 10.48%,n_buna,n_buna,youtube_PSQ_HrcTyMU,vocadb_song_87451
+final_frozen,n-buna,背景、夏に溺れる,n-buna,1,True,True,0.8758966788622863,0.8116434649942893,n-buna 87.59% / じん 6.43% / Neru 3.13%,n_buna,n_buna,youtube_K-7vpOHVZ2o,vocadb_song_37787
+final_frozen,Neru,FPS,Neru,1,True,True,0.8590427930286528,0.7899138558298805,Neru 85.90% / すりぃ 6.91% / じん 3.70%,neru,neru,youtube_IZARN0Zwerw,vocadb_song_98192
+final_frozen,Neru,い〜やい〜やい〜や,すりぃ,2,False,False,0.3040083127579381,0.055844810452487015,すりぃ 30.40% / Neru 24.82% / じん 14.90%,neru,surii,youtube_y8-6QPEes1k,vocadb_song_174236
+final_frozen,Neru,捨て子のステラ,Neru,1,True,True,0.9804183974648698,0.9746054923299775,Neru 98.04% / すりぃ 0.58% / てにをは 0.35%,neru,neru,youtube_SfqmgD5CDpA,vocadb_song_129064
+final_frozen,Neru,病名は愛だった,すりぃ,2,False,False,0.35632414443620025,0.01484481474226762,すりぃ 35.63% / Neru 34.15% / sasakure.UK 15.46%,neru,surii,youtube_2IH-toUoq3w,vocadb_song_164262
+final_frozen,Orangestar,Encounter,Orangestar,1,True,True,0.777745608973317,0.7274229960944901,Orangestar 77.77% / sasakure.UK 5.03% / はるまきごはん 3.64%,orangestar,orangestar,youtube_EUMn-kJbNc0,vocadb_song_586628
+final_frozen,Orangestar,濫觴生命,Orangestar,1,True,True,0.9944756730906663,0.9931577397735257,Orangestar 99.45% / すりぃ 0.13% / 40mP 0.09%,orangestar,orangestar,youtube_rc8vrHd0T_4,vocadb_song_99853
+final_frozen,Orangestar,雨き声残響,Orangestar,1,True,False,0.33725657867066566,0.13025263640058063,Orangestar 33.73% / じん 20.70% / すりぃ 16.34%,orangestar,orangestar,youtube_0KK5vQlCVYo,vocadb_song_68657
+final_frozen,Orangestar,霽れを待つ,Orangestar,1,True,True,0.8754854994702181,0.8483756709219802,Orangestar 87.55% / R Sound Design 2.71% / Neru 1.60%,orangestar,orangestar,youtube_wvlUWjqGQSA,vocadb_song_310792
+final_frozen,R Sound Design,Nightscape,R Sound Design,1,True,True,0.9937274615344746,0.9923715518440418,R Sound Design 99.37% / sasakure.UK 0.14% / なきそ 0.08%,r_sound_design,r_sound_design,youtube_iiJJ3LJEje8,vocadb_song_234919
+final_frozen,R Sound Design,マンダリン,すりぃ,24,False,False,0.19871230083561023,0.05242223281904321,すりぃ 19.87% / Chinozo 14.63% / ピノキオピー 14.56%,r_sound_design,surii,youtube_Yd9gTGencrI,vocadb_song_421399
+final_frozen,R Sound Design,夜と幽霊,R Sound Design,1,True,True,0.9809765246590914,0.9766181943750338,R Sound Design 98.10% / Neru 0.44% / すりぃ 0.41%,r_sound_design,r_sound_design,youtube_ObVrObZgII8,vocadb_song_340230
+final_frozen,R Sound Design,水星都市計画,R Sound Design,1,True,True,0.7725553229462163,0.7161349597927569,R Sound Design 77.26% / とあ 5.64% / sasakure.UK 5.17%,r_sound_design,r_sound_design,youtube_U6kg_01zArE,vocadb_song_290296
+final_frozen,r-906,スーパーノヴァ,Neru,15,False,False,0.5648481750894465,0.44294267954498573,Neru 56.48% / すりぃ 12.19% / じん 8.50%,r_906,neru,youtube_rrNgdb_NU_g,vocadb_song_438711
+final_frozen,r-906,ユメミ,r-906,1,True,False,0.601099233013735,0.4752334575616264,r-906 60.11% / すりぃ 12.59% / R Sound Design 8.51%,r_906,r_906,youtube_tZQVBPAiR5M,vocadb_song_772655
+final_frozen,r-906,怪電話,r-906,1,True,True,0.9872933358043157,0.9797527098362365,r-906 98.73% / cosMo@暴走P 0.75% / sasakure.UK 0.31%,r_906,r_906,youtube_zh7ihYKaqYs,vocadb_song_507630
+final_frozen,r-906,梅に鶯,r-906,1,True,True,0.6855015446199108,0.5261376195545172,r-906 68.55% / いよわ 15.94% / 稲葉曇 2.88%,r_906,r_906,youtube_AjspnMNkGu8,vocadb_song_581256
+final_frozen,sasakure.UK,Snow Song Show,sasakure.UK,1,True,False,0.5885487970778296,0.3896080293227253,sasakure.UK 58.85% / ハチ 19.89% / R Sound Design 12.64%,sasakure_uk,sasakure_uk,youtube_6YbqME4xI00,vocadb_song_18306
+final_frozen,sasakure.UK,タイガーランペイジ,sasakure.UK,1,True,True,0.9442830966672392,0.9224548266920354,sasakure.UK 94.43% / cosMo@暴走P 2.18% / r-906 0.76%,sasakure_uk,sasakure_uk,youtube_ZDUS04dtMu8,vocadb_song_6187
+final_frozen,sasakure.UK,ポジネガ＊ミステイカーズ,sasakure.UK,1,True,True,0.9992757129876195,0.9990478431098908,sasakure.UK 99.93% / cosMo@暴走P 0.02% / はるまきごはん 0.02%,sasakure_uk,sasakure_uk,youtube_Iq3EZtD0QDE,vocadb_song_503039
+final_frozen,sasakure.UK,化孵化,cosMo@暴走P,2,False,False,0.51597406728108,0.2823509556849936,cosMo@暴走P 51.60% / sasakure.UK 23.36% / いよわ 8.31%,sasakure_uk,cosmo,youtube_fOKe8zhTBDM,vocadb_song_335995
+final_frozen,syudou,へべれけジャンキー,syudou,1,True,True,0.9972286615190463,0.9962883201022773,syudou 99.72% / すりぃ 0.09% / てにをは 0.05%,syudou,syudou,youtube_2TIVqjfzwQA,vocadb_song_324798
+final_frozen,syudou,キャラバン,syudou,1,True,True,0.9998565720243175,0.9997751487367452,syudou 99.99% / すりぃ 0.01% / ピノキオピー 0.00%,syudou,syudou,youtube_QiR07U_xpYo,vocadb_song_201532
+final_frozen,syudou,ボニータ,syudou,1,True,True,0.999617176080608,0.9995421838277736,syudou 99.96% / かいりきベア 0.01% / wowaka 0.00%,syudou,syudou,youtube_olAK_zKB1c8,vocadb_song_248949
+final_frozen,syudou,爆笑,syudou,1,True,True,0.9906127022461404,0.9868740990682875,syudou 99.06% / ピノキオピー 0.37% / はるまきごはん 0.12%,syudou,syudou,youtube_uYE-Y5Z7JC0,vocadb_song_336190
+final_frozen,wowaka,テノヒラ,wowaka,1,True,True,0.8887596284479949,0.8311545110654137,wowaka 88.88% / すりぃ 5.76% / 40mP 1.41%,wowaka,wowaka,youtube_sVRGyUnOWtY,vocadb_song_1505
+final_frozen,wowaka,ラインアート,wowaka,1,True,True,0.9992479386213027,0.9989248538957187,wowaka 99.92% / kemu 0.03% / cosMo@暴走P 0.02%,wowaka,wowaka,youtube_DXcY0HUURKw,vocadb_song_1507
+final_frozen,wowaka,リバシブルドール,wowaka,1,True,True,0.7962337226364052,0.7321808369606132,wowaka 79.62% / かいりきベア 6.41% / DECO*27 3.10%,wowaka,wowaka,youtube_iD88EdQSkyI,vocadb_song_359171
+final_frozen,wowaka,白塔,とあ,15,False,False,0.49112268189111263,0.17970856110517852,とあ 49.11% / r-906 31.14% / なきそ 9.78%,wowaka,toa,youtube_1OV0kB9KBA8,vocadb_song_5273
+final_frozen,いよわ,あだぽしゃ,いよわ,1,True,True,0.9994550916084884,0.9992172533106691,いよわ 99.95% / はるまきごはん 0.02% / cosMo@暴走P 0.01%,iyowa,iyowa,youtube_Wr-2xcQkke4,vocadb_song_340159
+final_frozen,いよわ,パジャミィ,いよわ,1,True,True,0.9377912344308243,0.9149481318783905,いよわ 93.78% / じん 2.28% / DECO*27 1.54%,iyowa,iyowa,youtube_aBZqxfnvaVA,vocadb_song_395172
+final_frozen,いよわ,大女優さん,いよわ,1,True,True,0.9369685337664785,0.9201322727072981,いよわ 93.70% / sasakure.UK 1.68% / cosMo@暴走P 1.58%,iyowa,iyowa,youtube_wdNjJ3eh8EQ,vocadb_song_480032
+final_frozen,いよわ,黄金数,いよわ,1,True,True,0.9946838423052967,0.9923033097209372,いよわ 99.47% / sasakure.UK 0.24% / cosMo@暴走P 0.15%,iyowa,iyowa,youtube__YpcTBm15QU,vocadb_song_288898
+final_frozen,かいりきベア,セイデンキニンゲン,かいりきベア,1,True,False,0.6202821144242453,0.2977382875624526,かいりきベア 62.03% / n-buna 32.25% / じん 1.82%,kairikibear,kairikibear,youtube_FNCJT-2rRAI,vocadb_song_85162
+final_frozen,かいりきベア,ネロイズム,かいりきベア,1,True,True,0.9888919110048601,0.9849754744310405,かいりきベア 98.89% / Neru 0.39% / Mitchie M 0.24%,kairikibear,kairikibear,youtube_G9LXGvr7Nyc,vocadb_song_294035
+final_frozen,かいりきベア,マネマネサイコトロピック,かいりきベア,1,True,False,0.24287821920906433,0.06414146311357646,かいりきベア 24.29% / DECO*27 17.87% / 40mP 15.33%,kairikibear,kairikibear,youtube_2NkN_QpmnFM,vocadb_song_37948
+final_frozen,かいりきベア,病み垢ステロイド,かいりきベア,1,True,True,0.9769561399226524,0.969899466346354,かいりきベア 97.70% / すりぃ 0.71% / DECO*27 0.36%,kairikibear,kairikibear,youtube_-Yx3LcfBbHs,vocadb_song_581987
+final_frozen,じん,アヤノの幸福理論,じん,1,True,False,0.5542180817449951,0.3823030671046185,じん 55.42% / すりぃ 17.19% / 40mP 16.80%,jin,jin,youtube_pLYKKC-EpjA,vocadb_song_25899
+final_frozen,じん,オツキミリサイタル,じん,1,True,True,0.9229590815983848,0.8890938645967142,じん 92.30% / Neru 3.39% / すりぃ 2.74%,jin,jin,youtube_gRNO6QY-GwM,vocadb_song_25901
+final_frozen,じん,ロスタイムメモリー,じん,1,True,True,0.9936445741224853,0.9904686821654036,じん 99.36% / Neru 0.32% / すりぃ 0.16%,jin,jin,youtube_uhkcKvcSpkI,vocadb_song_25896
+final_frozen,じん,日本橋高架下R計画,じん,1,True,False,0.4398279925902528,0.22439022283992094,じん 43.98% / Neru 21.54% / Chinozo 10.07%,jin,jin,youtube_EqogKMxhpT4,vocadb_song_10839
+final_frozen,すりぃ,めめしぃ,とあ,4,False,True,0.8665000933225488,0.7935560032825659,とあ 86.65% / 40mP 7.29% / てにをは 2.26%,surii,toa,youtube_mkP5Myd-YZU,vocadb_song_322144
+final_frozen,すりぃ,アンビバレンス,すりぃ,1,True,False,0.5800849311749668,0.36522137713700786,すりぃ 58.01% / DECO*27 21.49% / じん 8.12%,surii,surii,youtube_NXpbQldKKxA,vocadb_song_339906
+final_frozen,すりぃ,モーニングループ,すりぃ,1,True,False,0.2776941193266401,0.010103625199237187,すりぃ 27.77% / とあ 26.76% / じん 13.18%,surii,surii,youtube_e5pIA1FJ270,vocadb_song_280525
+final_frozen,すりぃ,空中分解,じん,2,False,False,0.41189025082645564,0.08464529396560616,じん 41.19% / すりぃ 32.72% / DECO*27 15.50%,surii,jin,youtube_RCySAU30PTQ,vocadb_song_185731
+final_frozen,てにをは,BO-ZU,じん,12,False,False,0.2698671968715225,0.1343085463652615,じん 26.99% / r-906 13.56% / sasakure.UK 8.63%,teniwoha,jin,youtube_WOnQHrpqKYE,vocadb_song_235566
+final_frozen,てにをは,オノマトペ天使,じん,2,False,False,0.3645100451501275,0.12142841164149745,じん 36.45% / てにをは 24.31% / 煮ル果実 6.41%,teniwoha,jin,youtube_jsUyP22q-SU,vocadb_song_923249
+final_frozen,てにをは,クーロンズ・ホテル,てにをは,1,True,False,0.323472544862831,0.13879776606592148,てにをは 32.35% / cosMo@暴走P 18.47% / はるまきごはん 9.32%,teniwoha,teniwoha,youtube_Fs-SckNJ3EI,vocadb_song_218813
+final_frozen,てにをは,トレンドキラー,てにをは,1,True,True,0.9603648486866545,0.9508691034596312,てにをは 96.04% / DECO*27 0.95% / Chinozo 0.82%,teniwoha,teniwoha,youtube_GbYL3MXpQXA,vocadb_song_470760
+final_frozen,とあ,M,とあ,1,True,False,0.31039006196520186,0.06856869212244379,とあ 31.04% / cosMo@暴走P 24.18% / Ayase 14.40%,toa,toa,youtube_646fO1gD3Vs,vocadb_song_98493
+final_frozen,とあ,ドライドライフラワー,とあ,1,True,True,0.9944762068545944,0.9931477719473338,とあ 99.45% / すりぃ 0.13% / てにをは 0.08%,toa,toa,youtube_qSYgzSDgewU,vocadb_song_182617
+final_frozen,とあ,ユメハミ,とあ,1,True,True,0.9166255560072819,0.8716295270891743,とあ 91.66% / MIMI 4.50% / すりぃ 1.76%,toa,toa,youtube_mEnkAnlq1Do,vocadb_song_436039
+final_frozen,とあ,恋の才能,とあ,1,True,True,0.9557983747577649,0.9443295764464555,とあ 95.58% / じん 1.15% / なきそ 0.96%,toa,toa,youtube_wLJc5rTk16A,vocadb_song_75280
+final_frozen,なきそ,シロガラス,なきそ,1,True,False,0.4393507193182144,0.13935858722178152,なきそ 43.94% / はるまきごはん 30.00% / cosMo@暴走P 8.88%,nakiso,nakiso,youtube_7oa8E-IcdSY,vocadb_song_329526
+final_frozen,なきそ,少女失格,じん,10,False,False,0.43090190607351464,0.26513345804714533,じん 43.09% / cosMo@暴走P 16.58% / はるまきごはん 14.69%,nakiso,jin,youtube_Ny6Y0KrGCCE,vocadb_song_221320
+final_frozen,なきそ,甘ったる  ,なきそ,1,True,True,0.9989666183116801,0.9986877521005038,なきそ 99.90% / てにをは 0.03% / じん 0.02%,nakiso,nakiso,youtube_4v3x9zFRy-A,vocadb_song_434567
+final_frozen,なきそ,花めかない,とあ,2,False,False,0.25717565172279155,0.01802213951344464,とあ 25.72% / なきそ 23.92% / sasakure.UK 13.89%,nakiso,toa,youtube_tZvn-cdHgnc,vocadb_song_275892
+final_frozen,はるまきごはん,ぽかぽかの星,Neru,2,False,False,0.3659341963321892,0.001757778249475872,Neru 36.59% / はるまきごはん 36.42% / すりぃ 11.42%,harumaki_gohan,neru,youtube_LxC0kD-GuBQ,vocadb_song_261660
+final_frozen,はるまきごはん,セブンティーナ,sasakure.UK,2,False,True,0.8110182143000046,0.6979640056407599,sasakure.UK 81.10% / はるまきごはん 11.31% / cosMo@暴走P 2.48%,harumaki_gohan,sasakure_uk,youtube_uSX7jj4-NNE,vocadb_song_211061
+final_frozen,はるまきごはん,再会,はるまきごはん,1,True,True,0.9878142121077952,0.9848963806663936,はるまきごはん 98.78% / sasakure.UK 0.29% / すりぃ 0.24%,harumaki_gohan,harumaki_gohan,youtube_giyeR4c1W1A,vocadb_song_243895
+final_frozen,はるまきごはん,銀河録,じん,2,False,False,0.5710028318240968,0.36111862763351976,じん 57.10% / はるまきごはん 20.99% / 40mP 6.00%,harumaki_gohan,jin,youtube_-l551HSZJzk,vocadb_song_111806
+final_frozen,ナユタン星人,アンドロメダアンドロメダ,ナユタン星人,1,True,True,0.9858894918625707,0.9809268804892253,ナユタン星人 98.59% / かいりきベア 0.50% / MARETU 0.16%,nayutan,nayutan,youtube_ziubPl820DA,vocadb_song_90781
+final_frozen,ナユタン星人,ハウトゥワープ,ナユタン星人,1,True,True,0.9992071378729246,0.9988270015772938,ナユタン星人 99.92% / かいりきベア 0.04% / DECO*27 0.01%,nayutan,nayutan,youtube_vQSFmQBtlRY,vocadb_song_100165
+final_frozen,ナユタン星人,パーフェクト生命,ナユタン星人,1,True,True,0.9994441744762549,0.9993504941854398,ナユタン星人 99.94% / Neru 0.01% / じん 0.01%,nayutan,nayutan,youtube_ou-ZYF0WO20,vocadb_song_102259
+final_frozen,ナユタン星人,飛行少女,ナユタン星人,1,True,True,0.99950064163735,0.9991868013510762,ナユタン星人 99.95% / かいりきベア 0.03% / DECO*27 0.00%,nayutan,nayutan,youtube_JGRgYC1p8qk,vocadb_song_105164
+final_frozen,ハチ,リンネ,ハチ,1,True,True,0.874004957072204,0.8554075799814804,ハチ 87.40% / じん 1.86% / cosMo@暴走P 1.81%,hachi,hachi,youtube_tTksX77aUCM,vocadb_song_2980
+final_frozen,ハチ,恋人のランジェ ,ハチ,1,True,True,0.9867632297691794,0.982434727117845,ハチ 98.68% / 40mP 0.43% / てにをは 0.21%,hachi,hachi,youtube_RhxFdo6v--Y,vocadb_song_1579
+final_frozen,ハチ,演劇テレプシコーラ,ハチ,1,True,True,0.999319335960528,0.9991284809893302,ハチ 99.93% / cosMo@暴走P 0.02% / じん 0.01%,hachi,hachi,youtube_Ui3XvwatnsU,vocadb_song_2979
+final_frozen,ハチ,白痴,ハチ,1,True,True,0.9450079215532087,0.9285041898230029,ハチ 94.50% / sasakure.UK 1.65% / 煮ル果実 1.58%,hachi,hachi,youtube_CvOFy9qlwKI,vocadb_song_2987
+final_frozen,ピノキオピー,ありふれたせかいせいふく,ピノキオピー,1,True,False,0.48961115948674544,0.19630423724640178,ピノキオピー 48.96% / はるまきごはん 29.33% / DECO*27 9.10%,pinocchiop,pinocchiop,youtube_8Z3TbMBfDM0,vocadb_song_13351
+final_frozen,ピノキオピー,きみも悪い人でよかった,ピノキオピー,1,True,True,0.6399186768297547,0.5214219163374706,ピノキオピー 63.99% / すりぃ 11.85% / cosMo@暴走P 4.56%,pinocchiop,pinocchiop,youtube_PLevj9bdRRA,vocadb_song_132923
+final_frozen,ピノキオピー,すきなことだけでいいです,cosMo@暴走P,2,False,False,0.4283658085756054,0.2951176212650267,cosMo@暴走P 42.84% / ピノキオピー 13.32% / sasakure.UK 8.20%,pinocchiop,cosmo,youtube_mYHJPb9PuUM,vocadb_song_124436
+final_frozen,ピノキオピー,ぼくらはみんな意味不明,DECO*27,2,False,False,0.25698160661839664,0.04737133397823062,DECO*27 25.70% / ピノキオピー 20.96% / すりぃ 14.52%,pinocchiop,deco27,youtube_LtSNzPyo0lA,vocadb_song_153133
+final_frozen,煮ル果実,アイアルの勘違い,煮ル果実,1,True,True,0.9268946785964467,0.9028770714820256,煮ル果実 92.69% / Chinozo 2.40% / すりぃ 1.56%,niru_kajitsu,niru_kajitsu,youtube_sAHYQ8TrCWQ,vocadb_song_200988
+final_frozen,煮ル果実,ドクトリーヌ,煮ル果実,1,True,True,0.8628948848350831,0.8121934377884488,煮ル果実 86.29% / Chinozo 5.07% / R Sound Design 4.31%,niru_kajitsu,niru_kajitsu,youtube_RawnaIb9Pvc,vocadb_song_314994
+final_frozen,煮ル果実,ハングリーニコル,煮ル果実,1,True,True,0.8075408567522467,0.7239487221682761,煮ル果実 80.75% / じん 8.36% / Chinozo 7.70%,niru_kajitsu,niru_kajitsu,youtube_N4MEB95GRe0,vocadb_song_196112
+final_frozen,煮ル果実,命辛辛,煮ル果実,1,True,True,0.9261130257695486,0.8934837030755637,煮ル果実 92.61% / てにをは 3.26% / Chinozo 1.72%,niru_kajitsu,niru_kajitsu,youtube_QTxvUA4l0Vs,vocadb_song_474400
+final_frozen,稲葉曇,ひみつの小学生,稲葉曇,1,True,True,0.9998322588675668,0.9997691238289819,稲葉曇 99.98% / かいりきベア 0.01% / じん 0.00%,inabakumori,inabakumori,youtube_wdUCRDvFv3Q,vocadb_song_263129
+final_frozen,稲葉曇,アンチサイクロン,稲葉曇,1,True,True,0.9993661286964332,0.9991655758324411,稲葉曇 99.94% / じん 0.02% / かいりきベア 0.01%,inabakumori,inabakumori,youtube_2_93SNGYgYs,vocadb_song_258419
+final_frozen,稲葉曇,フロートプレイ,稲葉曇,1,True,True,0.9992837340492093,0.9989842027954984,稲葉曇 99.93% / r-906 0.03% / n-buna 0.01%,inabakumori,inabakumori,youtube_NRQRC_0ZQ00,vocadb_song_467612
+final_frozen,稲葉曇,電気予報,稲葉曇,1,True,True,0.8596298127551164,0.8146370135810206,稲葉曇 85.96% / じん 4.50% / cosMo@暴走P 1.90%,inabakumori,inabakumori,youtube_Imcr7rsBxsc,vocadb_song_534385
+dev_holdout,40mP,Color of Drops,40mP,1,True,False,0.615252658642884,0.4893303314548112,40mP 61.53% / じん 12.59% / とあ 12.57%,40mp,40mp,youtube_i5rl-NGSYoo,vocadb_song_313451
+dev_holdout,40mP,Snow Fairy Story,40mP,1,True,True,0.8444370644920889,0.7682835544197522,40mP 84.44% / すりぃ 7.62% / Neru 2.29%,40mp,40mp,youtube__of2sKbRUko,vocadb_song_79094
+dev_holdout,Ayase,HERO,Ayase,1,True,True,0.8483675102751822,0.7385049383534804,Ayase 84.84% / kemu 10.99% / はるまきごはん 1.24%,ayase,ayase,youtube_o4AxMk3SGUY,vocadb_song_501613
+dev_holdout,Ayase,アイドル,DECO*27,17,False,True,0.8310043421572392,0.7627087581691632,DECO*27 83.10% / じん 6.83% / すりぃ 4.61%,ayase,deco27,youtube_ZRtdQ81jPUQ,vocadb_song_492341
+dev_holdout,Chinozo,タクシィ,Chinozo,1,True,True,0.9849673865364744,0.9785999785614953,Chinozo 98.50% / てにをは 0.64% / MIMI 0.38%,chinozo,chinozo,youtube_l2JKO8sPPsU,vocadb_song_588190
+dev_holdout,Chinozo,武装乙女,Chinozo,1,True,True,0.9045719598993389,0.8535074910852269,Chinozo 90.46% / Kanaria 5.11% / すりぃ 2.43%,chinozo,chinozo,youtube_00aZ4S_l7-0,vocadb_song_793090
+dev_holdout,cosMo@暴走P,ギザバ怪文書,cosMo@暴走P,1,True,True,0.9592312624021802,0.9424630830467212,cosMo@暴走P 95.92% / sasakure.UK 1.68% / はるまきごはん 0.67%,cosmo,cosmo,youtube_rf-hjy8W2OI,vocadb_song_479553
+dev_holdout,cosMo@暴走P,ダイジョブですか？,cosMo@暴走P,1,True,True,0.950445350013214,0.9213608340350276,cosMo@暴走P 95.04% / DECO*27 2.91% / sasakure.UK 0.88%,cosmo,cosmo,youtube_2AD1jTs516E,vocadb_song_533777
+dev_holdout,DECO*27,モザイクロール,DECO*27,1,True,False,0.20688913526700478,0.04617918905529014,DECO*27 20.69% / Orangestar 16.07% / Ayase 11.43%,deco27,deco27,youtube_DnLFVUi3oOU,vocadb_song_1381
+dev_holdout,DECO*27,二息歩行,sasakure.UK,2,False,False,0.22631621731602802,0.05053985074998346,sasakure.UK 22.63% / DECO*27 17.58% / じん 11.08%,deco27,sasakure_uk,youtube_O4ygRYdrwWk,vocadb_song_5859
+dev_holdout,Kanaria,チャンピオン,cosMo@暴走P,7,False,False,0.21023263609889045,0.05136037011993261,cosMo@暴走P 21.02% / DECO*27 15.89% / すりぃ 13.26%,kanaria,cosmo,youtube_VxjledMkwyk,vocadb_song_650687
+dev_holdout,Kanaria,百鬼祭,Kanaria,1,True,False,0.5922201903975942,0.44253477907097816,Kanaria 59.22% / はるまきごはん 14.97% / ハチ 8.17%,kanaria,kanaria,youtube_Fk4FLklyPWk,vocadb_song_281763
+dev_holdout,kemu,88☆彡,DECO*27,8,False,False,0.47933284670612414,0.2420777311635027,DECO*27 47.93% / すりぃ 23.73% / はるまきごはん 7.83%,kemu,deco27,youtube_505rBX9MNcQ,vocadb_song_400359
+dev_holdout,kemu,セカイ,40mP,20,False,False,0.34642827190104336,0.02460677527598898,40mP 34.64% / DECO*27 32.18% / じん 17.56%,kemu,40mp,youtube_9vyIPWBeRes,vocadb_song_290231
+dev_holdout,MARETU,スヂ,MARETU,1,True,True,0.9787609921453914,0.9725979028527936,MARETU 97.88% / DECO*27 0.62% / すりぃ 0.55%,maretu,maretu,youtube_f0Y8Mo7nhC8,vocadb_song_108829
+dev_holdout,MARETU,少女ケシゴム,MARETU,1,True,True,0.8824363244551415,0.8244168883905227,MARETU 88.24% / かいりきベア 5.80% / じん 1.91%,maretu,maretu,youtube_5LTGP9HmGrg,vocadb_song_45753
+dev_holdout,MIMI,Pale,MIMI,1,True,True,0.984176491174034,0.9800382210950767,MIMI 98.42% / Ayase 0.41% / すりぃ 0.41%,mimi,mimi,youtube_06YWg6Y1kxo,vocadb_song_306258
+dev_holdout,MIMI,カラバコにアイ,MIMI,1,True,False,0.4092023588644897,0.16818429813190283,MIMI 40.92% / Ayase 24.10% / すりぃ 18.93%,mimi,mimi,youtube_89p7DWIqOu8,vocadb_song_274835
+dev_holdout,Mitchie M,イージーデンス,Mitchie M,1,True,True,0.962042779062209,0.9513364020706175,Mitchie M 96.20% / 煮ル果実 1.07% / R Sound Design 1.02%,mitchie_m,mitchie_m,youtube_gU_LDY91_sE,vocadb_song_8623
+dev_holdout,Mitchie M,ワーワーワールド,Mitchie M,1,True,True,0.9639615086171268,0.9505554412673163,Mitchie M 96.40% / 煮ル果実 1.34% / DECO*27 0.94%,mitchie_m,mitchie_m,youtube_okJ9Vk6owG8,vocadb_song_290577
+dev_holdout,n-buna,劇場愛歌,n-buna,1,True,True,0.8295110633742282,0.7179362372235859,n-buna 82.95% / Neru 11.16% / じん 4.80%,n_buna,n_buna,youtube_YDPcIYNxu5s,vocadb_song_54308
+dev_holdout,n-buna,言って。,じん,2,False,True,0.6313470117178822,0.42912656259724485,じん 63.13% / n-buna 20.22% / Neru 9.06%,n_buna,jin,youtube_F64yFFnZfkI,vocadb_song_331812
+dev_holdout,Neru,命のユースティティア,Neru,1,True,False,0.5654711664707245,0.37312958923482975,Neru 56.55% / すりぃ 19.23% / kemu 7.72%,neru,neru,youtube_4lJ1zps776k,vocadb_song_40555
+dev_holdout,Neru,少年少女カメレオンシンプトム,Neru,1,True,True,0.9891687387089348,0.9835523461604897,Neru 98.92% / じん 0.56% / kemu 0.22%,neru,neru,youtube_HvFsRQ2X9-4,vocadb_song_11561
+dev_holdout,Orangestar,イヤホンと蝉時雨,Orangestar,1,True,True,0.9969719383196723,0.9965188707177224,Orangestar 99.70% / cosMo@暴走P 0.05% / ハチ 0.04%,orangestar,orangestar,youtube_UBqPPkB_Ybc,vocadb_song_60924
+dev_holdout,Orangestar,スターナイトスノウ,n-buna,5,False,False,0.586661588141478,0.33475148402497473,n-buna 58.67% / Neru 25.19% / すりぃ 6.61%,orangestar,n_buna,youtube_ZuT3xYLW7vA,vocadb_song_143132
+dev_holdout,R Sound Design,EDIBLE,R Sound Design,1,True,True,0.6927257060989233,0.5411410075872651,R Sound Design 69.27% / じん 15.16% / すりぃ 6.58%,r_sound_design,r_sound_design,youtube_oLKHaqImjVQ,vocadb_song_243541
+dev_holdout,R Sound Design,レテノール,R Sound Design,1,True,True,0.9966643258426617,0.9956559664741049,R Sound Design 99.67% / cosMo@暴走P 0.10% / はるまきごはん 0.10%,r_sound_design,r_sound_design,youtube_GOkdbXhdJjk,vocadb_song_228789
+dev_holdout,r-906,Catchy !?,r-906,1,True,False,0.4763486092780292,0.3246004246006885,r-906 47.63% / てにをは 15.17% / じん 10.84%,r_906,r_906,youtube_QWFw2ueFdnQ,vocadb_song_484025
+dev_holdout,r-906,JUMPIN’ OVER !,r-906,1,True,True,0.8882804095947293,0.8624185857456792,r-906 88.83% / DECO*27 2.59% / じん 1.67%,r_906,r_906,youtube_P2KRg60WPvE,vocadb_song_592237
+dev_holdout,sasakure.UK,アフターエポックス,sasakure.UK,1,True,True,0.841131540119858,0.7976457852559782,sasakure.UK 84.11% / はるまきごはん 4.35% / Kanaria 4.02%,sasakure_uk,sasakure_uk,youtube_pykE4kMhUUU,vocadb_song_625986
+dev_holdout,sasakure.UK,ツギハギエデン,sasakure.UK,1,True,True,0.9669467732033548,0.9536962487743709,sasakure.UK 96.69% / R Sound Design 1.33% / 煮ル果実 0.73%,sasakure_uk,sasakure_uk,youtube_5dE7uwPy0qM,vocadb_song_26612
+dev_holdout,syudou,うっせぇわ,すりぃ,5,False,True,0.8702748876500269,0.8487784175622061,すりぃ 87.03% / てにをは 2.15% / Chinozo 1.78%,syudou,surii,youtube_Qp3b-RXtz4w,vocadb_song_366767
+dev_holdout,syudou,アメイジングハッピーハロウィンナイト,syudou,1,True,False,0.5577618666459015,0.37032068269518936,syudou 55.78% / すりぃ 18.74% / MARETU 5.88%,syudou,syudou,youtube_CeqLqlr5ba4,vocadb_song_676307
+dev_holdout,wowaka,and I'm home,とあ,29,False,False,0.3303786982574743,0.12787977035173176,とあ 33.04% / じん 20.25% / すりぃ 11.50%,wowaka,toa,youtube_GIlMPJNk-pU,vocadb_song_421046
+dev_holdout,wowaka,少女について,wowaka,1,True,False,0.4013638283173571,0.19086672064420343,wowaka 40.14% / てにをは 21.05% / 煮ル果実 15.02%,wowaka,wowaka,youtube_QLEBt6WqOaI,vocadb_song_5276
+dev_holdout,いよわ,たぶん終わり,いよわ,1,True,True,0.9702160388369214,0.9575062078220298,いよわ 97.02% / Ayase 1.27% / r-906 0.62%,iyowa,iyowa,youtube_GiDo4s1x9Mw,vocadb_song_324307
+dev_holdout,いよわ,オーバー！,いよわ,1,True,True,0.9299951523756852,0.892001266620693,いよわ 93.00% / cosMo@暴走P 3.80% / じん 0.79%,iyowa,iyowa,youtube__ZKSftirY3A,vocadb_song_315318
+dev_holdout,かいりきベア,アイ情劣等生,かいりきベア,1,True,True,0.9004193208079775,0.8545124821279283,かいりきベア 90.04% / じん 4.59% / Neru 2.15%,kairikibear,kairikibear,youtube_eEuIHatfgkE,vocadb_song_286106
+dev_holdout,かいりきベア,アナタサマ,かいりきベア,1,True,True,0.9734702204889081,0.9646502216905597,かいりきベア 97.35% / すりぃ 0.88% / Chinozo 0.78%,kairikibear,kairikibear,youtube_mSBZ19bc-sE,vocadb_song_402883
+dev_holdout,じん,コノハの世界事情,じん,1,True,True,0.9614248199131928,0.9377672604860897,じん 96.14% / cosMo@暴走P 2.37% / Neru 0.61%,jin,jin,youtube_8rqCABzT9Q8,vocadb_song_10614
+dev_holdout,じん,夕景イエスタデイ,じん,1,True,True,0.7866244241994652,0.710119812932951,じん 78.66% / Neru 7.65% / てにをは 3.66%,jin,jin,youtube_YgnuJLo9S-Y,vocadb_song_25898
+dev_holdout,すりぃ,ノルア・ドルア・エー,すりぃ,1,True,True,0.6946835778210689,0.5260866463213218,すりぃ 69.47% / じん 16.86% / DECO*27 2.07%,surii,surii,youtube_eNiDOE3Nf0g,vocadb_song_217903
+dev_holdout,すりぃ,メンヘラ取扱説明書,kemu,7,False,True,0.678884402313913,0.564682316614702,kemu 67.89% / DECO*27 11.42% / じん 8.42%,surii,kemu,youtube_6dc4RUsKMXI,vocadb_song_214181
+dev_holdout,てにをは,ギラギラ,てにをは,1,True,False,0.37391182434889786,0.15038250139939321,てにをは 37.39% / すりぃ 22.35% / R Sound Design 11.09%,teniwoha,teniwoha,youtube_sOiMD45QGLs,vocadb_song_361940
+dev_holdout,てにをは,名探偵連続殺人事件,煮ル果実,7,False,False,0.22284169123920186,0.06948744483161687,煮ル果実 22.28% / DECO*27 15.34% / すりぃ 12.00%,teniwoha,niru_kajitsu,youtube_j3y7bJxOUZQ,vocadb_song_130025
+dev_holdout,とあ,さよならスーヴェニア,とあ,1,True,True,0.9683418888247143,0.9542499420232683,とあ 96.83% / すりぃ 1.41% / じん 0.43%,toa,toa,youtube_wapEYJo5QXE,vocadb_song_110348
+dev_holdout,とあ,アイシテ,とあ,1,True,False,0.501435232475327,0.41915039446429936,とあ 50.14% / すりぃ 8.23% / ハチ 8.07%,toa,toa,youtube_IlQrRI_Kkw4,vocadb_song_106968
+dev_holdout,なきそ,今は限り,なきそ,1,True,True,0.9991132705501405,0.9982891407368585,なきそ 99.91% / r-906 0.08% / kemu 0.00%,nakiso,nakiso,youtube_Difu9Qqs-bU,vocadb_song_322504
+dev_holdout,なきそ,惡ふざけ,cosMo@暴走P,2,False,False,0.3242061967796416,0.17868982576567316,cosMo@暴走P 32.42% / なきそ 14.55% / じん 14.01%,nakiso,cosmo,youtube_weDV0xMNXmw,vocadb_song_289278
+dev_holdout,はるまきごはん,ディナーベル,はるまきごはん,1,True,True,0.8915497159824721,0.8503417505446752,はるまきごはん 89.15% / MIMI 4.12% / Ayase 1.35%,harumaki_gohan,harumaki_gohan,youtube_162OOsh9PpQ,vocadb_song_488193
+dev_holdout,はるまきごはん,蛍はいなかった,はるまきごはん,1,True,True,0.8991366315486448,0.8787065818357226,はるまきごはん 89.91% / すりぃ 2.04% / じん 1.98%,harumaki_gohan,harumaki_gohan,youtube_gUGmed-NOow,vocadb_song_377323
+dev_holdout,ナユタン星人,オペラ！スペースオペラ！ ,cosMo@暴走P,28,False,True,0.6763287322121213,0.5534681375602379,cosMo@暴走P 67.63% / じん 12.29% / DECO*27 11.22%,nayutan,cosmo,youtube_rmRHecZZGvs,vocadb_song_634592
+dev_holdout,ナユタン星人,モア！ジャンプ！モア！,すりぃ,12,False,False,0.3271518448513888,0.1000948833144355,すりぃ 32.72% / Neru 22.71% / n-buna 19.20%,nayutan,surii,youtube_SKbutknpQ_I,vocadb_song_303273
+dev_holdout,ハチ,clock lock works,ハチ,1,True,True,0.9986350550985585,0.998290449819113,ハチ 99.86% / とあ 0.03% / sasakure.UK 0.03%,hachi,hachi,youtube_Vg3eyKgfYFw,vocadb_song_3719
+dev_holdout,ハチ,KICK BACK,じん,12,False,True,0.6777742804187233,0.550787892429452,じん 67.78% / すりぃ 12.70% / DECO*27 12.38%,hachi,jin,youtube_M2cckDmNLMI,vocadb_song_454815
+dev_holdout,ピノキオピー,アップルドットコム,ピノキオピー,1,True,True,0.8102345438068438,0.7189774572883192,ピノキオピー 81.02% / すりぃ 9.13% / Chinozo 3.67%,pinocchiop,pinocchiop,youtube_h1pSSrmdEtw,vocadb_song_160589
+dev_holdout,ピノキオピー,魔法少女とチョコレゐト,ピノキオピー,1,True,True,0.9978509687039714,0.9971297433772233,ピノキオピー 99.79% / Chinozo 0.07% / DECO*27 0.05%,pinocchiop,pinocchiop,youtube_T2kS1gAbxhc,vocadb_song_387848
+dev_holdout,煮ル果実,イヱスマン,煮ル果実,1,True,True,0.8388836203521122,0.7511436938245064,煮ル果実 83.89% / じん 8.77% / いよわ 2.14%,niru_kajitsu,niru_kajitsu,youtube_iZ6lpTC16_Q,vocadb_song_285860
+dev_holdout,煮ル果実,ヘイヴン,煮ル果実,1,True,True,0.9209740407703739,0.8843914443404398,煮ル果実 92.10% / てにをは 3.66% / DECO*27 1.48%,niru_kajitsu,niru_kajitsu,youtube_MJa46AEGMb4,vocadb_song_737695
+dev_holdout,稲葉曇,パスカルビーツ,稲葉曇,1,True,True,0.9672955347841876,0.9423749578838208,稲葉曇 96.73% / かいりきベア 2.49% / てにをは 0.18%,inabakumori,inabakumori,youtube_M8ZGGCqJduU,vocadb_song_132784
+dev_holdout,稲葉曇,ループスピナ,稲葉曇,1,True,True,0.6462609105579239,0.4013783997423387,稲葉曇 64.63% / かいりきベア 24.49% / n-buna 3.54%,inabakumori,inabakumori,youtube_ffGcA4Kj-rk,vocadb_song_124517

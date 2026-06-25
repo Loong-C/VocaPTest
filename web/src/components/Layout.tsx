@@ -1,6 +1,8 @@
 ﻿import { NavLink, Outlet } from "react-router-dom";
-import { Music, Users, Info } from "lucide-react";
+import { Github, Music, Users } from "lucide-react";
 import FloatingNotes from "./FloatingNotes";
+
+const REPOSITORY_URL = "https://github.com/Loong-C/VocaPTest";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -51,40 +53,39 @@ function Layout({ children }: { children: React.ReactNode }) {
               <span className="hidden sm:inline">P 主</span>
             </NavLink>
 
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium
-                 transition-all duration-200 no-underline
-                 ${isActive
-                   ? "bg-mint/30 text-teal-600"
-                   : "text-text-light hover:text-text hover:bg-mint/20"}`
-              }
+            <a
+              href={REPOSITORY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub repository"
+              title="GitHub"
+              className="flex items-center justify-center w-9 h-9 rounded-full
+                         text-text-light hover:text-text hover:bg-mint/20
+                         transition-all duration-200 no-underline"
             >
-              <Info size={16} />
-              <span className="hidden sm:inline">关于</span>
-            </NavLink>
+              <Github size={17} />
+            </a>
           </nav>
         </div>
       </header>
 
       {/* Main content */}
-      <main className="flex-1">
+      <main className="relative z-10 flex-1">
         {children}
         {/* Outlet for nested routes (not currently used, but future-proof) */}
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="py-6 text-center text-text-muted text-xs border-t border-pink-light/15">
+      <footer className="relative z-10 py-6 text-center text-text-muted text-xs
+                         border-t border-pink-light/15 bg-cream/80 backdrop-blur-sm">
         <p>
-          🎀 VocaP Test — 娱乐向 Vocaloid Producer 风格匹配 &nbsp;|&nbsp;
-          仅供娱乐，不声称模型能真正识别作曲家风格
+          仅供娱乐，不代表模型能真正识别作曲家风格
         </p>
         <p className="mt-1">
           Made with 💖 + FastAPI + MERT &nbsp;|&nbsp;
           <a
-            href="https://github.com"
+            href={REPOSITORY_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-pink-dark hover:underline"

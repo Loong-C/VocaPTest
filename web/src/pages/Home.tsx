@@ -49,9 +49,6 @@ export default function Home() {
           <p className="max-w-lg mx-auto text-text-light text-base sm:text-lg leading-relaxed mb-8">
             上传一段音乐，AI 会在 31 位 Vocaloid Producer 的参考库中
             找到听感最接近的 P 主。<br />
-            <span className="text-text-muted text-sm">
-              ✨ 娱乐向 · 非严肃作者识别
-            </span>
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -69,47 +66,6 @@ export default function Home() {
             >
               浏览 P 主列表
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Feature Cards */}
-      <section className="max-w-4xl mx-auto px-4 pb-16 stagger">
-        <div className="grid sm:grid-cols-3 gap-5">
-          <div className="card p-6 text-center group hover:border-pink/40 transition-all duration-300">
-            <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-pink/10
-                            flex items-center justify-center
-                            group-hover:scale-110 transition-transform">
-              <span className="text-2xl">🎧</span>
-            </div>
-            <h3 className="font-semibold text-text mb-1">上传音频</h3>
-            <p className="text-text-muted text-sm">
-              支持 WAV / MP3 / FLAC 等格式
-            </p>
-          </div>
-
-          <div className="card p-6 text-center group hover:border-purple/40 transition-all duration-300">
-            <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-purple/10
-                            flex items-center justify-center
-                            group-hover:scale-110 transition-transform">
-              <span className="text-2xl">🤖</span>
-            </div>
-            <h3 className="font-semibold text-text mb-1">AI 分析</h3>
-            <p className="text-text-muted text-sm">
-              MERT 音乐模型提取音频特征
-            </p>
-          </div>
-
-          <div className="card p-6 text-center group hover:border-mint/60 transition-all duration-300">
-            <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-mint/20
-                            flex items-center justify-center
-                            group-hover:scale-110 transition-transform">
-              <span className="text-2xl">🎯</span>
-            </div>
-            <h3 className="font-semibold text-text mb-1">风格匹配</h3>
-            <p className="text-text-muted text-sm">
-              返回 Top-5 最相似的 P 主
-            </p>
           </div>
         </div>
       </section>
