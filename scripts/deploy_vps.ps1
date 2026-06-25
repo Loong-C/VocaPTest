@@ -40,7 +40,7 @@ function Invoke-Scp {
         [string]$Source,
         [string]$Destination
     )
-    scp @SshOptions $Source $Destination
+    scp -O @SshOptions $Source $Destination
     if ($LASTEXITCODE -ne 0) {
         throw "SCP failed with exit code $LASTEXITCODE"
     }
