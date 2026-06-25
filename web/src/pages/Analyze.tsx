@@ -76,9 +76,6 @@ export default function Analyze() {
             exit={{ opacity: 0, scale: 0.95 }}
           >
             <AudioUploader onFile={handleFile} />
-            <p className="mt-4 text-center text-xs leading-relaxed text-text-muted">
-              上传音频仅用于本次分析，分析完成后会删除临时文件，不会长期保存。
-            </p>
           </motion.div>
         )}
 
@@ -227,7 +224,7 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
             <Info size={16} />
           </div>
           <div>
-            <p className="mb-1 font-medium text-text">你的音乐很有风格！</p>
+            <p className="mb-1 font-medium text-text">你的音乐很有特色！</p>
             <p>
               它和当前资料库里的典型 P 主风格都不太像，仅列出最接近的候选作为参考。
             </p>
