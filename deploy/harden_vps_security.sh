@@ -21,7 +21,8 @@ install_security_packages() {
 harden_ssh() {
   log "Hardening SSH: public-key root login remains enabled; password login is disabled"
   install -d -m 0755 /etc/ssh/sshd_config.d
-  cat >/etc/ssh/sshd_config.d/99-vocaptest-hardening.conf <<'EOF'
+  rm -f /etc/ssh/sshd_config.d/99-vocaptest-hardening.conf
+  cat >/etc/ssh/sshd_config.d/00-vocaptest-hardening.conf <<'EOF'
 PubkeyAuthentication yes
 PasswordAuthentication no
 KbdInteractiveAuthentication no
