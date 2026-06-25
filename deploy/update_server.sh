@@ -50,6 +50,10 @@ install_system_packages() {
 sync_repo() {
   log "Syncing $REPO_URL ($BRANCH) into $APP_DIR"
   mkdir -p "$APP_ROOT"
+  if ! git config --global --get-all safe.directory | grep -Fxq "$APP_DIR"; then
+    git config --global --add safe.directory "$APP_DIR"
+  fi
+
   if [ -d "$APP_DIR/.git" ]; then
     git -C "$APP_DIR" fetch origin "$BRANCH"
     git -C "$APP_DIR" checkout "$BRANCH"
