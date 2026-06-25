@@ -30,18 +30,27 @@
 - mean+std 池化看起来能描述歌曲内部变化，但最佳 probe 只有 dev Top-1 75.81%。在当前数据规模下，它增加噪声维度的速度快于增加稳定风格信息的速度。
 - 双原型 probe 在探索运行中明显低于 baseline。当前每类十几首歌不足以稳定拆出子簇，除非未来每类歌曲显著增多，或先训练出更好的 metric-learning 投影，否则不应作为主线。
 
-## 建议
+## 落地状态
 
-把 5/6/8 层集成视为第一个可信的 P3 候选，但先不要部署。下一步应只在本分支上做一个可加载的实验模型 artifact 和 API 接入 smoke test；如果仍能把 final 高置信错误压在当前水平以内，再考虑进入主线。
+5/6/8 层集成已经补齐正式训练脚本，并保存为 API 可直接加载的 `LayerFusionLDA` artifact：
+
+- 模型：`data/processed/models/p1_layer_fusion_lda.pkl`
+- 配置：`configs/retrieval.yaml` 的 `p1_model_path`
+- 生产训练脚本：`scripts/21_train_p3_layer_fusion.py`
+- 部署评估产物：`data/processed/evaluations/p3_layer_fusion_deploy.json`
+
+需要注意：此前仓库里的 `p1_layer_fusion_lda.pkl` 是更早阶段留下的 20 类旧模型，不能代表本报告里的 31 类 P3 方案；上线前必须重新运行生产训练脚本并同步新的模型文件。
 
 ## 复现
 
 ```powershell
 $env:PYTHONPATH='src'
 python scripts/20_run_p3_model_experiments.py
+python scripts/21_train_p3_layer_fusion.py
 ```
 
 产物：
 
 - `data/processed/evaluations/p3_model_experiments.json`
+- `data/processed/evaluations/p3_layer_fusion_deploy.json`
 - `docs/P3_MODEL_EXPERIMENT_REPORT.md`

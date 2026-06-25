@@ -1,0 +1,145 @@
+{
+  "protocol": {
+    "purpose": "Deployable P3 layer-fusion artifact",
+    "manifest": "data/processed/curated/mert_95_p1/segments.jsonl",
+    "layers": [
+      5,
+      6,
+      8
+    ],
+    "layer_weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "oof": "5x5 StratifiedGroupKFold by work_id",
+    "target_precision": 0.96,
+    "calibration_input": "probabilities"
+  },
+  "dataset": {
+    "songs": 376,
+    "segments": 4494,
+    "classes": 31,
+    "layers_available": 13,
+    "embedding_dim": 768,
+    "class_names": [
+      "40mp",
+      "ayase",
+      "chinozo",
+      "cosmo",
+      "deco27",
+      "hachi",
+      "harumaki_gohan",
+      "inabakumori",
+      "iyowa",
+      "jin",
+      "kairikibear",
+      "kanaria",
+      "kemu",
+      "maretu",
+      "mimi",
+      "mitchie_m",
+      "n_buna",
+      "nakiso",
+      "nayutan",
+      "neru",
+      "niru_kajitsu",
+      "orangestar",
+      "pinocchiop",
+      "r_906",
+      "r_sound_design",
+      "sasakure_uk",
+      "surii",
+      "syudou",
+      "teniwoha",
+      "toa",
+      "wowaka"
+    ]
+  },
+  "oof": {
+    "aggregate": {
+      "top1_accuracy": {
+        "mean": 0.850531914893617,
+        "std": 0.005115793633423229,
+        "min": 0.8430851063829787,
+        "max": 0.8563829787234043
+      },
+      "top3_accuracy": {
+        "mean": 0.9297872340425531,
+        "std": 0.00445031929007485,
+        "min": 0.9228723404255319,
+        "max": 0.9335106382978723
+      },
+      "macro_f1": {
+        "mean": 0.8618757057827606,
+        "std": 0.00482297264048564,
+        "min": 0.8563651360250424,
+        "max": 0.8682850803947775
+      },
+      "mrr": {
+        "mean": 0.8972532848649786,
+        "std": 0.0020212426754269803,
+        "min": 0.89536536375945,
+        "max": 0.9001201735826843
+      }
+    },
+    "repeat_metrics": [
+      {
+        "top1_accuracy": 0.8563829787234043,
+        "top3_accuracy": 0.9228723404255319,
+        "macro_f1": 0.865215015589222,
+        "mrr": 0.9001201735826843
+      },
+      {
+        "top1_accuracy": 0.848404255319149,
+        "top3_accuracy": 0.9335106382978723,
+        "macro_f1": 0.8589004941236393,
+        "mrr": 0.89536536375945
+      },
+      {
+        "top1_accuracy": 0.851063829787234,
+        "top3_accuracy": 0.9281914893617021,
+        "macro_f1": 0.8606128027811224,
+        "mrr": 0.8964387795055035
+      },
+      {
+        "top1_accuracy": 0.8430851063829787,
+        "top3_accuracy": 0.9335106382978723,
+        "macro_f1": 0.8563651360250424,
+        "mrr": 0.895777955053221
+      },
+      {
+        "top1_accuracy": 0.8537234042553191,
+        "top3_accuracy": 0.9308510638297872,
+        "macro_f1": 0.8682850803947775,
+        "mrr": 0.8985641524240349
+      }
+    ],
+    "temperature": 4.5595698842887495,
+    "rejection": {
+      "threshold": 0.8324307975912476,
+      "coverage": 0.7595744680851064,
+      "precision": 0.9600840336134454
+    },
+    "rejection_metrics": {
+      "threshold": 0.8324307975912476,
+      "coverage": 0.7595744680851064,
+      "accepted_count": 1428,
+      "accepted_accuracy": 0.9600840336134454,
+      "accepted_wrong_count": 57,
+      "rejected_correct_count": 228,
+      "target_precision_oof": 0.9600840336134454,
+      "true_class_count": 31
+    }
+  },
+  "artifact": {
+    "model_output": "data/processed/models/p1_layer_fusion_lda.pkl",
+    "backend": "mert_95+nonnegative_layer_fusion_lda_calibrated",
+    "classes": 31,
+    "layer_indices": [
+      5,
+      6,
+      8
+    ]
+  }
+}

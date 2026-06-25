@@ -11,7 +11,7 @@ param(
     [switch]$SkipNginxInstall,
     [switch]$RunUpdateInForeground,
     [int]$RemoteUpdateTimeoutMinutes = 20,
-    [int]$RemotePollSeconds = 5
+    [int]$RemotePollSeconds = 15
 )
 
 $ErrorActionPreference = "Stop"
@@ -24,7 +24,8 @@ $localUpdateScript = Join-Path $repoRoot "deploy/update_server.sh"
 $localModelDir = Join-Path $repoRoot "data/processed/models"
 $SshOptions = @(
     "-o", "ServerAliveInterval=15",
-    "-o", "ServerAliveCountMax=20"
+    "-o", "ServerAliveCountMax=20",
+    "-o", "ConnectTimeout=10"
 )
 
 function Invoke-Remote {
@@ -35,62 +36,92 @@ function Invoke-Remote {
     }
 }
 
-function Invoke-Scp {
+function Invoke-ScpTransfer {
     param(
         [string]$Source,
-        [string]$Destination
+        [string]$Destination,
+        [int]$MaxRetries = 3,
+        [int]$RetryDelaySeconds = 5
     )
-    scp -O @SshOptions $Source $Destination
-    if ($LASTEXITCODE -ne 0) {
-        throw "SCP failed with exit code $LASTEXITCODE"
+
+    $attempt = 0
+    while ($true) {
+        $attempt++
+        try {
+            scp -O @SshOptions $Source $Destination
+            if ($LASTEXITCODE -eq 0) { return }
+        }
+        catch { }
+
+        if ($attempt -ge $MaxRetries) {
+            throw "SCP failed after $MaxRetries attempts (exit code $LASTEXITCODE)"
+        }
+        Write-Host "[vocaptest-deploy]   SCP retry $attempt/$MaxRetries in ${RetryDelaySeconds}s..."
+        Start-Sleep -Seconds $RetryDelaySeconds
     }
+}
+
+function ConvertTo-ShellSingleQuoted {
+    param([string]$Value)
+    return "'" + $Value.Replace("'", "'""'""'") + "'"
 }
 
 function Invoke-SshTransfer {
     param(
         [string]$Source,
         [string]$Destination,
-        [switch]$StripCR
+        [int]$MaxRetries = 3,
+        [int]$RetryDelaySeconds = 5
     )
 
-    $remoteCmd = "cat > '$Destination'"
-    $psi = New-Object System.Diagnostics.ProcessStartInfo
-    $psi.FileName = "ssh"
-    $psi.Arguments = "-o ServerAliveInterval=15 -o ServerAliveCountMax=20 $remote $remoteCmd"
-    $psi.RedirectStandardInput = $true
-    $psi.UseShellExecute = $false
-    $psi.CreateNoWindow = $true
+    $remoteDir = $Destination.Substring(0, $Destination.LastIndexOf("/"))
+    $attempt = 0
+    while ($true) {
+        $attempt++
+        $remoteTemp = "$Destination.tmp.$PID.$attempt"
+        $remoteCmd = "mkdir -p $(ConvertTo-ShellSingleQuoted $remoteDir) && cat > $(ConvertTo-ShellSingleQuoted $remoteTemp) && mv $(ConvertTo-ShellSingleQuoted $remoteTemp) $(ConvertTo-ShellSingleQuoted $Destination)"
 
-    $proc = [System.Diagnostics.Process]::Start($psi)
-    $fileStream = [System.IO.File]::OpenRead($Source)
-    $buf = New-Object byte[] (1MB)
-    if ($StripCR) {
-        $outBuf = New-Object byte[] (1MB)
-        while (($read = $fileStream.Read($buf, 0, $buf.Length)) -gt 0) {
-            $outLen = 0
-            for ($i = 0; $i -lt $read; $i++) {
-                if ($buf[$i] -ne 13) {
-                    $outBuf[$outLen] = $buf[$i]
-                    $outLen++
-                }
-            }
-            if ($outLen -gt 0) {
-                $proc.StandardInput.BaseStream.Write($outBuf, 0, $outLen)
+        $psi = [System.Diagnostics.ProcessStartInfo]::new()
+        $psi.FileName = "ssh"
+        $psi.Arguments = "$($SshOptions -join ' ') $remote $remoteCmd"
+        $psi.RedirectStandardInput = $true
+        $psi.UseShellExecute = $false
+        $psi.CreateNoWindow = $true
+
+        $proc = [System.Diagnostics.Process]::Start($psi)
+        $fileStream = [System.IO.File]::OpenRead($Source)
+        try {
+            $buf = New-Object byte[] (1MB)
+            while (($read = $fileStream.Read($buf, 0, $buf.Length)) -gt 0) {
+                $proc.StandardInput.BaseStream.Write($buf, 0, $read)
             }
         }
-    }
-    else {
-        while (($read = $fileStream.Read($buf, 0, $buf.Length)) -gt 0) {
-            $proc.StandardInput.BaseStream.Write($buf, 0, $read)
+        finally {
+            $fileStream.Close()
+            $proc.StandardInput.Close()
         }
-    }
-    $fileStream.Close()
-    $proc.StandardInput.Close()
-    $proc.WaitForExit()
+        $proc.WaitForExit()
 
-    if ($proc.ExitCode -ne 0) {
-        throw "SSH file transfer failed with exit code $($proc.ExitCode)"
+        if ($proc.ExitCode -eq 0) { return }
+
+        ssh @SshOptions $remote "rm -f $(ConvertTo-ShellSingleQuoted $remoteTemp)" | Out-Null
+        if ($attempt -ge $MaxRetries) {
+            throw "SSH file transfer failed after $MaxRetries attempts (exit code $($proc.ExitCode))"
+        }
+        Write-Host "[vocaptest-deploy]   SSH transfer retry $attempt/$MaxRetries in ${RetryDelaySeconds}s..."
+        Start-Sleep -Seconds $RetryDelaySeconds
     }
+}
+
+function New-LfTempFile {
+    param([string]$Source)
+
+    $name = "vocaptest-" + [System.IO.Path]::GetRandomFileName() + ".sh"
+    $target = Join-Path ([System.IO.Path]::GetTempPath()) $name
+    $content = (Get-Content -LiteralPath $Source -Raw).Replace("`r`n", "`n").Replace("`r", "`n")
+    $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+    [System.IO.File]::WriteAllText($target, $content, $utf8NoBom)
+    return $target
 }
 
 function Invoke-RemoteUpdate {
@@ -115,9 +146,25 @@ function Invoke-RemoteUpdate {
     while ((Get-Date) -lt $deadline) {
         Start-Sleep -Seconds $RemotePollSeconds
 
-        $status = Invoke-Remote "test -f $remoteStatus && cat $remoteStatus || echo RUNNING" | Select-Object -Last 1
-        $tail = Invoke-Remote "tail -40 $remoteLog 2>/dev/null || true"
-        $tailText = $tail -join "`n"
+        $combined = ssh @SshOptions $remote "echo STATUS_BEGIN; test -f $remoteStatus && cat $remoteStatus || echo RUNNING; echo STATUS_END; echo LOG_BEGIN; tail -40 $remoteLog 2>/dev/null || true; echo LOG_END"
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "[vocaptest-deploy] SSH poll failed (exit $LASTEXITCODE), will retry..."
+            continue
+        }
+
+        $combinedText = $combined -join "`n"
+        if ($combinedText -match 'STATUS_BEGIN\s*\n?(.*?)\s*STATUS_END') {
+            $status = $Matches[1].Trim()
+        } else {
+            $status = "RUNNING"
+        }
+
+        if ($combinedText -match 'LOG_BEGIN\s*\n?(.*?)\s*LOG_END') {
+            $tailText = $Matches[1].Trim()
+        } else {
+            $tailText = ""
+        }
+
         if ($tailText -and $tailText -ne $lastTail) {
             Write-Host $tailText
             $lastTail = $tailText
@@ -135,7 +182,13 @@ function Invoke-RemoteUpdate {
 }
 
 Write-Host "[vocaptest-deploy] Uploading update script to $remote"
-Invoke-SshTransfer -StripCR $localUpdateScript $remoteTmp
+$normalizedUpdateScript = New-LfTempFile $localUpdateScript
+try {
+    Invoke-ScpTransfer $normalizedUpdateScript "${remote}:$remoteTmp"
+}
+finally {
+    Remove-Item -LiteralPath $normalizedUpdateScript -ErrorAction SilentlyContinue
+}
 
 Write-Host "[vocaptest-deploy] Running server update on $remote"
 $remoteEnv = @(

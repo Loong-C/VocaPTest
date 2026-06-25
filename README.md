@@ -15,9 +15,9 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 | Dev 分段 | **744 段** |
 | Final frozen 分段 | **1470 段** |
 | 音频处理 | 24kHz 单声道、20s 窗口、10s hop、均匀覆盖、最多 12 段 |
-| 音频表征 | MERT-v1-95M 第 6 层，768 维 |
-| 分类器 | 歌曲均值 + 等先验 Shrinkage LDA |
-| 置信度 | OOF logits temperature scaling + 拒识阈值 |
+| 音频表征 | MERT-v1-95M 第 5/6/8 层，每层 768 维 |
+| 分类器 | 三个歌曲均值 Shrinkage LDA head 的概率平均 |
+| 置信度 | OOF probability temperature scaling + 拒识阈值 |
 
 三个数据分区按 YouTube ID 和 VocaDB `work_id` 双重隔离：
 
@@ -72,12 +72,12 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 
 | 指标 | Dev holdout / 62 首 | Final frozen / 124 首 |
 |---|---:|---:|
-| Top-1 | **75.81%** | **78.23%** |
-| Top-3 | **80.65%** | **92.74%** |
-| Macro-F1 | **74.42%** | **78.24%** |
-| MRR | **80.32%** | **86.02%** |
-| 覆盖率 | **69.35%** | **64.52%** |
-| 被接受样本准确率 | **86.05%** | **96.25%** |
+| Top-1 | **77.42%** | **82.26%** |
+| Top-3 | **79.03%** | **93.55%** |
+| Macro-F1 | **75.61%** | **82.20%** |
+| MRR | **80.60%** | **88.17%** |
+| 覆盖率 | **58.06%** | **62.90%** |
+| 被接受样本准确率 | **94.44%** | **96.15%** |
 
 P2 数据更难，尤其暴露出 `じん`、`すりぃ`、`Neru`、`sasakure.UK/cosMo`、
 `DECO*27` 和若干跨媒体/非典型曲目的边界问题。详细错误分析见
@@ -184,7 +184,7 @@ python scripts/09_rebuild_p1_layer_embeddings.py `
   --embedding-output data/processed/embeddings/mert_95_frozen_layers `
   --manifest-output data/processed/frozen_test/mert_95_layers/segments.jsonl
 
-python scripts/13_train_p1_selected_layer.py
+python scripts/21_train_p3_layer_fusion.py
 python scripts/19_evaluate_frozen_test.py `
   --manifest data/processed/dev_holdout/mert_95_layers/segments.jsonl `
   --output data/processed/evaluations/p2_dev_holdout.json `

@@ -1,7 +1,7 @@
 retrieval:
   backend: p1_selected_layer_lda
   lda_model_path: data/processed/models/song_mean_shrinkage_lda.pkl
-  p1_model_path: data/processed/models/p1_selected_layer_lda.pkl
+  p1_model_path: data/processed/models/p1_layer_fusion_lda.pkl
   inference_batch_size: 4
   metric: cosine
   producer_clusters: 5
