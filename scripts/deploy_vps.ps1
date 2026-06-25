@@ -46,6 +46,17 @@ function Invoke-Scp {
     }
 }
 
+function New-LfTempFile {
+    param([string]$Source)
+
+    $name = "vocaptest-" + [System.IO.Path]::GetRandomFileName() + ".sh"
+    $target = Join-Path ([System.IO.Path]::GetTempPath()) $name
+    $content = (Get-Content -LiteralPath $Source -Raw).Replace("`r`n", "`n").Replace("`r", "`n")
+    $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+    [System.IO.File]::WriteAllText($target, $content, $utf8NoBom)
+    return $target
+}
+
 function Invoke-RemoteUpdate {
     param([string]$Command)
 
@@ -88,7 +99,13 @@ function Invoke-RemoteUpdate {
 }
 
 Write-Host "[vocaptest-deploy] Uploading update script to $remote"
-Invoke-Scp $localUpdateScript "${remote}:$remoteTmp"
+$normalizedUpdateScript = New-LfTempFile $localUpdateScript
+try {
+    Invoke-Scp $normalizedUpdateScript "${remote}:$remoteTmp"
+}
+finally {
+    Remove-Item -LiteralPath $normalizedUpdateScript -ErrorAction SilentlyContinue
+}
 
 Write-Host "[vocaptest-deploy] Running server update on $remote"
 $remoteEnv = @(
