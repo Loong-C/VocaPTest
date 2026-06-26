@@ -1,4 +1,4 @@
-"""Validation and download helpers for vetted YouTube/VocaDB catalogs."""
+"""Validation and download helpers for vetted VocaDB media catalogs."""
 from __future__ import annotations
 
 import json
@@ -12,6 +12,10 @@ import requests
 
 
 VOCADB_API = "https://vocadb.net/api"
+SOURCE_SERVICE_PREFIX = {
+    "Youtube": "youtube",
+    "NicoNicoDouga": "niconico",
+}
 
 
 def yt_dlp_command(root: Path) -> list[str]:
@@ -29,7 +33,31 @@ def yt_dlp_runtime_args() -> list[str]:
     return args
 
 
-def read_youtube_metadata(command: list[str], url: str) -> dict:
+def source_key(service: str, source_id: str) -> str:
+    try:
+        prefix = SOURCE_SERVICE_PREFIX[service]
+    except KeyError as exc:
+        raise ValueError(f"Unsupported source service: {service}") from exc
+    return f"{prefix}_{source_id}"
+
+
+def source_url(service: str, source_id: str) -> str:
+    if service == "Youtube":
+        return f"https://www.youtube.com/watch?v={source_id}"
+    if service == "NicoNicoDouga":
+        return f"https://www.nicovideo.jp/watch/{source_id}"
+    raise ValueError(f"Unsupported source service: {service}")
+
+
+def media_source_from_item(item: dict) -> tuple[str, str]:
+    if item.get("source_service") and item.get("source_id"):
+        return str(item["source_service"]), str(item["source_id"])
+    if item.get("youtube_id"):
+        return "Youtube", str(item["youtube_id"])
+    raise ValueError(f"Catalog item has no media source: {item}")
+
+
+def read_media_metadata(command: list[str], url: str) -> dict:
     result = subprocess.run(
         command
         + yt_dlp_runtime_args()
@@ -46,7 +74,11 @@ def read_youtube_metadata(command: list[str], url: str) -> dict:
     return json.loads(result.stdout)
 
 
-def download_youtube_audio(
+def read_youtube_metadata(command: list[str], url: str) -> dict:
+    return read_media_metadata(command, url)
+
+
+def download_media_audio(
     command: list[str],
     url: str,
     output_path: Path,
@@ -102,10 +134,20 @@ def download_youtube_audio(
     )
 
 
-def validate_vocadb_original(
+def download_youtube_audio(
+    command: list[str],
+    url: str,
+    output_path: Path,
+    ffmpeg_location: Path | None,
+) -> None:
+    download_media_audio(command, url, output_path, ffmpeg_location)
+
+
+def validate_vocadb_pv(
     *,
     song_id: int,
-    youtube_id: str,
+    source_service: str,
+    source_id: str,
     artist_id: int,
     session: requests.Session,
     allowed_pv_types: tuple[str, ...] = ("Original",),
@@ -151,14 +193,14 @@ def validate_vocadb_original(
     matching_pvs = [
         pv
         for pv in song.get("pvs", [])
-        if pv.get("service") == "Youtube"
+        if pv.get("service") == source_service
         and pv.get("pvType") in allowed_pv_types
         and not pv.get("disabled")
-        and pv.get("pvId") == youtube_id
+        and pv.get("pvId") == source_id
     ]
     if not matching_pvs:
         raise ValueError(
-            f"YouTube {youtube_id} is not an enabled "
+            f"{source_service} {source_id} is not an enabled "
             f"{'/'.join(allowed_pv_types)} PV for VocaDB song {song_id}"
         )
     return {
@@ -169,19 +211,37 @@ def validate_vocadb_original(
     }
 
 
+def validate_vocadb_original(
+    *,
+    song_id: int,
+    youtube_id: str,
+    artist_id: int,
+    session: requests.Session,
+    allowed_pv_types: tuple[str, ...] = ("Original",),
+) -> dict:
+    return validate_vocadb_pv(
+        song_id=song_id,
+        source_service="Youtube",
+        source_id=youtube_id,
+        artist_id=artist_id,
+        session=session,
+        allowed_pv_types=allowed_pv_types,
+    )
+
+
 def source_reason(source_kind: str) -> str:
     reasons = {
         "official_upload": (
             "VocaDB Original work with a verified official YouTube upload"
         ),
         "vocadb_original_pv": (
-            "VocaDB Original work with a VocaDB-listed Original YouTube PV"
+            "VocaDB Original work with a VocaDB-listed Original PV"
         ),
         "vocadb_reprint": (
-            "VocaDB Original work with a VocaDB-listed YouTube reprint"
+            "VocaDB Original work with a VocaDB-listed reprint"
         ),
         "vocadb_other_pv": (
-            "VocaDB Original work with a VocaDB-listed non-original YouTube PV"
+            "VocaDB Original work with a VocaDB-listed non-original PV"
         ),
     }
     try:

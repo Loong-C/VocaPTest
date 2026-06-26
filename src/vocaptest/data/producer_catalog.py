@@ -49,11 +49,12 @@ def load_producer_style_tags() -> dict[str, dict]:
     return producers
 
 
-def _youtube_url(song_id: str) -> str | None:
-    prefix = "youtube_"
-    if not song_id.startswith(prefix):
-        return None
-    return f"https://www.youtube.com/watch?v={song_id.removeprefix(prefix)}"
+def _source_url(song_id: str) -> str | None:
+    if song_id.startswith("youtube_"):
+        return f"https://www.youtube.com/watch?v={song_id.removeprefix('youtube_')}"
+    if song_id.startswith("niconico_"):
+        return f"https://www.nicovideo.jp/watch/{song_id.removeprefix('niconico_')}"
+    return None
 
 
 @lru_cache(maxsize=1)
@@ -83,7 +84,7 @@ def load_training_song_catalog() -> dict[str, list[dict]]:
                 {
                     "song_id": song_id,
                     "title": record.get("title") or song_id,
-                    "source_url": _youtube_url(song_id),
+                    "source_url": record.get("source_url") or _source_url(song_id),
                 },
             )
 
@@ -94,6 +95,64 @@ def load_training_song_catalog() -> dict[str, list[dict]]:
         )
         for slug, songs in songs_by_producer.items()
     }
+
+
+@lru_cache(maxsize=1)
+def load_representative_song_catalog(limit: int = 3) -> dict[str, list[dict]]:
+    """Return representative training songs keyed by producer slug."""
+    root = project_root()
+    segment_path = (
+        root
+        / "data"
+        / "processed"
+        / "curated"
+        / "mert_95_p1"
+        / "segments.jsonl"
+    )
+    decisions_path = (
+        root
+        / "data"
+        / "processed"
+        / "curated"
+        / "mert_95"
+        / "song_decisions.jsonl"
+    )
+    if not segment_path.exists() or not decisions_path.exists():
+        return {}
+
+    current_song_ids: set[str] = set()
+    with open(segment_path, "r", encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            current_song_ids.add(json.loads(line)["song_id"])
+
+    songs_by_producer: dict[str, list[dict]] = {}
+    seen_by_producer: dict[str, set[str]] = {}
+    with open(decisions_path, "r", encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            if record.get("status") != "accepted":
+                continue
+            song_id = record["song_id"]
+            if song_id not in current_song_ids:
+                continue
+            slug = record["producer_slug"]
+            seen = seen_by_producer.setdefault(slug, set())
+            if song_id in seen:
+                continue
+            if len(songs_by_producer.get(slug, [])) >= limit:
+                continue
+            seen.add(song_id)
+            songs_by_producer.setdefault(slug, []).append({
+                "song_id": song_id,
+                "title": record.get("title") or song_id,
+                "source_url": record.get("source_url") or _source_url(song_id),
+            })
+
+    return songs_by_producer
 
 
 def _load_jsonl_song_catalog(path_parts: tuple[str, ...]) -> dict[str, list[dict]]:

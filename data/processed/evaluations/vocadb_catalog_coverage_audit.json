@@ -1,0 +1,2474 @@
+{
+  "protocol": {
+    "source": "https://vocadb.net/api",
+    "purpose": "Find eligible, high-rating Original PV catalog gaps before producer expansion."
+  },
+  "summary": {
+    "producers": 41,
+    "producers_with_candidates": 37
+  },
+  "producers": [
+    {
+      "slug": "wowaka",
+      "display_name": "wowaka",
+      "vocadb_artist_id": 53,
+      "configured_vocadb_song_count": 10,
+      "configured_source_count": 15,
+      "configured_count_lower_bound": 15,
+      "qualified_available_count": 12,
+      "unconfigured_qualified_count": 0,
+      "top_unconfigured": []
+    },
+    {
+      "slug": "kemu",
+      "display_name": "kemu",
+      "vocadb_artist_id": 735,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 18,
+      "configured_count_lower_bound": 18,
+      "qualified_available_count": 14,
+      "unconfigured_qualified_count": 0,
+      "top_unconfigured": []
+    },
+    {
+      "slug": "neru",
+      "display_name": "Neru",
+      "vocadb_artist_id": 137,
+      "configured_vocadb_song_count": 17,
+      "configured_source_count": 22,
+      "configured_count_lower_bound": 22,
+      "qualified_available_count": 32,
+      "unconfigured_qualified_count": 11,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 15,
+          "title": "人間失格",
+          "rating_score": 134,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm9207463"
+        },
+        {
+          "vocadb_song_id": 14295,
+          "title": "ガラクタ・パレード",
+          "rating_score": 109,
+          "source_service": "Youtube",
+          "source_id": "59osEET-EpY"
+        },
+        {
+          "vocadb_song_id": 69169,
+          "title": "オーヴァークロック",
+          "rating_score": 108,
+          "source_service": "Youtube",
+          "source_id": "UJ2Ld9xzAZY"
+        },
+        {
+          "vocadb_song_id": 101417,
+          "title": "洗脳",
+          "rating_score": 89,
+          "source_service": "NicoNicoDouga",
+          "source_id": "so28857561"
+        },
+        {
+          "vocadb_song_id": 75499,
+          "title": "ばいばい、ノスタルジーカ",
+          "rating_score": 76,
+          "source_service": "Youtube",
+          "source_id": "w8CP7zCsC3Q"
+        },
+        {
+          "vocadb_song_id": 519535,
+          "title": "風となれ",
+          "rating_score": 44,
+          "source_service": "Youtube",
+          "source_id": "2VGF_qW26S8"
+        },
+        {
+          "vocadb_song_id": 127368,
+          "title": "エレクトロニック・ジェノサイド",
+          "rating_score": 40,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm10194868"
+        },
+        {
+          "vocadb_song_id": 140414,
+          "title": "7.0×10^9の天涯孤独",
+          "rating_score": 32,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm9947080"
+        }
+      ]
+    },
+    {
+      "slug": "deco27",
+      "display_name": "DECO*27",
+      "vocadb_artist_id": 45,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 20,
+      "configured_count_lower_bound": 20,
+      "qualified_available_count": 91,
+      "unconfigured_qualified_count": 71,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 38916,
+          "title": "妄想税",
+          "rating_score": 681,
+          "source_service": "Youtube",
+          "source_id": "sWvZfwY8beg"
+        },
+        {
+          "vocadb_song_id": 8478,
+          "title": "罪と罰",
+          "rating_score": 549,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm8166339"
+        },
+        {
+          "vocadb_song_id": 230406,
+          "title": "アンドロイドガール",
+          "rating_score": 529,
+          "source_service": "Youtube",
+          "source_id": "uFRPeiAEO0M"
+        },
+        {
+          "vocadb_song_id": 376689,
+          "title": "サラマンダー",
+          "rating_score": 526,
+          "source_service": "Youtube",
+          "source_id": "-H2PCK7DJsQ"
+        },
+        {
+          "vocadb_song_id": 131087,
+          "title": "リバーシブル・キャンペーン",
+          "rating_score": 498,
+          "source_service": "Youtube",
+          "source_id": "RqxnjgFj1HU"
+        },
+        {
+          "vocadb_song_id": 848354,
+          "title": "マシュマロ",
+          "rating_score": 482,
+          "source_service": "Youtube",
+          "source_id": "ZIzEnTdR368"
+        },
+        {
+          "vocadb_song_id": 125735,
+          "title": "ライアーダンス",
+          "rating_score": 479,
+          "source_service": "Youtube",
+          "source_id": "FOvfM0fe-FE"
+        },
+        {
+          "vocadb_song_id": 8290,
+          "title": "ゆめゆめ",
+          "rating_score": 429,
+          "source_service": "Youtube",
+          "source_id": "07r67gGbtLQ"
+        }
+      ]
+    },
+    {
+      "slug": "pinocchiop",
+      "display_name": "ピノキオピー",
+      "vocadb_artist_id": 28,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 19,
+      "configured_count_lower_bound": 19,
+      "qualified_available_count": 104,
+      "unconfigured_qualified_count": 86,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 335986,
+          "title": "ねぇねぇねぇ。",
+          "rating_score": 640,
+          "source_service": "Youtube",
+          "source_id": "w8yweCungCE"
+        },
+        {
+          "vocadb_song_id": 476100,
+          "title": "匿名M",
+          "rating_score": 575,
+          "source_service": "Youtube",
+          "source_id": "yiqEEL7ac6M"
+        },
+        {
+          "vocadb_song_id": 298528,
+          "title": "ラヴィット",
+          "rating_score": 539,
+          "source_service": "Youtube",
+          "source_id": "--41OGPMurU"
+        },
+        {
+          "vocadb_song_id": 578841,
+          "title": "Aじゃないか",
+          "rating_score": 511,
+          "source_service": "Youtube",
+          "source_id": "LUch7N9Gw28"
+        },
+        {
+          "vocadb_song_id": 68091,
+          "title": "はじめまして地球人さん",
+          "rating_score": 502,
+          "source_service": "Youtube",
+          "source_id": "e1gY8dUfKxg"
+        },
+        {
+          "vocadb_song_id": 257182,
+          "title": "アルティメットセンパイ",
+          "rating_score": 497,
+          "source_service": "Youtube",
+          "source_id": "MnJq5kSn-GY"
+        },
+        {
+          "vocadb_song_id": 219729,
+          "title": "内臓ありますか",
+          "rating_score": 495,
+          "source_service": "Youtube",
+          "source_id": "GSpwTvYgFrM"
+        },
+        {
+          "vocadb_song_id": 166391,
+          "title": "君が生きてなくてよかった",
+          "rating_score": 392,
+          "source_service": "Youtube",
+          "source_id": "Aa3rgnV6WY8"
+        }
+      ]
+    },
+    {
+      "slug": "mitchie_m",
+      "display_name": "Mitchie M",
+      "vocadb_artist_id": 624,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 30,
+      "unconfigured_qualified_count": 16,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 38420,
+          "title": "アゲアゲアゲイン",
+          "rating_score": 874,
+          "source_service": "Youtube",
+          "source_id": "uwwU55zBYlQ"
+        },
+        {
+          "vocadb_song_id": 14339,
+          "title": "Birthday Song for ミク",
+          "rating_score": 230,
+          "source_service": "Youtube",
+          "source_id": "rmYU2ikxjpA"
+        },
+        {
+          "vocadb_song_id": 536349,
+          "title": "ミライどんなだろう",
+          "rating_score": 230,
+          "source_service": "Youtube",
+          "source_id": "EG05Sm68z4s"
+        },
+        {
+          "vocadb_song_id": 270310,
+          "title": "买买买",
+          "rating_score": 178,
+          "source_service": "Youtube",
+          "source_id": "uaUp71oQO9I"
+        },
+        {
+          "vocadb_song_id": 166489,
+          "title": "自己愛性カワイズム",
+          "rating_score": 146,
+          "source_service": "Youtube",
+          "source_id": "AqyCNIllQ7o"
+        },
+        {
+          "vocadb_song_id": 19920,
+          "title": "cosmic ballad",
+          "rating_score": 119,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm15021979"
+        },
+        {
+          "vocadb_song_id": 831610,
+          "title": "プレイオン",
+          "rating_score": 109,
+          "source_service": "Youtube",
+          "source_id": "CXkY-vWeuRI"
+        },
+        {
+          "vocadb_song_id": 104421,
+          "title": "アメイジング・マジシャン",
+          "rating_score": 100,
+          "source_service": "Youtube",
+          "source_id": "H_13BVmiANU"
+        }
+      ]
+    },
+    {
+      "slug": "jin",
+      "display_name": "じん",
+      "vocadb_artist_id": 552,
+      "configured_vocadb_song_count": 11,
+      "configured_source_count": 22,
+      "configured_count_lower_bound": 22,
+      "qualified_available_count": 34,
+      "unconfigured_qualified_count": 15,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 4979,
+          "title": "カゲロウデイズ",
+          "rating_score": 980,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm15751190"
+        },
+        {
+          "vocadb_song_id": 10042,
+          "title": "想像フォレスト",
+          "rating_score": 274,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm16846374"
+        },
+        {
+          "vocadb_song_id": 10044,
+          "title": "人造エネミー",
+          "rating_score": 208,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm13628080"
+        },
+        {
+          "vocadb_song_id": 10043,
+          "title": "メカクシコード",
+          "rating_score": 186,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm14595248"
+        },
+        {
+          "vocadb_song_id": 302866,
+          "title": "ステラ",
+          "rating_score": 162,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm37828296"
+        },
+        {
+          "vocadb_song_id": 56821,
+          "title": "Inner Arts",
+          "rating_score": 135,
+          "source_service": "Youtube",
+          "source_id": "fJGT8cqZFRk"
+        },
+        {
+          "vocadb_song_id": 179305,
+          "title": "失想ワアド",
+          "rating_score": 124,
+          "source_service": "Youtube",
+          "source_id": "g4Qqu16ffVk"
+        },
+        {
+          "vocadb_song_id": 257373,
+          "title": "T.A.O.",
+          "rating_score": 119,
+          "source_service": "Youtube",
+          "source_id": "i2gjDllF4bA"
+        }
+      ]
+    },
+    {
+      "slug": "orangestar",
+      "display_name": "Orangestar",
+      "vocadb_artist_id": 11630,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 18,
+      "configured_count_lower_bound": 18,
+      "qualified_available_count": 28,
+      "unconfigured_qualified_count": 17,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 109549,
+          "title": "時ノ雨、最終戦争",
+          "rating_score": 51,
+          "source_service": "Youtube",
+          "source_id": "Qv_c0PO0cDQ"
+        },
+        {
+          "vocadb_song_id": 81463,
+          "title": "シンクロナイザー",
+          "rating_score": 44,
+          "source_service": "Youtube",
+          "source_id": "gCxvFRuk4Xg"
+        },
+        {
+          "vocadb_song_id": 146570,
+          "title": "Uz",
+          "rating_score": 40,
+          "source_service": "Youtube",
+          "source_id": "Tj5KVAnqB5o"
+        },
+        {
+          "vocadb_song_id": 386711,
+          "title": "ノクティルーカ",
+          "rating_score": 39,
+          "source_service": "Youtube",
+          "source_id": "m367nnJRs-M"
+        },
+        {
+          "vocadb_song_id": 309235,
+          "title": "Nadir",
+          "rating_score": 38,
+          "source_service": "Youtube",
+          "source_id": "Gpc_NZeX0ec"
+        },
+        {
+          "vocadb_song_id": 66635,
+          "title": "未完成タイムリミッター",
+          "rating_score": 33,
+          "source_service": "Youtube",
+          "source_id": "lSffFoK0Lv0"
+        },
+        {
+          "vocadb_song_id": 651821,
+          "title": "Postscript",
+          "rating_score": 27,
+          "source_service": "Youtube",
+          "source_id": "gG3hOMn2zas"
+        },
+        {
+          "vocadb_song_id": 68797,
+          "title": "真夏と少年の天ノ川戦争",
+          "rating_score": 24,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm21293261"
+        }
+      ]
+    },
+    {
+      "slug": "cosmo",
+      "display_name": "cosMo@暴走P",
+      "vocadb_artist_id": 85,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 19,
+      "configured_count_lower_bound": 19,
+      "qualified_available_count": 93,
+      "unconfigured_qualified_count": 79,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 16061,
+          "title": "Sadistic.Music∞Factory",
+          "rating_score": 739,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm18729289"
+        },
+        {
+          "vocadb_song_id": 4269,
+          "title": "ANTI THE∞HOLiC",
+          "rating_score": 449,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7781905"
+        },
+        {
+          "vocadb_song_id": 343868,
+          "title": "初音天地開闢神話",
+          "rating_score": 327,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm39209934"
+        },
+        {
+          "vocadb_song_id": 4315,
+          "title": "鏡音レンの暴走",
+          "rating_score": 207,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm4775243"
+        },
+        {
+          "vocadb_song_id": 3802,
+          "title": "初音ミクの分裂→破壊",
+          "rating_score": 172,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm10924943"
+        },
+        {
+          "vocadb_song_id": 295872,
+          "title": "初音ミクの消失",
+          "rating_score": 165,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm1476648"
+        },
+        {
+          "vocadb_song_id": 257941,
+          "title": "はらぺこなんです!!",
+          "rating_score": 156,
+          "source_service": "Youtube",
+          "source_id": "L1ByttunrDs"
+        },
+        {
+          "vocadb_song_id": 400525,
+          "title": "異常な音を出すガール",
+          "rating_score": 142,
+          "source_service": "Youtube",
+          "source_id": "pFlWr0fF7MQ"
+        }
+      ]
+    },
+    {
+      "slug": "hachi",
+      "display_name": "ハチ",
+      "vocadb_artist_id": 49,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 18,
+      "configured_count_lower_bound": 18,
+      "qualified_available_count": 17,
+      "unconfigured_qualified_count": 4,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 16560,
+          "title": "THE WORLD END UMBRELLA",
+          "rating_score": 139,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7441402"
+        },
+        {
+          "vocadb_song_id": 41521,
+          "title": "お姫様は電子音で眠る",
+          "rating_score": 103,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7095753"
+        },
+        {
+          "vocadb_song_id": 1578,
+          "title": "Qualia",
+          "rating_score": 70,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7839756"
+        },
+        {
+          "vocadb_song_id": 23390,
+          "title": "Persona Alice",
+          "rating_score": 69,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7223030"
+        }
+      ]
+    },
+    {
+      "slug": "40mp",
+      "display_name": "40mP",
+      "vocadb_artist_id": 8,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 18,
+      "configured_count_lower_bound": 18,
+      "qualified_available_count": 99,
+      "unconfigured_qualified_count": 81,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 653,
+          "title": "巨大少女",
+          "rating_score": 222,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7164046"
+        },
+        {
+          "vocadb_song_id": 3317,
+          "title": "ジェンガ",
+          "rating_score": 106,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm9558887"
+        },
+        {
+          "vocadb_song_id": 185937,
+          "title": "海を泳ぐ月",
+          "rating_score": 103,
+          "source_service": "Youtube",
+          "source_id": "EO--_4Vapuc"
+        },
+        {
+          "vocadb_song_id": 233943,
+          "title": "SHAKER",
+          "rating_score": 99,
+          "source_service": "Youtube",
+          "source_id": "oR-a1NS_bH8"
+        },
+        {
+          "vocadb_song_id": 3326,
+          "title": "フタリボシ",
+          "rating_score": 90,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm11302054"
+        },
+        {
+          "vocadb_song_id": 135063,
+          "title": "ハナウタ日和 ～掃除、洗濯、家事、ワタシ～",
+          "rating_score": 89,
+          "source_service": "Youtube",
+          "source_id": "YbEn5rDRqFo"
+        },
+        {
+          "vocadb_song_id": 1352,
+          "title": "夢地図",
+          "rating_score": 86,
+          "source_service": "Youtube",
+          "source_id": "qJ002X6WC5U"
+        },
+        {
+          "vocadb_song_id": 650,
+          "title": "STEP TO YOU",
+          "rating_score": 85,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm6166936"
+        }
+      ]
+    },
+    {
+      "slug": "nayutan",
+      "display_name": "ナユタン星人",
+      "vocadb_artist_id": 36280,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 17,
+      "configured_count_lower_bound": 17,
+      "qualified_available_count": 22,
+      "unconfigured_qualified_count": 9,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 349352,
+          "title": "ニュートンダンス",
+          "rating_score": 221,
+          "source_service": "Youtube",
+          "source_id": "ZnroCM3V7eA"
+        },
+        {
+          "vocadb_song_id": 786416,
+          "title": "土星のポルカ",
+          "rating_score": 63,
+          "source_service": "Youtube",
+          "source_id": "n6bmgM4aemQ"
+        },
+        {
+          "vocadb_song_id": 274943,
+          "title": "木星のビート",
+          "rating_score": 54,
+          "source_service": "Youtube",
+          "source_id": "5FiTUHo9G48"
+        },
+        {
+          "vocadb_song_id": 123661,
+          "title": "アトミック恋心",
+          "rating_score": 50,
+          "source_service": "Youtube",
+          "source_id": "JIdF-QzPJTw"
+        },
+        {
+          "vocadb_song_id": 274946,
+          "title": "カノープス",
+          "rating_score": 40,
+          "source_service": "Youtube",
+          "source_id": "VcCJvjxth_I"
+        },
+        {
+          "vocadb_song_id": 786417,
+          "title": "オカ研",
+          "rating_score": 39,
+          "source_service": "Youtube",
+          "source_id": "tTYUl_XFREg"
+        },
+        {
+          "vocadb_song_id": 148973,
+          "title": "パラレリズム恋心",
+          "rating_score": 37,
+          "source_service": "Youtube",
+          "source_id": "wq85OvQjNUU"
+        },
+        {
+          "vocadb_song_id": 145634,
+          "title": "パオパオチャンネル",
+          "rating_score": 34,
+          "source_service": "Youtube",
+          "source_id": "MKFktSOHH5c"
+        }
+      ]
+    },
+    {
+      "slug": "kairikibear",
+      "display_name": "かいりきベア",
+      "vocadb_artist_id": 885,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 18,
+      "configured_count_lower_bound": 18,
+      "qualified_available_count": 38,
+      "unconfigured_qualified_count": 23,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 153750,
+          "title": "イヤガール",
+          "rating_score": 269,
+          "source_service": "Youtube",
+          "source_id": "cDqytGXoXWI"
+        },
+        {
+          "vocadb_song_id": 166594,
+          "title": "アンハッピーバースデイ",
+          "rating_score": 240,
+          "source_service": "Youtube",
+          "source_id": "A-JX-Qb3NC0"
+        },
+        {
+          "vocadb_song_id": 184982,
+          "title": "バラバラココロ",
+          "rating_score": 226,
+          "source_service": "Youtube",
+          "source_id": "RhJEHIRcx4U"
+        },
+        {
+          "vocadb_song_id": 181400,
+          "title": "マイナスレッテル",
+          "rating_score": 216,
+          "source_service": "Youtube",
+          "source_id": "gF9vwjSinsU"
+        },
+        {
+          "vocadb_song_id": 365208,
+          "title": "カーニバルハッピー",
+          "rating_score": 199,
+          "source_service": "Youtube",
+          "source_id": "nYyddo_VXs8"
+        },
+        {
+          "vocadb_song_id": 225610,
+          "title": "ロジカ",
+          "rating_score": 195,
+          "source_service": "Youtube",
+          "source_id": "eiU-ZZ_hwTc"
+        },
+        {
+          "vocadb_song_id": 23663,
+          "title": "暴走ロリィタホリック",
+          "rating_score": 184,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm20217064"
+        },
+        {
+          "vocadb_song_id": 506663,
+          "title": "ローラー",
+          "rating_score": 167,
+          "source_service": "Youtube",
+          "source_id": "FHOlfownSA4"
+        }
+      ]
+    },
+    {
+      "slug": "kanaria",
+      "display_name": "Kanaria",
+      "vocadb_artist_id": 80976,
+      "configured_vocadb_song_count": 9,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 13,
+      "unconfigured_qualified_count": 0,
+      "top_unconfigured": []
+    },
+    {
+      "slug": "chinozo",
+      "display_name": "Chinozo",
+      "vocadb_artist_id": 67910,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 19,
+      "configured_count_lower_bound": 19,
+      "qualified_available_count": 51,
+      "unconfigured_qualified_count": 34,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 714235,
+          "title": "ブランディングができない",
+          "rating_score": 64,
+          "source_service": "Youtube",
+          "source_id": "5qunwwaPvN8"
+        },
+        {
+          "vocadb_song_id": 371435,
+          "title": "ベビーデーズ",
+          "rating_score": 63,
+          "source_service": "Youtube",
+          "source_id": "y10b0mmtGNY"
+        },
+        {
+          "vocadb_song_id": 937527,
+          "title": "バッカアノ",
+          "rating_score": 51,
+          "source_service": "Youtube",
+          "source_id": "2yErW4Dgkbs"
+        },
+        {
+          "vocadb_song_id": 490821,
+          "title": "ディーバ",
+          "rating_score": 49,
+          "source_service": "NicoNicoDouga",
+          "source_id": "so42043058"
+        },
+        {
+          "vocadb_song_id": 770824,
+          "title": "アワーオース",
+          "rating_score": 48,
+          "source_service": "Youtube",
+          "source_id": "g_COlOBAV7I"
+        },
+        {
+          "vocadb_song_id": 378193,
+          "title": "和音",
+          "rating_score": 41,
+          "source_service": "Youtube",
+          "source_id": "J0QUvHnDfGY"
+        },
+        {
+          "vocadb_song_id": 867471,
+          "title": "ハイシン創意",
+          "rating_score": 38,
+          "source_service": "Youtube",
+          "source_id": "3aQiuYBaV6o"
+        },
+        {
+          "vocadb_song_id": 972105,
+          "title": "ファファファ現象",
+          "rating_score": 38,
+          "source_service": "Youtube",
+          "source_id": "Giy8DGNhXo0"
+        }
+      ]
+    },
+    {
+      "slug": "inabakumori",
+      "display_name": "稲葉曇",
+      "vocadb_artist_id": 46824,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 20,
+      "configured_count_lower_bound": 20,
+      "qualified_available_count": 34,
+      "unconfigured_qualified_count": 16,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 382067,
+          "title": "ポストシェルター",
+          "rating_score": 206,
+          "source_service": "Youtube",
+          "source_id": "kYwB-kZyNU4"
+        },
+        {
+          "vocadb_song_id": 125784,
+          "title": "ナミダ電波",
+          "rating_score": 197,
+          "source_service": "Youtube",
+          "source_id": "vyfNM-tIfiw"
+        },
+        {
+          "vocadb_song_id": 286994,
+          "title": "カゼマチグサ",
+          "rating_score": 182,
+          "source_service": "Youtube",
+          "source_id": "8_nipbC9hLk"
+        },
+        {
+          "vocadb_song_id": 140822,
+          "title": "ツクリカケノ心象",
+          "rating_score": 179,
+          "source_service": "Youtube",
+          "source_id": "3NWuC2UF0u0"
+        },
+        {
+          "vocadb_song_id": 708480,
+          "title": "アイペース",
+          "rating_score": 172,
+          "source_service": "Youtube",
+          "source_id": "9x7t1s4xMw4"
+        },
+        {
+          "vocadb_song_id": 154832,
+          "title": "うつしあそび",
+          "rating_score": 150,
+          "source_service": "Youtube",
+          "source_id": "MZvTr20tkro"
+        },
+        {
+          "vocadb_song_id": 819736,
+          "title": "春難色",
+          "rating_score": 142,
+          "source_service": "Youtube",
+          "source_id": "1nZwWpHF0mQ"
+        },
+        {
+          "vocadb_song_id": 115478,
+          "title": "秘密音楽",
+          "rating_score": 140,
+          "source_service": "Youtube",
+          "source_id": "sXc204xHj8g"
+        }
+      ]
+    },
+    {
+      "slug": "mimi",
+      "display_name": "MIMI",
+      "vocadb_artist_id": 49431,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 20,
+      "configured_count_lower_bound": 20,
+      "qualified_available_count": 81,
+      "unconfigured_qualified_count": 62,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 537684,
+          "title": "心を刺す言葉だけ",
+          "rating_score": 60,
+          "source_service": "Youtube",
+          "source_id": "FXNUn2KzcE8"
+        },
+        {
+          "vocadb_song_id": 813017,
+          "title": "愛してランデブー",
+          "rating_score": 57,
+          "source_service": "Youtube",
+          "source_id": "Td9YlfLfXzM"
+        },
+        {
+          "vocadb_song_id": 303283,
+          "title": "SorrowChat",
+          "rating_score": 56,
+          "source_service": "Youtube",
+          "source_id": "r5xaccIl1Ps"
+        },
+        {
+          "vocadb_song_id": 696183,
+          "title": "劣等哀歌",
+          "rating_score": 53,
+          "source_service": "Youtube",
+          "source_id": "HkTihNKCWFA"
+        },
+        {
+          "vocadb_song_id": 469245,
+          "title": "ロココ",
+          "rating_score": 52,
+          "source_service": "Youtube",
+          "source_id": "filTeBL7mA0"
+        },
+        {
+          "vocadb_song_id": 913772,
+          "title": "柔く、ほどいて",
+          "rating_score": 50,
+          "source_service": "Youtube",
+          "source_id": "-2FCAZLhh-Y"
+        },
+        {
+          "vocadb_song_id": 346045,
+          "title": "よるつむぎ",
+          "rating_score": 49,
+          "source_service": "Youtube",
+          "source_id": "PJrjwIlWVXA"
+        },
+        {
+          "vocadb_song_id": 193942,
+          "title": "哀の隙間",
+          "rating_score": 47,
+          "source_service": "Youtube",
+          "source_id": "fztKqreP1pk"
+        }
+      ]
+    },
+    {
+      "slug": "maretu",
+      "display_name": "MARETU",
+      "vocadb_artist_id": 1665,
+      "configured_vocadb_song_count": 8,
+      "configured_source_count": 18,
+      "configured_count_lower_bound": 18,
+      "qualified_available_count": 38,
+      "unconfigured_qualified_count": 23,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 89474,
+          "title": "マインドブランド",
+          "rating_score": 1152,
+          "source_service": "Youtube",
+          "source_id": "NIABFcVB3Is"
+        },
+        {
+          "vocadb_song_id": 374132,
+          "title": "ニューダーリン",
+          "rating_score": 503,
+          "source_service": "Youtube",
+          "source_id": "nXNeufhq_nw"
+        },
+        {
+          "vocadb_song_id": 125736,
+          "title": "マエガミスト",
+          "rating_score": 471,
+          "source_service": "Youtube",
+          "source_id": "jEcjQ6qpEM8"
+        },
+        {
+          "vocadb_song_id": 78112,
+          "title": "パケットヒーロー",
+          "rating_score": 433,
+          "source_service": "Youtube",
+          "source_id": "eXKoaIaSqPQ"
+        },
+        {
+          "vocadb_song_id": 101090,
+          "title": "うまれるまえは",
+          "rating_score": 422,
+          "source_service": "Youtube",
+          "source_id": "a-zpnWrRtE0"
+        },
+        {
+          "vocadb_song_id": 153425,
+          "title": "アイムハイ",
+          "rating_score": 402,
+          "source_service": "Youtube",
+          "source_id": "siyb_Xo-p54"
+        },
+        {
+          "vocadb_song_id": 186868,
+          "title": "コウカツ",
+          "rating_score": 390,
+          "source_service": "Youtube",
+          "source_id": "oEexpf-arg4"
+        },
+        {
+          "vocadb_song_id": 550637,
+          "title": "エンゼル92",
+          "rating_score": 377,
+          "source_service": "Youtube",
+          "source_id": "Yt5-aNnDvBE"
+        }
+      ]
+    },
+    {
+      "slug": "n_buna",
+      "display_name": "n-buna",
+      "vocadb_artist_id": 3258,
+      "configured_vocadb_song_count": 17,
+      "configured_source_count": 17,
+      "configured_count_lower_bound": 17,
+      "qualified_available_count": 23,
+      "unconfigured_qualified_count": 10,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 25670,
+          "title": "一人きりロックショー",
+          "rating_score": 18,
+          "source_service": "Youtube",
+          "source_id": "FHoFLsb-2A8"
+        },
+        {
+          "vocadb_song_id": 18960,
+          "title": "さよならバイバイ、またいつか",
+          "rating_score": 14,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm19611172"
+        },
+        {
+          "vocadb_song_id": 38209,
+          "title": "アリストラスト",
+          "rating_score": 13,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm17133122"
+        },
+        {
+          "vocadb_song_id": 59945,
+          "title": "レイズ",
+          "rating_score": 12,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm23925671"
+        },
+        {
+          "vocadb_song_id": 32761,
+          "title": "僕らの航海フォトグラフィー",
+          "rating_score": 9,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm18485361"
+        },
+        {
+          "vocadb_song_id": 279071,
+          "title": "モノクロライド",
+          "rating_score": 9,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm17803596"
+        },
+        {
+          "vocadb_song_id": 141468,
+          "title": "夕暮れ後悔、君と僕",
+          "rating_score": 8,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm17988318"
+        },
+        {
+          "vocadb_song_id": 73661,
+          "title": "八月、夕立雨と君の影",
+          "rating_score": 7,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm18858232"
+        }
+      ]
+    },
+    {
+      "slug": "ayase",
+      "display_name": "Ayase",
+      "vocadb_artist_id": 70347,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 16,
+      "unconfigured_qualified_count": 0,
+      "top_unconfigured": []
+    },
+    {
+      "slug": "iyowa",
+      "display_name": "いよわ",
+      "vocadb_artist_id": 65229,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 43,
+      "unconfigured_qualified_count": 27,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 403932,
+          "title": "異星にいこうね",
+          "rating_score": 250,
+          "source_service": "Youtube",
+          "source_id": "PubukElqUJw"
+        },
+        {
+          "vocadb_song_id": 267225,
+          "title": "くろうばあないと",
+          "rating_score": 196,
+          "source_service": "Youtube",
+          "source_id": "iFo-ie2lJvg"
+        },
+        {
+          "vocadb_song_id": 614616,
+          "title": "クリエイトがある",
+          "rating_score": 186,
+          "source_service": "Youtube",
+          "source_id": "IBDa5nHgQ74"
+        },
+        {
+          "vocadb_song_id": 238590,
+          "title": "わたしは禁忌",
+          "rating_score": 165,
+          "source_service": "Youtube",
+          "source_id": "al263xnknLE"
+        },
+        {
+          "vocadb_song_id": 592083,
+          "title": "たびのまえ、たびのあと",
+          "rating_score": 164,
+          "source_service": "Youtube",
+          "source_id": "HbS1T4d1P70"
+        },
+        {
+          "vocadb_song_id": 865044,
+          "title": "SHIAWASE FOR YOU!",
+          "rating_score": 162,
+          "source_service": "NicoNicoDouga",
+          "source_id": "so45806322"
+        },
+        {
+          "vocadb_song_id": 274885,
+          "title": "ポプリさん",
+          "rating_score": 159,
+          "source_service": "Youtube",
+          "source_id": "I1kPD4gHMaw"
+        },
+        {
+          "vocadb_song_id": 296388,
+          "title": "さよならジャックポット",
+          "rating_score": 152,
+          "source_service": "Youtube",
+          "source_id": "xym6yLUncNY"
+        }
+      ]
+    },
+    {
+      "slug": "syudou",
+      "display_name": "syudou",
+      "vocadb_artist_id": 4834,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 52,
+      "unconfigured_qualified_count": 36,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 579184,
+          "title": "俺ゴーストタイプ",
+          "rating_score": 211,
+          "source_service": "Youtube",
+          "source_id": "J_lxTPQXJHk"
+        },
+        {
+          "vocadb_song_id": 735813,
+          "title": "舌打ち",
+          "rating_score": 66,
+          "source_service": "Youtube",
+          "source_id": "SxTvhAituo4"
+        },
+        {
+          "vocadb_song_id": 518286,
+          "title": "やっちゃったわね",
+          "rating_score": 48,
+          "source_service": "Youtube",
+          "source_id": "0tvR79q69Jc"
+        },
+        {
+          "vocadb_song_id": 292965,
+          "title": "悪い人",
+          "rating_score": 44,
+          "source_service": "Youtube",
+          "source_id": "qCLFfQZA0Gs"
+        },
+        {
+          "vocadb_song_id": 197447,
+          "title": "死生活",
+          "rating_score": 40,
+          "source_service": "Youtube",
+          "source_id": "nBBIBpHypco"
+        },
+        {
+          "vocadb_song_id": 263154,
+          "title": "ワードワードワード",
+          "rating_score": 39,
+          "source_service": "Youtube",
+          "source_id": "FD2nz_iZi8U"
+        },
+        {
+          "vocadb_song_id": 158289,
+          "title": "コールガール",
+          "rating_score": 33,
+          "source_service": "Youtube",
+          "source_id": "GK8s695c6uA"
+        },
+        {
+          "vocadb_song_id": 305369,
+          "title": "アサルトラブ",
+          "rating_score": 31,
+          "source_service": "Youtube",
+          "source_id": "Egs4OcbEJZs"
+        }
+      ]
+    },
+    {
+      "slug": "nakiso",
+      "display_name": "なきそ",
+      "vocadb_artist_id": 64141,
+      "configured_vocadb_song_count": 20,
+      "configured_source_count": 20,
+      "configured_count_lower_bound": 20,
+      "qualified_available_count": 27,
+      "unconfigured_qualified_count": 7,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 546681,
+          "title": "絶交",
+          "rating_score": 27,
+          "source_service": "NicoNicoDouga",
+          "source_id": "so42900193"
+        },
+        {
+          "vocadb_song_id": 221316,
+          "title": "好きなら私と死んでください",
+          "rating_score": 16,
+          "source_service": "Youtube",
+          "source_id": "9IhAMJmMbeI"
+        },
+        {
+          "vocadb_song_id": 207915,
+          "title": "シキカ",
+          "rating_score": 10,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm34002991"
+        },
+        {
+          "vocadb_song_id": 300532,
+          "title": "ミザリーナ",
+          "rating_score": 10,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm37756559"
+        },
+        {
+          "vocadb_song_id": 202133,
+          "title": "スカルダガリー",
+          "rating_score": 9,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm33786214"
+        },
+        {
+          "vocadb_song_id": 191685,
+          "title": "アザレアシティ",
+          "rating_score": 7,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm33116009"
+        },
+        {
+          "vocadb_song_id": 182787,
+          "title": "語彙力が足りない",
+          "rating_score": 5,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm32642417"
+        }
+      ]
+    },
+    {
+      "slug": "surii",
+      "display_name": "すりぃ",
+      "vocadb_artist_id": 64856,
+      "configured_vocadb_song_count": 21,
+      "configured_source_count": 21,
+      "configured_count_lower_bound": 21,
+      "qualified_available_count": 25,
+      "unconfigured_qualified_count": 5,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 471396,
+          "title": "ダウンタイム",
+          "rating_score": 54,
+          "source_service": "Youtube",
+          "source_id": "GTfDbFG-Y1Q"
+        },
+        {
+          "vocadb_song_id": 518287,
+          "title": "フランケン・ディザイン",
+          "rating_score": 35,
+          "source_service": "Youtube",
+          "source_id": "93sMWulkztE"
+        },
+        {
+          "vocadb_song_id": 246362,
+          "title": "ロンリーチルドレン",
+          "rating_score": 17,
+          "source_service": "Youtube",
+          "source_id": "Yd0eB4SqKn8"
+        },
+        {
+          "vocadb_song_id": 606884,
+          "title": "テディ",
+          "rating_score": 10,
+          "source_service": "Youtube",
+          "source_id": "7xhLCwK6bkM"
+        },
+        {
+          "vocadb_song_id": 349178,
+          "title": "アドレナリンダンス",
+          "rating_score": 9,
+          "source_service": "Youtube",
+          "source_id": "Tp8nUEU57VM"
+        }
+      ]
+    },
+    {
+      "slug": "r_sound_design",
+      "display_name": "R Sound Design",
+      "vocadb_artist_id": 51589,
+      "configured_vocadb_song_count": 20,
+      "configured_source_count": 20,
+      "configured_count_lower_bound": 20,
+      "qualified_available_count": 34,
+      "unconfigured_qualified_count": 15,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 706546,
+          "title": "snow bloom",
+          "rating_score": 39,
+          "source_service": "NicoNicoDouga",
+          "source_id": "so44371148"
+        },
+        {
+          "vocadb_song_id": 161161,
+          "title": "CITY NIGHT WALK",
+          "rating_score": 20,
+          "source_service": "Youtube",
+          "source_id": "ijQQcWl1R5k"
+        },
+        {
+          "vocadb_song_id": 436577,
+          "title": "Android",
+          "rating_score": 17,
+          "source_service": "Youtube",
+          "source_id": "qE6WzrHzasc"
+        },
+        {
+          "vocadb_song_id": 450546,
+          "title": "ジュブナイル",
+          "rating_score": 16,
+          "source_service": "Youtube",
+          "source_id": "3wBUzLIq_Js"
+        },
+        {
+          "vocadb_song_id": 469249,
+          "title": "ネオンテトラ",
+          "rating_score": 15,
+          "source_service": "Youtube",
+          "source_id": "1ky_qj0TgFc"
+        },
+        {
+          "vocadb_song_id": 133307,
+          "title": "SectionⅣ",
+          "rating_score": 13,
+          "source_service": "Youtube",
+          "source_id": "PB6HX3bwCGA"
+        },
+        {
+          "vocadb_song_id": 145536,
+          "title": "Icy Dawn",
+          "rating_score": 13,
+          "source_service": "Youtube",
+          "source_id": "Ev8-bFLNHRQ"
+        },
+        {
+          "vocadb_song_id": 150687,
+          "title": "Marble",
+          "rating_score": 12,
+          "source_service": "Youtube",
+          "source_id": "B-nj5-amIYQ"
+        }
+      ]
+    },
+    {
+      "slug": "toa",
+      "display_name": "とあ",
+      "vocadb_artist_id": 7538,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 38,
+      "unconfigured_qualified_count": 22,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 345723,
+          "title": "ココロガール",
+          "rating_score": 79,
+          "source_service": "Youtube",
+          "source_id": "SXq5eH350_s"
+        },
+        {
+          "vocadb_song_id": 508833,
+          "title": "ケムニマク",
+          "rating_score": 49,
+          "source_service": "Youtube",
+          "source_id": "BvV0LP8UEAc"
+        },
+        {
+          "vocadb_song_id": 405402,
+          "title": "いらない、いらない、いらない。",
+          "rating_score": 48,
+          "source_service": "Youtube",
+          "source_id": "VeolnYYGvdA"
+        },
+        {
+          "vocadb_song_id": 461542,
+          "title": "そんなファンタジー",
+          "rating_score": 47,
+          "source_service": "Youtube",
+          "source_id": "NuycP-mYZLE"
+        },
+        {
+          "vocadb_song_id": 164260,
+          "title": "こいあい",
+          "rating_score": 46,
+          "source_service": "Youtube",
+          "source_id": "MKCXi-brnoY"
+        },
+        {
+          "vocadb_song_id": 101190,
+          "title": "リグレット",
+          "rating_score": 44,
+          "source_service": "Youtube",
+          "source_id": "s-lI22Twg_4"
+        },
+        {
+          "vocadb_song_id": 38818,
+          "title": "君ニ唄ヲ",
+          "rating_score": 35,
+          "source_service": "Youtube",
+          "source_id": "YzT38H3milc"
+        },
+        {
+          "vocadb_song_id": 931806,
+          "title": "リフラワーリフレイン",
+          "rating_score": 35,
+          "source_service": "Youtube",
+          "source_id": "gjJOcjh-fvk"
+        }
+      ]
+    },
+    {
+      "slug": "teniwoha",
+      "display_name": "てにをは",
+      "vocadb_artist_id": 1346,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 66,
+      "unconfigured_qualified_count": 50,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 346933,
+          "title": "発火",
+          "rating_score": 50,
+          "source_service": "Youtube",
+          "source_id": "wpM7KDERYS8"
+        },
+        {
+          "vocadb_song_id": 486487,
+          "title": "ノートリアス",
+          "rating_score": 48,
+          "source_service": "Youtube",
+          "source_id": "CUiqopLeS0w"
+        },
+        {
+          "vocadb_song_id": 185102,
+          "title": "オノマトペテン師",
+          "rating_score": 38,
+          "source_service": "Youtube",
+          "source_id": "F7cPwzZUGXU"
+        },
+        {
+          "vocadb_song_id": 50120,
+          "title": "ムジナ寝台特急ミステリヰ",
+          "rating_score": 36,
+          "source_service": "Youtube",
+          "source_id": "Y6vujbC3RZI"
+        },
+        {
+          "vocadb_song_id": 29800,
+          "title": "能面島神隠し事件",
+          "rating_score": 34,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm20906330"
+        },
+        {
+          "vocadb_song_id": 44498,
+          "title": "モノノケミステリヰ",
+          "rating_score": 32,
+          "source_service": "Youtube",
+          "source_id": "gZJUOfU_22g"
+        },
+        {
+          "vocadb_song_id": 100482,
+          "title": "firefly",
+          "rating_score": 28,
+          "source_service": "Youtube",
+          "source_id": "BAFtoshII9Y"
+        },
+        {
+          "vocadb_song_id": 246100,
+          "title": "フェストフェス",
+          "rating_score": 28,
+          "source_service": "Youtube",
+          "source_id": "kZOOwxCUnaQ"
+        }
+      ]
+    },
+    {
+      "slug": "niru_kajitsu",
+      "display_name": "煮ル果実",
+      "vocadb_artist_id": 64434,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 41,
+      "unconfigured_qualified_count": 25,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 308148,
+          "title": "ナイトルール",
+          "rating_score": 136,
+          "source_service": "Youtube",
+          "source_id": "MLE6Fvg7ci0"
+        },
+        {
+          "vocadb_song_id": 373995,
+          "title": "バーバヤーガ",
+          "rating_score": 129,
+          "source_service": "Youtube",
+          "source_id": "aOelHbwkRD4"
+        },
+        {
+          "vocadb_song_id": 513060,
+          "title": "ブーケガルニ",
+          "rating_score": 129,
+          "source_service": "Youtube",
+          "source_id": "4FmE4tva0tU"
+        },
+        {
+          "vocadb_song_id": 355075,
+          "title": "アランダーノ",
+          "rating_score": 120,
+          "source_service": "Youtube",
+          "source_id": "E3xVcw7--aM"
+        },
+        {
+          "vocadb_song_id": 665153,
+          "title": "ムーンガイズ",
+          "rating_score": 112,
+          "source_service": "Youtube",
+          "source_id": "dmA_M1xxo9E"
+        },
+        {
+          "vocadb_song_id": 265410,
+          "title": "ハイネとクライネ",
+          "rating_score": 100,
+          "source_service": "Youtube",
+          "source_id": "V4qmCkT2i_o"
+        },
+        {
+          "vocadb_song_id": 492235,
+          "title": "アメリ",
+          "rating_score": 99,
+          "source_service": "Youtube",
+          "source_id": "8QAORkRx2vg"
+        },
+        {
+          "vocadb_song_id": 519136,
+          "title": "魔天楼",
+          "rating_score": 89,
+          "source_service": "Youtube",
+          "source_id": "90ue3buf9Tw"
+        }
+      ]
+    },
+    {
+      "slug": "harumaki_gohan",
+      "display_name": "はるまきごはん",
+      "vocadb_artist_id": 28208,
+      "configured_vocadb_song_count": 15,
+      "configured_source_count": 15,
+      "configured_count_lower_bound": 15,
+      "qualified_available_count": 36,
+      "unconfigured_qualified_count": 21,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 186984,
+          "title": "地球をあげる",
+          "rating_score": 165,
+          "source_service": "Youtube",
+          "source_id": "GDV32AUXgsw"
+        },
+        {
+          "vocadb_song_id": 167789,
+          "title": "コバルトメモリーズ",
+          "rating_score": 154,
+          "source_service": "Youtube",
+          "source_id": "0X_pI_SCDK8"
+        },
+        {
+          "vocadb_song_id": 285250,
+          "title": "彗星になれたなら",
+          "rating_score": 148,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm37052227"
+        },
+        {
+          "vocadb_song_id": 137314,
+          "title": "フォトンブルー",
+          "rating_score": 135,
+          "source_service": "Youtube",
+          "source_id": "_qXgD8ycNUE"
+        },
+        {
+          "vocadb_song_id": 279843,
+          "title": "秘密",
+          "rating_score": 121,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm36748469"
+        },
+        {
+          "vocadb_song_id": 253487,
+          "title": "約束",
+          "rating_score": 101,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm35680547"
+        },
+        {
+          "vocadb_song_id": 124513,
+          "title": "カルデネ",
+          "rating_score": 91,
+          "source_service": "Youtube",
+          "source_id": "f2c5N1JdFQ8"
+        },
+        {
+          "vocadb_song_id": 511797,
+          "title": "ゴールデンレイ (VOCALOID ver.)",
+          "rating_score": 80,
+          "source_service": "Youtube",
+          "source_id": "yBaC3IfbK2M"
+        }
+      ]
+    },
+    {
+      "slug": "r_906",
+      "display_name": "r-906",
+      "vocadb_artist_id": 66139,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 34,
+      "unconfigured_qualified_count": 18,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 445817,
+          "title": "Hello World !",
+          "rating_score": 126,
+          "source_service": "Youtube",
+          "source_id": "VOx12VDOkQY"
+        },
+        {
+          "vocadb_song_id": 931436,
+          "title": "キャンデー",
+          "rating_score": 124,
+          "source_service": "Youtube",
+          "source_id": "shutpbWwm_w"
+        },
+        {
+          "vocadb_song_id": 352645,
+          "title": "アイソトープ",
+          "rating_score": 119,
+          "source_service": "Youtube",
+          "source_id": "l7eJQdjyDYI"
+        },
+        {
+          "vocadb_song_id": 285801,
+          "title": "ムーンライトダンサー",
+          "rating_score": 104,
+          "source_service": "Youtube",
+          "source_id": "qwqe8i1O_qo"
+        },
+        {
+          "vocadb_song_id": 460846,
+          "title": "削いで、",
+          "rating_score": 98,
+          "source_service": "Youtube",
+          "source_id": "Ls-Ay3fOd2s"
+        },
+        {
+          "vocadb_song_id": 201591,
+          "title": "モノクロセンス",
+          "rating_score": 73,
+          "source_service": "Youtube",
+          "source_id": "c7pACs3NVuo"
+        },
+        {
+          "vocadb_song_id": 232073,
+          "title": "A rainy dancer",
+          "rating_score": 71,
+          "source_service": "Youtube",
+          "source_id": "EOpwt95lOH8"
+        },
+        {
+          "vocadb_song_id": 488919,
+          "title": "星見の唄",
+          "rating_score": 62,
+          "source_service": "Youtube",
+          "source_id": "JtBsEYdS85w"
+        }
+      ]
+    },
+    {
+      "slug": "sasakure_uk",
+      "display_name": "sasakure.UK",
+      "vocadb_artist_id": 51,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 41,
+      "unconfigured_qualified_count": 29,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 2924,
+          "title": "＊ハロー、プラネット。",
+          "rating_score": 913,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7138245"
+        },
+        {
+          "vocadb_song_id": 5244,
+          "title": "ぼくらの16bit戦争",
+          "rating_score": 462,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm7610111"
+        },
+        {
+          "vocadb_song_id": 6185,
+          "title": "ロストエンファウンド",
+          "rating_score": 221,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm11323864"
+        },
+        {
+          "vocadb_song_id": 541964,
+          "title": "X.E.N.O",
+          "rating_score": 130,
+          "source_service": "Youtube",
+          "source_id": "Iu0wpWFpe3Y"
+        },
+        {
+          "vocadb_song_id": 73365,
+          "title": "ネコソギマターバップ",
+          "rating_score": 127,
+          "source_service": "Youtube",
+          "source_id": "H-lkjHsKWvU"
+        },
+        {
+          "vocadb_song_id": 69132,
+          "title": "tig-hug",
+          "rating_score": 110,
+          "source_service": "Youtube",
+          "source_id": "AO81V78Dtwo"
+        },
+        {
+          "vocadb_song_id": 26609,
+          "title": "アンチグラビティーズ",
+          "rating_score": 107,
+          "source_service": "Youtube",
+          "source_id": "CI9Gr9kxtJ0"
+        },
+        {
+          "vocadb_song_id": 184448,
+          "title": "阿呆なるものは",
+          "rating_score": 107,
+          "source_service": "Youtube",
+          "source_id": "gGUGv36-hOg"
+        }
+      ]
+    },
+    {
+      "slug": "giga",
+      "display_name": "Giga",
+      "vocadb_artist_id": 772,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 20,
+      "unconfigured_qualified_count": 4,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 8392,
+          "title": "トゥルリラタリラトゥルラ",
+          "rating_score": 67,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm14809198"
+        },
+        {
+          "vocadb_song_id": 41322,
+          "title": "Indicator red",
+          "rating_score": 24,
+          "source_service": "NicoNicoDouga",
+          "source_id": "nm11872885"
+        },
+        {
+          "vocadb_song_id": 121248,
+          "title": "TimTim",
+          "rating_score": 17,
+          "source_service": "NicoNicoDouga",
+          "source_id": "nm9947131"
+        },
+        {
+          "vocadb_song_id": 61066,
+          "title": "MarImo(short ver.）",
+          "rating_score": 9,
+          "source_service": "NicoNicoDouga",
+          "source_id": "nm9980124"
+        }
+      ]
+    },
+    {
+      "slug": "rerulili",
+      "display_name": "れるりり",
+      "vocadb_artist_id": 712,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 66,
+      "unconfigured_qualified_count": 50,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 552180,
+          "title": "ハッピーチートデー",
+          "rating_score": 106,
+          "source_service": "NicoNicoDouga",
+          "source_id": "so43161601"
+        },
+        {
+          "vocadb_song_id": 8235,
+          "title": "いつもより泣き虫な空",
+          "rating_score": 87,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm8199444"
+        },
+        {
+          "vocadb_song_id": 253330,
+          "title": "Q極進化論",
+          "rating_score": 74,
+          "source_service": "Youtube",
+          "source_id": "2h7BrfJGcXs"
+        },
+        {
+          "vocadb_song_id": 135180,
+          "title": "ラブリーアンサンブル",
+          "rating_score": 63,
+          "source_service": "Youtube",
+          "source_id": "93ltySWAiPI"
+        },
+        {
+          "vocadb_song_id": 50374,
+          "title": "言ノ葉カルマ",
+          "rating_score": 60,
+          "source_service": "Youtube",
+          "source_id": "SRcYxc5Jf00"
+        },
+        {
+          "vocadb_song_id": 590047,
+          "title": "リワインドワールド",
+          "rating_score": 58,
+          "source_service": "Youtube",
+          "source_id": "jd6FDqnr_K8"
+        },
+        {
+          "vocadb_song_id": 68982,
+          "title": "GirlsTalk",
+          "rating_score": 57,
+          "source_service": "Youtube",
+          "source_id": "hA0W2lJikso"
+        },
+        {
+          "vocadb_song_id": 29663,
+          "title": "シンガソン",
+          "rating_score": 55,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm20843547"
+        }
+      ]
+    },
+    {
+      "slug": "mikito_p",
+      "display_name": "みきとP",
+      "vocadb_artist_id": 876,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 65,
+      "unconfigured_qualified_count": 49,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 127519,
+          "title": "39みゅーじっく!",
+          "rating_score": 876,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm29145868"
+        },
+        {
+          "vocadb_song_id": 115575,
+          "title": "蘇州恋慕",
+          "rating_score": 202,
+          "source_service": "NicoNicoDouga",
+          "source_id": "1456298410"
+        },
+        {
+          "vocadb_song_id": 760761,
+          "title": "YAMI CROW",
+          "rating_score": 107,
+          "source_service": "Youtube",
+          "source_id": "NOiADZW9biM"
+        },
+        {
+          "vocadb_song_id": 23331,
+          "title": "夕暮れツイッター",
+          "rating_score": 100,
+          "source_service": "Youtube",
+          "source_id": "db1DhiHJC_Q"
+        },
+        {
+          "vocadb_song_id": 480845,
+          "title": "NEPPUU〜熱風〜",
+          "rating_score": 98,
+          "source_service": "NicoNicoDouga",
+          "source_id": "so41876213"
+        },
+        {
+          "vocadb_song_id": 8810,
+          "title": "SECRET DVD",
+          "rating_score": 95,
+          "source_service": "Youtube",
+          "source_id": "5e4t2K6Z6yg"
+        },
+        {
+          "vocadb_song_id": 17676,
+          "title": "非公開日誌",
+          "rating_score": 95,
+          "source_service": "Youtube",
+          "source_id": "EcQQSCdMfUE"
+        },
+        {
+          "vocadb_song_id": 127520,
+          "title": "Tears River",
+          "rating_score": 93,
+          "source_service": "Youtube",
+          "source_id": "HOFHF3BYxi4"
+        }
+      ]
+    },
+    {
+      "slug": "hitoshizuku_p",
+      "display_name": "ひとしずくP / やま△",
+      "vocadb_artist_id": 103,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 70,
+      "unconfigured_qualified_count": 54,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 8844,
+          "title": "光と影の楽園",
+          "rating_score": 166,
+          "source_service": "Youtube",
+          "source_id": "Nh5LyOgS_0E"
+        },
+        {
+          "vocadb_song_id": 10731,
+          "title": "イカサマ⇔カジノ",
+          "rating_score": 166,
+          "source_service": "Youtube",
+          "source_id": "tjkYVU8IahE"
+        },
+        {
+          "vocadb_song_id": 101812,
+          "title": "Re:birthed",
+          "rating_score": 161,
+          "source_service": "Youtube",
+          "source_id": "T4C7S-UmPpo"
+        },
+        {
+          "vocadb_song_id": 35871,
+          "title": "赤と白と黒の系譜",
+          "rating_score": 149,
+          "source_service": "Youtube",
+          "source_id": "GC3_vIlIGYQ"
+        },
+        {
+          "vocadb_song_id": 7017,
+          "title": "雨夢楼",
+          "rating_score": 146,
+          "source_service": "Youtube",
+          "source_id": "16nqYQasbb0"
+        },
+        {
+          "vocadb_song_id": 84302,
+          "title": "愛欲のプリズナー",
+          "rating_score": 141,
+          "source_service": "Youtube",
+          "source_id": "KVLZH3Mbebs"
+        },
+        {
+          "vocadb_song_id": 13418,
+          "title": "背徳の花",
+          "rating_score": 135,
+          "source_service": "Youtube",
+          "source_id": "ISHzNGDhX8A"
+        },
+        {
+          "vocadb_song_id": 63034,
+          "title": "蝶と花と蜘蛛",
+          "rating_score": 123,
+          "source_service": "Youtube",
+          "source_id": "oq6EtwFIZUQ"
+        }
+      ]
+    },
+    {
+      "slug": "balloon",
+      "display_name": "バルーン",
+      "vocadb_artist_id": 10259,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 33,
+      "unconfigured_qualified_count": 17,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 85949,
+          "title": "ポートレート",
+          "rating_score": 24,
+          "source_service": "Youtube",
+          "source_id": "tgMIuUWD6_k"
+        },
+        {
+          "vocadb_song_id": 82194,
+          "title": "秋は暮れて疎ら",
+          "rating_score": 22,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm25735204"
+        },
+        {
+          "vocadb_song_id": 100229,
+          "title": "トピアリー",
+          "rating_score": 21,
+          "source_service": "Youtube",
+          "source_id": "M38Jy7833L4"
+        },
+        {
+          "vocadb_song_id": 57456,
+          "title": "モーダル",
+          "rating_score": 19,
+          "source_service": "Youtube",
+          "source_id": "qMFPsbi-5sU"
+        },
+        {
+          "vocadb_song_id": 32909,
+          "title": "溺れた雨傘",
+          "rating_score": 18,
+          "source_service": "Youtube",
+          "source_id": "qrdiOMp_LZw"
+        },
+        {
+          "vocadb_song_id": 51600,
+          "title": "夜の帳が落ちる",
+          "rating_score": 18,
+          "source_service": "Youtube",
+          "source_id": "7JVNoacYJAY"
+        },
+        {
+          "vocadb_song_id": 66308,
+          "title": "少女は旅をする",
+          "rating_score": 17,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm24345445"
+        },
+        {
+          "vocadb_song_id": 41644,
+          "title": "雨の勧め",
+          "rating_score": 13,
+          "source_service": "Youtube",
+          "source_id": "zQpah5blxx4"
+        }
+      ]
+    },
+    {
+      "slug": "kuro_usa_p",
+      "display_name": "黒うさP",
+      "vocadb_artist_id": 310,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 22,
+      "unconfigured_qualified_count": 6,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 11017,
+          "title": "白雪～shirayuki～",
+          "rating_score": 11,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm2316254"
+        },
+        {
+          "vocadb_song_id": 11016,
+          "title": "Love*3",
+          "rating_score": 10,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm2788569"
+        },
+        {
+          "vocadb_song_id": 11019,
+          "title": "Cyclone",
+          "rating_score": 10,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm2227704"
+        },
+        {
+          "vocadb_song_id": 238288,
+          "title": "ウタウタイ",
+          "rating_score": 7,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm3705128"
+        },
+        {
+          "vocadb_song_id": 76635,
+          "title": "ミルキー☆ウェイ",
+          "rating_score": 3,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm4740727"
+        },
+        {
+          "vocadb_song_id": 107485,
+          "title": "はなむけ",
+          "rating_score": 3,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm2274619"
+        }
+      ]
+    },
+    {
+      "slug": "mothy",
+      "display_name": "mothy",
+      "vocadb_artist_id": 189,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 47,
+      "unconfigured_qualified_count": 31,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 1655,
+          "title": "最後のリボルバー",
+          "rating_score": 124,
+          "source_service": "Youtube",
+          "source_id": "tdVYqgK6gUs"
+        },
+        {
+          "vocadb_song_id": 18327,
+          "title": "チミドロスイッチ",
+          "rating_score": 119,
+          "source_service": "Youtube",
+          "source_id": "bgUf53wRoqA"
+        },
+        {
+          "vocadb_song_id": 382867,
+          "title": "去り人達のワルツ",
+          "rating_score": 114,
+          "source_service": "Youtube",
+          "source_id": "jNBRyo54Tks"
+        },
+        {
+          "vocadb_song_id": 1614,
+          "title": "マダム・メリーゴーランド",
+          "rating_score": 113,
+          "source_service": "Youtube",
+          "source_id": "l3Aal-cvknY"
+        },
+        {
+          "vocadb_song_id": 35842,
+          "title": "「Ma」サバイバル ~ 生き残るのは誰だ？ ~",
+          "rating_score": 110,
+          "source_service": "Youtube",
+          "source_id": "BhFgJMxy0PI"
+        },
+        {
+          "vocadb_song_id": 99134,
+          "title": "どこかで聞いた唄",
+          "rating_score": 109,
+          "source_service": "Youtube",
+          "source_id": "2AmPPjcxNjI"
+        },
+        {
+          "vocadb_song_id": 1599,
+          "title": "箱庭の少女",
+          "rating_score": 100,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm3840548"
+        },
+        {
+          "vocadb_song_id": 1584,
+          "title": "置き去り月夜抄",
+          "rating_score": 95,
+          "source_service": "Youtube",
+          "source_id": "JDCV0vqEh9E"
+        }
+      ]
+    },
+    {
+      "slug": "hiiragi_magnetite",
+      "display_name": "柊マグネタイト",
+      "vocadb_artist_id": 83243,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 26,
+      "unconfigured_qualified_count": 10,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 630460,
+          "title": "アンテナ39",
+          "rating_score": 219,
+          "source_service": "NicoNicoDouga",
+          "source_id": "sm43936125"
+        },
+        {
+          "vocadb_song_id": 293857,
+          "title": "或世界消失",
+          "rating_score": 109,
+          "source_service": "Youtube",
+          "source_id": "UgXJBoqbC78"
+        },
+        {
+          "vocadb_song_id": 867906,
+          "title": "フェイクマリッジ",
+          "rating_score": 49,
+          "source_service": "Youtube",
+          "source_id": "xumhFodCj0A"
+        },
+        {
+          "vocadb_song_id": 437444,
+          "title": "ラボ・ラトリ",
+          "rating_score": 48,
+          "source_service": "Youtube",
+          "source_id": "iQ2Yxx1NnTw"
+        },
+        {
+          "vocadb_song_id": 371212,
+          "title": "ファブリック・フラワー",
+          "rating_score": 43,
+          "source_service": "Youtube",
+          "source_id": "47yAzoIe7R4"
+        },
+        {
+          "vocadb_song_id": 444638,
+          "title": "ユニ",
+          "rating_score": 34,
+          "source_service": "Youtube",
+          "source_id": "oaQIS6amNI4"
+        },
+        {
+          "vocadb_song_id": 420852,
+          "title": "すれちがい",
+          "rating_score": 21,
+          "source_service": "Youtube",
+          "source_id": "P5KFvy9Y8IU"
+        },
+        {
+          "vocadb_song_id": 484018,
+          "title": "リトライ",
+          "rating_score": 19,
+          "source_service": "Youtube",
+          "source_id": "f3X2ocVWoWY"
+        }
+      ]
+    },
+    {
+      "slug": "owata_p",
+      "display_name": "オワタP",
+      "vocadb_artist_id": 94,
+      "configured_vocadb_song_count": 17,
+      "configured_source_count": 17,
+      "configured_count_lower_bound": 17,
+      "qualified_available_count": 101,
+      "unconfigured_qualified_count": 84,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 315040,
+          "title": "3分の曲を聴くのにかかる時間は3分",
+          "rating_score": 63,
+          "source_service": "Youtube",
+          "source_id": "WnKm6aH_uxw"
+        },
+        {
+          "vocadb_song_id": 7448,
+          "title": "ツマンネ?",
+          "rating_score": 57,
+          "source_service": "Youtube",
+          "source_id": "5CRwFCFFYpw"
+        },
+        {
+          "vocadb_song_id": 3752,
+          "title": "アンデルツェ",
+          "rating_score": 56,
+          "source_service": "Youtube",
+          "source_id": "bEcuVfk86Y0"
+        },
+        {
+          "vocadb_song_id": 18297,
+          "title": "ジエンド",
+          "rating_score": 53,
+          "source_service": "Youtube",
+          "source_id": "brEmHUKuD2c"
+        },
+        {
+          "vocadb_song_id": 719903,
+          "title": "エンドロール中に席を立つな",
+          "rating_score": 51,
+          "source_service": "Youtube",
+          "source_id": "v2sHfUR6OMk"
+        },
+        {
+          "vocadb_song_id": 1888,
+          "title": "ニンジンだいすきのうた",
+          "rating_score": 47,
+          "source_service": "Youtube",
+          "source_id": "EEpXdyQLC1M"
+        },
+        {
+          "vocadb_song_id": 96564,
+          "title": "逃げろ!現実だ",
+          "rating_score": 42,
+          "source_service": "Youtube",
+          "source_id": "CV9zj7y2ly8"
+        },
+        {
+          "vocadb_song_id": 647716,
+          "title": "はたらけばシアワセが待っている",
+          "rating_score": 42,
+          "source_service": "Youtube",
+          "source_id": "f2p613OKV90"
+        }
+      ]
+    },
+    {
+      "slug": "nuyuri",
+      "display_name": "ぬゆり",
+      "vocadb_artist_id": 5666,
+      "configured_vocadb_song_count": 16,
+      "configured_source_count": 16,
+      "configured_count_lower_bound": 16,
+      "qualified_available_count": 47,
+      "unconfigured_qualified_count": 31,
+      "top_unconfigured": [
+        {
+          "vocadb_song_id": 145330,
+          "title": "フォログラフ",
+          "rating_score": 34,
+          "source_service": "Youtube",
+          "source_id": "svo5hEcF10g"
+        },
+        {
+          "vocadb_song_id": 521660,
+          "title": "万物流転",
+          "rating_score": 34,
+          "source_service": "Youtube",
+          "source_id": "lFdg21FN0A0"
+        },
+        {
+          "vocadb_song_id": 288302,
+          "title": "サラダボウル",
+          "rating_score": 29,
+          "source_service": "Youtube",
+          "source_id": "UPUb8UyWf3k"
+        },
+        {
+          "vocadb_song_id": 644219,
+          "title": "極々彩々",
+          "rating_score": 29,
+          "source_service": "Youtube",
+          "source_id": "y11X23Sx7QY"
+        },
+        {
+          "vocadb_song_id": 644220,
+          "title": "アンチマネー",
+          "rating_score": 29,
+          "source_service": "Youtube",
+          "source_id": "ZUIcTbAWa38"
+        },
+        {
+          "vocadb_song_id": 320272,
+          "title": "vivid a",
+          "rating_score": 28,
+          "source_service": "Youtube",
+          "source_id": "kkMSn4JPiJU"
+        },
+        {
+          "vocadb_song_id": 829667,
+          "title": "ひかりと欲",
+          "rating_score": 28,
+          "source_service": "Youtube",
+          "source_id": "DeoNzffS9xk"
+        },
+        {
+          "vocadb_song_id": 114986,
+          "title": "さいしょへ",
+          "rating_score": 27,
+          "source_service": "Youtube",
+          "source_id": "O9odU7ZCZhA"
+        }
+      ]
+    }
+  ]
+}

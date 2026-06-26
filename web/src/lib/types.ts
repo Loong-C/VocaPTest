@@ -6,6 +6,7 @@ export interface SearchResultItem {
   score: number;
   rank: number;
   style_tags: string[];
+  representative_songs: ProducerSong[];
 }
 
 export interface AnalyzeResult {

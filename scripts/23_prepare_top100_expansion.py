@@ -4,6 +4,16 @@
 This script intentionally stops at catalog/config generation.  Audio download,
 VocaDB PV validation, embedding rebuilds, and model training stay in the
 existing reproducible scripts.
+
+Selection policy:
+- use VocaDB rating order as the first popularity signal;
+- require Original songs, voice-synth credits, and target producer Composer or
+  Default roles;
+- accept enabled VocaDB Original PVs from Youtube or NicoNicoDouga;
+- skip Topic/SEGA/Project Sekai/KARENT-style uploads and unapproved external
+  style-credit collaborators;
+- allow partial train/dev/final splits for genuinely sparse producers instead
+  of skipping the producer solely because the ideal split cannot be filled.
 """
 from __future__ import annotations
 
@@ -82,7 +92,7 @@ CANDIDATES: dict[str, Candidate] = {
         top100_name="ryo",
         reason=(
             "Skipped by default: VocaDB currently exposes only one strict "
-            "non-Topic voice-synth Original YouTube PV."
+            "non-Topic voice-synth Original PV."
         ),
     ),
     "mikito_p": Candidate(
@@ -245,17 +255,47 @@ def original_youtube_pvs(song: dict) -> list[dict]:
     ]
 
 
+def original_media_pvs(song: dict) -> list[dict]:
+    return [
+        pv
+        for pv in song.get("pvs", [])
+        if pv.get("service") in {"Youtube", "NicoNicoDouga"}
+        and pv.get("pvType") == "Original"
+        and pv.get("pvId")
+        and not pv.get("disabled")
+    ]
+
+
 def is_risky_pv_author(author: str | None) -> bool:
     folded = (author or "").casefold()
     return any(term in folded for term in RISKY_PV_AUTHOR_TERMS)
 
 
-def preferred_original_youtube_pvs(song: dict) -> list[dict]:
-    pvs = original_youtube_pvs(song)
-    return [pv for pv in pvs if not is_risky_pv_author(pv.get("author"))]
+def preferred_original_media_pvs(song: dict) -> list[dict]:
+    service_order = {"Youtube": 0, "NicoNicoDouga": 1}
+    pvs = [
+        pv
+        for pv in original_media_pvs(song)
+        if not is_risky_pv_author(pv.get("author"))
+    ]
+    return sorted(
+        pvs,
+        key=lambda pv: (
+            service_order.get(str(pv.get("service")), 99),
+            str(pv.get("pvId")),
+        ),
+    )
 
 
-def existing_ids(root: Path) -> tuple[set[int], set[str]]:
+def source_for_entry(item: dict) -> tuple[str, str] | None:
+    if item.get("source_service") and item.get("source_id"):
+        return str(item["source_service"]), str(item["source_id"])
+    if item.get("youtube_id"):
+        return "Youtube", str(item["youtube_id"])
+    return None
+
+
+def existing_ids(root: Path) -> tuple[set[int], set[tuple[str, str]]]:
     yaml_paths = [
         root / "configs" / "training_catalog_additions.yaml",
         root / "configs" / "dev_holdout_catalog.yaml",
@@ -267,19 +307,25 @@ def existing_ids(root: Path) -> tuple[set[int], set[str]]:
         root / "data" / "processed" / "frozen_test" / "catalog.jsonl",
     ]
     vocadb_ids: set[int] = set()
-    youtube_ids: set[str] = set()
+    source_ids: set[tuple[str, str]] = set()
     for item in [song for path in yaml_paths for song in load_yaml_songs(path)]:
         if item.get("vocadb_song_id") is not None:
             vocadb_ids.add(int(item["vocadb_song_id"]))
-        if item.get("youtube_id"):
-            youtube_ids.add(str(item["youtube_id"]))
+        source = source_for_entry(item)
+        if source:
+            source_ids.add(source)
     for item in [record for path in jsonl_paths for record in load_jsonl(path)]:
         if item.get("vocadb_song_id") is not None:
             vocadb_ids.add(int(item["vocadb_song_id"]))
-        song_id = str(item.get("song_id", ""))
-        if song_id.startswith("youtube_"):
-            youtube_ids.add(song_id.removeprefix("youtube_"))
-    return vocadb_ids, youtube_ids
+        if item.get("source_service") and item.get("source_id"):
+            source_ids.add((str(item["source_service"]), str(item["source_id"])))
+        else:
+            song_id = str(item.get("song_id", ""))
+            if song_id.startswith("youtube_"):
+                source_ids.add(("Youtube", song_id.removeprefix("youtube_")))
+            elif song_id.startswith("niconico_"):
+                source_ids.add(("NicoNicoDouga", song_id.removeprefix("niconico_")))
+    return vocadb_ids, source_ids
 
 
 def configured_artist_ids(root: Path) -> dict[str, int]:
@@ -322,13 +368,13 @@ def select_catalog_entries(
     candidate: Candidate,
     *,
     existing_vocadb_ids: set[int],
-    existing_youtube_ids: set[str],
+    existing_source_ids: set[tuple[str, str]],
     excluded_artist_ids: set[int],
     max_results: int,
 ) -> list[dict]:
     selected: list[dict] = []
     seen_vocadb = set(existing_vocadb_ids)
-    seen_youtube = set(existing_youtube_ids)
+    seen_sources = set(existing_source_ids)
     for song in fetch_songs(session, candidate.vocadb_artist_id, max_results):
         roles = style_roles_for(song, candidate.vocadb_artist_id)
         if not (roles & STYLE_ROLES):
@@ -341,19 +387,25 @@ def select_catalog_entries(
             continue
         if int(song["id"]) in seen_vocadb:
             continue
-        for pv in preferred_original_youtube_pvs(song):
-            youtube_id = str(pv["pvId"])
-            if youtube_id in seen_youtube:
+        for pv in preferred_original_media_pvs(song):
+            source_service = str(pv["service"])
+            source_id = str(pv["pvId"])
+            source = (source_service, source_id)
+            if source in seen_sources:
                 continue
-            selected.append({
+            entry = {
                 "producer_slug": candidate.slug,
                 "title": song.get("name") or song.get("defaultName") or str(song["id"]),
                 "vocadb_song_id": int(song["id"]),
-                "youtube_id": youtube_id,
+                "source_service": source_service,
+                "source_id": source_id,
                 "source_kind": "vocadb_original_pv",
-            })
+            }
+            if source_service == "Youtube":
+                entry["youtube_id"] = source_id
+            selected.append(entry)
             seen_vocadb.add(int(song["id"]))
-            seen_youtube.add(youtube_id)
+            seen_sources.add(source)
             break
         if len(selected) >= max_results:
             return selected
@@ -427,9 +479,12 @@ def catalog_block(entries: Iterable[dict], indent: str) -> str:
             f"{indent}- producer_slug: {entry['producer_slug']}",
             f"{indent}  title: {format_scalar(entry['title'])}",
             f"{indent}  vocadb_song_id: {entry['vocadb_song_id']}",
-            f"{indent}  youtube_id: {entry['youtube_id']}",
+            f"{indent}  source_service: {entry['source_service']}",
+            f"{indent}  source_id: {entry['source_id']}",
             f"{indent}  source_kind: {entry['source_kind']}",
         ]
+        if entry.get("youtube_id"):
+            lines.insert(4, f"{indent}  youtube_id: {entry['youtube_id']}")
         blocks.append("\n".join(lines))
     return "\n".join(blocks) + "\n"
 
@@ -458,8 +513,8 @@ def main() -> None:
     parser.add_argument("--train-count", type=int, default=10)
     parser.add_argument("--dev-count", type=int, default=2)
     parser.add_argument("--final-count", type=int, default=4)
-    parser.add_argument("--min-train-count", type=int, default=8)
-    parser.add_argument("--min-dev-count", type=int, default=1)
+    parser.add_argument("--min-train-count", type=int, default=2)
+    parser.add_argument("--min-dev-count", type=int, default=0)
     parser.add_argument("--min-final-count", type=int, default=1)
     parser.add_argument("--max-results", type=int, default=160)
     parser.add_argument("--dry-run", action="store_true")
@@ -473,7 +528,7 @@ def main() -> None:
     top100 = read_top100(args.top100)
     session = requests.Session()
     session.headers["User-Agent"] = "VocaPTest/0.1 top100 expansion"
-    existing_vocadb_ids, existing_youtube_ids = existing_ids(root)
+    existing_vocadb_ids, existing_source_ids = existing_ids(root)
     current_artist_ids = configured_artist_ids(root)
 
     prepared: dict[str, dict[str, list[dict]]] = {}
@@ -488,7 +543,7 @@ def main() -> None:
             session,
             candidate,
             existing_vocadb_ids=existing_vocadb_ids,
-            existing_youtube_ids=existing_youtube_ids,
+            existing_source_ids=existing_source_ids,
             excluded_artist_ids={
                 artist_id
                 for slug, artist_id in current_artist_ids.items()
@@ -507,7 +562,7 @@ def main() -> None:
         )
         if splits is None:
             skipped[slug] = (
-                f"only {len(selected)} verified voice-synth Original YouTube PVs; "
+                f"only {len(selected)} verified voice-synth Original PVs; "
                 "not enough for the minimum train/dev/final split"
             )
             continue
@@ -519,7 +574,12 @@ def main() -> None:
                 f"split={ {key: len(value) for key, value in splits.items()} }"
             )
         existing_vocadb_ids.update(item["vocadb_song_id"] for item in used)
-        existing_youtube_ids.update(item["youtube_id"] for item in used)
+        existing_source_ids.update(
+            source
+            for item in used
+            for source in [source_for_entry(item)]
+            if source
+        )
 
     report = {
         "requested": list(requested),

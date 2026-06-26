@@ -1184,6 +1184,18 @@ songs:
     vocadb_song_id: 571496
     youtube_id: SJcgOWsDwi4
     source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: Masked bitcH
+    vocadb_song_id: 15981
+    source_service: NicoNicoDouga
+    source_id: sm18684672
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: テトロドトキサイザ2号
+    vocadb_song_id: 8391
+    source_service: NicoNicoDouga
+    source_id: sm16483227
+    source_kind: vocadb_original_pv
   - producer_slug: rerulili
     title: 脳漿炸裂ガール
     vocadb_song_id: 17189
@@ -1387,67 +1399,128 @@ songs:
   - producer_slug: kuro_usa_p
     title: 千本桜
     vocadb_song_id: 8394
+    source_service: Youtube
+    source_id: shs0rAiwsGQ
     youtube_id: shs0rAiwsGQ
     source_kind: vocadb_original_pv
   - producer_slug: kuro_usa_p
     title: 上弦の月
     vocadb_song_id: 22869
+    source_service: Youtube
+    source_id: -r_sn_pF5Pw
     youtube_id: -r_sn_pF5Pw
     source_kind: vocadb_original_pv
   - producer_slug: kuro_usa_p
     title: 恋愛フィロソフィア
     vocadb_song_id: 12665
+    source_service: Youtube
+    source_id: z8vNALh3Uno
     youtube_id: z8vNALh3Uno
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: 紅一葉
+    vocadb_song_id: 7718
+    source_service: NicoNicoDouga
+    source_id: sm2465784
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: 最後の女王
+    vocadb_song_id: 11013
+    source_service: NicoNicoDouga
+    source_id: sm6203854
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: アリアドネ
+    vocadb_song_id: 75482
+    source_service: Youtube
+    source_id: DByyz5wN-PA
+    youtube_id: DByyz5wN-PA
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: シャララ
+    vocadb_song_id: 21710
+    source_service: NicoNicoDouga
+    source_id: sm19889871
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: ずっと、ずっと・・・
+    vocadb_song_id: 7716
+    source_service: NicoNicoDouga
+    source_id: sm2573003
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: 2525遊園地
+    vocadb_song_id: 14445
+    source_service: NicoNicoDouga
+    source_id: sm14605390
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: 弾丸ロッケンガール
+    vocadb_song_id: 44130
+    source_service: NicoNicoDouga
+    source_id: sm22340063
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: 悪ノ召使
+    vocadb_song_id: 1358
+    source_service: NicoNicoDouga
+    source_id: sm3133304
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: ヴェノマニア公の狂気
+    vocadb_song_id: 1277
+    source_service: NicoNicoDouga
+    source_id: sm11519178
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: 悪ノ娘
+    vocadb_song_id: 1590
+    source_service: NicoNicoDouga
+    source_id: sm2916956
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: 円尾坂の仕立屋
+    vocadb_song_id: 2808
+    source_service: NicoNicoDouga
+    source_id: sm9032932
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: 悪食娘コンチータ
+    vocadb_song_id: 1588
+    source_service: NicoNicoDouga
+    source_id: sm6328922
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: 悪徳のジャッジメント
+    vocadb_song_id: 1598
+    source_service: NicoNicoDouga
+    source_id: sm14731092
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: リグレットメッセージ
+    vocadb_song_id: 1593
+    source_service: NicoNicoDouga
+    source_id: sm3440324
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: 眠らせ姫からの贈り物
+    vocadb_song_id: 1612
+    source_service: NicoNicoDouga
+    source_id: sm14539838
     source_kind: vocadb_original_pv
   - producer_slug: mothy
     title: 白ノ娘
     vocadb_song_id: 2811
+    source_service: Youtube
+    source_id: LMIsQWvgEUM
     youtube_id: LMIsQWvgEUM
     source_kind: vocadb_original_pv
   - producer_slug: mothy
     title: ネメシスの銃口
     vocadb_song_id: 62774
+    source_service: Youtube
+    source_id: AHjxLoeYIoI
     youtube_id: AHjxLoeYIoI
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: moonlit bear
-    vocadb_song_id: 1583
-    youtube_id: UntYssFE_nE
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: 魔女ザルムホーファーの逃亡
-    vocadb_song_id: 13727
-    youtube_id: qlDS4jHsDMw
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: 茶番カプリシオ
-    vocadb_song_id: 1615
-    youtube_id: 7sAxOg4r4IE
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: 七つの罪と罰
-    vocadb_song_id: 75939
-    youtube_id: 48ZMa-qYebY
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: 五番目のピエロ
-    vocadb_song_id: 1613
-    youtube_id: fUaSCgMFe5w
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: 最後のリボルバー
-    vocadb_song_id: 1655
-    youtube_id: tdVYqgK6gUs
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: チミドロスイッチ
-    vocadb_song_id: 18327
-    youtube_id: bgUf53wRoqA
-    source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: 去り人達のワルツ
-    vocadb_song_id: 382867
-    youtube_id: jNBRyo54Tks
     source_kind: vocadb_original_pv
   - producer_slug: hiiragi_magnetite
     title: テトリス
@@ -1548,6 +1621,12 @@ songs:
     title: レンきゅんなう！
     vocadb_song_id: 21558
     youtube_id: 6Oq7qw7C69Q
+    source_kind: vocadb_original_pv
+  - producer_slug: owata_p
+    title: パラジクロロベンゼン
+    vocadb_song_id: 1890
+    source_service: NicoNicoDouga
+    source_id: sm8269164
     source_kind: vocadb_original_pv
   - producer_slug: nuyuri
     title: ロウワー

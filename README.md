@@ -8,24 +8,26 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 
 | 项目 | 当前状态 |
 |---|---:|
-| 训练目录 | **463 首 canonical 作品** |
-| Development holdout | **78 首作品，每类 0-2 首** |
-| Final frozen test | **159 首作品，每类 1-4 首** |
-| 训练分段 | **5538 段** |
-| Dev 分段 | **936 段** |
-| Final frozen 分段 | **1890 段** |
+| 训练目录 | **473 首 canonical 作品** |
+| Development holdout | **80 首作品，每类 1-2 首** |
+| Final frozen test | **162 首作品，每类 2-4 首** |
+| 训练分段 | **5658 段** |
+| Dev 分段 | **960 段** |
+| Final frozen 分段 | **1926 段** |
 | 音频处理 | 24kHz 单声道、20s 窗口、10s hop、均匀覆盖、最多 12 段 |
 | 音频表征 | MERT-v1-95M 第 5/6/8 层，每层 768 维 |
 | 分类器 | 三个歌曲均值 Shrinkage LDA head 的概率平均 |
 | 置信度 | OOF probability temperature scaling + 拒识阈值 |
 
-三个数据分区按 YouTube ID 和 VocaDB `work_id` 双重隔离：
+三个数据分区按媒体 source key 和 VocaDB `work_id` 双重隔离：
 
 - **Training songs**：参与当前 LDA 模型训练。
 - **Dev holdout songs**：不参与训练，用于未来模型选择、错误分析和方案比较。
 - **Final frozen songs**：不参与训练、模型选择或校准，只用于最终验收。
 
 ## 覆盖的 41 位 P 主
+
+当前配置覆盖 niconico top100 名单中 top50 的 34 位（68%）；top30 覆盖 29 位，仅暂缓 `ryo`。
 
 | P 主 | 别名 | 训练歌曲 | 训练分段 |
 |---|---|---:|---:|
@@ -60,37 +62,37 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 | はるまきごはん | Harumaki Gohan | 9 | 108 |
 | r-906 | arukuremu | 10 | 120 |
 | sasakure.UK | ささくれP, sasakureP | 10 | 120 |
-| Giga | ギガ | 10 | 120 |
+| Giga | ギガ | 12 | 144 |
 | れるりり | rerulili, 当社比P, ToushahiP | 10 | 120 |
 | みきとP | MikitoP, 愛島, Aijima | 10 | 120 |
 | ひとしずくP / やま△ | ひとしずくP, HitoshizukuP, やま△, Yama△, さも, samo | 10 | 120 |
 | バルーン | balloon, 須田景凪, Suda Keina | 10 | 120 |
-| 黒うさP | KurousaP, くろうさP, WhiteFlame, しゃな, syana | 3 | 36 |
+| 黒うさP | KurousaP, くろうさP, WhiteFlame, しゃな, syana | 10 | 120 |
 | mothy | 悪ノP, AkunoP, master of the heavenly yard | 10 | 120 |
 | 柊マグネタイト | Hiiragi Magnetite | 10 | 120 |
-| オワタP | OwataP, ガルナ, Garuna | 10 | 120 |
+| オワタP | OwataP, ガルナ, Garuna | 11 | 132 |
 | ぬゆり | Nuyuri, nulut, Lanndo, go乱心P, ぬるり, Crona | 10 | 120 |
 
 ## 评估结果
 
-| 指标 | 36 类 / 420 首 CV | 41 类 / 463 首 CV |
+| 指标 | 36 类 / 420 首 CV | 41 类 / 473 首 CV |
 |---|---:|---:|
-| Top-1 | 85.05% ± 0.57% | **81.56% ± 0.73%** |
-| Top-3 | 92.90% ± 0.39% | **91.27% ± 0.54%** |
-| Macro-F1 | 85.86% ± 0.61% | **80.34% ± 0.91%** |
-| MRR | 89.60% ± 0.38% | **87.11% ± 0.42%** |
+| Top-1 | 85.05% ± 0.57% | **84.40% ± 0.91%** |
+| Top-3 | 92.90% ± 0.39% | **93.15% ± 0.32%** |
+| Macro-F1 | 85.86% ± 0.61% | **84.80% ± 0.99%** |
+| MRR | 89.60% ± 0.38% | **89.31% ± 0.54%** |
 
-| 指标 | Dev holdout / 78 首 | Final frozen / 159 首 |
+| 指标 | Dev holdout / 80 首 | Final frozen / 162 首 |
 |---|---:|---:|
-| Top-1 | **80.77%** | **80.50%** |
-| Top-3 | **87.18%** | **93.08%** |
-| Macro-F1 | **77.41%** | **78.73%** |
-| MRR | **85.43%** | **86.79%** |
-| 覆盖率 | **61.54%** | **62.89%** |
-| 被接受样本准确率 | **95.83%** | **97.00%** |
+| Top-1 | **78.75%** | **80.86%** |
+| Top-3 | **87.50%** | **91.98%** |
+| Macro-F1 | **76.91%** | **80.91%** |
+| MRR | **84.55%** | **86.99%** |
+| 覆盖率 | **68.75%** | **68.52%** |
+| 被接受样本准确率 | **96.36%** | **95.50%** |
 
-41 类结果已经触及当前扩张停止条件：相较 36 类稳定批次，final Macro-F1 下降约 5.9 个百分点，
-dev Macro-F1 低于 80%。后续部署建议使用 36 类稳定提交，41 类提交保留为 stop-point 证据。
+41 类修补版补回了 niconico 首发代表曲，OOF 指标已接近 36 类稳定批次，final Macro-F1 回到 80% 以上。
+但 dev Macro-F1 仍低于 80%，因此当前分支适合作为谨慎部署点，不建议继续追加下一批 P 主。
 
 P2 数据更难，尤其暴露出 `じん`、`すりぃ`、`Neru`、`sasakure.UK/cosMo`、
 `DECO*27` 和若干跨媒体/非典型曲目的边界问题。详细错误分析见
@@ -226,13 +228,18 @@ python scripts/19_evaluate_frozen_test.py `
 ## 当前机器适配
 
 当前 RTX 4060 Ti 8GB、约 32GB 内存下，MERT-v1-95M 使用 batch size 4 稳定。
-本轮新增 top100 前两批 10 位候选 P 主，其中 41 类批次已达到扩张停止条件；完整重建缓存可在本机完成。
+本轮新增 top100 前两批 10 位候选 P 主，并修补了 YouTube-only 选曲造成的 niconico 首发漏曲；完整重建缓存可在本机完成。
 现阶段瓶颈仍是数据口径和评估设计，不是显存。
 
 ## 已知问题
 
-1. 41 类批次达到停止条件，尤其是 dev/final Macro-F1 低于 80%；建议部署 36 类稳定批次。
-2. 黒うさP 只有 3 首训练曲和 1 首 final 曲，保留为“少量但干净”的样本，不再硬凑 dev。
-3. `じん`、`Neru`、`すりぃ`、`cosMo/sasakure.UK` 仍是重点边界，需要继续靠干净曲目和拒识阈值控制。
+1. 41 类修补版 final Macro-F1 已回到 80% 以上，但 dev Macro-F1 仍低于 80%；本轮应停止扩张并先部署验证。
+2. `じん`、`Neru`、`すりぃ`、`cosMo/sasakure.UK` 仍是重点边界，需要继续靠干净曲目和拒识阈值控制。
+3. 覆盖审计仍列出若干旧 P 主的 niconico 首发候选；下一轮应优先补 VocaDB id/source 证据，再决定是否替换旧样本。
 
 历史 27 类结果见 [P1 报告](docs/P1_27_PRODUCERS_FROZEN_TEST_REPORT.md)。
+
+新增或回审 P 主时，按 [Catalog Selection Protocol](docs/CATALOG_SELECTION_PROTOCOL.md)
+执行：VocaDB 为主证据，支持 YouTube 与 niconico Original PV，训练/dev/final
+按 VocaDB song id 与媒体 source key 双重隔离；样本少的 P 主可保留较小拆分，
+但不能为了凑数量混入来源不清或风格归因不稳的曲目。

@@ -339,6 +339,11 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
                     </span>
                   ))}
                 </div>
+                <RepresentativeSongs
+                  songs={item.representative_songs}
+                  limit={2}
+                  className="mt-1"
+                />
               </div>
 
               <div className="w-32 shrink-0">
@@ -453,6 +458,13 @@ function TopMatchCard({
           ))}
         </div>
 
+        <RepresentativeSongs
+          songs={item.representative_songs}
+          limit={3}
+          centered
+          className="mb-4"
+        />
+
         <div className="inline-flex items-baseline gap-1">
           <span className="font-display text-4xl text-text">{pct}</span>
           <span className="text-xl text-text-muted">%</span>
@@ -462,5 +474,56 @@ function TopMatchCard({
         </p>
       </div>
     </motion.div>
+  );
+}
+
+function RepresentativeSongs({
+  songs,
+  limit,
+  centered = false,
+  className = "",
+}: {
+  songs: SearchResultItem["representative_songs"];
+  limit: number;
+  centered?: boolean;
+  className?: string;
+}) {
+  const visibleSongs = songs.slice(0, limit);
+  if (visibleSongs.length === 0) {
+    return null;
+  }
+
+  return (
+    <div
+      className={`text-xs text-text-muted ${centered ? "text-center" : ""} ${className}`}
+    >
+      <span className="mr-1 text-text-light">代表作</span>
+      <span
+        className={`inline-flex min-w-0 flex-wrap gap-x-1.5 gap-y-1 ${
+          centered ? "justify-center" : ""
+        }`}
+      >
+        {visibleSongs.map((song, index) => (
+          <span key={song.song_id} className="inline-flex min-w-0 items-center">
+            {index > 0 && <span className="mr-1 text-text-muted/60">/</span>}
+            {song.source_url ? (
+              <a
+                href={song.source_url}
+                target="_blank"
+                rel="noreferrer"
+                className="max-w-[10rem] truncate text-pink-dark underline-offset-2 hover:underline"
+                title={song.title}
+              >
+                {song.title}
+              </a>
+            ) : (
+              <span className="max-w-[10rem] truncate" title={song.title}>
+                {song.title}
+              </span>
+            )}
+          </span>
+        ))}
+      </span>
+    </div>
   );
 }

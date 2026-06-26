@@ -38,8 +38,21 @@ TOP100_EXPANSION_PRODUCERS = {
     "owata_p",
     "nuyuri",
 }
-SPARSE_DEV_PRODUCERS = {"kuro_usa_p"}
-SPARSE_TRAINING_PRODUCERS = {"kuro_usa_p"}
+SPARSE_DEV_PRODUCERS: set[str] = set()
+SPARSE_TRAINING_PRODUCERS: set[str] = set()
+
+
+def source_identity(item: dict) -> tuple[str, str]:
+    if item.get("source_service") and item.get("source_id"):
+        return str(item["source_service"]), str(item["source_id"])
+    if item.get("youtube_id"):
+        return "Youtube", str(item["youtube_id"])
+    song_id = str(item.get("song_id", ""))
+    if song_id.startswith("youtube_"):
+        return "Youtube", song_id.removeprefix("youtube_")
+    if song_id.startswith("niconico_"):
+        return "NicoNicoDouga", song_id.removeprefix("niconico_")
+    raise AssertionError(f"Catalog item has no source identity: {item}")
 
 
 def load_yaml_songs(name: str) -> list[dict]:
@@ -73,7 +86,8 @@ def test_producers_and_training_catalog_have_expected_coverage():
         counts[slug]
         for slug in TOP100_EXPANSION_PRODUCERS - SPARSE_TRAINING_PRODUCERS
     ) >= 8
-    assert min(counts[slug] for slug in SPARSE_TRAINING_PRODUCERS) >= 2
+    if SPARSE_TRAINING_PRODUCERS:
+        assert min(counts[slug] for slug in SPARSE_TRAINING_PRODUCERS) >= 2
 
 
 def test_holdout_catalogs_have_disjoint_songs_per_producer():
@@ -97,12 +111,12 @@ def test_holdout_catalogs_have_disjoint_songs_per_producer():
     assert min(dev_counts.values()) >= 1
     assert min(counts.values()) >= 1
     assert not (
-        {item["youtube_id"] for item in training}
-        & {item["youtube_id"] for item in dev}
+        {source_identity(item) for item in training}
+        & {source_identity(item) for item in dev}
     )
     assert not (
-        {item["youtube_id"] for item in training}
-        & {item["youtube_id"] for item in frozen}
+        {source_identity(item) for item in training}
+        & {source_identity(item) for item in frozen}
     )
     assert not (
         {int(item["vocadb_song_id"]) for item in training}
@@ -113,8 +127,8 @@ def test_holdout_catalogs_have_disjoint_songs_per_producer():
         & {int(item["vocadb_song_id"]) for item in frozen}
     )
     assert not (
-        {item["youtube_id"] for item in dev}
-        & {item["youtube_id"] for item in frozen}
+        {source_identity(item) for item in dev}
+        & {source_identity(item) for item in frozen}
     )
     assert not (
         {int(item["vocadb_song_id"]) for item in dev}
@@ -189,6 +203,6 @@ def test_materialized_training_and_frozen_manifests_do_not_overlap():
 def test_source_reasons_do_not_mislabel_original_pvs_as_official_uploads():
     assert "official YouTube upload" in source_reason("official_upload")
     original_pv = source_reason("vocadb_original_pv")
-    assert "VocaDB-listed Original YouTube PV" in original_pv
+    assert "VocaDB-listed Original PV" in original_pv
     assert "official YouTube upload" not in original_pv
-    assert "non-original YouTube PV" in source_reason("vocadb_other_pv")
+    assert "non-original PV" in source_reason("vocadb_other_pv")

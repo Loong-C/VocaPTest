@@ -12,10 +12,13 @@ import requests
 import yaml
 
 from vocaptest.data.catalog_sources import (
-    download_youtube_audio,
-    read_youtube_metadata,
+    download_media_audio,
+    media_source_from_item,
+    read_media_metadata,
     source_reason,
-    validate_vocadb_original,
+    source_key,
+    source_url,
+    validate_vocadb_pv,
     yt_dlp_command,
 )
 from vocaptest.utils.paths import project_root
@@ -165,11 +168,10 @@ def main() -> None:
 
     training = load_jsonl(args.training_decisions)
     configured_training = load_yaml_songs(args.training_catalog)
-    training_youtube = {
-        item["song_id"].removeprefix("youtube_")
+    training_sources = {
+        item["song_id"]
         for item in training
         if item.get("status") == "accepted"
-        and item["song_id"].startswith("youtube_")
     }
     training_vocadb = {
         int(item["vocadb_song_id"])
@@ -177,27 +179,31 @@ def main() -> None:
         if item.get("status") == "accepted"
         and item.get("vocadb_song_id") is not None
     }
-    training_youtube.update(
-        item["youtube_id"] for item in configured_training
+    training_sources.update(
+        source_key(*media_source_from_item(item))
+        for item in configured_training
     )
     training_vocadb.update(
         int(item["vocadb_song_id"]) for item in configured_training
     )
     for catalog_path in args.exclude_catalog:
         excluded = load_yaml_songs(catalog_path)
-        training_youtube.update(item["youtube_id"] for item in excluded)
+        training_sources.update(
+            source_key(*media_source_from_item(item))
+            for item in excluded
+        )
         training_vocadb.update(int(item["vocadb_song_id"]) for item in excluded)
-    frozen_youtube = [item["youtube_id"] for item in songs]
+    frozen_sources = [source_key(*media_source_from_item(item)) for item in songs]
     frozen_vocadb = [int(item["vocadb_song_id"]) for item in songs]
-    if len(frozen_youtube) != len(set(frozen_youtube)):
-        raise ValueError("Duplicate YouTube IDs in frozen test catalog")
+    if len(frozen_sources) != len(set(frozen_sources)):
+        raise ValueError("Duplicate source IDs in frozen test catalog")
     if len(frozen_vocadb) != len(set(frozen_vocadb)):
         raise ValueError("Duplicate VocaDB song IDs in frozen test catalog")
-    youtube_overlap = training_youtube.intersection(frozen_youtube)
+    source_overlap = training_sources.intersection(frozen_sources)
     vocadb_overlap = training_vocadb.intersection(frozen_vocadb)
-    if youtube_overlap or vocadb_overlap:
+    if source_overlap or vocadb_overlap:
         raise ValueError(
-            f"Train/frozen overlap: YouTube={sorted(youtube_overlap)}, "
+            f"Train/frozen overlap: sources={sorted(source_overlap)}, "
             f"VocaDB={sorted(vocadb_overlap)}"
         )
 
@@ -215,7 +221,7 @@ def main() -> None:
     session = requests.Session()
     session.headers["User-Agent"] = "VocaPTest/0.1 frozen catalog validation"
     configured_song_ids = {
-        f"youtube_{item['youtube_id']}"
+        source_key(*media_source_from_item(item))
         for item in all_songs
     }
     existing = {
@@ -226,17 +232,18 @@ def main() -> None:
     records = dict(existing)
     for item in songs:
         slug = item["producer_slug"]
-        video_id = item["youtube_id"]
-        song_id = f"youtube_{video_id}"
-        url = f"https://www.youtube.com/watch?v={video_id}"
+        source_service, source_id = media_source_from_item(item)
+        song_id = source_key(source_service, source_id)
+        url = source_url(source_service, source_id)
         output_path = args.audio_root / slug / f"{song_id}.mp3"
         if song_id in records and output_path.exists():
             continue
 
         source_kind = item.get("source_kind", "official_upload")
-        vocadb = validate_vocadb_original(
+        vocadb = validate_vocadb_pv(
             song_id=int(item["vocadb_song_id"]),
-            youtube_id=video_id,
+            source_service=source_service,
+            source_id=source_id,
             artist_id=int(producers[slug]["vocadb_artist_id"]),
             session=session,
             allowed_pv_types=(
@@ -247,8 +254,8 @@ def main() -> None:
                 else ("Original",)
             ),
         )
-        metadata = read_youtube_metadata(command, url)
-        channel_id = metadata.get("channel_id")
+        metadata = read_media_metadata(command, url)
+        channel_id = metadata.get("channel_id") or metadata.get("uploader_id")
         allowed_channels = set(item.get("allowed_channel_ids", []))
         if allowed_channels and channel_id not in allowed_channels:
             raise ValueError(
@@ -260,7 +267,7 @@ def main() -> None:
             raise ValueError(f"Unexpected duration for {song_id}: {duration}")
 
         if not args.skip_download and not output_path.exists():
-            download_youtube_audio(
+            download_media_audio(
                 command,
                 url,
                 output_path,
@@ -280,6 +287,8 @@ def main() -> None:
             "canonical_song_id": song_id,
             "segment_count": None,
             "source_url": url,
+            "source_service": source_service,
+            "source_id": source_id,
             "source_channel_id": channel_id,
             "source_kind": source_kind,
             "vocadb_song_id": int(item["vocadb_song_id"]),
@@ -296,7 +305,7 @@ def main() -> None:
                 ),
             ),
         )
-        print(f"verified {args.category} {slug}/{item['title']} ({video_id})")
+        print(f"verified {args.category} {slug}/{item['title']} ({source_id})")
 
     write_jsonl(
         args.manifest_output,

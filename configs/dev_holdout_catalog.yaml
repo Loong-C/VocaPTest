@@ -457,15 +457,30 @@ songs:
     vocadb_song_id: 39243
     youtube_id: e6rrHMlQsFw
     source_kind: vocadb_original_pv
-  - producer_slug: mothy
-    title: マダム・メリーゴーランド
-    vocadb_song_id: 1614
-    youtube_id: l3Aal-cvknY
+  - producer_slug: kuro_usa_p
+    title: ReAct
+    vocadb_song_id: 553
+    source_service: NicoNicoDouga
+    source_id: sm14065801
+    source_kind: vocadb_original_pv
+  - producer_slug: kuro_usa_p
+    title: サンキューロック
+    vocadb_song_id: 50426
+    source_service: NicoNicoDouga
+    source_id: sm23047228
     source_kind: vocadb_original_pv
   - producer_slug: mothy
-    title: 針音ノ時計塔
-    vocadb_song_id: 10623
-    youtube_id: cL2mzxn8p7Q
+    title: moonlit bear
+    vocadb_song_id: 1583
+    source_service: Youtube
+    source_id: UntYssFE_nE
+    youtube_id: UntYssFE_nE
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: Re_birthday
+    vocadb_song_id: 1595
+    source_service: NicoNicoDouga
+    source_id: sm5671863
     source_kind: vocadb_original_pv
   - producer_slug: hiiragi_magnetite
     title: アンプランド・アポトーシス

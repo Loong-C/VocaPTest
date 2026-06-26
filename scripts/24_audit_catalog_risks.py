@@ -45,6 +45,19 @@ RISKY_PV_AUTHOR_TERMS = (
 )
 
 
+def source_for_record(item: dict) -> tuple[str | None, str | None]:
+    if item.get("source_service") and item.get("source_id"):
+        return str(item["source_service"]), str(item["source_id"])
+    if item.get("youtube_id"):
+        return "Youtube", str(item["youtube_id"])
+    song_id = str(item.get("song_id", ""))
+    if song_id.startswith("youtube_"):
+        return "Youtube", song_id.removeprefix("youtube_")
+    if song_id.startswith("niconico_"):
+        return "NicoNicoDouga", song_id.removeprefix("niconico_")
+    return None, None
+
+
 def load_yaml_songs(path: Path) -> list[dict]:
     if not path.exists():
         return []
@@ -86,22 +99,23 @@ def collect_records(root: Path) -> list[dict]:
         for item in items:
             if kind == "jsonl" and item.get("status") not in {None, "accepted"}:
                 continue
-            youtube_id = item.get("youtube_id")
-            if not youtube_id and str(item.get("song_id", "")).startswith("youtube_"):
-                youtube_id = str(item["song_id"]).removeprefix("youtube_")
+            source_service, source_id = source_for_record(item)
             vocadb_id = item.get("vocadb_song_id")
             key = (
                 split,
                 str(item.get("producer_slug")),
                 int(vocadb_id) if vocadb_id is not None else None,
-                str(youtube_id) if youtube_id else None,
+                source_service,
+                source_id,
             )
             existing = records.setdefault(key, {
                 "split": split,
                 "producer_slug": item.get("producer_slug"),
                 "title": item.get("title"),
                 "vocadb_song_id": int(vocadb_id) if vocadb_id is not None else None,
-                "youtube_id": str(youtube_id) if youtube_id else None,
+                "source_service": source_service,
+                "source_id": source_id,
+                "youtube_id": source_id if source_service == "Youtube" else None,
                 "source_kind": item.get("source_kind"),
                 "sources": [],
             })
@@ -225,18 +239,23 @@ def analyze_record(record: dict, song: dict | None, producers: dict[str, dict]) 
             f"also credited to configured slug(s): {sorted(configured_style_credits)}",
         )
 
-    youtube_id = record.get("youtube_id")
-    youtube_pvs = [
+    source_service = record.get("source_service")
+    source_id = record.get("source_id")
+    source_pvs = [
         pv for pv in song.get("pvs", [])
-        if pv.get("service") == "Youtube" and pv.get("pvId") == youtube_id
+        if pv.get("service") == source_service and pv.get("pvId") == source_id
     ]
-    if youtube_id and not youtube_pvs:
-        flag("configured_youtube_pv_missing", "high", f"{youtube_id} not listed on VocaDB song")
-    for pv in youtube_pvs:
+    if source_id and not source_pvs:
+        flag(
+            "configured_source_pv_missing",
+            "high",
+            f"{source_service} {source_id} not listed on VocaDB song",
+        )
+    for pv in source_pvs:
         pv_type = pv.get("pvType")
         author = pv.get("author")
         if pv_type != "Original":
-            flag("configured_youtube_not_original", "medium", f"pvType={pv_type}")
+            flag("configured_source_not_original", "medium", f"pvType={pv_type}")
         if is_risky_pv_author(author):
             flag("review_pv_author", "low", f"PV author={author}")
 

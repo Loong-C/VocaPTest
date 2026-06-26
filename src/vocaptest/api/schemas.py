@@ -4,12 +4,19 @@ from __future__ import annotations
 from pydantic import BaseModel, Field
 
 
+class ProducerSong(BaseModel):
+    song_id: str
+    title: str
+    source_url: str | None = None
+
+
 class SearchResultItem(BaseModel):
     producer_slug: str
     display_name: str
     score: float
     rank: int
     style_tags: list[str] = Field(default_factory=list)
+    representative_songs: list[ProducerSong] = Field(default_factory=list)
 
 
 class AnalyzeResponse(BaseModel):
@@ -26,12 +33,6 @@ class AnalyzeResult(BaseModel):
     margin: float | None = None
     entropy: float | None = None
     warnings: list[str] = Field(default_factory=list)
-
-
-class ProducerSong(BaseModel):
-    song_id: str
-    title: str
-    source_url: str | None = None
 
 
 class ProducerInfo(BaseModel):

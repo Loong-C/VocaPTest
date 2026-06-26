@@ -61,8 +61,12 @@ def test_get_producer_includes_metadata_and_training_songs(monkeypatch):
     assert data["frozen_song_count"] == len(data["frozen_songs"]) >= 1
     assert data["test_song_count"] == len(data["test_songs"])
     assert data["test_song_count"] == data["frozen_song_count"]
+    allowed_media_hosts = (
+        "https://www.youtube.com/",
+        "https://www.nicovideo.jp/",
+    )
     assert all(
-        song["source_url"].startswith("https://www.youtube.com/")
+        song["source_url"].startswith(allowed_media_hosts)
         for song in data["training_songs"] + data["dev_songs"] + data["frozen_songs"]
     )
 

@@ -850,29 +850,56 @@ songs:
   youtube_id: CaR0qyEkX-c
   source_kind: vocadb_original_pv
 - producer_slug: kuro_usa_p
-  title: アリアドネ
-  vocadb_song_id: 75482
-  youtube_id: DByyz5wN-PA
+  title: ACUTE
+  vocadb_song_id: 552
+  source_service: NicoNicoDouga
+  source_id: sm7992704
+  source_kind: vocadb_original_pv
+- producer_slug: kuro_usa_p
+  title: リスキーゲーム
+  vocadb_song_id: 3394
+  source_service: NicoNicoDouga
+  source_id: sm13236011
+  source_kind: vocadb_original_pv
+- producer_slug: kuro_usa_p
+  title: 虹色蝶々
+  vocadb_song_id: 11018
+  source_service: NicoNicoDouga
+  source_id: sm5659652
+  source_kind: vocadb_original_pv
+- producer_slug: kuro_usa_p
+  title: 螺旋迷宮～Spiral labyrinth～
+  vocadb_song_id: 11014
+  source_service: NicoNicoDouga
+  source_id: sm3222021
   source_kind: vocadb_original_pv
 - producer_slug: mothy
-  title: どこかで聞いた唄
-  vocadb_song_id: 99134
-  youtube_id: 2AmPPjcxNjI
+  title: 魔女ザルムホーファーの逃亡
+  vocadb_song_id: 13727
+  source_service: Youtube
+  source_id: qlDS4jHsDMw
+  youtube_id: qlDS4jHsDMw
   source_kind: vocadb_original_pv
 - producer_slug: mothy
-  title: 置き去り月夜抄
-  vocadb_song_id: 1584
-  youtube_id: JDCV0vqEh9E
+  title: 茶番カプリシオ
+  vocadb_song_id: 1615
+  source_service: Youtube
+  source_id: 7sAxOg4r4IE
+  youtube_id: 7sAxOg4r4IE
   source_kind: vocadb_original_pv
 - producer_slug: mothy
-  title: クロノ・ストーリー
-  vocadb_song_id: 1585
-  youtube_id: DX8-F-uuHKc
+  title: 七つの罪と罰
+  vocadb_song_id: 75939
+  source_service: Youtube
+  source_id: 48ZMa-qYebY
+  youtube_id: 48ZMa-qYebY
   source_kind: vocadb_original_pv
 - producer_slug: mothy
-  title: 満月の実験室
-  vocadb_song_id: 3309
-  youtube_id: r32rB1veQ0E
+  title: 五番目のピエロ
+  vocadb_song_id: 1613
+  source_service: Youtube
+  source_id: fUaSCgMFe5w
+  youtube_id: fUaSCgMFe5w
   source_kind: vocadb_original_pv
 - producer_slug: hiiragi_magnetite
   title: ラッシャイナ

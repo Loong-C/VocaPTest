@@ -4,16 +4,16 @@ This audit flags catalog entries that deserve review before future expansion. A 
 
 ## Summary
 
-- Records audited: 700
-- Flagged records: 226
+- Records audited: 715
+- Flagged records: 229
 - High-risk records: 174
 
 ## Flag Counts
 
 | Flag | Count |
 |---|---:|
-| `configured_youtube_not_original` | 4 |
-| `low_vocadb_rating` | 3 |
+| `configured_source_not_original` | 4 |
+| `low_vocadb_rating` | 6 |
 | `missing_vocadb_song_id` | 174 |
 | `review_pv_author` | 46 |
 

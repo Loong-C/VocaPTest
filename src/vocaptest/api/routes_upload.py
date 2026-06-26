@@ -17,7 +17,10 @@ from vocaptest.api.schemas import (
     JobStatusResponse,
     SearchResultItem,
 )
-from vocaptest.data.producer_catalog import load_producer_style_tags
+from vocaptest.data.producer_catalog import (
+    load_producer_style_tags,
+    load_representative_song_catalog,
+)
 from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
@@ -55,6 +58,7 @@ def _build_result(
     diagnostics: dict | None,
 ) -> AnalyzeResult:
     style_tags = load_producer_style_tags()
+    representative_songs = load_representative_song_catalog()
     top_k = [
         SearchResultItem(
             producer_slug=r.producer_slug,
@@ -62,6 +66,7 @@ def _build_result(
             score=r.score,
             rank=r.rank,
             style_tags=style_tags.get(r.producer_slug, {}).get("style_tags", []),
+            representative_songs=representative_songs.get(r.producer_slug, []),
         )
         for r in results
     ]
