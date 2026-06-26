@@ -6,21 +6,26 @@
     "used_for_calibration": false,
     "pooling": "uniform_segments_then_song_mean",
     "selected_layer": [
-      6
+      5,
+      6,
+      8
     ]
   },
   "dataset": {
-    "songs": 62,
-    "segments": 744,
-    "classes": 31,
+    "songs": 70,
+    "segments": 840,
+    "classes": 36,
     "songs_per_class": {
       "40mp": 2,
-      "ayase": 2,
+      "ayase": 1,
+      "balloon": 2,
       "chinozo": 2,
       "cosmo": 2,
       "deco27": 2,
+      "giga": 2,
       "hachi": 2,
       "harumaki_gohan": 2,
+      "hitoshizuku_p": 2,
       "inabakumori": 2,
       "iyowa": 2,
       "jin": 2,
@@ -28,6 +33,7 @@
       "kanaria": 2,
       "kemu": 2,
       "maretu": 2,
+      "mikito_p": 2,
       "mimi": 2,
       "mitchie_m": 2,
       "n_buna": 2,
@@ -39,25 +45,26 @@
       "pinocchiop": 2,
       "r_906": 2,
       "r_sound_design": 2,
+      "rerulili": 2,
       "sasakure_uk": 2,
       "surii": 2,
       "syudou": 2,
       "teniwoha": 2,
       "toa": 2,
-      "wowaka": 2
+      "wowaka": 1
     }
   },
   "metrics": {
-    "top1_accuracy": 0.7580645161290323,
-    "top3_accuracy": 0.8064516129032258,
-    "macro_f1": 0.7442396313364056,
-    "mrr": 0.8032138494997554
+    "top1_accuracy": 0.8285714285714286,
+    "top3_accuracy": 0.8571428571428571,
+    "macro_f1": 0.8018518518518518,
+    "mrr": 0.8586320346320347
   },
   "rejection": {
-    "threshold": 0.6207879415670828,
-    "coverage": 0.6935483870967742,
-    "accepted_count": 43,
-    "accepted_accuracy": 0.8604651162790697,
+    "threshold": 0.7953763026257437,
+    "coverage": 0.7,
+    "accepted_count": 49,
+    "accepted_accuracy": 0.9795918367346939,
     "rejected_correct_count": 10
   },
   "per_class": {
@@ -71,11 +78,19 @@
     },
     "ayase": {
       "precision": 1.0,
-      "recall": 0.5,
-      "f1": 0.6666666666666666,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1,
+      "top3_accuracy": 1.0,
+      "accepted": 1
+    },
+    "balloon": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1": 0.8,
       "support": 2,
-      "top3_accuracy": 0.5,
-      "accepted": 2
+      "top3_accuracy": 1.0,
+      "accepted": 1
     },
     "chinozo": {
       "precision": 1.0,
@@ -86,30 +101,46 @@
       "accepted": 2
     },
     "cosmo": {
-      "precision": 0.4,
+      "precision": 0.5,
       "recall": 1.0,
-      "f1": 0.5714285714285714,
+      "f1": 0.6666666666666666,
       "support": 2,
       "top3_accuracy": 1.0,
       "accepted": 2
     },
     "deco27": {
-      "precision": 0.3333333333333333,
-      "recall": 0.5,
-      "f1": 0.4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 2,
+      "top3_accuracy": 0.5,
+      "accepted": 0
+    },
+    "giga": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
       "support": 2,
       "top3_accuracy": 1.0,
-      "accepted": 0
+      "accepted": 2
     },
     "hachi": {
       "precision": 1.0,
-      "recall": 0.5,
-      "f1": 0.6666666666666666,
+      "recall": 1.0,
+      "f1": 1.0,
       "support": 2,
-      "top3_accuracy": 0.5,
+      "top3_accuracy": 1.0,
       "accepted": 2
     },
     "harumaki_gohan": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "hitoshizuku_p": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
@@ -123,7 +154,7 @@
       "f1": 1.0,
       "support": 2,
       "top3_accuracy": 1.0,
-      "accepted": 2
+      "accepted": 1
     },
     "iyowa": {
       "precision": 1.0,
@@ -134,9 +165,9 @@
       "accepted": 2
     },
     "jin": {
-      "precision": 0.5,
+      "precision": 1.0,
       "recall": 1.0,
-      "f1": 0.6666666666666666,
+      "f1": 1.0,
       "support": 2,
       "top3_accuracy": 1.0,
       "accepted": 2
@@ -158,17 +189,25 @@
       "accepted": 0
     },
     "kemu": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
       "support": 2,
-      "top3_accuracy": 0.0,
-      "accepted": 0
+      "top3_accuracy": 0.5,
+      "accepted": 1
     },
     "maretu": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "mikito_p": {
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6666666666666666,
       "support": 2,
       "top3_accuracy": 1.0,
       "accepted": 2
@@ -202,7 +241,7 @@
       "recall": 0.5,
       "f1": 0.6666666666666666,
       "support": 2,
-      "top3_accuracy": 1.0,
+      "top3_accuracy": 0.5,
       "accepted": 1
     },
     "nayutan": {
@@ -211,12 +250,12 @@
       "f1": 0.0,
       "support": 2,
       "top3_accuracy": 0.0,
-      "accepted": 1
+      "accepted": 0
     },
     "neru": {
-      "precision": 1.0,
+      "precision": 0.5,
       "recall": 1.0,
-      "f1": 1.0,
+      "f1": 0.6666666666666666,
       "support": 2,
       "top3_accuracy": 1.0,
       "accepted": 1
@@ -238,12 +277,12 @@
       "accepted": 1
     },
     "pinocchiop": {
-      "precision": 1.0,
+      "precision": 0.6666666666666666,
       "recall": 1.0,
-      "f1": 1.0,
+      "f1": 0.8,
       "support": 2,
       "top3_accuracy": 1.0,
-      "accepted": 2
+      "accepted": 1
     },
     "r_906": {
       "precision": 1.0,
@@ -261,23 +300,23 @@
       "top3_accuracy": 1.0,
       "accepted": 2
     },
-    "sasakure_uk": {
-      "precision": 0.6666666666666666,
+    "rerulili": {
+      "precision": 1.0,
       "recall": 1.0,
-      "f1": 0.8,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
+    "sasakure_uk": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
       "support": 2,
       "top3_accuracy": 1.0,
       "accepted": 2
     },
     "surii": {
-      "precision": 0.3333333333333333,
-      "recall": 0.5,
-      "f1": 0.4,
-      "support": 2,
-      "top3_accuracy": 0.5,
-      "accepted": 2
-    },
-    "syudou": {
       "precision": 1.0,
       "recall": 0.5,
       "f1": 0.6666666666666666,
@@ -285,28 +324,36 @@
       "top3_accuracy": 0.5,
       "accepted": 1
     },
-    "teniwoha": {
+    "syudou": {
       "precision": 1.0,
-      "recall": 0.5,
-      "f1": 0.6666666666666666,
-      "support": 2,
-      "top3_accuracy": 0.5,
-      "accepted": 0
-    },
-    "toa": {
-      "precision": 0.6666666666666666,
       "recall": 1.0,
-      "f1": 0.8,
+      "f1": 1.0,
       "support": 2,
       "top3_accuracy": 1.0,
       "accepted": 1
     },
+    "teniwoha": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 2,
+      "top3_accuracy": 0.0,
+      "accepted": 0
+    },
+    "toa": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 2,
+      "top3_accuracy": 1.0,
+      "accepted": 2
+    },
     "wowaka": {
       "precision": 1.0,
-      "recall": 0.5,
-      "f1": 0.6666666666666666,
-      "support": 2,
-      "top3_accuracy": 0.5,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1,
+      "top3_accuracy": 1.0,
       "accepted": 0
     }
   },
@@ -319,21 +366,21 @@
       "prediction": "chinozo",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9045719598993389,
-      "margin": 0.8535074910852269,
-      "entropy": 0.13298772905132525,
+      "confidence": 0.9221511955994578,
+      "margin": 0.9032743678205364,
+      "entropy": 0.14638191375438472,
       "top3": [
         {
           "producer_slug": "chinozo",
-          "score": 0.9045719598993389
+          "score": 0.9221511955994578
         },
         {
           "producer_slug": "kanaria",
-          "score": 0.05106446881411202
+          "score": 0.018876827778921395
         },
         {
-          "producer_slug": "surii",
-          "score": 0.02425882362001905
+          "producer_slug": "wowaka",
+          "score": 0.0017344699006358883
         }
       ]
     },
@@ -345,21 +392,47 @@
       "prediction": "mimi",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.984176491174034,
-      "margin": 0.9800382210950767,
-      "entropy": 0.0339843581090872,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "mimi",
-          "score": 0.984176491174034
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "ayase",
-          "score": 0.004138270078957345
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "surii",
-          "score": 0.004085521492720439
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_13OUbaozM9o",
+      "work_id": "vocadb_song_368",
+      "title": "マトリョシカ",
+      "producer_slug": "hachi",
+      "prediction": "hachi",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
+      "top3": [
+        {
+          "producer_slug": "hachi",
+          "score": 0.9382347519661048
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -371,21 +444,47 @@
       "prediction": "harumaki_gohan",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8915497159824721,
-      "margin": 0.8503417505446752,
-      "entropy": 0.1697903623122212,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "harumaki_gohan",
-          "score": 0.8915497159824721
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "mimi",
-          "score": 0.04120796543779691
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "ayase",
-          "score": 0.013500420601949902
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_27hHomk1Wek",
+      "work_id": "vocadb_song_194152",
+      "title": "フラミンゴ",
+      "producer_slug": "syudou",
+      "prediction": "syudou",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661051,
+      "margin": 0.936470030593708,
+      "entropy": 0.12596396233853488,
+      "top3": [
+        {
+          "producer_slug": "syudou",
+          "score": 0.9382347519661051
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969973
+        },
+        {
+          "producer_slug": "toa",
+          "score": 0.0017647213723969973
         }
       ]
     },
@@ -397,21 +496,21 @@
       "prediction": "cosmo",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.950445350013214,
-      "margin": 0.9213608340350276,
-      "entropy": 0.07752506028699405,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "cosmo",
-          "score": 0.950445350013214
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "deco27",
-          "score": 0.02908451597818644
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "sasakure_uk",
-          "score": 0.008771130397405397
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -423,47 +522,21 @@
       "prediction": "neru",
       "rank": 1,
       "accepted": false,
-      "confidence": 0.5654711664707245,
-      "margin": 0.37312958923482975,
-      "entropy": 0.4302768672302238,
+      "confidence": 0.7594394027003465,
+      "margin": 0.5721712942507788,
+      "entropy": 0.24078711044613868,
       "top3": [
         {
           "producer_slug": "neru",
-          "score": 0.5654711664707245
+          "score": 0.7594394027003465
         },
         {
           "producer_slug": "surii",
-          "score": 0.19234157723589473
+          "score": 0.1872681084495677
         },
         {
           "producer_slug": "kemu",
-          "score": 0.07721946366254094
-        }
-      ]
-    },
-    {
-      "song_id": "youtube_505rBX9MNcQ",
-      "work_id": "vocadb_song_400359",
-      "title": "88☆彡",
-      "producer_slug": "kemu",
-      "prediction": "deco27",
-      "rank": 8,
-      "accepted": false,
-      "confidence": 0.47933284670612414,
-      "margin": 0.2420777311635027,
-      "entropy": 0.5144083433659465,
-      "top3": [
-        {
-          "producer_slug": "deco27",
-          "score": 0.47933284670612414
-        },
-        {
-          "producer_slug": "surii",
-          "score": 0.23725511554262144
-        },
-        {
-          "producer_slug": "harumaki_gohan",
-          "score": 0.07832433555929161
+          "score": 0.006131920067435298
         }
       ]
     },
@@ -475,21 +548,21 @@
       "prediction": "maretu",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8824363244551415,
-      "margin": 0.8244168883905227,
-      "entropy": 0.16651997242136796,
+      "confidence": 0.9382347519661045,
+      "margin": 0.9364700305937075,
+      "entropy": 0.12596396233853555,
       "top3": [
         {
           "producer_slug": "maretu",
-          "score": 0.8824363244551415
+          "score": 0.9382347519661045
         },
         {
-          "producer_slug": "kairikibear",
-          "score": 0.058019436064618804
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723970072
         },
         {
-          "producer_slug": "jin",
-          "score": 0.01907551900973991
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723970072
         }
       ]
     },
@@ -501,21 +574,47 @@
       "prediction": "sasakure_uk",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9669467732033548,
-      "margin": 0.9536962487743709,
-      "entropy": 0.06206522438399415,
+      "confidence": 0.9382347519661051,
+      "margin": 0.936470030593708,
+      "entropy": 0.12596396233853488,
       "top3": [
         {
           "producer_slug": "sasakure_uk",
-          "score": 0.9669467732033548
+          "score": 0.9382347519661051
         },
         {
-          "producer_slug": "r_sound_design",
-          "score": 0.013250524428983912
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969973
         },
         {
-          "producer_slug": "niru_kajitsu",
-          "score": 0.007278834121610966
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969973
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_6-fw8BVYazA",
+      "work_id": "vocadb_song_239803",
+      "title": "Highway Lover",
+      "producer_slug": "mikito_p",
+      "prediction": "mikito_p",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.8457628178167065,
+      "margin": 0.7860701161349194,
+      "entropy": 0.22459210351532902,
+      "top3": [
+        {
+          "producer_slug": "mikito_p",
+          "score": 0.8457628178167065
+        },
+        {
+          "producer_slug": "jin",
+          "score": 0.059692701681787065
+        },
+        {
+          "producer_slug": "hitoshizuku_p",
+          "score": 0.022528210418525166
         }
       ]
     },
@@ -525,23 +624,49 @@
       "title": "メンヘラ取扱説明書",
       "producer_slug": "surii",
       "prediction": "kemu",
-      "rank": 7,
-      "accepted": true,
-      "confidence": 0.678884402313913,
-      "margin": 0.564682316614702,
-      "entropy": 0.3655913344962478,
+      "rank": 5,
+      "accepted": false,
+      "confidence": 0.443254379086395,
+      "margin": 0.0578227506663061,
+      "entropy": 0.3717248330880463,
       "top3": [
         {
           "producer_slug": "kemu",
-          "score": 0.678884402313913
+          "score": 0.443254379086395
         },
         {
           "producer_slug": "deco27",
-          "score": 0.11420208569921095
+          "score": 0.3854316284200889
         },
         {
           "producer_slug": "jin",
-          "score": 0.08422733549931197
+          "score": 0.09779292583114058
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_7BH8DFyg-Og",
+      "work_id": "vocadb_song_26013",
+      "title": "僕は初音ミクとキスをした",
+      "producer_slug": "mikito_p",
+      "prediction": "mikito_p",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
+      "top3": [
+        {
+          "producer_slug": "mikito_p",
+          "score": 0.9382347519661048
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -553,21 +678,21 @@
       "prediction": "mimi",
       "rank": 1,
       "accepted": false,
-      "confidence": 0.4092023588644897,
-      "margin": 0.16818429813190283,
-      "entropy": 0.4757522513320826,
+      "confidence": 0.6083787497416516,
+      "margin": 0.42768261470290025,
+      "entropy": 0.33119303197509076,
       "top3": [
         {
           "producer_slug": "mimi",
-          "score": 0.4092023588644897
-        },
-        {
-          "producer_slug": "ayase",
-          "score": 0.24101806073258686
+          "score": 0.6083787497416516
         },
         {
           "producer_slug": "surii",
-          "score": 0.1893473596322022
+          "score": 0.18069613503875134
+        },
+        {
+          "producer_slug": "ayase",
+          "score": 0.1696086694490211
         }
       ]
     },
@@ -579,21 +704,21 @@
       "prediction": "jin",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9614248199131928,
-      "margin": 0.9377672604860897,
-      "entropy": 0.06408884655812735,
+      "confidence": 0.9382347519661045,
+      "margin": 0.9364700305937075,
+      "entropy": 0.1259639623385356,
       "top3": [
         {
           "producer_slug": "jin",
-          "score": 0.9614248199131928
+          "score": 0.9382347519661045
         },
         {
-          "producer_slug": "cosmo",
-          "score": 0.023657559427103094
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723970085
         },
         {
-          "producer_slug": "neru",
-          "score": 0.006099403414807956
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723970085
         }
       ]
     },
@@ -603,23 +728,23 @@
       "title": "セカイ",
       "producer_slug": "kemu",
       "prediction": "40mp",
-      "rank": 20,
+      "rank": 24,
       "accepted": false,
-      "confidence": 0.34642827190104336,
-      "margin": 0.02460677527598898,
-      "entropy": 0.467228030715338,
+      "confidence": 0.35612426486585863,
+      "margin": 0.012923191581900806,
+      "entropy": 0.4233605494555339,
       "top3": [
         {
           "producer_slug": "40mp",
-          "score": 0.34642827190104336
+          "score": 0.35612426486585863
         },
         {
           "producer_slug": "deco27",
-          "score": 0.3218214966250544
+          "score": 0.3432010732839578
         },
         {
-          "producer_slug": "jin",
-          "score": 0.1755837361528147
+          "producer_slug": "rerulili",
+          "score": 0.15562971568372533
         }
       ]
     },
@@ -631,21 +756,47 @@
       "prediction": "syudou",
       "rank": 1,
       "accepted": false,
-      "confidence": 0.5577618666459015,
-      "margin": 0.37032068269518936,
-      "entropy": 0.4694189837739188,
+      "confidence": 0.7873355052197761,
+      "margin": 0.6281715260625452,
+      "entropy": 0.2299583919392094,
       "top3": [
         {
           "producer_slug": "syudou",
-          "score": 0.5577618666459015
+          "score": 0.7873355052197761
         },
         {
           "producer_slug": "surii",
-          "score": 0.18744118395071216
+          "score": 0.1591639791572309
         },
         {
           "producer_slug": "maretu",
-          "score": 0.05878754540614785
+          "score": 0.004621222644418804
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_CiEC329xPos",
+      "work_id": "vocadb_song_129187",
+      "title": "祝福のメシアとアイの塔",
+      "producer_slug": "hitoshizuku_p",
+      "prediction": "hitoshizuku_p",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
+      "top3": [
+        {
+          "producer_slug": "hitoshizuku_p",
+          "score": 0.9382347519661048
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -657,21 +808,21 @@
       "prediction": "nakiso",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9991132705501405,
-      "margin": 0.9982891407368585,
-      "entropy": 0.002175945438103687,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "nakiso",
-          "score": 0.9991132705501405
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "r_906",
-          "score": 0.0008241298132820914
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "kemu",
-          "score": 2.313837105364806e-05
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -680,50 +831,76 @@
       "work_id": "vocadb_song_1381",
       "title": "モザイクロール",
       "producer_slug": "deco27",
-      "prediction": "deco27",
-      "rank": 1,
+      "prediction": "mikito_p",
+      "rank": 5,
       "accepted": false,
-      "confidence": 0.20688913526700478,
-      "margin": 0.04617918905529014,
-      "entropy": 0.7132675024188754,
+      "confidence": 0.6824886018107517,
+      "margin": 0.5682724833984519,
+      "entropy": 0.36421589001338933,
       "top3": [
         {
-          "producer_slug": "deco27",
-          "score": 0.20688913526700478
+          "producer_slug": "mikito_p",
+          "score": 0.6824886018107517
+        },
+        {
+          "producer_slug": "rerulili",
+          "score": 0.11421611841229974
         },
         {
           "producer_slug": "orangestar",
-          "score": 0.16070994621171464
-        },
-        {
-          "producer_slug": "ayase",
-          "score": 0.11432805616276524
+          "score": 0.06923685232788951
         }
       ]
     },
     {
-      "song_id": "youtube_F64yFFnZfkI",
-      "work_id": "vocadb_song_331812",
-      "title": "言って。",
-      "producer_slug": "n_buna",
-      "prediction": "jin",
-      "rank": 2,
+      "song_id": "youtube_Dq2HJl5vKbY",
+      "work_id": "vocadb_song_563199",
+      "title": "ガッチュー！",
+      "producer_slug": "giga",
+      "prediction": "giga",
+      "rank": 1,
       "accepted": true,
-      "confidence": 0.6313470117178822,
-      "margin": 0.42912656259724485,
-      "entropy": 0.35156615403011665,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
+          "producer_slug": "giga",
+          "score": 0.9382347519661048
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_DsnmyUdfbcI",
+      "work_id": "vocadb_song_11219",
+      "title": "六兆年と一夜物語",
+      "producer_slug": "kemu",
+      "prediction": "kemu",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9225110324363549,
+      "margin": 0.9074414248093771,
+      "entropy": 0.14755898014875876,
+      "top3": [
+        {
+          "producer_slug": "kemu",
+          "score": 0.9225110324363549
+        },
+        {
+          "producer_slug": "deco27",
+          "score": 0.015069607626977814
+        },
+        {
           "producer_slug": "jin",
-          "score": 0.6313470117178822
-        },
-        {
-          "producer_slug": "n_buna",
-          "score": 0.20222044912063736
-        },
-        {
-          "producer_slug": "neru",
-          "score": 0.09055010616159703
+          "score": 0.00515951860518987
         }
       ]
     },
@@ -735,47 +912,21 @@
       "prediction": "kanaria",
       "rank": 1,
       "accepted": false,
-      "confidence": 0.5922201903975942,
-      "margin": 0.44253477907097816,
-      "entropy": 0.41694140510078553,
+      "confidence": 0.5095563993136077,
+      "margin": 0.07422746704837802,
+      "entropy": 0.28545430889914936,
       "top3": [
         {
           "producer_slug": "kanaria",
-          "score": 0.5922201903975942
-        },
-        {
-          "producer_slug": "harumaki_gohan",
-          "score": 0.14968541132661609
+          "score": 0.5095563993136077
         },
         {
           "producer_slug": "hachi",
-          "score": 0.0816904804573229
-        }
-      ]
-    },
-    {
-      "song_id": "youtube_GIlMPJNk-pU",
-      "work_id": "vocadb_song_421046",
-      "title": "and I'm home",
-      "producer_slug": "wowaka",
-      "prediction": "toa",
-      "rank": 29,
-      "accepted": false,
-      "confidence": 0.3303786982574743,
-      "margin": 0.12787977035173176,
-      "entropy": 0.6339025506673163,
-      "top3": [
-        {
-          "producer_slug": "toa",
-          "score": 0.3303786982574743
+          "score": 0.43532893226522973
         },
         {
-          "producer_slug": "jin",
-          "score": 0.20249892790574253
-        },
-        {
-          "producer_slug": "surii",
-          "score": 0.1149787807218548
+          "producer_slug": "harumaki_gohan",
+          "score": 0.020435583783889565
         }
       ]
     },
@@ -787,21 +938,21 @@
       "prediction": "r_sound_design",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9966643258426617,
-      "margin": 0.9956559664741049,
-      "entropy": 0.00857894832700414,
+      "confidence": 0.9382347519661051,
+      "margin": 0.936470030593708,
+      "entropy": 0.12596396233853488,
       "top3": [
         {
           "producer_slug": "r_sound_design",
-          "score": 0.9966643258426617
+          "score": 0.9382347519661051
         },
         {
-          "producer_slug": "cosmo",
-          "score": 0.0010083593685568351
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969973
         },
         {
-          "producer_slug": "harumaki_gohan",
-          "score": 0.0009590419347495947
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969973
         }
       ]
     },
@@ -813,21 +964,21 @@
       "prediction": "iyowa",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9702160388369214,
-      "margin": 0.9575062078220298,
-      "entropy": 0.054552711062336286,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "iyowa",
-          "score": 0.9702160388369214
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "ayase",
-          "score": 0.0127098310148917
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "r_906",
-          "score": 0.006171080919608822
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -839,21 +990,21 @@
       "prediction": "neru",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9891687387089348,
-      "margin": 0.9835523461604897,
-      "entropy": 0.0225836004067703,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "neru",
-          "score": 0.9891687387089348
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "jin",
-          "score": 0.005616392548445131
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "kemu",
-          "score": 0.002245514761557188
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -864,48 +1015,48 @@
       "producer_slug": "toa",
       "prediction": "toa",
       "rank": 1,
-      "accepted": false,
-      "confidence": 0.501435232475327,
-      "margin": 0.41915039446429936,
-      "entropy": 0.5812506841450211,
+      "accepted": true,
+      "confidence": 0.8056920236685776,
+      "margin": 0.6957713050924842,
+      "entropy": 0.2421461022840007,
       "top3": [
         {
           "producer_slug": "toa",
-          "score": 0.501435232475327
+          "score": 0.8056920236685776
         },
         {
-          "producer_slug": "surii",
-          "score": 0.08228483801102762
+          "producer_slug": "jin",
+          "score": 0.10992071857609345
         },
         {
-          "producer_slug": "hachi",
-          "score": 0.08067400729491342
+          "producer_slug": "ayase",
+          "score": 0.030615145549658586
         }
       ]
     },
     {
-      "song_id": "youtube_M2cckDmNLMI",
-      "work_id": "vocadb_song_454815",
-      "title": "KICK BACK",
-      "producer_slug": "hachi",
-      "prediction": "jin",
-      "rank": 12,
+      "song_id": "youtube_M6Swfmk-NBU",
+      "work_id": "vocadb_song_307610",
+      "title": "刹那の渦",
+      "producer_slug": "balloon",
+      "prediction": "balloon",
+      "rank": 1,
       "accepted": true,
-      "confidence": 0.6777742804187233,
-      "margin": 0.550787892429452,
-      "entropy": 0.32908777999793815,
+      "confidence": 0.904725978435315,
+      "margin": 0.8769880789327399,
+      "entropy": 0.16717856168127396,
       "top3": [
         {
+          "producer_slug": "balloon",
+          "score": 0.904725978435315
+        },
+        {
           "producer_slug": "jin",
-          "score": 0.6777742804187233
+          "score": 0.02773789950257511
         },
         {
-          "producer_slug": "surii",
-          "score": 0.12698638798927137
-        },
-        {
-          "producer_slug": "deco27",
-          "score": 0.12377154557681594
+          "producer_slug": "teniwoha",
+          "score": 0.011342873449057172
         }
       ]
     },
@@ -917,21 +1068,21 @@
       "prediction": "inabakumori",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9672955347841876,
-      "margin": 0.9423749578838208,
-      "entropy": 0.052120715177756606,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.12596396233853502,
       "top3": [
         {
           "producer_slug": "inabakumori",
-          "score": 0.9672955347841876
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "kairikibear",
-          "score": 0.024920576900366826
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969986
         },
         {
           "producer_slug": "teniwoha",
-          "score": 0.0017652590156738786
+          "score": 0.0017647213723969986
         }
       ]
     },
@@ -943,21 +1094,21 @@
       "prediction": "niru_kajitsu",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9209740407703739,
-      "margin": 0.8843914443404398,
-      "entropy": 0.12255985516725226,
+      "confidence": 0.9339105485755476,
+      "margin": 0.9275450891003633,
+      "entropy": 0.13253924356229513,
       "top3": [
         {
           "producer_slug": "niru_kajitsu",
-          "score": 0.9209740407703739
+          "score": 0.9339105485755476
         },
         {
           "producer_slug": "teniwoha",
-          "score": 0.036582596429934104
+          "score": 0.006365459475184352
         },
         {
-          "producer_slug": "deco27",
-          "score": 0.014756967235657314
+          "producer_slug": "toa",
+          "score": 0.0017565879985078797
         }
       ]
     },
@@ -966,24 +1117,24 @@
       "work_id": "vocadb_song_5859",
       "title": "二息歩行",
       "producer_slug": "deco27",
-      "prediction": "sasakure_uk",
-      "rank": 2,
+      "prediction": "mikito_p",
+      "rank": 3,
       "accepted": false,
-      "confidence": 0.22631621731602802,
-      "margin": 0.05053985074998346,
-      "entropy": 0.6955068546445433,
+      "confidence": 0.5257949255744434,
+      "margin": 0.28390576758795016,
+      "entropy": 0.3683330294573971,
       "top3": [
         {
+          "producer_slug": "mikito_p",
+          "score": 0.5257949255744434
+        },
+        {
           "producer_slug": "sasakure_uk",
-          "score": 0.22631621731602802
+          "score": 0.24188915798649327
         },
         {
           "producer_slug": "deco27",
-          "score": 0.17577636656604456
-        },
-        {
-          "producer_slug": "jin",
-          "score": 0.11077214903704986
+          "score": 0.1765290728525132
         }
       ]
     },
@@ -995,21 +1146,21 @@
       "prediction": "r_906",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8882804095947293,
-      "margin": 0.8624185857456792,
-      "entropy": 0.1801342513962126,
+      "confidence": 0.9382347519661043,
+      "margin": 0.9364700305937073,
+      "entropy": 0.12596396233853607,
       "top3": [
         {
           "producer_slug": "r_906",
-          "score": 0.8882804095947293
+          "score": 0.9382347519661043
         },
         {
-          "producer_slug": "deco27",
-          "score": 0.025861823849050107
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723970161
         },
         {
-          "producer_slug": "jin",
-          "score": 0.0167345519758143
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723970161
         }
       ]
     },
@@ -1021,21 +1172,21 @@
       "prediction": "wowaka",
       "rank": 1,
       "accepted": false,
-      "confidence": 0.4013638283173571,
-      "margin": 0.19086672064420343,
-      "entropy": 0.5659485712167494,
+      "confidence": 0.5431920989235519,
+      "margin": 0.2938101154308109,
+      "entropy": 0.38369843071438975,
       "top3": [
         {
           "producer_slug": "wowaka",
-          "score": 0.4013638283173571
+          "score": 0.5431920989235519
         },
         {
           "producer_slug": "teniwoha",
-          "score": 0.2104971076731537
+          "score": 0.24938198349274102
         },
         {
           "producer_slug": "niru_kajitsu",
-          "score": 0.1501912631756378
+          "score": 0.11796710785276532
         }
       ]
     },
@@ -1047,47 +1198,47 @@
       "prediction": "r_906",
       "rank": 1,
       "accepted": false,
-      "confidence": 0.4763486092780292,
-      "margin": 0.3246004246006885,
-      "entropy": 0.5305113332195693,
+      "confidence": 0.4650985848513351,
+      "margin": 0.1385173453186644,
+      "entropy": 0.4092751813627943,
       "top3": [
         {
           "producer_slug": "r_906",
-          "score": 0.4763486092780292
-        },
-        {
-          "producer_slug": "teniwoha",
-          "score": 0.15174818467734066
+          "score": 0.4650985848513351
         },
         {
           "producer_slug": "jin",
-          "score": 0.10840813480293182
+          "score": 0.3265812395326707
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.08368740750902726
         }
       ]
     },
     {
-      "song_id": "youtube_Qp3b-RXtz4w",
-      "work_id": "vocadb_song_366767",
-      "title": "うっせぇわ",
-      "producer_slug": "syudou",
-      "prediction": "surii",
-      "rank": 5,
+      "song_id": "youtube_R_yS_4cZzzY",
+      "work_id": "vocadb_song_127415",
+      "title": "三月と狼少年",
+      "producer_slug": "n_buna",
+      "prediction": "neru",
+      "rank": 2,
       "accepted": true,
-      "confidence": 0.8702748876500269,
-      "margin": 0.8487784175622061,
-      "entropy": 0.2050282282194851,
+      "confidence": 0.8633914941612222,
+      "margin": 0.7819976383467213,
+      "entropy": 0.19132907858635217,
       "top3": [
         {
-          "producer_slug": "surii",
-          "score": 0.8702748876500269
+          "producer_slug": "neru",
+          "score": 0.8633914941612222
         },
         {
-          "producer_slug": "teniwoha",
-          "score": 0.02149647008782089
+          "producer_slug": "n_buna",
+          "score": 0.08139385581450086
         },
         {
-          "producer_slug": "chinozo",
-          "score": 0.01775397936627325
+          "producer_slug": "wowaka",
+          "score": 0.001623960294831665
         }
       ]
     },
@@ -1096,24 +1247,24 @@
       "work_id": "vocadb_song_303273",
       "title": "モア！ジャンプ！モア！",
       "producer_slug": "nayutan",
-      "prediction": "surii",
-      "rank": 12,
+      "prediction": "neru",
+      "rank": 25,
       "accepted": false,
-      "confidence": 0.3271518448513888,
-      "margin": 0.1000948833144355,
-      "entropy": 0.5453320225141263,
+      "confidence": 0.3336351161937689,
+      "margin": 0.09706452455679865,
+      "entropy": 0.4800601954703048,
       "top3": [
         {
-          "producer_slug": "surii",
-          "score": 0.3271518448513888
-        },
-        {
           "producer_slug": "neru",
-          "score": 0.22705696153695332
+          "score": 0.3336351161937689
         },
         {
           "producer_slug": "n_buna",
-          "score": 0.19203865850133148
+          "score": 0.23657059163697025
+        },
+        {
+          "producer_slug": "surii",
+          "score": 0.19653019694584586
         }
       ]
     },
@@ -1125,21 +1276,21 @@
       "prediction": "pinocchiop",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9978509687039714,
-      "margin": 0.9971297433772233,
-      "entropy": 0.005572604433397013,
+      "confidence": 0.9382347519661051,
+      "margin": 0.936470030593708,
+      "entropy": 0.12596396233853488,
       "top3": [
         {
           "producer_slug": "pinocchiop",
-          "score": 0.9978509687039714
+          "score": 0.9382347519661051
         },
         {
-          "producer_slug": "chinozo",
-          "score": 0.0007212253267481655
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969973
         },
         {
-          "producer_slug": "deco27",
-          "score": 0.0004609367067448346
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969973
         }
       ]
     },
@@ -1151,21 +1302,21 @@
       "prediction": "orangestar",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9969719383196723,
-      "margin": 0.9965188707177224,
-      "entropy": 0.008430425360092565,
+      "confidence": 0.9382347519661051,
+      "margin": 0.936470030593708,
+      "entropy": 0.12596396233853488,
       "top3": [
         {
           "producer_slug": "orangestar",
-          "score": 0.9969719383196723
+          "score": 0.9382347519661051
         },
         {
-          "producer_slug": "cosmo",
-          "score": 0.00045306760194992635
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969973
         },
         {
-          "producer_slug": "hachi",
-          "score": 0.000372899528566165
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969973
         }
       ]
     },
@@ -1177,21 +1328,21 @@
       "prediction": "hachi",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9986350550985585,
-      "margin": 0.998290449819113,
-      "entropy": 0.003909548440357623,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "hachi",
-          "score": 0.9986350550985585
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "toa",
-          "score": 0.00034460527944558467
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "sasakure_uk",
-          "score": 0.0002870425589457733
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1200,24 +1351,50 @@
       "work_id": "vocadb_song_650687",
       "title": "チャンピオン",
       "producer_slug": "kanaria",
-      "prediction": "cosmo",
-      "rank": 7,
+      "prediction": "pinocchiop",
+      "rank": 5,
       "accepted": false,
-      "confidence": 0.21023263609889045,
-      "margin": 0.05136037011993261,
-      "entropy": 0.7065929532627923,
+      "confidence": 0.32743936128560036,
+      "margin": 0.012036842941311299,
+      "entropy": 0.48740039824460746,
       "top3": [
         {
-          "producer_slug": "cosmo",
-          "score": 0.21023263609889045
+          "producer_slug": "pinocchiop",
+          "score": 0.32743936128560036
         },
         {
           "producer_slug": "deco27",
-          "score": 0.15887226597895784
+          "score": 0.31540251834428906
         },
         {
-          "producer_slug": "surii",
-          "score": 0.13261568082690273
+          "producer_slug": "cosmo",
+          "score": 0.15827647636931547
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_WA_6kcUA_Ls",
+      "work_id": "vocadb_song_38843",
+      "title": "猪突猛進ガール",
+      "producer_slug": "rerulili",
+      "prediction": "rerulili",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661038,
+      "margin": 0.9364700305937068,
+      "entropy": 0.12596396233853666,
+      "top3": [
+        {
+          "producer_slug": "rerulili",
+          "score": 0.9382347519661038
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723970248
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723970248
         }
       ]
     },
@@ -1229,21 +1406,21 @@
       "prediction": "n_buna",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8295110633742282,
-      "margin": 0.7179362372235859,
-      "entropy": 0.17973294647166158,
+      "confidence": 0.9212462005168133,
+      "margin": 0.9019913139534145,
+      "entropy": 0.14768912999654185,
       "top3": [
         {
           "producer_slug": "n_buna",
-          "score": 0.8295110633742282
-        },
-        {
-          "producer_slug": "neru",
-          "score": 0.1115748261506423
+          "score": 0.9212462005168133
         },
         {
           "producer_slug": "jin",
-          "score": 0.04798967113123425
+          "score": 0.019254886563398764
+        },
+        {
+          "producer_slug": "neru",
+          "score": 0.0023175787876039853
         }
       ]
     },
@@ -1255,47 +1432,21 @@
       "prediction": "jin",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.7866244241994652,
-      "margin": 0.710119812932951,
-      "entropy": 0.27591284217061446,
+      "confidence": 0.9366550306190535,
+      "margin": 0.9332635839637706,
+      "entropy": 0.12856571064912245,
       "top3": [
         {
           "producer_slug": "jin",
-          "score": 0.7866244241994652
-        },
-        {
-          "producer_slug": "neru",
-          "score": 0.07650461126651424
-        },
-        {
-          "producer_slug": "teniwoha",
-          "score": 0.03661200225650279
-        }
-      ]
-    },
-    {
-      "song_id": "youtube_ZRtdQ81jPUQ",
-      "work_id": "vocadb_song_492341",
-      "title": "アイドル",
-      "producer_slug": "ayase",
-      "prediction": "deco27",
-      "rank": 17,
-      "accepted": true,
-      "confidence": 0.8310043421572392,
-      "margin": 0.7627087581691632,
-      "entropy": 0.22548619950941934,
-      "top3": [
-        {
-          "producer_slug": "deco27",
-          "score": 0.8310043421572392
-        },
-        {
-          "producer_slug": "jin",
-          "score": 0.06829558398807595
+          "score": 0.9366550306190535
         },
         {
           "producer_slug": "surii",
-          "score": 0.046113838921831664
+          "score": 0.0033914466552828772
+        },
+        {
+          "producer_slug": "neru",
+          "score": 0.0018157700234551607
         }
       ]
     },
@@ -1305,23 +1456,23 @@
       "title": "スターナイトスノウ",
       "producer_slug": "orangestar",
       "prediction": "n_buna",
-      "rank": 5,
+      "rank": 6,
       "accepted": false,
-      "confidence": 0.586661588141478,
-      "margin": 0.33475148402497473,
-      "entropy": 0.37054757660282445,
+      "confidence": 0.4892893990292661,
+      "margin": 0.07253010819865124,
+      "entropy": 0.3321531339591646,
       "top3": [
         {
           "producer_slug": "n_buna",
-          "score": 0.586661588141478
+          "score": 0.4892893990292661
         },
         {
           "producer_slug": "neru",
-          "score": 0.2519101041165032
+          "score": 0.41675929083061486
         },
         {
-          "producer_slug": "surii",
-          "score": 0.06611725925676479
+          "producer_slug": "balloon",
+          "score": 0.018505922769154116
         }
       ]
     },
@@ -1333,21 +1484,21 @@
       "prediction": "iyowa",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9299951523756852,
-      "margin": 0.892001266620693,
-      "entropy": 0.10987944084644499,
+      "confidence": 0.9382347519661045,
+      "margin": 0.9364700305937075,
+      "entropy": 0.1259639623385356,
       "top3": [
         {
           "producer_slug": "iyowa",
-          "score": 0.9299951523756852
+          "score": 0.9382347519661045
         },
         {
-          "producer_slug": "cosmo",
-          "score": 0.037993885754992164
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723970085
         },
         {
-          "producer_slug": "jin",
-          "score": 0.007923485014251429
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723970085
         }
       ]
     },
@@ -1359,21 +1510,47 @@
       "prediction": "40mp",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8444370644920889,
-      "margin": 0.7682835544197522,
-      "entropy": 0.20671877516663634,
+      "confidence": 0.8420239059357841,
+      "margin": 0.7659163550389274,
+      "entropy": 0.22272045059512033,
       "top3": [
         {
           "producer_slug": "40mp",
-          "score": 0.8444370644920889
+          "score": 0.8420239059357841
         },
         {
           "producer_slug": "surii",
-          "score": 0.07615351007233667
+          "score": 0.07610755089685671
         },
         {
-          "producer_slug": "neru",
-          "score": 0.02293637323457369
+          "producer_slug": "hitoshizuku_p",
+          "score": 0.02104024217025863
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_e6rrHMlQsFw",
+      "work_id": "vocadb_song_39243",
+      "title": "造形街",
+      "producer_slug": "balloon",
+      "prediction": "balloon",
+      "rank": 1,
+      "accepted": false,
+      "confidence": 0.5928497777298009,
+      "margin": 0.32145337978655986,
+      "entropy": 0.3495449399646586,
+      "top3": [
+        {
+          "producer_slug": "balloon",
+          "score": 0.5928497777298009
+        },
+        {
+          "producer_slug": "mikito_p",
+          "score": 0.271396397943241
+        },
+        {
+          "producer_slug": "kemu",
+          "score": 0.051241885160321354
         }
       ]
     },
@@ -1385,21 +1562,21 @@
       "prediction": "kairikibear",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9004193208079775,
-      "margin": 0.8545124821279283,
-      "entropy": 0.14662177726014794,
+      "confidence": 0.938234751966101,
+      "margin": 0.9364700305937038,
+      "entropy": 0.12596396233854298,
       "top3": [
         {
           "producer_slug": "kairikibear",
-          "score": 0.9004193208079775
+          "score": 0.938234751966101
         },
         {
-          "producer_slug": "jin",
-          "score": 0.045906838680049224
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723971321
         },
         {
-          "producer_slug": "neru",
-          "score": 0.021470825349849246
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723971321
         }
       ]
     },
@@ -1411,21 +1588,21 @@
       "prediction": "surii",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.6946835778210689,
-      "margin": 0.5260866463213218,
-      "entropy": 0.3505033188342973,
+      "confidence": 0.8871147024344053,
+      "margin": 0.8309608498835266,
+      "entropy": 0.17602968985435397,
       "top3": [
         {
           "producer_slug": "surii",
-          "score": 0.6946835778210689
+          "score": 0.8871147024344053
         },
         {
           "producer_slug": "jin",
-          "score": 0.16859693149974705
+          "score": 0.056153852550878694
         },
         {
-          "producer_slug": "deco27",
-          "score": 0.02072771224366739
+          "producer_slug": "wowaka",
+          "score": 0.0016685719121975419
         }
       ]
     },
@@ -1437,21 +1614,21 @@
       "prediction": "maretu",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9787609921453914,
-      "margin": 0.9725979028527936,
-      "entropy": 0.04313751209471494,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "maretu",
-          "score": 0.9787609921453914
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "deco27",
-          "score": 0.006163089292597768
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "surii",
-          "score": 0.00551976181514349
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1462,22 +1639,48 @@
       "producer_slug": "inabakumori",
       "prediction": "inabakumori",
       "rank": 1,
-      "accepted": true,
-      "confidence": 0.6462609105579239,
-      "margin": 0.4013783997423387,
-      "entropy": 0.32731331828384935,
+      "accepted": false,
+      "confidence": 0.41494357216975847,
+      "margin": 0.061452648891708705,
+      "entropy": 0.3969944808106174,
       "top3": [
         {
           "producer_slug": "inabakumori",
-          "score": 0.6462609105579239
+          "score": 0.41494357216975847
         },
         {
           "producer_slug": "kairikibear",
-          "score": 0.24488251081558518
+          "score": 0.35349092327804976
         },
         {
-          "producer_slug": "n_buna",
-          "score": 0.03544131421402089
+          "producer_slug": "balloon",
+          "score": 0.12998328989332975
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_g7kaPQirlKA",
+      "work_id": "vocadb_song_164109",
+      "title": "大江戸ジュリアナイト",
+      "producer_slug": "mitchie_m",
+      "prediction": "mitchie_m",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
+      "top3": [
+        {
+          "producer_slug": "mitchie_m",
+          "score": 0.9382347519661048
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1489,21 +1692,21 @@
       "prediction": "harumaki_gohan",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8991366315486448,
-      "margin": 0.8787065818357226,
-      "entropy": 0.1642046614532925,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "harumaki_gohan",
-          "score": 0.8991366315486448
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "surii",
-          "score": 0.020430049712922168
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "jin",
-          "score": 0.019786428598378872
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1515,21 +1718,47 @@
       "prediction": "mitchie_m",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.962042779062209,
-      "margin": 0.9513364020706175,
-      "entropy": 0.06990667665195616,
+      "confidence": 0.9382347519661037,
+      "margin": 0.9364700305937067,
+      "entropy": 0.1259639623385371,
       "top3": [
         {
           "producer_slug": "mitchie_m",
-          "score": 0.962042779062209
+          "score": 0.9382347519661037
         },
         {
-          "producer_slug": "niru_kajitsu",
-          "score": 0.01070637699159151
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723970324
         },
         {
-          "producer_slug": "r_sound_design",
-          "score": 0.010229893209678882
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723970324
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_gfSPeQkuyZ4",
+      "work_id": "vocadb_song_28150",
+      "title": "ぴんこすてぃっくLuv",
+      "producer_slug": "giga",
+      "prediction": "giga",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
+      "top3": [
+        {
+          "producer_slug": "giga",
+          "score": 0.9382347519661048
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1540,22 +1769,22 @@
       "producer_slug": "pinocchiop",
       "prediction": "pinocchiop",
       "rank": 1,
-      "accepted": true,
-      "confidence": 0.8102345438068438,
-      "margin": 0.7189774572883192,
-      "entropy": 0.2427494752287103,
+      "accepted": false,
+      "confidence": 0.7782767357877848,
+      "margin": 0.6497335730363814,
+      "entropy": 0.2557037133457851,
       "top3": [
         {
           "producer_slug": "pinocchiop",
-          "score": 0.8102345438068438
+          "score": 0.7782767357877848
         },
         {
           "producer_slug": "surii",
-          "score": 0.09125708651852459
+          "score": 0.12854316275140343
         },
         {
           "producer_slug": "chinozo",
-          "score": 0.036678896856802944
+          "score": 0.04393422673094539
         }
       ]
     },
@@ -1567,21 +1796,47 @@
       "prediction": "40mp",
       "rank": 1,
       "accepted": false,
-      "confidence": 0.615252658642884,
-      "margin": 0.4893303314548112,
-      "entropy": 0.4074004181152908,
+      "confidence": 0.687850552828062,
+      "margin": 0.5422495557143211,
+      "entropy": 0.3402572612990197,
       "top3": [
         {
           "producer_slug": "40mp",
-          "score": 0.615252658642884
+          "score": 0.687850552828062
+        },
+        {
+          "producer_slug": "hitoshizuku_p",
+          "score": 0.14560099711374086
         },
         {
           "producer_slug": "jin",
-          "score": 0.12592232718807284
+          "score": 0.06300382267893673
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_iP2mdAcluVU",
+      "work_id": "vocadb_song_197941",
+      "title": "トコヨトキヨ",
+      "producer_slug": "teniwoha",
+      "prediction": "balloon",
+      "rank": 6,
+      "accepted": false,
+      "confidence": 0.5172968221787038,
+      "margin": 0.07535434998519835,
+      "entropy": 0.2711334772987763,
+      "top3": [
+        {
+          "producer_slug": "balloon",
+          "score": 0.5172968221787038
         },
         {
-          "producer_slug": "toa",
-          "score": 0.1257476592079357
+          "producer_slug": "niru_kajitsu",
+          "score": 0.4419424721935054
+        },
+        {
+          "producer_slug": "rerulili",
+          "score": 0.0055548138869032735
         }
       ]
     },
@@ -1593,21 +1848,21 @@
       "prediction": "niru_kajitsu",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8388836203521122,
-      "margin": 0.7511436938245064,
-      "entropy": 0.21132432762882059,
+      "confidence": 0.9367085471692264,
+      "margin": 0.9333200195295437,
+      "entropy": 0.1284727457489342,
       "top3": [
         {
           "producer_slug": "niru_kajitsu",
-          "score": 0.8388836203521122
+          "score": 0.9367085471692264
         },
         {
           "producer_slug": "jin",
-          "score": 0.08773992652760582
+          "score": 0.003388527639682723
         },
         {
-          "producer_slug": "iyowa",
-          "score": 0.02140313148863976
+          "producer_slug": "wowaka",
+          "score": 0.0017618507409144415
         }
       ]
     },
@@ -1617,23 +1872,23 @@
       "title": "名探偵連続殺人事件",
       "producer_slug": "teniwoha",
       "prediction": "niru_kajitsu",
-      "rank": 7,
+      "rank": 11,
       "accepted": false,
-      "confidence": 0.22284169123920186,
-      "margin": 0.06948744483161687,
-      "entropy": 0.7241824493126211,
+      "confidence": 0.23030164831178135,
+      "margin": 0.02740553111933522,
+      "entropy": 0.6252148439068035,
       "top3": [
         {
           "producer_slug": "niru_kajitsu",
-          "score": 0.22284169123920186
-        },
-        {
-          "producer_slug": "deco27",
-          "score": 0.153354246407585
+          "score": 0.23030164831178135
         },
         {
           "producer_slug": "surii",
-          "score": 0.11997937836599841
+          "score": 0.20289611719244613
+        },
+        {
+          "producer_slug": "mikito_p",
+          "score": 0.13868204301945608
         }
       ]
     },
@@ -1645,21 +1900,47 @@
       "prediction": "chinozo",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9849673865364744,
-      "margin": 0.9785999785614953,
-      "entropy": 0.03028189201899137,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "chinozo",
-          "score": 0.9849673865364744
+          "score": 0.9382347519661048
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
           "producer_slug": "teniwoha",
-          "score": 0.006367407974979155
+          "score": 0.0017647213723969968
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_lnPnSVcrJfg",
+      "work_id": "vocadb_song_121116",
+      "title": "Amazing Dolce",
+      "producer_slug": "hitoshizuku_p",
+      "prediction": "hitoshizuku_p",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
+      "top3": [
+        {
+          "producer_slug": "hitoshizuku_p",
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "mimi",
-          "score": 0.0037660270861134258
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
+        },
+        {
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1671,21 +1952,21 @@
       "prediction": "kairikibear",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9734702204889081,
-      "margin": 0.9646502216905597,
-      "entropy": 0.04850574558879382,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "kairikibear",
-          "score": 0.9734702204889081
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "surii",
-          "score": 0.008819998798348378
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "chinozo",
-          "score": 0.007798254641445762
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1697,21 +1978,21 @@
       "prediction": "ayase",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.8483675102751822,
-      "margin": 0.7385049383534804,
-      "entropy": 0.17563851351424287,
+      "confidence": 0.8267533183481652,
+      "margin": 0.7063803603445644,
+      "entropy": 0.21041617301679494,
       "top3": [
         {
           "producer_slug": "ayase",
-          "score": 0.8483675102751822
+          "score": 0.8267533183481652
         },
         {
           "producer_slug": "kemu",
-          "score": 0.10986257192170179
+          "score": 0.12037295800360082
         },
         {
-          "producer_slug": "harumaki_gohan",
-          "score": 0.01237371088091826
+          "producer_slug": "wowaka",
+          "score": 0.0015551095190657034
         }
       ]
     },
@@ -1723,47 +2004,21 @@
       "prediction": "r_sound_design",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.6927257060989233,
-      "margin": 0.5411410075872651,
-      "entropy": 0.3148356241925734,
+      "confidence": 0.8026724634163919,
+      "margin": 0.6741405773637736,
+      "entropy": 0.23829353604513068,
       "top3": [
         {
           "producer_slug": "r_sound_design",
-          "score": 0.6927257060989233
+          "score": 0.8026724634163919
         },
         {
           "producer_slug": "jin",
-          "score": 0.15158469851165807
+          "score": 0.12853188605261825
         },
         {
-          "producer_slug": "surii",
-          "score": 0.06578884998571072
-        }
-      ]
-    },
-    {
-      "song_id": "youtube_okJ9Vk6owG8",
-      "work_id": "vocadb_song_290577",
-      "title": "ワーワーワールド",
-      "producer_slug": "mitchie_m",
-      "prediction": "mitchie_m",
-      "rank": 1,
-      "accepted": true,
-      "confidence": 0.9639615086171268,
-      "margin": 0.9505554412673163,
-      "entropy": 0.06453215040740086,
-      "top3": [
-        {
-          "producer_slug": "mitchie_m",
-          "score": 0.9639615086171268
-        },
-        {
-          "producer_slug": "niru_kajitsu",
-          "score": 0.013406067349810584
-        },
-        {
-          "producer_slug": "deco27",
-          "score": 0.009417352121970318
+          "producer_slug": "chinozo",
+          "score": 0.008097847506821345
         }
       ]
     },
@@ -1775,21 +2030,21 @@
       "prediction": "sasakure_uk",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.841131540119858,
-      "margin": 0.7976457852559782,
-      "entropy": 0.22460684163649958,
+      "confidence": 0.8821105889191984,
+      "margin": 0.8540058746550309,
+      "entropy": 0.19548654454403097,
       "top3": [
         {
           "producer_slug": "sasakure_uk",
-          "score": 0.841131540119858
+          "score": 0.8821105889191984
         },
         {
           "producer_slug": "harumaki_gohan",
-          "score": 0.04348575486387981
+          "score": 0.02810471426416752
         },
         {
-          "producer_slug": "kanaria",
-          "score": 0.040194480364573015
+          "producer_slug": "deco27",
+          "score": 0.01886821743287224
         }
       ]
     },
@@ -1801,21 +2056,21 @@
       "prediction": "cosmo",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9592312624021802,
-      "margin": 0.9424630830467212,
-      "entropy": 0.07111941901213512,
+      "confidence": 0.9382347519661048,
+      "margin": 0.9364700305937078,
+      "entropy": 0.1259639623385349,
       "top3": [
         {
           "producer_slug": "cosmo",
-          "score": 0.9592312624021802
+          "score": 0.9382347519661048
         },
         {
-          "producer_slug": "sasakure_uk",
-          "score": 0.01676817935545889
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969968
         },
         {
-          "producer_slug": "harumaki_gohan",
-          "score": 0.006699966791480586
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969968
         }
       ]
     },
@@ -1825,49 +2080,23 @@
       "title": "オペラ！スペースオペラ！ ",
       "producer_slug": "nayutan",
       "prediction": "cosmo",
-      "rank": 28,
-      "accepted": true,
-      "confidence": 0.6763287322121213,
-      "margin": 0.5534681375602379,
-      "entropy": 0.34475029447570643,
+      "rank": 25,
+      "accepted": false,
+      "confidence": 0.3908746309335272,
+      "margin": 0.13323606118540743,
+      "entropy": 0.41361941549558556,
       "top3": [
         {
           "producer_slug": "cosmo",
-          "score": 0.6763287322121213
-        },
-        {
-          "producer_slug": "jin",
-          "score": 0.12286059465188331
+          "score": 0.3908746309335272
         },
         {
           "producer_slug": "deco27",
-          "score": 0.11216612677210586
-        }
-      ]
-    },
-    {
-      "song_id": "youtube_sOiMD45QGLs",
-      "work_id": "vocadb_song_361940",
-      "title": "ギラギラ",
-      "producer_slug": "teniwoha",
-      "prediction": "teniwoha",
-      "rank": 1,
-      "accepted": false,
-      "confidence": 0.37391182434889786,
-      "margin": 0.15038250139939321,
-      "entropy": 0.5673790488599071,
-      "top3": [
-        {
-          "producer_slug": "teniwoha",
-          "score": 0.37391182434889786
+          "score": 0.2576385697481198
         },
         {
-          "producer_slug": "surii",
-          "score": 0.22352932294950464
-        },
-        {
-          "producer_slug": "r_sound_design",
-          "score": 0.11094577650995831
+          "producer_slug": "jin",
+          "score": 0.25085601645466743
         }
       ]
     },
@@ -1879,21 +2108,21 @@
       "prediction": "toa",
       "rank": 1,
       "accepted": true,
-      "confidence": 0.9683418888247143,
-      "margin": 0.9542499420232683,
-      "entropy": 0.05934172919369552,
+      "confidence": 0.9382347519661051,
+      "margin": 0.936470030593708,
+      "entropy": 0.12596396233853488,
       "top3": [
         {
           "producer_slug": "toa",
-          "score": 0.9683418888247143
+          "score": 0.9382347519661051
         },
         {
-          "producer_slug": "surii",
-          "score": 0.01409194680144604
+          "producer_slug": "wowaka",
+          "score": 0.0017647213723969973
         },
         {
-          "producer_slug": "jin",
-          "score": 0.004266879426944319
+          "producer_slug": "teniwoha",
+          "score": 0.0017647213723969973
         }
       ]
     },
@@ -1903,23 +2132,49 @@
       "title": "惡ふざけ",
       "producer_slug": "nakiso",
       "prediction": "cosmo",
-      "rank": 2,
+      "rank": 8,
       "accepted": false,
-      "confidence": 0.3242061967796416,
-      "margin": 0.17868982576567316,
-      "entropy": 0.6234908108534853,
+      "confidence": 0.2457467453350559,
+      "margin": 0.02497994903320999,
+      "entropy": 0.5452337832830676,
       "top3": [
         {
           "producer_slug": "cosmo",
-          "score": 0.3242061967796416
+          "score": 0.2457467453350559
         },
         {
-          "producer_slug": "nakiso",
-          "score": 0.14551637101396842
+          "producer_slug": "deco27",
+          "score": 0.2207667963018459
         },
         {
-          "producer_slug": "jin",
-          "score": 0.1400679464834451
+          "producer_slug": "sasakure_uk",
+          "score": 0.17890601712145157
+        }
+      ]
+    },
+    {
+      "song_id": "youtube_zTsjmwNSAkA",
+      "work_id": "vocadb_song_284540",
+      "title": "羞恥心に殺される",
+      "producer_slug": "rerulili",
+      "prediction": "rerulili",
+      "rank": 1,
+      "accepted": true,
+      "confidence": 0.9381031673035263,
+      "margin": 0.9361984463712967,
+      "entropy": 0.12619290058281052,
+      "top3": [
+        {
+          "producer_slug": "rerulili",
+          "score": 0.9381031673035263
+        },
+        {
+          "producer_slug": "mikito_p",
+          "score": 0.001904720932229623
+        },
+        {
+          "producer_slug": "wowaka",
+          "score": 0.001764473875418955
         }
       ]
     }

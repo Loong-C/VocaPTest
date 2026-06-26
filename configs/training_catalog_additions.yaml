@@ -565,11 +565,6 @@ songs:
     youtube_id: crCS77wqxTI
     allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
   - producer_slug: r_sound_design
-    title: blender
-    vocadb_song_id: 606571
-    youtube_id: SjSlCJG4CxU
-    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
-  - producer_slug: r_sound_design
     title: レトロポリス
     vocadb_song_id: 322146
     youtube_id: YGlAWg1YmQ8
@@ -583,11 +578,6 @@ songs:
     title: Lust Blue
     vocadb_song_id: 188407
     youtube_id: U7NUU12t2ms
-    allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
-  - producer_slug: r_sound_design
-    title: アリス？
-    vocadb_song_id: 781447
-    youtube_id: eUa3vltUnnU
     allowed_channel_ids: [UCID4elKLzUCZVIVtXiXKA-w]
   - producer_slug: r_sound_design
     title: ブルベ、恋をする
@@ -788,33 +778,12 @@ songs:
     allowed_channel_ids:
     - UCffUugWeswcGV_qzrTDHY5Q
   - producer_slug: nakiso
-    title: げのげ
-    vocadb_song_id: 767908
-    youtube_id: TG9IjsxAWUs
-    source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UC7d3Y_v5O202eo006uvvPzw
-  - producer_slug: nakiso
-    title: 魔性少女
-    vocadb_song_id: 884622
-    youtube_id: HvScug2tmfA
-    source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UChEJh7omBrQ7CNcY1bN2xPg
-  - producer_slug: nakiso
     title: 間際の乙女
     vocadb_song_id: 280449
     youtube_id: kn4K8y2PJ38
     source_kind: vocadb_original_pv
     allowed_channel_ids:
     - UC7d3Y_v5O202eo006uvvPzw
-  - producer_slug: surii
-    title: レディメイド
-    vocadb_song_id: 548896
-    youtube_id: jg09lNupc1s
-    source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCln9P4Qm3-EAY4aiEPmRwEA
   - producer_slug: surii
     title: ドキドキ！
     vocadb_song_id: 853916
@@ -980,13 +949,6 @@ songs:
     title: エンパープル
     vocadb_song_id: 642538
     youtube_id: InZ7GOU-CQ8
-    source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCgbTJ0Qb1OpA0GEocaJ7qrw
-  - producer_slug: harumaki_gohan
-    title: 月光
-    vocadb_song_id: 410288
-    youtube_id: SaX0By61S3U
     source_kind: vocadb_original_pv
     allowed_channel_ids:
     - UCgbTJ0Qb1OpA0GEocaJ7qrw
@@ -1172,3 +1134,253 @@ songs:
     source_kind: vocadb_original_pv
     allowed_channel_ids:
     - UCpTpszeiaSs938KEIXZRNcQ
+  - producer_slug: giga
+    title: ヒビカセ
+    vocadb_song_id: 63276
+    youtube_id: TkroHwQYpFE
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: LUVORATORRRRRY!
+    vocadb_song_id: 49755
+    youtube_id: LHdlw9F3KP4
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: 劣等上等
+    vocadb_song_id: 192291
+    youtube_id: oEkGC2HV7rc
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: drop pop candy
+    vocadb_song_id: 60953
+    youtube_id: 4sq2lPNxi7M
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: おこちゃま戦争
+    vocadb_song_id: 44190
+    youtube_id: qYAmduGAwBQ
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: +♂
+    vocadb_song_id: 51082
+    youtube_id: RIA-vEJB1Aw
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: ギガンティックO.T.N
+    vocadb_song_id: 18718
+    youtube_id: uLqDlcT140Y
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: Ready Steady
+    vocadb_song_id: 296597
+    youtube_id: XAg1jDDG49Y
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: CH4NGE
+    vocadb_song_id: 373776
+    youtube_id: LbO4pg_LHUI
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: Beyond the way
+    vocadb_song_id: 571496
+    youtube_id: SJcgOWsDwi4
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 脳漿炸裂ガール
+    vocadb_song_id: 17189
+    youtube_id: Ey_NHZNYTeE
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 神のまにまに
+    vocadb_song_id: 47759
+    youtube_id: b2GJcYBoVyg
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 乱躁滅裂ガール
+    vocadb_song_id: 135633
+    youtube_id: PPFH4h2YcKE
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: Iなんです
+    vocadb_song_id: 455434
+    youtube_id: QYpL88jiWFs
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 一触即発☆禅ガール
+    vocadb_song_id: 33927
+    youtube_id: xEhKWS53RfY
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 僕がモンスターになった日
+    vocadb_song_id: 112079
+    youtube_id: M60bNWB0Nxo
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 反芻シ考
+    vocadb_song_id: 316052
+    youtube_id: 52fXCcJIyag
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: アイカ
+    vocadb_song_id: 328981
+    youtube_id: 3Qed7zo96Gg
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: わいふぁい暴想ボーイ
+    vocadb_song_id: 211534
+    youtube_id: 7eFkQpduUzw
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 月光潤色ガール
+    vocadb_song_id: 75678
+    youtube_id: vDhDx3Y4udQ
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: ロキ
+    vocadb_song_id: 185363
+    youtube_id: Xg-qfsKN2_E
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: 少女レイ
+    vocadb_song_id: 197929
+    youtube_id: JW3N-HvU0MA
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: いーあるふぁんくらぶ
+    vocadb_song_id: 15785
+    youtube_id: oBgADhsOoog
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: クノイチでも恋がしたい
+    vocadb_song_id: 24039
+    youtube_id: eI4F8vuxoQE
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: 夕立のりぼん
+    vocadb_song_id: 17196
+    youtube_id: S-t2RgMpDvY
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: バレリーコ
+    vocadb_song_id: 62650
+    youtube_id: 4Ohpj2GDbRQ
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: 心臓デモクラシー
+    vocadb_song_id: 8809
+    youtube_id: tPo0LGsADCw
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: 小夜子
+    vocadb_song_id: 8811
+    youtube_id: dHm6BjJqIsE
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: 刹那プラス
+    vocadb_song_id: 12300
+    youtube_id: S-o3MbJmYJc
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: PLATONIC GIRL
+    vocadb_song_id: 196579
+    youtube_id: 5nSThlXtc4k
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Bad ∞ End ∞ Night
+    vocadb_song_id: 8682
+    youtube_id: WDUA7z3703g
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: 秘蜜〜黒の誓い〜
+    vocadb_song_id: 382
+    youtube_id: zrdSQrxRKgw
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Crazy ∞ nighT
+    vocadb_song_id: 13724
+    youtube_id: M7O11PAcAw4
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: からくり卍ばーすと
+    vocadb_song_id: 559
+    youtube_id: LrVh8ken6D4
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Alice in N.Y.
+    vocadb_song_id: 224386
+    youtube_id: Rg5r1k-pZGU
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Party×Party
+    vocadb_song_id: 54155
+    youtube_id: sjKi6OyeRTk
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: EveR ∞ LastinG ∞ NighT
+    vocadb_song_id: 63660
+    youtube_id: UkkfI12kIK8
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Vampire’s ∞ pathoS ～ヴァンパイアとシスター～
+    vocadb_song_id: 178178
+    youtube_id: R0CRCP0DPyM
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Twilight ∞ nighT
+    vocadb_song_id: 22102
+    youtube_id: x847XAeQxAQ
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Sister's∞mercY 〜ヴァンパイアとシスター〜
+    vocadb_song_id: 163904
+    youtube_id: 6rlqEcgbbEI
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: シャルル
+    vocadb_song_id: 135628
+    youtube_id: TA5OFS_xX0c
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: 花に風
+    vocadb_song_id: 474393
+    youtube_id: ixLrlhthgHs
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: 雨とペトラ
+    vocadb_song_id: 150978
+    youtube_id: PdfdOhYVU40
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: ノマド
+    vocadb_song_id: 395338
+    youtube_id: mKfwzOgorXs
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: パメラ
+    vocadb_song_id: 359877
+    youtube_id: -DvNu0Y-81g
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: メーベル
+    vocadb_song_id: 143222
+    youtube_id: PfCcIsDmlfA
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: レディーレ
+    vocadb_song_id: 159436
+    youtube_id: cweRY2J9EZI
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: WOLF
+    vocadb_song_id: 712009
+    youtube_id: yLATomaRLpk
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: 愛及屋烏
+    vocadb_song_id: 86209
+    youtube_id: 1lDs5iSV32Q
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: 花瓶に触れた
+    vocadb_song_id: 115539
+    youtube_id: 1U7KFKO5GPo
+    source_kind: vocadb_original_pv

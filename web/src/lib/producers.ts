@@ -36,6 +36,11 @@ const PRODUCER_GRADIENTS: Record<string, string> = {
   harumaki_gohan: "from-indigo-300 to-sky-500",
   r_906: "from-cyan-600 to-teal-700",
   sasakure_uk: "from-violet-600 to-cyan-500",
+  giga: "from-fuchsia-500 to-cyan-400",
+  rerulili: "from-amber-400 to-rose-500",
+  mikito_p: "from-lime-500 to-sky-500",
+  hitoshizuku_p: "from-purple-500 to-red-500",
+  balloon: "from-slate-600 to-violet-600",
 };
 
 export function getProducerMeta(slug: string): { gradient: string } {

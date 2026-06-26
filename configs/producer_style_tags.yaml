@@ -1778,3 +1778,288 @@ producers:
         title: トゥイー・ボックスの人形劇場
         url: https://vocadb.net/S/833027
         tag_votes: 4
+  giga:
+    artist_id: 772
+    source_url: https://vocadb.net/Ar/772
+    api_url: https://vocadb.net/api/songs?artistId[]=772&fields=PVs,Artists,Tags
+    songs_analyzed: 72
+    style_tags:
+    - label: edm
+      display_zh: EDM
+      category: Genres
+      song_count: 23
+      evidence:
+      - song_id: 63276
+        title: ヒビカセ
+        url: https://vocadb.net/S/63276
+        tag_votes: 6
+      - song_id: 49755
+        title: LUVORATORRRRRY!
+        url: https://vocadb.net/S/49755
+        tag_votes: 13
+      - song_id: 60953
+        title: drop pop candy
+        url: https://vocadb.net/S/60953
+        tag_votes: 5
+    - label: electropop
+      display_zh: 电子流行
+      category: Genres
+      song_count: 16
+      evidence:
+      - song_id: 192291
+        title: 劣等上等
+        url: https://vocadb.net/S/192291
+        tag_votes: 3
+      - song_id: 60953
+        title: drop pop candy
+        url: https://vocadb.net/S/60953
+        tag_votes: 9
+      - song_id: 44190
+        title: おこちゃま戦争
+        url: https://vocadb.net/S/44190
+        tag_votes: 3
+    - label: electro-house
+      display_zh: electro-house
+      category: Genres
+      song_count: 13
+      evidence:
+      - song_id: 63276
+        title: ヒビカセ
+        url: https://vocadb.net/S/63276
+        tag_votes: 6
+      - song_id: 49755
+        title: LUVORATORRRRRY!
+        url: https://vocadb.net/S/49755
+        tag_votes: 7
+      - song_id: 192291
+        title: 劣等上等
+        url: https://vocadb.net/S/192291
+        tag_votes: 4
+  rerulili:
+    artist_id: 712
+    source_url: https://vocadb.net/Ar/712
+    api_url: https://vocadb.net/api/songs?artistId[]=712&fields=PVs,Artists,Tags
+    songs_analyzed: 114
+    style_tags:
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 27
+      evidence:
+      - song_id: 47759
+        title: 神のまにまに
+        url: https://vocadb.net/S/47759
+        tag_votes: 5
+      - song_id: 455434
+        title: Iなんです
+        url: https://vocadb.net/S/455434
+        tag_votes: 6
+      - song_id: 328981
+        title: アイカ
+        url: https://vocadb.net/S/328981
+        tag_votes: 1
+    - label: ballad
+      display_zh: Ballad
+      category: Genres
+      song_count: 17
+      evidence:
+      - song_id: 26742
+        title: ドナーソング
+        url: https://vocadb.net/S/26742
+        tag_votes: 2
+      - song_id: 8235
+        title: いつもより泣き虫な空
+        url: https://vocadb.net/S/8235
+        tag_votes: 3
+      - song_id: 22195
+        title: 愛してる
+        url: https://vocadb.net/S/22195
+        tag_votes: 4
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 47759
+        title: 神のまにまに
+        url: https://vocadb.net/S/47759
+        tag_votes: 5
+      - song_id: 230
+        title: Mr.Music
+        url: https://vocadb.net/S/230
+        tag_votes: 4
+      - song_id: 455434
+        title: Iなんです
+        url: https://vocadb.net/S/455434
+        tag_votes: 6
+  mikito_p:
+    artist_id: 876
+    source_url: https://vocadb.net/Ar/876
+    api_url: https://vocadb.net/api/songs?artistId[]=876&fields=PVs,Artists,Tags
+    songs_analyzed: 109
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 42
+      evidence:
+      - song_id: 185363
+        title: ロキ
+        url: https://vocadb.net/S/185363
+        tag_votes: 6
+      - song_id: 24039
+        title: クノイチでも恋がしたい
+        url: https://vocadb.net/S/24039
+        tag_votes: 3
+      - song_id: 17196
+        title: 夕立のりぼん
+        url: https://vocadb.net/S/17196
+        tag_votes: 2
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 27
+      evidence:
+      - song_id: 185363
+        title: ロキ
+        url: https://vocadb.net/S/185363
+        tag_votes: 5
+      - song_id: 15785
+        title: いーあるふぁんくらぶ
+        url: https://vocadb.net/S/15785
+        tag_votes: 4
+      - song_id: 24039
+        title: クノイチでも恋がしたい
+        url: https://vocadb.net/S/24039
+        tag_votes: 4
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 13
+      evidence:
+      - song_id: 185363
+        title: ロキ
+        url: https://vocadb.net/S/185363
+        tag_votes: 1
+      - song_id: 197929
+        title: 少女レイ
+        url: https://vocadb.net/S/197929
+        tag_votes: 4
+      - song_id: 127519
+        title: 39みゅーじっく!
+        url: https://vocadb.net/S/127519
+        tag_votes: 3
+  hitoshizuku_p:
+    artist_id: 103
+    source_url: https://vocadb.net/Ar/103
+    api_url: https://vocadb.net/api/songs?artistId[]=103&fields=PVs,Artists,Tags
+    songs_analyzed: 138
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 25
+      evidence:
+      - song_id: 8682
+        title: Bad ∞ End ∞ Night
+        url: https://vocadb.net/S/8682
+        tag_votes: 4
+      - song_id: 559
+        title: からくり卍ばーすと
+        url: https://vocadb.net/S/559
+        tag_votes: 3
+      - song_id: 63660
+        title: EveR ∞ LastinG ∞ NighT
+        url: https://vocadb.net/S/63660
+        tag_votes: 3
+    - label: ballad
+      display_zh: Ballad
+      category: Genres
+      song_count: 16
+      evidence:
+      - song_id: 35874
+        title: 四季折の羽
+        url: https://vocadb.net/S/35874
+        tag_votes: 3
+      - song_id: 17191
+        title: soundless voice
+        url: https://vocadb.net/S/17191
+        tag_votes: 2
+      - song_id: 97903
+        title: 少女人形の見た夢
+        url: https://vocadb.net/S/97903
+        tag_votes: 1
+    - label: classical
+      display_zh: 古典
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 382
+        title: 秘蜜〜黒の誓い〜
+        url: https://vocadb.net/S/382
+        tag_votes: 4
+      - song_id: 8844
+        title: 光と影の楽園
+        url: https://vocadb.net/S/8844
+        tag_votes: 2
+      - song_id: 17195
+        title: 巡る世界のレクイエム
+        url: https://vocadb.net/S/17195
+        tag_votes: 1
+  balloon:
+    artist_id: 10259
+    source_url: https://vocadb.net/Ar/10259
+    api_url: https://vocadb.net/api/songs?artistId[]=10259&fields=PVs,Artists,Tags
+    songs_analyzed: 64
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 28
+      evidence:
+      - song_id: 135628
+        title: シャルル
+        url: https://vocadb.net/S/135628
+        tag_votes: 4
+      - song_id: 474393
+        title: 花に風
+        url: https://vocadb.net/S/474393
+        tag_votes: 4
+      - song_id: 150978
+        title: 雨とペトラ
+        url: https://vocadb.net/S/150978
+        tag_votes: 3
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 6
+      evidence:
+      - song_id: 135628
+        title: シャルル
+        url: https://vocadb.net/S/135628
+        tag_votes: 2
+      - song_id: 150978
+        title: 雨とペトラ
+        url: https://vocadb.net/S/150978
+        tag_votes: 2
+      - song_id: 401005
+        title: ミザン
+        url: https://vocadb.net/S/401005
+        tag_votes: 2
+    - label: funk rock
+      display_zh: Funk Rock
+      category: Genres
+      song_count: 4
+      evidence:
+      - song_id: 135628
+        title: シャルル
+        url: https://vocadb.net/S/135628
+        tag_votes: 3
+      - song_id: 474393
+        title: 花に風
+        url: https://vocadb.net/S/474393
+        tag_votes: 6
+      - song_id: 150978
+        title: 雨とペトラ
+        url: https://vocadb.net/S/150978
+        tag_votes: 1

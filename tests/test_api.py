@@ -57,9 +57,10 @@ def test_get_producer_includes_metadata_and_training_songs(monkeypatch):
     assert data["style_tag_source_url"] == "https://vocadb.net/Ar/53"
     assert data["song_count"] == len(data["songs"]) == 10
     assert data["song_count"] == len(data["training_songs"]) == 10
-    assert data["dev_song_count"] == len(data["dev_songs"]) == 2
-    assert data["frozen_song_count"] == len(data["frozen_songs"]) == 4
-    assert data["test_song_count"] == len(data["test_songs"]) == 4
+    assert data["dev_song_count"] == len(data["dev_songs"]) >= 1
+    assert data["frozen_song_count"] == len(data["frozen_songs"]) >= 1
+    assert data["test_song_count"] == len(data["test_songs"])
+    assert data["test_song_count"] == data["frozen_song_count"]
     assert all(
         song["source_url"].startswith("https://www.youtube.com/")
         for song in data["training_songs"] + data["dev_songs"] + data["frozen_songs"]

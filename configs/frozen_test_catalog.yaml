@@ -284,19 +284,15 @@ songs:
   allowed_channel_ids:
   - UCQAdXyrF2fYcqdXUUW3YxUg
 - producer_slug: kemu
-  title: 十年越しのラストピース
-  vocadb_song_id: 293738
-  youtube_id: tvktnCgmGwU
+  title: 地球最後の告白を
+  vocadb_song_id: 13615
+  youtube_id: SsyAsF9MAoQ
   source_kind: vocadb_original_pv
-  allowed_channel_ids:
-  - UCcvLSRIWJIAGFDyWtzkbiHA
 - producer_slug: kemu
-  title: Buzzing
-  vocadb_song_id: 24304
-  youtube_id: B_3cT-2YDLU
+  title: 人生リセットボタン
+  vocadb_song_id: 8250
+  youtube_id: wfBVjsMVZV4
   source_kind: vocadb_original_pv
-  allowed_channel_ids:
-  - UCedZ1Nz4ZcBy6fb2YVyB0CQ
 - producer_slug: neru
   title: FPS
   vocadb_song_id: 98192
@@ -473,12 +469,10 @@ songs:
   allowed_channel_ids:
   - UCft5HulDeuKloukyShxyOZA
 - producer_slug: chinozo
-  title: ムシ
-  vocadb_song_id: 409013
-  youtube_id: j4ZuoUOkjSY
+  title: グッバイ宣言
+  vocadb_song_id: 278267
+  youtube_id: vfLfonEeoyM
   source_kind: vocadb_original_pv
-  allowed_channel_ids:
-  - UCft5HulDeuKloukyShxyOZA
 - producer_slug: inabakumori
   title: ひみつの小学生
   vocadb_song_id: 263129
@@ -529,19 +523,15 @@ songs:
   allowed_channel_ids:
   - UCpxF5nPX36beclDXDovCVlw
 - producer_slug: n_buna
-  title: ただ君に晴れ
-  vocadb_song_id: 469774
-  youtube_id: -VKIqrvVOpo
+  title: ルラ
+  vocadb_song_id: 127414
+  youtube_id: YuYhadLwJT0
   source_kind: vocadb_original_pv
-  allowed_channel_ids:
-  - UCRIgIJQWuBJ0Cv_VlU3USNA
 - producer_slug: ayase
-  title: 怪物
-  vocadb_song_id: 371589
-  youtube_id: dy90tA3TT1c
+  title: キラキラキラ
+  vocadb_song_id: 518285
+  youtube_id: PkJA2nHQJXk
   source_kind: vocadb_original_pv
-  allowed_channel_ids:
-  - UCvpredjG93ifbCP1Y77JyFA
 - producer_slug: ayase
   title: 泣いてない
   vocadb_song_id: 223351
@@ -634,12 +624,10 @@ songs:
   allowed_channel_ids:
   - UCEoSVgHlCKPVEHDIve3K7NA
 - producer_slug: teniwoha
-  title: BO-ZU
-  vocadb_song_id: 235566
-  youtube_id: WOnQHrpqKYE
+  title: ブラッドベリ
+  vocadb_song_id: 251087
+  youtube_id: NeTGhE4VjeI
   source_kind: vocadb_original_pv
-  allowed_channel_ids:
-  - UCQS8TAEfaDhnU-L5oZ5Mj5A
 - producer_slug: teniwoha
   title: オノマトペ天使
   vocadb_song_id: 923249
@@ -711,12 +699,10 @@ songs:
   allowed_channel_ids:
   - UCtwSCTpftyPm4-TBf9S6kfQ
 - producer_slug: r_906
-  title: ユメミ
-  vocadb_song_id: 772655
-  youtube_id: tZQVBPAiR5M
+  title: ピプパペット
+  vocadb_song_id: 453604
+  youtube_id: mGN-tANhCdQ
   source_kind: vocadb_original_pv
-  allowed_channel_ids:
-  - UCtwSCTpftyPm4-TBf9S6kfQ
 - producer_slug: r_906
   title: スーパーノヴァ
   vocadb_song_id: 438711
@@ -773,3 +759,93 @@ songs:
   source_kind: vocadb_other_pv
   allowed_channel_ids:
   - UC0YI0Ku1HTirpvfZRCZC_9Q
+- producer_slug: giga
+  title: cLick cRack
+  vocadb_song_id: 32116
+  youtube_id: TXzyozsxA5k
+  source_kind: vocadb_original_pv
+- producer_slug: giga
+  title: ディア
+  vocadb_song_id: 662780
+  youtube_id: Jki8Jxwt_k4
+  source_kind: vocadb_original_pv
+- producer_slug: rerulili
+  title: ヤミタイガール
+  vocadb_song_id: 282723
+  youtube_id: Scpu6fB4waA
+  source_kind: vocadb_original_pv
+- producer_slug: rerulili
+  title: ファッションきる
+  vocadb_song_id: 134854
+  youtube_id: 2lhXvPWg-XE
+  source_kind: vocadb_original_pv
+- producer_slug: rerulili
+  title: 青春症候群
+  vocadb_song_id: 194615
+  youtube_id: 1UmimUnJ9Zs
+  source_kind: vocadb_original_pv
+- producer_slug: rerulili
+  title: chaos and creation
+  vocadb_song_id: 202009
+  youtube_id: j4avOkVJM6I
+  source_kind: vocadb_original_pv
+- producer_slug: mikito_p
+  title: 少女ふぜゐ
+  vocadb_song_id: 131572
+  youtube_id: 109a0C5oCh8
+  source_kind: vocadb_original_pv
+- producer_slug: mikito_p
+  title: エンドロールに僕の名前をいれないで
+  vocadb_song_id: 69001
+  youtube_id: _3C4esRokIE
+  source_kind: vocadb_original_pv
+- producer_slug: mikito_p
+  title: だいあもんど
+  vocadb_song_id: 166757
+  youtube_id: RWPHHHThjuk
+  source_kind: vocadb_original_pv
+- producer_slug: mikito_p
+  title: 京都ダ菓子屋センソー
+  vocadb_song_id: 60986
+  youtube_id: 8hErFwbS0hU
+  source_kind: vocadb_original_pv
+- producer_slug: hitoshizuku_p
+  title: 海賊Fの肖像
+  vocadb_song_id: 76310
+  youtube_id: ujk-11upj4c
+  source_kind: vocadb_original_pv
+- producer_slug: hitoshizuku_p
+  title: 四季折の羽
+  vocadb_song_id: 35874
+  youtube_id: uGsXN-OpxgQ
+  source_kind: vocadb_original_pv
+- producer_slug: hitoshizuku_p
+  title: 怪盗Fの台本 ～消えたダイヤの謎～
+  vocadb_song_id: 40781
+  youtube_id: a0GrJUh-hz8
+  source_kind: vocadb_original_pv
+- producer_slug: hitoshizuku_p
+  title: Mr.シャーデンフロイデ
+  vocadb_song_id: 365637
+  youtube_id: ADy8Xlj0mBc
+  source_kind: vocadb_original_pv
+- producer_slug: balloon
+  title: アルコーブ
+  vocadb_song_id: 76825
+  youtube_id: Dj56WvJ7Znw
+  source_kind: vocadb_original_pv
+- producer_slug: balloon
+  title: 夕染
+  vocadb_song_id: 129228
+  youtube_id: _LMXmzdyaEw
+  source_kind: vocadb_original_pv
+- producer_slug: balloon
+  title: 朝を呑む
+  vocadb_song_id: 121060
+  youtube_id: 3Ch15fF-GeI
+  source_kind: vocadb_original_pv
+- producer_slug: balloon
+  title: ミラーリング
+  vocadb_song_id: 112542
+  youtube_id: CaR0qyEkX-c
+  source_kind: vocadb_original_pv

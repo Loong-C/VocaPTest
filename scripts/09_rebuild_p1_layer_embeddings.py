@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from dataclasses import asdict
 from pathlib import Path
 
@@ -30,9 +31,18 @@ def load_rebuild_helpers(root: Path):
 
 def write_manifest(path: Path, records: list[EmbeddingRecord]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as handle:
-        for record in sorted(records, key=lambda item: item.segment_id):
-            handle.write(json.dumps(asdict(record), ensure_ascii=False) + "\n")
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    for attempt in range(5):
+        try:
+            with open(tmp_path, "w", encoding="utf-8") as handle:
+                for record in sorted(records, key=lambda item: item.segment_id):
+                    handle.write(json.dumps(asdict(record), ensure_ascii=False) + "\n")
+            tmp_path.replace(path)
+            return
+        except OSError:
+            if attempt == 4:
+                raise
+            time.sleep(0.2 * (attempt + 1))
 
 
 def main() -> None:
@@ -65,6 +75,7 @@ def main() -> None:
 
     cfg = load_config(root / "configs/default.yaml", root / "configs/model_mert.yaml")
     decisions = helpers.load_decisions(args.decisions)
+    decision_song_ids = {item["song_id"] for item in decisions}
     audio_paths = {
         item["song_id"]: helpers.find_audio_file(
             args.audio_root, item["producer_slug"], item["song_id"]
@@ -79,6 +90,7 @@ def main() -> None:
     complete_songs = {
         song_id for song_id, records in existing_by_song.items()
         if records and all((root / record.embedding_path).exists() for record in records)
+        and song_id in decision_song_ids
     }
     all_records = [
         record for record in existing if record.song_id in complete_songs

@@ -77,7 +77,8 @@ def main() -> None:
     args = parser.parse_args()
 
     with open(args.catalog, "r", encoding="utf-8") as handle:
-        additions = (yaml.safe_load(handle) or {}).get("songs", [])
+        all_additions = (yaml.safe_load(handle) or {}).get("songs", [])
+    additions = list(all_additions)
     with open(root / "configs" / "producers.yaml", "r", encoding="utf-8") as handle:
         producers = {
             item["slug"]: item
@@ -92,6 +93,25 @@ def main() -> None:
             item for item in additions
             if item["producer_slug"] in requested
         ]
+    else:
+        requested = set()
+
+    existing_decisions = load_jsonl(args.decisions) if args.decisions.exists() else []
+    configured_song_ids = {
+        f"youtube_{item['youtube_id']}"
+        for item in all_additions
+    }
+    retained_decisions = [
+        item for item in existing_decisions
+        if item.get("category") != "vetted_catalog_expansion"
+        or item["song_id"] in configured_song_ids
+        or (requested and item.get("producer_slug") not in requested)
+    ]
+    existing_accepted = {
+        item["song_id"]: item
+        for item in retained_decisions
+        if item.get("status") == "accepted"
+    }
 
     command = yt_dlp_command(root)
     session = requests.Session()
@@ -109,6 +129,12 @@ def main() -> None:
 
         song_id = f"youtube_{video_id}"
         url = f"https://www.youtube.com/watch?v={video_id}"
+        output_path = args.audio_root / slug / f"{song_id}.mp3"
+        if song_id in existing_accepted and output_path.exists():
+            new_records.append(existing_accepted[song_id])
+            print(f"reused {slug}/{item['title']} ({video_id})")
+            continue
+
         source_kind = item.get("source_kind", "official_upload")
         vocadb = validate_vocadb_original(
             song_id=int(item["vocadb_song_id"]),
@@ -133,7 +159,6 @@ def main() -> None:
         if not 60 <= duration <= 600:
             raise ValueError(f"Unexpected duration for {song_id}: {duration}")
 
-        output_path = args.audio_root / slug / f"{song_id}.mp3"
         if not args.skip_download and not output_path.exists():
             download_youtube_audio(
                 command,
@@ -164,7 +189,7 @@ def main() -> None:
         })
         print(f"verified {slug}/{item['title']} ({video_id})")
 
-    decisions = load_jsonl(args.decisions)
+    decisions = retained_decisions
     existing_ids = {item["song_id"] for item in decisions}
     duplicates = existing_ids.intersection(item["song_id"] for item in new_records)
     if duplicates:

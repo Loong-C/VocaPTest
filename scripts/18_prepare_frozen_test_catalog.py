@@ -82,6 +82,17 @@ def main() -> None:
     parser.add_argument("--category", default="frozen_test")
     parser.add_argument("--expected-per-class", type=int, default=4)
     parser.add_argument(
+        "--minimum-per-class",
+        type=int,
+        default=None,
+        help="Minimum songs per class when --allow-variable-per-class is used.",
+    )
+    parser.add_argument(
+        "--allow-variable-per-class",
+        action="store_true",
+        help="Allow classes to have different held-out counts.",
+    )
+    parser.add_argument(
         "--exclude-catalog",
         action="append",
         default=[],
@@ -102,7 +113,8 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    songs = load_yaml_songs(args.catalog)
+    all_songs = load_yaml_songs(args.catalog)
+    songs = list(all_songs)
     with open(root / "configs" / "producers.yaml", "r", encoding="utf-8") as handle:
         producers = {
             item["slug"]: item
@@ -117,15 +129,31 @@ def main() -> None:
             f"Frozen catalog class mismatch: missing={sorted(missing)}, "
             f"unexpected={sorted(unexpected)}"
         )
-    wrong_counts = {
-        slug: count for slug, count in counts.items()
-        if count != args.expected_per_class
-    }
-    if wrong_counts:
-        raise ValueError(
-            f"Each producer needs exactly {args.expected_per_class} "
-            f"{args.category} songs: {wrong_counts}"
+    if args.allow_variable_per_class:
+        minimum_per_class = (
+            args.minimum_per_class
+            if args.minimum_per_class is not None
+            else 1
         )
+        wrong_counts = {
+            slug: count for slug, count in counts.items()
+            if count < minimum_per_class
+        }
+        if wrong_counts:
+            raise ValueError(
+                f"Each producer needs at least {minimum_per_class} "
+                f"{args.category} songs: {wrong_counts}"
+            )
+    else:
+        wrong_counts = {
+            slug: count for slug, count in counts.items()
+            if count != args.expected_per_class
+        }
+        if wrong_counts:
+            raise ValueError(
+                f"Each producer needs exactly {args.expected_per_class} "
+                f"{args.category} songs: {wrong_counts}"
+            )
 
     training = load_jsonl(args.training_decisions)
     configured_training = load_yaml_songs(args.training_catalog)
@@ -178,9 +206,14 @@ def main() -> None:
     command = yt_dlp_command(root)
     session = requests.Session()
     session.headers["User-Agent"] = "VocaPTest/0.1 frozen catalog validation"
+    configured_song_ids = {
+        f"youtube_{item['youtube_id']}"
+        for item in all_songs
+    }
     existing = {
         item["song_id"]: item
         for item in load_jsonl(args.manifest_output)
+        if item.get("song_id") in configured_song_ids
     }
     records = dict(existing)
     for item in songs:
@@ -188,6 +221,10 @@ def main() -> None:
         video_id = item["youtube_id"]
         song_id = f"youtube_{video_id}"
         url = f"https://www.youtube.com/watch?v={video_id}"
+        output_path = args.audio_root / slug / f"{song_id}.mp3"
+        if song_id in records and output_path.exists():
+            continue
+
         source_kind = item.get("source_kind", "official_upload")
         vocadb = validate_vocadb_original(
             song_id=int(item["vocadb_song_id"]),
@@ -214,7 +251,6 @@ def main() -> None:
         if not 60 <= duration <= 600:
             raise ValueError(f"Unexpected duration for {song_id}: {duration}")
 
-        output_path = args.audio_root / slug / f"{song_id}.mp3"
         if not args.skip_download and not output_path.exists():
             download_youtube_audio(
                 command,

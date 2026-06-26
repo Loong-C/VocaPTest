@@ -26,12 +26,12 @@ P2_PRODUCERS = {
     "r_906",
     "sasakure_uk",
 }
-P2_WEAK_TARGETS = {
-    "neru",
-    "jin",
-    "nakiso",
-    "surii",
-    "r_sound_design",
+TOP100_EXPANSION_PRODUCERS = {
+    "giga",
+    "rerulili",
+    "mikito_p",
+    "hitoshizuku_p",
+    "balloon",
 }
 
 
@@ -45,7 +45,7 @@ def load_jsonl(path: Path) -> list[dict]:
         return [json.loads(line) for line in handle if line.strip()]
 
 
-def test_31_producers_and_balanced_new_training_catalog():
+def test_producers_and_training_catalog_have_expected_coverage():
     with open(
         ROOT / "configs" / "producers.yaml",
         "r",
@@ -55,31 +55,36 @@ def test_31_producers_and_balanced_new_training_catalog():
     additions = load_yaml_songs("training_catalog_additions.yaml")
     counts = Counter(item["producer_slug"] for item in additions)
 
-    assert len(producers) == 31
-    assert NEW_PRODUCERS.issubset(item["slug"] for item in producers)
-    assert P2_PRODUCERS.issubset(item["slug"] for item in producers)
-    assert {
-        slug: counts[slug]
-        for slug in NEW_PRODUCERS - P2_WEAK_TARGETS
-    } == {
-        slug: 10 for slug in NEW_PRODUCERS - P2_WEAK_TARGETS
-    }
-    assert {slug: counts[slug] for slug in P2_PRODUCERS} == {
-        slug: 10 for slug in P2_PRODUCERS
-    }
+    producer_slugs = {item["slug"] for item in producers}
+
+    assert len(producers) >= 36
+    assert NEW_PRODUCERS.issubset(producer_slugs)
+    assert P2_PRODUCERS.issubset(producer_slugs)
+    assert TOP100_EXPANSION_PRODUCERS.issubset(producer_slugs)
+    assert not producer_slugs - set(counts)
+    assert min(counts[slug] for slug in TOP100_EXPANSION_PRODUCERS) >= 8
 
 
 def test_holdout_catalogs_have_disjoint_songs_per_producer():
+    with open(
+        ROOT / "configs" / "producers.yaml",
+        "r",
+        encoding="utf-8",
+    ) as handle:
+        producer_slugs = {
+            item["slug"]
+            for item in (yaml.safe_load(handle) or {}).get("producers", [])
+        }
     training = load_yaml_songs("training_catalog_additions.yaml")
     dev = load_yaml_songs("dev_holdout_catalog.yaml")
     frozen = load_yaml_songs("frozen_test_catalog.yaml")
     dev_counts = Counter(item["producer_slug"] for item in dev)
     counts = Counter(item["producer_slug"] for item in frozen)
 
-    assert len(dev) == 62
-    assert set(dev_counts.values()) == {2}
-    assert len(frozen) == 124
-    assert set(counts.values()) == {4}
+    assert set(dev_counts) == producer_slugs
+    assert set(counts) == producer_slugs
+    assert min(dev_counts.values()) >= 1
+    assert min(counts.values()) >= 1
     assert not (
         {item["youtube_id"] for item in training}
         & {item["youtube_id"] for item in dev}
@@ -107,6 +112,15 @@ def test_holdout_catalogs_have_disjoint_songs_per_producer():
 
 
 def test_materialized_training_and_frozen_manifests_do_not_overlap():
+    with open(
+        ROOT / "configs" / "producers.yaml",
+        "r",
+        encoding="utf-8",
+    ) as handle:
+        producer_slugs = {
+            item["slug"]
+            for item in (yaml.safe_load(handle) or {}).get("producers", [])
+        }
     training = [
         item
         for item in load_jsonl(
@@ -126,16 +140,15 @@ def test_materialized_training_and_frozen_manifests_do_not_overlap():
         ROOT / "data" / "processed" / "dev_holdout" / "catalog.jsonl"
     )
 
-    assert len(training) == 376
-    assert len(dev) == 62
-    assert len(frozen) == 124
     materialized_counts = Counter(item["producer_slug"] for item in training)
-    assert {slug: materialized_counts[slug] for slug in P2_WEAK_TARGETS} == {
-        slug: 16 for slug in P2_WEAK_TARGETS
-    }
-    assert {slug: materialized_counts[slug] for slug in P2_PRODUCERS} == {
-        slug: 10 for slug in P2_PRODUCERS
-    }
+    dev_counts = Counter(item["producer_slug"] for item in dev)
+    frozen_counts = Counter(item["producer_slug"] for item in frozen)
+    assert set(materialized_counts) == producer_slugs
+    assert set(dev_counts) == producer_slugs
+    assert set(frozen_counts) == producer_slugs
+    assert min(materialized_counts.values()) >= 4
+    assert min(dev_counts.values()) >= 1
+    assert min(frozen_counts.values()) >= 1
     assert not (
         {item["song_id"] for item in training}
         & {item["song_id"] for item in dev}

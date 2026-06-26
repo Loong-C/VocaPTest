@@ -243,13 +243,7 @@ function ProcessingCard({
             duration: 0.35,
             ease: "easeInOut",
           }}
-        >
-          <motion.div
-            animate={{ x: ["-30%", "140%"] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-y-0 w-1/2 bg-white/25 blur-sm"
-          />
-        </motion.div>
+        />
       </div>
 
       <div className="mb-5 flex items-center justify-between text-xs text-text-muted">

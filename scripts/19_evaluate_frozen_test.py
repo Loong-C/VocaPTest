@@ -86,6 +86,17 @@ def main() -> None:
     )
     parser.add_argument("--protocol-name", default="strict_frozen_song_holdout")
     parser.add_argument("--expected-per-class", type=int, default=4)
+    parser.add_argument(
+        "--minimum-per-class",
+        type=int,
+        default=None,
+        help="Minimum songs per class when --allow-variable-per-class is used.",
+    )
+    parser.add_argument(
+        "--allow-variable-per-class",
+        action="store_true",
+        help="Allow held-out classes to have different song counts.",
+    )
     args = parser.parse_args()
 
     records = load_embedding_manifest(args.manifest.resolve())
@@ -96,7 +107,22 @@ def main() -> None:
     if unknown:
         raise ValueError(f"Frozen labels missing from model: {sorted(unknown)}")
     counts = Counter(labels)
-    if set(counts.values()) != {args.expected_per_class}:
+    if args.allow_variable_per_class:
+        minimum_per_class = (
+            args.minimum_per_class
+            if args.minimum_per_class is not None
+            else 1
+        )
+        wrong_counts = {
+            slug: count for slug, count in counts.items()
+            if count < minimum_per_class
+        }
+        if wrong_counts:
+            raise ValueError(
+                f"Expected at least {minimum_per_class} held-out songs "
+                f"per class: {wrong_counts}"
+            )
+    elif set(counts.values()) != {args.expected_per_class}:
         raise ValueError(
             f"Expected exactly {args.expected_per_class} held-out songs "
             f"per class: {dict(counts)}"

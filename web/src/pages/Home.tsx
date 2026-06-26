@@ -47,7 +47,7 @@ export default function Home() {
           </h1>
 
           <p className="max-w-lg mx-auto text-text-light text-base sm:text-lg leading-relaxed mb-8">
-            上传一段音乐，AI 会在 31 位 Vocaloid Producer 的参考库中
+            上传一段音乐，AI 会在 36 位 Vocaloid Producer 的参考库中
             找到听感最接近的 P 主。<br />
           </p>
 

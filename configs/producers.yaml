@@ -220,3 +220,49 @@ producers:
   vocadb_artist_id: 51
   profile_url: https://vocadb.net/Ar/51
   avatar_url: /avatars/sasakure_uk.webp
+- slug: giga
+  display_name: Giga
+  aliases:
+  - ギガ
+  vocadb_artist_id: 772
+  profile_url: https://vocadb.net/Ar/772
+  avatar_url: /avatars/giga.webp
+- slug: rerulili
+  display_name: れるりり
+  aliases:
+  - rerulili
+  - 当社比P
+  - ToushahiP
+  vocadb_artist_id: 712
+  profile_url: https://vocadb.net/Ar/712
+  avatar_url: /avatars/rerulili.webp
+- slug: mikito_p
+  display_name: みきとP
+  aliases:
+  - MikitoP
+  - 愛島
+  - Aijima
+  vocadb_artist_id: 876
+  profile_url: https://vocadb.net/Ar/876
+  avatar_url: /avatars/mikito_p.webp
+- slug: hitoshizuku_p
+  display_name: ひとしずくP / やま△
+  aliases:
+  - ひとしずくP
+  - HitoshizukuP
+  - やま△
+  - Yama△
+  - さも
+  - samo
+  vocadb_artist_id: 103
+  profile_url: https://vocadb.net/Ar/103
+  avatar_url: /avatars/hitoshizuku_p.webp
+- slug: balloon
+  display_name: バルーン
+  aliases:
+  - balloon
+  - 須田景凪
+  - Suda Keina
+  vocadb_artist_id: 10259
+  profile_url: https://vocadb.net/Ar/10259
+  avatar_url: /avatars/balloon.webp

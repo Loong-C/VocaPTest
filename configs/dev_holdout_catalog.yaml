@@ -1,18 +1,9 @@
 songs:
-  - producer_slug: wowaka
-    title: and I'm home
-    vocadb_song_id: 421046
-    youtube_id: GIlMPJNk-pU
-    source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCbByka32eZ-p2b-6o3IHcuA
   - producer_slug: kemu
-    title: 88☆彡
-    vocadb_song_id: 400359
-    youtube_id: 505rBX9MNcQ
+    title: 六兆年と一夜物語
+    vocadb_song_id: 11219
+    youtube_id: DsnmyUdfbcI
     source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCcvLSRIWJIAGFDyWtzkbiHA
   - producer_slug: kemu
     title: セカイ
     vocadb_song_id: 290231
@@ -70,12 +61,10 @@ songs:
     allowed_channel_ids:
     - UCh5pu-3Y1FhEqOmSmfCQf4Q
   - producer_slug: mitchie_m
-    title: ワーワーワールド
-    vocadb_song_id: 290577
-    youtube_id: okJ9Vk6owG8
+    title: 大江戸ジュリアナイト
+    vocadb_song_id: 164109
+    youtube_id: g7kaPQirlKA
     source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCE0uNSkGhhsNMwAZcIQY7rw
   - producer_slug: jin
     title: 夕景イエスタデイ
     vocadb_song_id: 25898
@@ -126,12 +115,10 @@ songs:
     allowed_channel_ids:
     - UCKIZ6cfeZ3YHKWcwek7C0PQ
   - producer_slug: hachi
-    title: KICK BACK
-    vocadb_song_id: 454815
-    youtube_id: M2cckDmNLMI
+    title: マトリョシカ
+    vocadb_song_id: 368
+    youtube_id: 13OUbaozM9o
     source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCUCeZaZeJbEYAAzvMgrKOPQ
   - producer_slug: 40mp
     title: Snow Fairy Story
     vocadb_song_id: 79094
@@ -245,12 +232,10 @@ songs:
     allowed_channel_ids:
     - UCmj0YkPwo47bPoBt9ma-bxg
   - producer_slug: n_buna
-    title: 言って。
-    vocadb_song_id: 331812
-    youtube_id: F64yFFnZfkI
+    title: 三月と狼少年
+    vocadb_song_id: 127415
+    youtube_id: R_yS_4cZzzY
     source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCRIgIJQWuBJ0Cv_VlU3USNA
   - producer_slug: n_buna
     title: 劇場愛歌
     vocadb_song_id: 54308
@@ -262,13 +247,6 @@ songs:
     title: HERO
     vocadb_song_id: 501613
     youtube_id: o4AxMk3SGUY
-    source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCvpredjG93ifbCP1Y77JyFA
-  - producer_slug: ayase
-    title: アイドル
-    vocadb_song_id: 492341
-    youtube_id: ZRtdQ81jPUQ
     source_kind: vocadb_original_pv
     allowed_channel_ids:
     - UCvpredjG93ifbCP1Y77JyFA
@@ -287,12 +265,10 @@ songs:
     allowed_channel_ids:
     - UCLz6MG2kx_0xeaW0LowYnMQ
   - producer_slug: syudou
-    title: うっせぇわ
-    vocadb_song_id: 366767
-    youtube_id: Qp3b-RXtz4w
+    title: フラミンゴ
+    vocadb_song_id: 194152
+    youtube_id: 27hHomk1Wek
     source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCln9P4Qm3-EAY4aiEPmRwEA
   - producer_slug: syudou
     title: アメイジングハッピーハロウィンナイト
     vocadb_song_id: 676307
@@ -357,12 +333,10 @@ songs:
     allowed_channel_ids:
     - UCEoSVgHlCKPVEHDIve3K7NA
   - producer_slug: teniwoha
-    title: ギラギラ
-    vocadb_song_id: 361940
-    youtube_id: sOiMD45QGLs
+    title: トコヨトキヨ
+    vocadb_song_id: 197941
+    youtube_id: iP2mdAcluVU
     source_kind: vocadb_original_pv
-    allowed_channel_ids:
-    - UCln9P4Qm3-EAY4aiEPmRwEA
   - producer_slug: teniwoha
     title: 名探偵連続殺人事件
     vocadb_song_id: 130025
@@ -433,3 +407,53 @@ songs:
     source_kind: vocadb_reprint
     allowed_channel_ids:
     - UCnfTQgRt5qRZCmJs-z7mBLQ
+  - producer_slug: giga
+    title: ガッチュー！
+    vocadb_song_id: 563199
+    youtube_id: Dq2HJl5vKbY
+    source_kind: vocadb_original_pv
+  - producer_slug: giga
+    title: ぴんこすてぃっくLuv
+    vocadb_song_id: 28150
+    youtube_id: gfSPeQkuyZ4
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 猪突猛進ガール
+    vocadb_song_id: 38843
+    youtube_id: WA_6kcUA_Ls
+    source_kind: vocadb_original_pv
+  - producer_slug: rerulili
+    title: 羞恥心に殺される
+    vocadb_song_id: 284540
+    youtube_id: zTsjmwNSAkA
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: Highway Lover
+    vocadb_song_id: 239803
+    youtube_id: 6-fw8BVYazA
+    source_kind: vocadb_original_pv
+  - producer_slug: mikito_p
+    title: 僕は初音ミクとキスをした
+    vocadb_song_id: 26013
+    youtube_id: 7BH8DFyg-Og
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: 祝福のメシアとアイの塔
+    vocadb_song_id: 129187
+    youtube_id: CiEC329xPos
+    source_kind: vocadb_original_pv
+  - producer_slug: hitoshizuku_p
+    title: Amazing Dolce
+    vocadb_song_id: 121116
+    youtube_id: lnPnSVcrJfg
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: 刹那の渦
+    vocadb_song_id: 307610
+    youtube_id: M6Swfmk-NBU
+    source_kind: vocadb_original_pv
+  - producer_slug: balloon
+    title: 造形街
+    vocadb_song_id: 39243
+    youtube_id: e6rrHMlQsFw
+    source_kind: vocadb_original_pv

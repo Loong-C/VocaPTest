@@ -1,6 +1,6 @@
 {
-  "songs": 124,
-  "segments": 1470,
+  "songs": 142,
+  "segments": 1687,
   "layers": 13,
   "embedding_dim": 768,
   "batch_size": 4,
