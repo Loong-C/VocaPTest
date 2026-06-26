@@ -4,7 +4,7 @@
     "vocab_source": "https://vocadb.net/api"
   },
   "summary": {
-    "records": 632,
+    "records": 700,
     "flagged_records": 226,
     "high_risk_records": 174,
     "flag_counts": {
@@ -420,6 +420,60 @@
       ],
       "voice_synths": [
         "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "dev",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "アンプランド・アポトーシス",
+      "vocadb_song_id": 343916,
+      "youtube_id": "jjkSObkOnQY",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "アンプランド・アポトーシス",
+      "rating_score": 83,
+      "expected_roles": [
+        "Animator",
+        "Arranger",
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "初音ミク",
+        "鏡音リン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "dev",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "ディスクローズ・フリック",
+      "vocadb_song_id": 911820,
+      "youtube_id": "JZaFgVQwXmA",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "ディスクローズ・フリック",
+      "rating_score": 68,
+      "expected_roles": [
+        "Arranger",
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "重音テトSV"
       ],
       "flags": [],
       "risk_score": 0
@@ -958,6 +1012,53 @@
     },
     {
       "split": "dev",
+      "producer_slug": "mothy",
+      "title": "マダム・メリーゴーランド",
+      "vocadb_song_id": 1614,
+      "youtube_id": "l3Aal-cvknY",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "マダム・メリーゴーランド",
+      "rating_score": 113,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "dev",
+      "producer_slug": "mothy",
+      "title": "針音ノ時計塔",
+      "vocadb_song_id": 10623,
+      "youtube_id": "cL2mzxn8p7Q",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "針音ノ時計塔",
+      "rating_score": 80,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "KAITO",
+        "歌愛ユキ",
+        "鏡音リン",
+        "鏡音レン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "dev",
       "producer_slug": "n_buna",
       "title": "三月と狼少年",
       "vocadb_song_id": 127415,
@@ -1209,6 +1310,53 @@
     },
     {
       "split": "dev",
+      "producer_slug": "nuyuri",
+      "title": "いのちが見たい",
+      "vocadb_song_id": 644227,
+      "youtube_id": "GAulrwEtUF0",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "いのちが見たい",
+      "rating_score": 67,
+      "expected_roles": [
+        "Arranger",
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "重音テトSV"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "dev",
+      "producer_slug": "nuyuri",
+      "title": "アイリッド",
+      "vocadb_song_id": 812036,
+      "youtube_id": "Pr4OUUAXbZI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "アイリッド",
+      "rating_score": 57,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "v flower",
+        "結月ゆかり"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "dev",
       "producer_slug": "orangestar",
       "title": "イヤホンと蝉時雨",
       "vocadb_song_id": 60924,
@@ -1257,6 +1405,52 @@
         }
       ],
       "risk_score": 1
+    },
+    {
+      "split": "dev",
+      "producer_slug": "owata_p",
+      "title": "ニトロベンゼン",
+      "vocadb_song_id": 1875,
+      "youtube_id": "WOSLUVWEHoo",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "ニトロベンゼン",
+      "rating_score": 94,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "鏡音リン",
+        "鏡音レン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "dev",
+      "producer_slug": "owata_p",
+      "title": "ボーナスステージ",
+      "vocadb_song_id": 3232,
+      "youtube_id": "7vmivv4j2Cc",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/dev_holdout/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/dev_holdout_catalog.yaml"
+      ],
+      "vocadb_name": "ボーナスステージ",
+      "rating_score": 97,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "鏡音リン",
+        "鏡音レン"
+      ],
+      "flags": [],
+      "risk_score": 0
     },
     {
       "split": "dev",
@@ -2556,6 +2750,102 @@
     },
     {
       "split": "final",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "やめてください",
+      "vocadb_song_id": 511992,
+      "youtube_id": "JijOz4Rvzn8",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "やめてください",
+      "rating_score": 54,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "羽累"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "カラフル",
+      "vocadb_song_id": 761532,
+      "youtube_id": "vEF1kMPjE9A",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "カラフル",
+      "rating_score": 54,
+      "expected_roles": [
+        "Arranger",
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "宮舞モカ"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "パーフェクション",
+      "vocadb_song_id": 379974,
+      "youtube_id": "SpbQL2VURJU",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "パーフェクション",
+      "rating_score": 57,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "ラッシャイナ",
+      "vocadb_song_id": 449889,
+      "youtube_id": "6yRl1tQ6y4U",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "ラッシャイナ",
+      "rating_score": 66,
+      "expected_roles": [
+        "Animator",
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "可不"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
       "producer_slug": "hitoshizuku_p",
       "title": "Mr.シャーデンフロイデ",
       "vocadb_song_id": 365637,
@@ -3251,6 +3541,29 @@
     },
     {
       "split": "final",
+      "producer_slug": "kuro_usa_p",
+      "title": "アリアドネ",
+      "vocadb_song_id": 75482,
+      "youtube_id": "DByyz5wN-PA",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "アリアドネ",
+      "rating_score": 69,
+      "expected_roles": [
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
       "producer_slug": "maretu",
       "title": "うみたがり",
       "vocadb_song_id": 86961,
@@ -3617,6 +3930,98 @@
         "初音ミク",
         "巡音ルカ",
         "初音ミク Append (Soft)"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "mothy",
+      "title": "どこかで聞いた唄",
+      "vocadb_song_id": 99134,
+      "youtube_id": "2AmPPjcxNjI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "どこかで聞いた唄",
+      "rating_score": 109,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "猫村いろは"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "mothy",
+      "title": "クロノ・ストーリー",
+      "vocadb_song_id": 1585,
+      "youtube_id": "DX8-F-uuHKc",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "クロノ・ストーリー",
+      "rating_score": 94,
+      "expected_roles": [
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "巡音ルカ",
+        "鏡音リン",
+        "鏡音レン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "mothy",
+      "title": "満月の実験室",
+      "vocadb_song_id": 3309,
+      "youtube_id": "r32rB1veQ0E",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "満月の実験室",
+      "rating_score": 80,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "鏡音リン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "mothy",
+      "title": "置き去り月夜抄",
+      "vocadb_song_id": 1584,
+      "youtube_id": "JDCV0vqEh9E",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "置き去り月夜抄",
+      "rating_score": 95,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "鏡音リン",
+        "鏡音レン"
       ],
       "flags": [],
       "risk_score": 0
@@ -4092,6 +4497,100 @@
     },
     {
       "split": "final",
+      "producer_slug": "nuyuri",
+      "title": "DE-Pression",
+      "vocadb_song_id": 68900,
+      "youtube_id": "U1vUTDpADRk",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "DE-Pression",
+      "rating_score": 54,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "鏡音リン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "nuyuri",
+      "title": "ブリングミー",
+      "vocadb_song_id": 588852,
+      "youtube_id": "8CKC0B8u8JI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "ブリングミー",
+      "rating_score": 51,
+      "expected_roles": [
+        "Arranger",
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "v4 flower"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "nuyuri",
+      "title": "ヘイズ",
+      "vocadb_song_id": 568795,
+      "youtube_id": "lTH46ZUhbas",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "ヘイズ",
+      "rating_score": 39,
+      "expected_roles": [
+        "Arranger",
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "可不"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "nuyuri",
+      "title": "空白と夏",
+      "vocadb_song_id": 644223,
+      "youtube_id": "2QXtoWsAdm0",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "空白と夏",
+      "rating_score": 42,
+      "expected_roles": [
+        "Arranger",
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "重音テトSV"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
       "producer_slug": "orangestar",
       "title": "Encounter",
       "vocadb_song_id": 586628,
@@ -4175,6 +4674,95 @@
       ],
       "voice_synths": [
         "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "owata_p",
+      "title": "お前らなんかみんな大嫌いだ",
+      "vocadb_song_id": 36356,
+      "youtube_id": "z83aW92zDUE",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "お前らなんかみんな大嫌いだ",
+      "rating_score": 64,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "owata_p",
+      "title": "ベンゼン",
+      "vocadb_song_id": 7442,
+      "youtube_id": "jlLdTtp0Tak",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "ベンゼン",
+      "rating_score": 92,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "鏡音リン",
+        "鏡音レン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "owata_p",
+      "title": "ロシアンルーレット",
+      "vocadb_song_id": 10648,
+      "youtube_id": "xIlWuyvfio8",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "ロシアンルーレット",
+      "rating_score": 92,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "巡音ルカ"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "final",
+      "producer_slug": "owata_p",
+      "title": "悩める少年脱げ少女",
+      "vocadb_song_id": 113544,
+      "youtube_id": "XUMhKXtcbyc",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/frozen_test/catalog.jsonl",
+        "F:/Personal/Code/vocaptest/configs/frozen_test_catalog.yaml"
+      ],
+      "vocadb_name": "悩める少年脱げ少女",
+      "rating_score": 63,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "Fukase (Normal)"
       ],
       "flags": [],
       "risk_score": 0
@@ -7325,6 +7913,245 @@
     },
     {
       "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "Red Rose",
+      "vocadb_song_id": 635462,
+      "youtube_id": "4cjuCsOrXGI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "Red Rose",
+      "rating_score": 86,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "カノン",
+      "vocadb_song_id": 386542,
+      "youtube_id": "G07TPX7i56g",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "カノン",
+      "rating_score": 111,
+      "expected_roles": [
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "可不"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "テトリス",
+      "vocadb_song_id": 696221,
+      "youtube_id": "Soy4jGPHr3g",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "テトリス",
+      "rating_score": 610,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "重音テトSV"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "マーシャル・マキシマイザー",
+      "vocadb_song_id": 348255,
+      "youtube_id": "jMKPYg0uhCI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "マーシャル・マキシマイザー",
+      "rating_score": 469,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "可不"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "傀儡阿修羅",
+      "vocadb_song_id": 406064,
+      "youtube_id": "MenDsq-BK4Y",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "傀儡阿修羅",
+      "rating_score": 122,
+      "expected_roles": [
+        "Animator",
+        "Arranger",
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "星界"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "凹面黙示録",
+      "vocadb_song_id": 329230,
+      "youtube_id": "JrO5U_Cwwsk",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "凹面黙示録",
+      "rating_score": 93,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク",
+        "鏡音リン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "可不ェイン",
+      "vocadb_song_id": 588848,
+      "youtube_id": "nN-7twhjdeU",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "可不ェイン",
+      "rating_score": 131,
+      "expected_roles": [
+        "Animator",
+        "Arranger",
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "可不"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "巫",
+      "vocadb_song_id": 518882,
+      "youtube_id": "KTKpgpW3HTw",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "巫",
+      "rating_score": 52,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "羽累"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "旧約汎化街",
+      "vocadb_song_id": 300361,
+      "youtube_id": "nNhDezUbvSc",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "旧約汎化街",
+      "rating_score": 98,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "hiiragi_magnetite",
+      "title": "終焉逃避行",
+      "vocadb_song_id": 306267,
+      "youtube_id": "yVi3mhLr0uU",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "終焉逃避行",
+      "rating_score": 207,
+      "expected_roles": [
+        "Animator",
+        "Arranger",
+        "Composer",
+        "Lyricist",
+        "Mastering",
+        "Mixer"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
       "producer_slug": "hitoshizuku_p",
       "title": "Alice in N.Y.",
       "vocadb_song_id": 224386,
@@ -9120,6 +9947,72 @@
     },
     {
       "split": "train",
+      "producer_slug": "kuro_usa_p",
+      "title": "上弦の月",
+      "vocadb_song_id": 22869,
+      "youtube_id": "-r_sn_pF5Pw",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "上弦の月",
+      "rating_score": 344,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "KAITO V3 (Soft)"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "kuro_usa_p",
+      "title": "千本桜",
+      "vocadb_song_id": 8394,
+      "youtube_id": "shs0rAiwsGQ",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "千本桜",
+      "rating_score": 2072,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "kuro_usa_p",
+      "title": "恋愛フィロソフィア",
+      "vocadb_song_id": 12665,
+      "youtube_id": "z8vNALh3Uno",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "恋愛フィロソフィア",
+      "rating_score": 167,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
       "producer_slug": "maretu",
       "title": "MARETU ft. 初音ミク \"Mind Brand\" マインドブランド (English Subtitles)",
       "vocadb_song_id": null,
@@ -10047,6 +10940,246 @@
       ],
       "voice_synths": [
         "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "moonlit bear",
+      "vocadb_song_id": 1583,
+      "youtube_id": "UntYssFE_nE",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "moonlit bear",
+      "rating_score": 201,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "KAITO",
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "チミドロスイッチ",
+      "vocadb_song_id": 18327,
+      "youtube_id": "bgUf53wRoqA",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "チミドロスイッチ",
+      "rating_score": 119,
+      "expected_roles": [
+        "Animator",
+        "Composer"
+      ],
+      "voice_synths": [
+        "MAYU"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "ネメシスの銃口",
+      "vocadb_song_id": 62774,
+      "youtube_id": "AHjxLoeYIoI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "ネメシスの銃口",
+      "rating_score": 205,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "GUMI"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "七つの罪と罰",
+      "vocadb_song_id": 75939,
+      "youtube_id": "48ZMa-qYebY",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "七つの罪と罰",
+      "rating_score": 145,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク",
+        "巡音ルカ",
+        "GUMI",
+        "神威がくぽ",
+        "鏡音リン",
+        "KAITO",
+        "MEIKO",
+        "鏡音レン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "五番目のピエロ",
+      "vocadb_song_id": 1613,
+      "youtube_id": "fUaSCgMFe5w",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "五番目のピエロ",
+      "rating_score": 124,
+      "expected_roles": [
+        "Animator",
+        "Composer"
+      ],
+      "voice_synths": [
+        "鏡音レン Append (Power)"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "去り人達のワルツ",
+      "vocadb_song_id": 382867,
+      "youtube_id": "jNBRyo54Tks",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "去り人達のワルツ",
+      "rating_score": 114,
+      "expected_roles": [
+        "Arranger",
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "鏡音リン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "最後のリボルバー",
+      "vocadb_song_id": 1655,
+      "youtube_id": "tdVYqgK6gUs",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "最後のリボルバー",
+      "rating_score": 124,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "GUMI"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "白ノ娘",
+      "vocadb_song_id": 2811,
+      "youtube_id": "LMIsQWvgEUM",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "白ノ娘",
+      "rating_score": 253,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "茶番カプリシオ",
+      "vocadb_song_id": 1615,
+      "youtube_id": "7sAxOg4r4IE",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "茶番カプリシオ",
+      "rating_score": 168,
+      "expected_roles": [
+        "Animator",
+        "Composer"
+      ],
+      "voice_synths": [
+        "初音ミク",
+        "巡音ルカ",
+        "GUMI",
+        "神威がくぽ",
+        "鏡音リン",
+        "鏡音レン",
+        "KAITO",
+        "MEIKO"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "mothy",
+      "title": "魔女ザルムホーファーの逃亡",
+      "vocadb_song_id": 13727,
+      "youtube_id": "qlDS4jHsDMw",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "魔女ザルムホーファーの逃亡",
+      "rating_score": 176,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "MEIKO"
       ],
       "flags": [],
       "risk_score": 0
@@ -11405,6 +12538,234 @@
     },
     {
       "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "ターミナル",
+      "vocadb_song_id": 180466,
+      "youtube_id": "5LLxrCeriDs",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "ターミナル",
+      "rating_score": 107,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "GUMI"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "ディカディズム",
+      "vocadb_song_id": 189940,
+      "youtube_id": "rMSCXxdsoPc",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "ディカディズム",
+      "rating_score": 109,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "v flower",
+        "心華 V4 日本語版 (Unknown)"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "フィクサー",
+      "vocadb_song_id": 152247,
+      "youtube_id": "srH34Tjjo9U",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "フィクサー",
+      "rating_score": 567,
+      "expected_roles": [
+        "Composer",
+        "Lyricist",
+        "VoiceManipulator"
+      ],
+      "voice_synths": [
+        "v flower",
+        "結月ゆかり"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "フラジール",
+      "vocadb_song_id": 130889,
+      "youtube_id": "a_rrj1Xh5LI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "フラジール",
+      "rating_score": 429,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "GUMI"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "プロトディスコ",
+      "vocadb_song_id": 174024,
+      "youtube_id": "rkkZYzXsxPA",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "プロトディスコ",
+      "rating_score": 344,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "v flower"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "ロウワー",
+      "vocadb_song_id": 365108,
+      "youtube_id": "3sEptl-psU0",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "ロウワー",
+      "rating_score": 678,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "v4 flower",
+        "Speak & Spell"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "ロンリーダンス",
+      "vocadb_song_id": 209476,
+      "youtube_id": "3bm4sysQsAM",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "ロンリーダンス",
+      "rating_score": 68,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "v flower"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "命ばっかり",
+      "vocadb_song_id": 164101,
+      "youtube_id": "YDnZFwlZa1g",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "命ばっかり",
+      "rating_score": 408,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "結月ゆかり",
+        "v flower"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "祈りは空っぽ",
+      "vocadb_song_id": 214180,
+      "youtube_id": "sNtJOrenwj4",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "祈りは空っぽ",
+      "rating_score": 79,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "v flower",
+        "結月ゆかり"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "nuyuri",
+      "title": "終末じゃない",
+      "vocadb_song_id": 198686,
+      "youtube_id": "zxNEEiyVav4",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "終末じゃない",
+      "rating_score": 72,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "v flower",
+        "心華 V4 日本語版 (Unknown)"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
       "producer_slug": "orangestar",
       "title": "Alice in 冷凍庫",
       "vocadb_song_id": 114987,
@@ -11636,6 +12997,252 @@
         }
       ],
       "risk_score": 100
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "はたらけ！ニート",
+      "vocadb_song_id": 5366,
+      "youtube_id": "asiHrVKcPyc",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "はたらけ！ニート",
+      "rating_score": 134,
+      "expected_roles": [
+        "Composer"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "アンチクロロベンゼン",
+      "vocadb_song_id": 372,
+      "youtube_id": "9mOzdi0XIlc",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "アンチクロロベンゼン",
+      "rating_score": 569,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "鏡音リン",
+        "鏡音レン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "ゴチャゴチャうるせー！",
+      "vocadb_song_id": 7042,
+      "youtube_id": "-bt0IP16PZI",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "ゴチャゴチャうるせー！",
+      "rating_score": 716,
+      "expected_roles": [
+        "Animator",
+        "Composer"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "トルエン",
+      "vocadb_song_id": 10647,
+      "youtube_id": "JQwziuOpACg",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "トルエン",
+      "rating_score": 183,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "巡音ルカ"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "マジカル☆ぬこレンレン",
+      "vocadb_song_id": 10650,
+      "youtube_id": "7E2UzaP22ZM",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "マジカル☆ぬこレンレン",
+      "rating_score": 154,
+      "expected_roles": [
+        "Animator",
+        "Arranger",
+        "Composer",
+        "Lyricist"
+      ],
+      "voice_synths": [
+        "鏡音レン",
+        "鏡音リン",
+        "KAITO",
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "リンちゃんなう！",
+      "vocadb_song_id": 8678,
+      "youtube_id": "_oS2aIhE2_U",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "リンちゃんなう！",
+      "rating_score": 581,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "巡音ルカ",
+        "初音ミク",
+        "鏡音リン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "レンきゅんなう！",
+      "vocadb_song_id": 21558,
+      "youtube_id": "6Oq7qw7C69Q",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "レンきゅんなう！",
+      "rating_score": 111,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク",
+        "巡音ルカ",
+        "鏡音レン",
+        "鏡音リン"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "探偵弱音ハクの憂鬱",
+      "vocadb_song_id": 7429,
+      "youtube_id": "umLzqR4N9fM",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "探偵弱音ハクの憂鬱",
+      "rating_score": 202,
+      "expected_roles": [
+        "Animator",
+        "Composer",
+        "VoiceManipulator"
+      ],
+      "voice_synths": [
+        "GUMI",
+        "鏡音レン",
+        "鏡音リン",
+        "巡音ルカ",
+        "KAITO",
+        "初音ミク",
+        "神威がくぽ"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "片想いサンバ",
+      "vocadb_song_id": 3007,
+      "youtube_id": "pSV5xLRsz_c",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "片想いサンバ",
+      "rating_score": 264,
+      "expected_roles": [
+        "Default"
+      ],
+      "voice_synths": [
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
+    },
+    {
+      "split": "train",
+      "producer_slug": "owata_p",
+      "title": "進捗どうですか！",
+      "vocadb_song_id": 63339,
+      "youtube_id": "MULFx71eonY",
+      "source_kind": "vocadb_original_pv",
+      "sources": [
+        "F:/Personal/Code/vocaptest/data/processed/curated/mert_95/song_decisions.jsonl",
+        "F:/Personal/Code/vocaptest/configs/training_catalog_additions.yaml"
+      ],
+      "vocadb_name": "進捗どうですか！",
+      "rating_score": 119,
+      "expected_roles": [
+        "Composer",
+        "Vocalist"
+      ],
+      "voice_synths": [
+        "IA",
+        "MAYU",
+        "兎眠りおん",
+        "結月ゆかり",
+        "初音ミク"
+      ],
+      "flags": [],
+      "risk_score": 0
     },
     {
       "split": "train",

@@ -457,3 +457,43 @@ songs:
     vocadb_song_id: 39243
     youtube_id: e6rrHMlQsFw
     source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: マダム・メリーゴーランド
+    vocadb_song_id: 1614
+    youtube_id: l3Aal-cvknY
+    source_kind: vocadb_original_pv
+  - producer_slug: mothy
+    title: 針音ノ時計塔
+    vocadb_song_id: 10623
+    youtube_id: cL2mzxn8p7Q
+    source_kind: vocadb_original_pv
+  - producer_slug: hiiragi_magnetite
+    title: アンプランド・アポトーシス
+    vocadb_song_id: 343916
+    youtube_id: jjkSObkOnQY
+    source_kind: vocadb_original_pv
+  - producer_slug: hiiragi_magnetite
+    title: ディスクローズ・フリック
+    vocadb_song_id: 911820
+    youtube_id: JZaFgVQwXmA
+    source_kind: vocadb_original_pv
+  - producer_slug: owata_p
+    title: ボーナスステージ
+    vocadb_song_id: 3232
+    youtube_id: 7vmivv4j2Cc
+    source_kind: vocadb_original_pv
+  - producer_slug: owata_p
+    title: ニトロベンゼン
+    vocadb_song_id: 1875
+    youtube_id: WOSLUVWEHoo
+    source_kind: vocadb_original_pv
+  - producer_slug: nuyuri
+    title: いのちが見たい
+    vocadb_song_id: 644227
+    youtube_id: GAulrwEtUF0
+    source_kind: vocadb_original_pv
+  - producer_slug: nuyuri
+    title: アイリッド
+    vocadb_song_id: 812036
+    youtube_id: Pr4OUUAXbZI
+    source_kind: vocadb_original_pv

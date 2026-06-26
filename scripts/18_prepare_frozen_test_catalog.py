@@ -121,20 +121,20 @@ def main() -> None:
             for item in (yaml.safe_load(handle) or {}).get("producers", [])
         }
 
-    counts = Counter(item["producer_slug"] for item in songs)
-    missing = set(producers).difference(counts)
-    unexpected = set(counts).difference(producers)
-    if missing or unexpected:
-        raise ValueError(
-            f"Frozen catalog class mismatch: missing={sorted(missing)}, "
-            f"unexpected={sorted(unexpected)}"
-        )
     if args.allow_variable_per_class:
         minimum_per_class = (
             args.minimum_per_class
             if args.minimum_per_class is not None
             else 1
         )
+        counts = Counter(item["producer_slug"] for item in songs)
+        missing = set(producers).difference(counts)
+        unexpected = set(counts).difference(producers)
+        if unexpected or (missing and minimum_per_class > 0):
+            raise ValueError(
+                f"Frozen catalog class mismatch: missing={sorted(missing)}, "
+                f"unexpected={sorted(unexpected)}"
+            )
         wrong_counts = {
             slug: count for slug, count in counts.items()
             if count < minimum_per_class
@@ -145,6 +145,14 @@ def main() -> None:
                 f"{args.category} songs: {wrong_counts}"
             )
     else:
+        counts = Counter(item["producer_slug"] for item in songs)
+        missing = set(producers).difference(counts)
+        unexpected = set(counts).difference(producers)
+        if missing or unexpected:
+            raise ValueError(
+                f"Frozen catalog class mismatch: missing={sorted(missing)}, "
+                f"unexpected={sorted(unexpected)}"
+            )
         wrong_counts = {
             slug: count for slug, count in counts.items()
             if count != args.expected_per_class
@@ -290,6 +298,16 @@ def main() -> None:
         )
         print(f"verified {args.category} {slug}/{item['title']} ({video_id})")
 
+    write_jsonl(
+        args.manifest_output,
+        sorted(
+            records.values(),
+            key=lambda record: (
+                record["producer_slug"],
+                record["title"].casefold(),
+            ),
+        ),
+    )
     print(json.dumps(
         {
             "songs": len(records),

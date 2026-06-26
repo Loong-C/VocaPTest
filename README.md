@@ -1,6 +1,6 @@
 # VocaP Test - 测测你的曲风最像哪位 P 主
 
-一个 Vocaloid Producer 风格相似度系统。上传一段音乐，系统会在 36 位
+一个 Vocaloid Producer 风格相似度系统。上传一段音乐，系统会在 41 位
 P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受区域时给出低置信提示。
 结果仅供娱乐，不代表模型能真正识别作曲家风格。
 
@@ -8,12 +8,12 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 
 | 项目 | 当前状态 |
 |---|---:|
-| 训练目录 | **420 首 canonical 作品** |
-| Development holdout | **70 首作品，每类 1-2 首** |
-| Final frozen test | **142 首作品，每类 2-4 首** |
-| 训练分段 | **5022 段** |
-| Dev 分段 | **840 段** |
-| Final frozen 分段 | **1687 段** |
+| 训练目录 | **463 首 canonical 作品** |
+| Development holdout | **78 首作品，每类 0-2 首** |
+| Final frozen test | **159 首作品，每类 1-4 首** |
+| 训练分段 | **5538 段** |
+| Dev 分段 | **936 段** |
+| Final frozen 分段 | **1890 段** |
 | 音频处理 | 24kHz 单声道、20s 窗口、10s hop、均匀覆盖、最多 12 段 |
 | 音频表征 | MERT-v1-95M 第 5/6/8 层，每层 768 维 |
 | 分类器 | 三个歌曲均值 Shrinkage LDA head 的概率平均 |
@@ -25,7 +25,7 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 - **Dev holdout songs**：不参与训练，用于未来模型选择、错误分析和方案比较。
 - **Final frozen songs**：不参与训练、模型选择或校准，只用于最终验收。
 
-## 覆盖的 36 位 P 主
+## 覆盖的 41 位 P 主
 
 | P 主 | 别名 | 训练歌曲 | 训练分段 |
 |---|---|---:|---:|
@@ -65,24 +65,32 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 | みきとP | MikitoP, 愛島, Aijima | 10 | 120 |
 | ひとしずくP / やま△ | ひとしずくP, HitoshizukuP, やま△, Yama△, さも, samo | 10 | 120 |
 | バルーン | balloon, 須田景凪, Suda Keina | 10 | 120 |
+| 黒うさP | KurousaP, くろうさP, WhiteFlame, しゃな, syana | 3 | 36 |
+| mothy | 悪ノP, AkunoP, master of the heavenly yard | 10 | 120 |
+| 柊マグネタイト | Hiiragi Magnetite | 10 | 120 |
+| オワタP | OwataP, ガルナ, Garuna | 10 | 120 |
+| ぬゆり | Nuyuri, nulut, Lanndo, go乱心P, ぬるり, Crona | 10 | 120 |
 
 ## 评估结果
 
-| 指标 | 31 类 / 376 首 CV | 36 类 / 420 首 CV |
+| 指标 | 36 类 / 420 首 CV | 41 类 / 463 首 CV |
 |---|---:|---:|
-| Top-1 | 84.95% ± 0.89% | **85.05% ± 0.57%** |
-| Top-3 | 93.51% ± 0.48% | **92.90% ± 0.39%** |
-| Macro-F1 | 86.17% ± 0.88% | **85.86% ± 0.61%** |
-| MRR | 89.75% ± 0.40% | **89.60% ± 0.38%** |
+| Top-1 | 85.05% ± 0.57% | **81.56% ± 0.73%** |
+| Top-3 | 92.90% ± 0.39% | **91.27% ± 0.54%** |
+| Macro-F1 | 85.86% ± 0.61% | **80.34% ± 0.91%** |
+| MRR | 89.60% ± 0.38% | **87.11% ± 0.42%** |
 
-| 指标 | Dev holdout / 70 首 | Final frozen / 142 首 |
+| 指标 | Dev holdout / 78 首 | Final frozen / 159 首 |
 |---|---:|---:|
-| Top-1 | **82.86%** | **84.51%** |
-| Top-3 | **85.71%** | **94.37%** |
-| Macro-F1 | **80.19%** | **84.66%** |
-| MRR | **85.86%** | **89.90%** |
-| 覆盖率 | **70.00%** | **73.24%** |
-| 被接受样本准确率 | **97.96%** | **94.23%** |
+| Top-1 | **80.77%** | **80.50%** |
+| Top-3 | **87.18%** | **93.08%** |
+| Macro-F1 | **77.41%** | **78.73%** |
+| MRR | **85.43%** | **86.79%** |
+| 覆盖率 | **61.54%** | **62.89%** |
+| 被接受样本准确率 | **95.83%** | **97.00%** |
+
+41 类结果已经触及当前扩张停止条件：相较 36 类稳定批次，final Macro-F1 下降约 5.9 个百分点，
+dev Macro-F1 低于 80%。后续部署建议使用 36 类稳定提交，41 类提交保留为 stop-point 证据。
 
 P2 数据更难，尤其暴露出 `じん`、`すりぃ`、`Neru`、`sasakure.UK/cosMo`、
 `DECO*27` 和若干跨媒体/非典型曲目的边界问题。详细错误分析见
@@ -145,7 +153,7 @@ bash deploy/harden_vps_security.sh
 
 | 文件 | 说明 |
 |---|---|
-| `configs/producers.yaml` | 36 位 P 主配置 |
+| `configs/producers.yaml` | 41 位 P 主配置 |
 | `configs/producer_style_tags.yaml` | VocaDB song tags 风格标签缓存 |
 | `configs/training_catalog_additions.yaml` | 人工核验的训练目录增量 |
 | `configs/dev_holdout_catalog.yaml` | development holdout 配置 |
@@ -155,7 +163,7 @@ bash deploy/harden_vps_security.sh
 | `data/processed/dev_holdout/mert_95_layers/segments.jsonl` | dev MERT 清单 |
 | `data/processed/frozen_test/catalog.jsonl` | final frozen 下载清单 |
 | `data/processed/frozen_test/mert_95_layers/segments.jsonl` | final frozen MERT 清单 |
-| `data/processed/evaluations/p3_layer_fusion_deploy.json` | 当前 36 类 CV 与校准结果 |
+| `data/processed/evaluations/p3_layer_fusion_deploy.json` | 当前 41 类 CV 与校准结果 |
 | `data/processed/evaluations/p2_dev_holdout.json` | dev holdout 结果 |
 | `data/processed/evaluations/p1_frozen_test.json` | 当前 final frozen 结果 |
 
@@ -171,7 +179,7 @@ python scripts/18_prepare_frozen_test_catalog.py `
   --category dev_holdout `
   --expected-per-class 2 `
   --allow-variable-per-class `
-  --minimum-per-class 1 `
+  --minimum-per-class 0 `
   --exclude-catalog configs/frozen_test_catalog.yaml `
   --ffmpeg-location <ffmpeg目录>
 
@@ -207,7 +215,7 @@ python scripts/19_evaluate_frozen_test.py `
   --protocol-name p2_development_holdout `
   --expected-per-class 2 `
   --allow-variable-per-class `
-  --minimum-per-class 1
+  --minimum-per-class 0
 python scripts/19_evaluate_frozen_test.py `
   --protocol-name p2_final_frozen_test `
   --expected-per-class 4 `
@@ -218,13 +226,13 @@ python scripts/19_evaluate_frozen_test.py `
 ## 当前机器适配
 
 当前 RTX 4060 Ti 8GB、约 32GB 内存下，MERT-v1-95M 使用 batch size 4 稳定。
-本轮新增 top100 第一批 5 位 P 主，并清理了一批明显偏离 Vocaloid 原创 PV 口径的旧曲；完整重建缓存可在本机完成。
+本轮新增 top100 前两批 10 位候选 P 主，其中 41 类批次已达到扩张停止条件；完整重建缓存可在本机完成。
 现阶段瓶颈仍是数据口径和评估设计，不是显存。
 
 ## 已知问题
 
-1. Dev/final holdout 允许少量不均衡，优先保留干净、可解释的曲目，而不是硬凑低质量样本。
-2. `じん`、`Neru`、`すりぃ`、`cosMo/sasakure.UK` 仍是重点边界，需要继续靠干净曲目和拒识阈值控制。
-3. 当前拒识阈值在 final frozen 上覆盖 73.24%，被接受样本准确率为 94.23%。
+1. 41 类批次达到停止条件，尤其是 dev/final Macro-F1 低于 80%；建议部署 36 类稳定批次。
+2. 黒うさP 只有 3 首训练曲和 1 首 final 曲，保留为“少量但干净”的样本，不再硬凑 dev。
+3. `じん`、`Neru`、`すりぃ`、`cosMo/sasakure.UK` 仍是重点边界，需要继续靠干净曲目和拒识阈值控制。
 
 历史 27 类结果见 [P1 报告](docs/P1_27_PRODUCERS_FROZEN_TEST_REPORT.md)。

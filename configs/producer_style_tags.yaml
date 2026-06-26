@@ -2063,3 +2063,288 @@ producers:
         title: 雨とペトラ
         url: https://vocadb.net/S/150978
         tag_votes: 1
+  kuro_usa_p:
+    artist_id: 310
+    source_url: https://vocadb.net/Ar/310
+    api_url: https://vocadb.net/api/songs?artistId[]=310&fields=PVs,Artists,Tags
+    songs_analyzed: 36
+    style_tags:
+    - label: 和風
+      display_zh: 和风
+      category: Genres
+      song_count: 6
+      evidence:
+      - song_id: 8394
+        title: 千本桜
+        url: https://vocadb.net/S/8394
+        tag_votes: 11
+      - song_id: 22869
+        title: 上弦の月
+        url: https://vocadb.net/S/22869
+        tag_votes: 5
+      - song_id: 7718
+        title: 紅一葉
+        url: https://vocadb.net/S/7718
+        tag_votes: 6
+    - label: jazz
+      display_zh: Jazz
+      category: Genres
+      song_count: 4
+      evidence:
+      - song_id: 12665
+        title: 恋愛フィロソフィア
+        url: https://vocadb.net/S/12665
+        tag_votes: 2
+      - song_id: 3394
+        title: リスキーゲーム
+        url: https://vocadb.net/S/3394
+        tag_votes: 2
+      - song_id: 76635
+        title: ミルキー☆ウェイ
+        url: https://vocadb.net/S/76635
+        tag_votes: 1
+    - label: ballad
+      display_zh: Ballad
+      category: Genres
+      song_count: 3
+      evidence:
+      - song_id: 22869
+        title: 上弦の月
+        url: https://vocadb.net/S/22869
+        tag_votes: 4
+      - song_id: 11017
+        title: 白雪～shirayuki～
+        url: https://vocadb.net/S/11017
+        tag_votes: 1
+      - song_id: 11016
+        title: Love*3
+        url: https://vocadb.net/S/11016
+        tag_votes: 1
+  mothy:
+    artist_id: 189
+    source_url: https://vocadb.net/Ar/189
+    api_url: https://vocadb.net/api/songs?artistId[]=189&fields=PVs,Artists,Tags
+    songs_analyzed: 151
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 18
+      evidence:
+      - song_id: 1588
+        title: 悪食娘コンチータ
+        url: https://vocadb.net/S/1588
+        tag_votes: 3
+      - song_id: 18327
+        title: チミドロスイッチ
+        url: https://vocadb.net/S/18327
+        tag_votes: 2
+      - song_id: 1614
+        title: マダム・メリーゴーランド
+        url: https://vocadb.net/S/1614
+        tag_votes: 2
+    - label: baroque pop
+      display_zh: baroque pop
+      category: Genres
+      song_count: 17
+      evidence:
+      - song_id: 1358
+        title: 悪ノ召使
+        url: https://vocadb.net/S/1358
+        tag_votes: 3
+      - song_id: 1590
+        title: 悪ノ娘
+        url: https://vocadb.net/S/1590
+        tag_votes: 3
+      - song_id: 1598
+        title: 悪徳のジャッジメント
+        url: https://vocadb.net/S/1598
+        tag_votes: 5
+    - label: ballad
+      display_zh: Ballad
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 1358
+        title: 悪ノ召使
+        url: https://vocadb.net/S/1358
+        tag_votes: 4
+      - song_id: 1593
+        title: リグレットメッセージ
+        url: https://vocadb.net/S/1593
+        tag_votes: 1
+      - song_id: 2811
+        title: 白ノ娘
+        url: https://vocadb.net/S/2811
+        tag_votes: 1
+  hiiragi_magnetite:
+    artist_id: 83243
+    source_url: https://vocadb.net/Ar/83243
+    api_url: https://vocadb.net/api/songs?artistId[]=83243&fields=PVs,Artists,Tags
+    songs_analyzed: 32
+    style_tags:
+    - label: edm
+      display_zh: EDM
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 696221
+        title: テトリス
+        url: https://vocadb.net/S/696221
+        tag_votes: 7
+      - song_id: 630460
+        title: アンテナ39
+        url: https://vocadb.net/S/630460
+        tag_votes: 2
+      - song_id: 747458
+        title: ざぁこ
+        url: https://vocadb.net/S/747458
+        tag_votes: 5
+    - label: digital rock
+      display_zh: Digital Rock
+      category: Genres
+      song_count: 5
+      evidence:
+      - song_id: 348255
+        title: マーシャル・マキシマイザー
+        url: https://vocadb.net/S/348255
+        tag_votes: 3
+      - song_id: 306267
+        title: 終焉逃避行
+        url: https://vocadb.net/S/306267
+        tag_votes: 2
+      - song_id: 300361
+        title: 旧約汎化街
+        url: https://vocadb.net/S/300361
+        tag_votes: 4
+    - label: electro
+      display_zh: electro
+      category: Genres
+      song_count: 4
+      evidence:
+      - song_id: 406064
+        title: 傀儡阿修羅
+        url: https://vocadb.net/S/406064
+        tag_votes: 2
+      - song_id: 293857
+        title: 或世界消失
+        url: https://vocadb.net/S/293857
+        tag_votes: 4
+      - song_id: 635462
+        title: Red Rose
+        url: https://vocadb.net/S/635462
+        tag_votes: 1
+  owata_p:
+    artist_id: 94
+    source_url: https://vocadb.net/Ar/94
+    api_url: https://vocadb.net/api/songs?artistId[]=94&fields=PVs,Artists,Tags
+    songs_analyzed: 137
+    style_tags:
+    - label: 電波
+      display_zh: 电波
+      category: Genres
+      song_count: 18
+      evidence:
+      - song_id: 7042
+        title: ゴチャゴチャうるせー！
+        url: https://vocadb.net/S/7042
+        tag_votes: 8
+      - song_id: 8678
+        title: リンちゃんなう！
+        url: https://vocadb.net/S/8678
+        tag_votes: 5
+      - song_id: 7429
+        title: 探偵弱音ハクの憂鬱
+        url: https://vocadb.net/S/7429
+        tag_votes: 1
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 13
+      evidence:
+      - song_id: 18297
+        title: ジエンド
+        url: https://vocadb.net/S/18297
+        tag_votes: 1
+      - song_id: 176896
+        title: 鏡音ミリオンランキング
+        url: https://vocadb.net/S/176896
+        tag_votes: 2
+      - song_id: 426406
+        title: 迷彩カメレオン
+        url: https://vocadb.net/S/426406
+        tag_votes: 2
+    - label: jazz fusion
+      display_zh: jazz fusion
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 1890
+        title: パラジクロロベンゼン
+        url: https://vocadb.net/S/1890
+        tag_votes: 3
+      - song_id: 372
+        title: アンチクロロベンゼン
+        url: https://vocadb.net/S/372
+        tag_votes: 4
+      - song_id: 163876
+        title: パラジクロロベンゼン
+        url: https://vocadb.net/S/163876
+        tag_votes: 1
+  nuyuri:
+    artist_id: 5666
+    source_url: https://vocadb.net/Ar/5666
+    api_url: https://vocadb.net/api/songs?artistId[]=5666&fields=PVs,Artists,Tags
+    songs_analyzed: 108
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 29
+      evidence:
+      - song_id: 164101
+        title: 命ばっかり
+        url: https://vocadb.net/S/164101
+        tag_votes: 3
+      - song_id: 401005
+        title: ミザン
+        url: https://vocadb.net/S/401005
+        tag_votes: 3
+      - song_id: 189940
+        title: ディカディズム
+        url: https://vocadb.net/S/189940
+        tag_votes: 2
+    - label: electro swing
+      display_zh: electro swing
+      category: Genres
+      song_count: 12
+      evidence:
+      - song_id: 365108
+        title: ロウワー
+        url: https://vocadb.net/S/365108
+        tag_votes: 8
+      - song_id: 152247
+        title: フィクサー
+        url: https://vocadb.net/S/152247
+        tag_votes: 3
+      - song_id: 130889
+        title: フラジール
+        url: https://vocadb.net/S/130889
+        tag_votes: 6
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 164101
+        title: 命ばっかり
+        url: https://vocadb.net/S/164101
+        tag_votes: 3
+      - song_id: 401005
+        title: ミザン
+        url: https://vocadb.net/S/401005
+        tag_votes: 2
+      - song_id: 189940
+        title: ディカディズム
+        url: https://vocadb.net/S/189940
+        tag_votes: 2

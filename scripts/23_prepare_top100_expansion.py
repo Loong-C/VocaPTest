@@ -35,7 +35,13 @@ VOICE_SYNTH_TYPES = {
     "Voiceroid",
 }
 STYLE_ROLES = {"Composer", "Default"}
-DEFAULT_BATCH = ("giga", "rerulili", "mikito_p", "hitoshizuku_p", "balloon")
+DEFAULT_BATCH = (
+    "kuro_usa_p",
+    "mothy",
+    "hiiragi_magnetite",
+    "owata_p",
+    "nuyuri",
+)
 
 
 @dataclass(frozen=True)
@@ -67,16 +73,16 @@ CANDIDATES: dict[str, Candidate] = {
         vocadb_artist_id=712,
         top100_name="れるりり",
     ),
-    "ryo_supercell": Candidate(
+    "ryo": Candidate(
         rank=19,
-        slug="ryo_supercell",
+        slug="ryo",
         display_name="ryo",
         aliases=("supercell",),
-        vocadb_artist_id=249,
+        vocadb_artist_id=67,
         top100_name="ryo",
         reason=(
-            "Skipped by default: VocaDB currently exposes too few verified "
-            "voice-synth Original YouTube PVs for the 10/2/4 split."
+            "Skipped by default: VocaDB currently exposes only one strict "
+            "non-Topic voice-synth Original YouTube PV."
         ),
     ),
     "mikito_p": Candidate(
@@ -103,6 +109,46 @@ CANDIDATES: dict[str, Candidate] = {
         aliases=("balloon", "須田景凪", "Suda Keina"),
         vocadb_artist_id=10259,
         top100_name="バルーン",
+    ),
+    "kuro_usa_p": Candidate(
+        rank=24,
+        slug="kuro_usa_p",
+        display_name="黒うさP",
+        aliases=("KurousaP", "くろうさP", "WhiteFlame", "しゃな", "syana"),
+        vocadb_artist_id=310,
+        top100_name="黒うさ",
+    ),
+    "mothy": Candidate(
+        rank=25,
+        slug="mothy",
+        display_name="mothy",
+        aliases=("悪ノP", "AkunoP", "master of the heavenly yard"),
+        vocadb_artist_id=189,
+        top100_name="mothy",
+    ),
+    "hiiragi_magnetite": Candidate(
+        rank=27,
+        slug="hiiragi_magnetite",
+        display_name="柊マグネタイト",
+        aliases=("Hiiragi Magnetite",),
+        vocadb_artist_id=83243,
+        top100_name="柊マグネタイト",
+    ),
+    "owata_p": Candidate(
+        rank=28,
+        slug="owata_p",
+        display_name="オワタP",
+        aliases=("OwataP", "ガルナ", "Garuna"),
+        vocadb_artist_id=94,
+        top100_name="ガルナ@オワタP",
+    ),
+    "nuyuri": Candidate(
+        rank=29,
+        slug="nuyuri",
+        display_name="ぬゆり",
+        aliases=("Nuyuri", "nulut", "Lanndo", "go乱心P", "ぬるり", "Crona"),
+        vocadb_artist_id=5666,
+        top100_name="ぬゆり",
     ),
 }
 

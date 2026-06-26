@@ -157,6 +157,7 @@ def main() -> None:
         all_records.extend(song_records)
         write_manifest(args.manifest_output, all_records)
 
+    write_manifest(args.manifest_output, all_records)
     layer_count = all_records[0].layer_count if all_records else None
     summary = {
         "songs": len({record.song_id for record in all_records}),

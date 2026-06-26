@@ -41,6 +41,11 @@ const PRODUCER_GRADIENTS: Record<string, string> = {
   mikito_p: "from-lime-500 to-sky-500",
   hitoshizuku_p: "from-purple-500 to-red-500",
   balloon: "from-slate-600 to-violet-600",
+  kuro_usa_p: "from-rose-600 to-stone-700",
+  mothy: "from-yellow-600 to-red-700",
+  hiiragi_magnetite: "from-cyan-500 to-fuchsia-500",
+  owata_p: "from-orange-400 to-sky-500",
+  nuyuri: "from-zinc-600 to-emerald-500",
 };
 
 export function getProducerMeta(slug: string): { gradient: string } {

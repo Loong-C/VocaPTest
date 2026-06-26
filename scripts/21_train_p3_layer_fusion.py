@@ -86,6 +86,14 @@ def aggregate_metrics(items: Sequence[dict]) -> dict:
     return aggregate
 
 
+def min_groups_per_class(labels: np.ndarray, groups: np.ndarray) -> int:
+    counts = [
+        len(set(groups[labels == label]))
+        for label in np.unique(labels)
+    ]
+    return min(counts) if counts else 0
+
+
 def fit_predict_layer_ensemble(
     train_layers: np.ndarray,
     train_labels: np.ndarray,
@@ -201,6 +209,13 @@ def main() -> None:
     classes = np.unique(labels)
     true_indices = np.searchsorted(classes, labels)
     layer_indices = tuple(args.layers)
+    smallest_class_groups = min_groups_per_class(labels, groups)
+    effective_splits = min(args.splits, smallest_class_groups)
+    if effective_splits < 2:
+        raise ValueError(
+            "OOF training requires at least 2 unique songs per producer; "
+            f"smallest class has {smallest_class_groups}"
+        )
 
     if any(layer < 0 or layer >= features.shape[1] for layer in layer_indices):
         raise ValueError(f"Layer indices must be within 0..{features.shape[1] - 1}")
@@ -212,7 +227,7 @@ def main() -> None:
         classes,
         layer_indices,
         repeats=args.repeats,
-        splits=args.splits,
+        splits=effective_splits,
         seed=args.seed,
     )
     flat_true_indices = np.tile(true_indices, args.repeats)
@@ -253,7 +268,12 @@ def main() -> None:
             "manifest": repo_path(args.manifest, root),
             "layers": list(layer_indices),
             "layer_weights": layer_weights.tolist(),
-            "oof": f"{args.repeats}x{args.splits} StratifiedGroupKFold by work_id",
+            "oof": (
+                f"{args.repeats}x{effective_splits} StratifiedGroupKFold by work_id"
+            ),
+            "requested_splits": int(args.splits),
+            "effective_splits": int(effective_splits),
+            "smallest_class_groups": int(smallest_class_groups),
             "target_precision": args.target_precision,
             "calibration_input": "probabilities",
         },

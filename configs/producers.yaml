@@ -266,3 +266,51 @@ producers:
   vocadb_artist_id: 10259
   profile_url: https://vocadb.net/Ar/10259
   avatar_url: /avatars/balloon.webp
+- slug: kuro_usa_p
+  display_name: 黒うさP
+  aliases:
+  - KurousaP
+  - くろうさP
+  - WhiteFlame
+  - しゃな
+  - syana
+  vocadb_artist_id: 310
+  profile_url: https://vocadb.net/Ar/310
+  avatar_url: /avatars/kuro_usa_p.webp
+- slug: mothy
+  display_name: mothy
+  aliases:
+  - 悪ノP
+  - AkunoP
+  - master of the heavenly yard
+  vocadb_artist_id: 189
+  profile_url: https://vocadb.net/Ar/189
+  avatar_url: /avatars/mothy.webp
+- slug: hiiragi_magnetite
+  display_name: 柊マグネタイト
+  aliases:
+  - Hiiragi Magnetite
+  vocadb_artist_id: 83243
+  profile_url: https://vocadb.net/Ar/83243
+  avatar_url: /avatars/hiiragi_magnetite.webp
+- slug: owata_p
+  display_name: オワタP
+  aliases:
+  - OwataP
+  - ガルナ
+  - Garuna
+  vocadb_artist_id: 94
+  profile_url: https://vocadb.net/Ar/94
+  avatar_url: /avatars/owata_p.webp
+- slug: nuyuri
+  display_name: ぬゆり
+  aliases:
+  - Nuyuri
+  - nulut
+  - Lanndo
+  - go乱心P
+  - ぬるり
+  - Crona
+  vocadb_artist_id: 5666
+  profile_url: https://vocadb.net/Ar/5666
+  avatar_url: /avatars/nuyuri.webp

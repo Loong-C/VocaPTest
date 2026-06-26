@@ -32,7 +32,14 @@ TOP100_EXPANSION_PRODUCERS = {
     "mikito_p",
     "hitoshizuku_p",
     "balloon",
+    "kuro_usa_p",
+    "mothy",
+    "hiiragi_magnetite",
+    "owata_p",
+    "nuyuri",
 }
+SPARSE_DEV_PRODUCERS = {"kuro_usa_p"}
+SPARSE_TRAINING_PRODUCERS = {"kuro_usa_p"}
 
 
 def load_yaml_songs(name: str) -> list[dict]:
@@ -57,12 +64,16 @@ def test_producers_and_training_catalog_have_expected_coverage():
 
     producer_slugs = {item["slug"] for item in producers}
 
-    assert len(producers) >= 36
+    assert len(producers) >= 41
     assert NEW_PRODUCERS.issubset(producer_slugs)
     assert P2_PRODUCERS.issubset(producer_slugs)
     assert TOP100_EXPANSION_PRODUCERS.issubset(producer_slugs)
     assert not producer_slugs - set(counts)
-    assert min(counts[slug] for slug in TOP100_EXPANSION_PRODUCERS) >= 8
+    assert min(
+        counts[slug]
+        for slug in TOP100_EXPANSION_PRODUCERS - SPARSE_TRAINING_PRODUCERS
+    ) >= 8
+    assert min(counts[slug] for slug in SPARSE_TRAINING_PRODUCERS) >= 2
 
 
 def test_holdout_catalogs_have_disjoint_songs_per_producer():
@@ -81,7 +92,7 @@ def test_holdout_catalogs_have_disjoint_songs_per_producer():
     dev_counts = Counter(item["producer_slug"] for item in dev)
     counts = Counter(item["producer_slug"] for item in frozen)
 
-    assert set(dev_counts) == producer_slugs
+    assert set(dev_counts) == producer_slugs - SPARSE_DEV_PRODUCERS
     assert set(counts) == producer_slugs
     assert min(dev_counts.values()) >= 1
     assert min(counts.values()) >= 1
@@ -144,9 +155,9 @@ def test_materialized_training_and_frozen_manifests_do_not_overlap():
     dev_counts = Counter(item["producer_slug"] for item in dev)
     frozen_counts = Counter(item["producer_slug"] for item in frozen)
     assert set(materialized_counts) == producer_slugs
-    assert set(dev_counts) == producer_slugs
+    assert set(dev_counts) == producer_slugs - SPARSE_DEV_PRODUCERS
     assert set(frozen_counts) == producer_slugs
-    assert min(materialized_counts.values()) >= 4
+    assert min(materialized_counts.values()) >= 2
     assert min(dev_counts.values()) >= 1
     assert min(frozen_counts.values()) >= 1
     assert not (

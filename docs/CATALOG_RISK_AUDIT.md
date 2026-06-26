@@ -4,7 +4,7 @@ This audit flags catalog entries that deserve review before future expansion. A 
 
 ## Summary
 
-- Records audited: 632
+- Records audited: 700
 - Flagged records: 226
 - High-risk records: 174
 

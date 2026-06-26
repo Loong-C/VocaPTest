@@ -70,7 +70,7 @@ def main() -> None:
             / "data"
             / "processed"
             / "models"
-            / "p1_selected_layer_lda.pkl"
+            / "p1_layer_fusion_lda.pkl"
         ),
     )
     parser.add_argument(
@@ -145,17 +145,21 @@ def main() -> None:
         labels=model.classes_,
         zero_division=0,
     )
-    per_class = {
-        str(slug): {
+    per_class = {}
+    for index, slug in enumerate(model.classes_):
+        mask = labels == slug
+        per_class[str(slug)] = {
             "precision": float(precision[index]),
             "recall": float(recall[index]),
             "f1": float(f1[index]),
             "support": int(support[index]),
-            "top3_accuracy": float(np.mean(ranks[labels == slug] <= 3)),
-            "accepted": int(accepted[labels == slug].sum()),
+            "top3_accuracy": (
+                float(np.mean(ranks[mask] <= 3))
+                if np.any(mask)
+                else None
+            ),
+            "accepted": int(accepted[mask].sum()),
         }
-        for index, slug in enumerate(model.classes_)
-    }
     songs = []
     for index, item in enumerate(metadata):
         order = np.argsort(probabilities[index])[::-1][:3]
