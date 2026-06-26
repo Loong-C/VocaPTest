@@ -233,11 +233,6 @@ function ProcessingCard({
           <span className="ml-1 text-pink-dark">{fileName}</span>
         )}
       </p>
-      <p className="mb-5 text-xs text-text-muted">
-        {isUploading
-          ? "正在上传音频……"
-          : "模型正在分析音频特征……"}
-      </p>
 
       <div className="mb-3 h-3 overflow-hidden rounded-full bg-pink/10">
         <motion.div
@@ -439,7 +434,7 @@ function TopMatchCard({
 
         <div className="relative z-10 text-center">
           <p className="mb-1 text-sm text-white/80">
-            {accepted ? "最匹配" : "最接近的灵感参考"}
+            {accepted ? "最匹配" : "最接近的相似参考"}
           </p>
           <p className="font-display text-2xl text-white drop-shadow-lg">
             {item.display_name}
