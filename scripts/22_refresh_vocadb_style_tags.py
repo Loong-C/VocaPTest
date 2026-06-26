@@ -15,7 +15,6 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -35,47 +34,110 @@ TAG_TRANSLATIONS = {
     "acoustic": "原声",
     "alternative rock": "另类摇滚",
     "ballad": "Ballad",
+    "bitpop": "Bitpop",
+    "breakcore": "Breakcore",
     "chiptune": "Chiptune",
     "city pop": "City Pop",
+    "classical": "古典",
     "dance": "Dance",
     "dance-pop": "舞曲流行",
+    "dance-punk": "Dance Punk",
     "dark": "暗色",
     "denpa song": "电波",
+    "digital rock": "Digital Rock",
+    "drum": "鼓",
+    "drum and bass": "Drum and Bass",
+    "dubstep": "Dubstep",
     "edm": "EDM",
+    "electronica": "Electronica",
+    "electric guitar": "电吉他",
     "electronic": "电子",
     "electropop": "电子流行",
     "experimental": "实验",
     "folk": "民谣",
+    "funk rock": "Funk Rock",
+    "gothic rock (japanese)": "Gothic Rock",
     "guitar": "吉他",
     "high tempo": "高BPM",
+    "house": "House",
+    "j-pop": "J-Pop",
+    "j-rock": "J-Rock",
     "jazz": "Jazz",
+    "kawaii future bass": "Kawaii Future Bass",
+    "math rock": "Math Rock",
     "melancholy": "Melancholy",
+    "melancholic": "忧郁",
     "metal": "Metal",
+    "minimal music": "Minimal",
     "minimal": "Minimal",
+    "orchestra": "管弦",
+    "orchestral": "管弦",
     "piano": "钢琴",
     "pop": "流行",
+    "pop punk": "Pop Punk",
     "pop rock": "Pop Rock",
+    "post-rock": "Post-Rock",
     "progressive": "Progressive",
+    "punk rock": "Punk Rock",
+    "rap": "Rap",
     "rock": "摇滚",
+    "sad": "悲伤",
     "satire": "讽刺",
+    "shoegaze": "Shoegaze",
     "story": "叙事",
+    "stylish": "时髦",
     "summer": "夏日",
+    "synthpop": "Synthpop",
     "techno": "Techno",
+    "technopop": "Technopop",
+    "trap music": "Trap",
+    "trance": "Trance",
+    "電波": "电波",
+    "和風": "和风",
+    "夜好性": "夜好性",
     "traditional japanese": "和风",
     "vocarock": "VOCAROCK",
 }
 
+STYLE_CATEGORY_PRIORITY = {
+    "Genres": 0,
+    "Instruments": 1,
+    "Composition": 2,
+    "Subjective": 3,
+    "Themes": 4,
+}
+
+NON_STYLE_CATEGORIES = {
+    "Animation",
+    "Copyrights",
+    "Distribution",
+    "Editor notes",
+    "Events",
+    "Games",
+    "Lyrics",
+    "Sources",
+    "Vocalists",
+}
+
 NON_STYLE_EXACT = {
     "album",
+    "album-exclusive song",
     "anime",
+    "cevio ai",
     "cevio",
+    "color",
     "cover",
+    "duet",
     "english",
     "fanmade",
     "featured",
     "female vocal",
+    "free",
+    "game edit",
+    "good tuning",
     "gumi",
     "hatsune miku",
+    "human singers",
     "instrumental",
     "japanese",
     "kagamine len",
@@ -95,6 +157,8 @@ NON_STYLE_EXACT = {
     "other vocals",
     "pv",
     "remix",
+    "self-cover",
+    "self-remix",
     "song contest",
     "synthesizer v",
     "translation request",
@@ -106,6 +170,7 @@ NON_STYLE_EXACT = {
     "vocaloid 5",
     "vocaloid original",
     "youtube",
+    "youtube premium",
 }
 
 NON_STYLE_SUBSTRINGS = (
@@ -121,6 +186,7 @@ NON_STYLE_SUBSTRINGS = (
     "magical mirai",
     "miku expo",
     "off vocal",
+    "premium",
     "project diva",
     "short version",
     "translation",
@@ -146,16 +212,34 @@ def _load_jsonl(path: Path) -> list[dict[str, Any]]:
     return items
 
 
-def _tag_name(raw_tag: Any) -> str | None:
+def _tag_info(raw_tag: Any) -> dict[str, Any] | None:
     if isinstance(raw_tag, str):
-        return raw_tag
+        return {
+            "name": raw_tag,
+            "category": None,
+            "url_slug": None,
+            "usage_count": None,
+        }
     if not isinstance(raw_tag, dict):
         return None
 
     tag = raw_tag.get("tag") or raw_tag.get("Tag") or raw_tag
     if isinstance(tag, dict):
-        return tag.get("name") or tag.get("Name")
-    return raw_tag.get("name") or raw_tag.get("Name")
+        name = tag.get("name") or tag.get("Name")
+        category = tag.get("categoryName") or tag.get("CategoryName")
+        url_slug = tag.get("urlSlug") or tag.get("UrlSlug")
+    else:
+        name = raw_tag.get("name") or raw_tag.get("Name")
+        category = raw_tag.get("categoryName") or raw_tag.get("CategoryName")
+        url_slug = raw_tag.get("urlSlug") or raw_tag.get("UrlSlug")
+    if not name:
+        return None
+    return {
+        "name": name,
+        "category": category,
+        "url_slug": url_slug,
+        "usage_count": raw_tag.get("count") or raw_tag.get("Count"),
+    }
 
 
 def _song_has_artist_role(song: dict[str, Any], artist_id: int) -> bool:
@@ -180,9 +264,13 @@ def _is_original_candidate(song: dict[str, Any], artist_id: int) -> bool:
     return _song_has_artist_role(song, artist_id)
 
 
-def _is_style_tag(tag: str) -> bool:
-    normalized = tag.strip().casefold()
+def _is_style_tag(tag: str, category: str | None = None) -> bool:
+    normalized = _normalize_tag(tag)
     if not normalized or normalized in NON_STYLE_EXACT:
+        return False
+    if category in NON_STYLE_CATEGORIES:
+        return False
+    if category and category not in STYLE_CATEGORY_PRIORITY:
         return False
     return not any(part in normalized for part in NON_STYLE_SUBSTRINGS)
 
@@ -191,29 +279,73 @@ def _normalize_tag(tag: str) -> str:
     return " ".join(tag.strip().casefold().split())
 
 
-def _count_style_tags(songs: Iterable[dict[str, Any]], artist_id: int) -> Counter[str]:
-    counts: Counter[str] = Counter()
+def _song_title(song: dict[str, Any]) -> str:
+    return song.get("defaultName") or song.get("name") or f"song {song.get('id')}"
+
+
+def _aggregate_style_tags(
+    songs: Iterable[dict[str, Any]],
+    artist_id: int,
+    evidence_per_tag: int,
+) -> tuple[dict[str, dict[str, Any]], int]:
+    aggregates: dict[str, dict[str, Any]] = {}
+    analyzed_songs = 0
     for song in songs:
         if not _is_original_candidate(song, artist_id):
             continue
+        analyzed_songs += 1
         seen_for_song = set()
         for raw_tag in song.get("tags") or song.get("tagUsages") or []:
-            name = _tag_name(raw_tag)
-            if not name:
+            info = _tag_info(raw_tag)
+            if not info:
                 continue
-            normalized = _normalize_tag(name)
-            if _is_style_tag(normalized):
-                seen_for_song.add(normalized)
-        counts.update(seen_for_song)
-    return counts
+            normalized = _normalize_tag(info["name"])
+            category = info.get("category")
+            if normalized in seen_for_song or not _is_style_tag(normalized, category):
+                continue
+            seen_for_song.add(normalized)
+            aggregate = aggregates.setdefault(
+                normalized,
+                {
+                    "label": normalized,
+                    "category": category,
+                    "song_count": 0,
+                    "evidence": [],
+                },
+            )
+            aggregate["song_count"] += 1
+            if len(aggregate["evidence"]) < evidence_per_tag:
+                song_id = song.get("id")
+                aggregate["evidence"].append({
+                    "song_id": song_id,
+                    "title": _song_title(song),
+                    "url": f"https://vocadb.net/S/{song_id}" if song_id else None,
+                    "tag_votes": info.get("usage_count"),
+                })
+    return aggregates, analyzed_songs
 
 
-def _style_tags_from_counts(counts: Counter[str], top_tags: int) -> list[dict[str, str]]:
+def _style_tags_from_aggregates(
+    aggregates: dict[str, dict[str, Any]],
+    top_tags: int,
+) -> list[dict[str, Any]]:
     tags = []
-    for tag, _count in counts.most_common(top_tags):
+    ranked = sorted(
+        aggregates.values(),
+        key=lambda item: (
+            STYLE_CATEGORY_PRIORITY.get(item.get("category"), 99),
+            -item["song_count"],
+            item["label"],
+        ),
+    )
+    for item in ranked[:top_tags]:
+        tag = item["label"]
         tags.append({
             "label": tag,
             "display_zh": TAG_TRANSLATIONS.get(tag, tag),
+            "category": item.get("category"),
+            "song_count": item["song_count"],
+            "evidence": item["evidence"],
         })
     return tags
 
@@ -223,7 +355,7 @@ def _fetch_songs(client: VocaDBClient, artist_id: int, max_songs: int) -> list[d
         artist_id,
         fields="PVs,Artists,Tags",
         max_results=max_songs,
-        sort="PublishDate",
+        sort="RatingScore",
     )
 
 
@@ -243,6 +375,7 @@ def build_style_config(args: argparse.Namespace) -> dict[str, Any]:
             "notes": [
                 "Runtime never calls VocaDB; tags are cached in this file for stable deployment.",
                 "Tags are display-only descriptors and are not used by the audio model.",
+                "Songs are fetched with the VocaDB artistId[] query parameter and ranked by RatingScore.",
                 "Re-run the refresh script from an environment that can access VocaDB or from browser-exported raw JSONL.",
             ],
         },
@@ -255,16 +388,21 @@ def build_style_config(args: argparse.Namespace) -> dict[str, Any]:
         songs: list[dict[str, Any]] = []
 
         raw_path = args.raw_dir / f"{slug}_songs.jsonl"
-        songs.extend(_load_jsonl(raw_path))
-
-        if not songs and client is not None:
+        if client is not None:
             try:
                 songs = _fetch_songs(client, artist_id, args.max_songs)
             except Exception as exc:  # pragma: no cover - network dependent
                 print(f"[warn] {slug}: VocaDB fetch failed: {exc}")
 
-        counts = _count_style_tags(songs, artist_id)
-        tags = _style_tags_from_counts(counts, args.top_tags)
+        if not songs:
+            songs.extend(_load_jsonl(raw_path))
+
+        aggregates, songs_analyzed = _aggregate_style_tags(
+            songs,
+            artist_id,
+            args.evidence_per_tag,
+        )
+        tags = _style_tags_from_aggregates(aggregates, args.top_tags)
 
         if not tags:
             tags = existing_by_slug.get(slug, {}).get("style_tags", [])
@@ -273,10 +411,16 @@ def build_style_config(args: argparse.Namespace) -> dict[str, Any]:
             else:
                 print(f"[warn] {slug}: no style tags found")
         else:
-            print(f"[ok] {slug}: {', '.join(tag['label'] for tag in tags)}")
+            print(
+                f"[ok] {slug}: "
+                f"{', '.join(f'{tag['label']}({tag['song_count']})' for tag in tags)}"
+            )
 
         output["producers"][slug] = {
+            "artist_id": artist_id,
             "source_url": producer.get("profile_url") or f"https://vocadb.net/Ar/{artist_id}",
+            "api_url": f"https://vocadb.net/api/songs?artistId[]={artist_id}&fields=PVs,Artists,Tags",
+            "songs_analyzed": songs_analyzed,
             "style_tags": tags,
         }
 
@@ -290,7 +434,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--max-songs", type=int, default=200)
     parser.add_argument("--top-tags", type=int, default=3)
-    parser.add_argument("--reviewed-date", default="2026-06-25")
+    parser.add_argument("--evidence-per-tag", type=int, default=3)
+    parser.add_argument("--reviewed-date", default="2026-06-26")
     parser.add_argument("--user-agent", default="vocaptest/0.1 style-tag-refresh")
     parser.add_argument(
         "--no-api",

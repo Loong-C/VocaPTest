@@ -3,289 +3,1778 @@ source:
   url: https://vocadb.net/
   api_url: https://vocadb.net/api
   refresh_script: scripts/22_refresh_vocadb_style_tags.py
-  last_reviewed: '2026-06-25'
+  last_reviewed: '2026-06-26'
   notes:
   - Runtime never calls VocaDB; tags are cached in this file for stable deployment.
   - Tags are display-only descriptors and are not used by the audio model.
+  - Songs are fetched with the VocaDB artistId[] query parameter and ranked by RatingScore.
   - Re-run the refresh script from an environment that can access VocaDB or from browser-exported
     raw JSONL.
 producers:
   wowaka:
+    artist_id: 53
     source_url: https://vocadb.net/Ar/53
+    api_url: https://vocadb.net/api/songs?artistId[]=53&fields=PVs,Artists,Tags
+    songs_analyzed: 35
     style_tags:
-    - label: vocarock
-      display_zh: VOCAROCK
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 17
+      evidence:
+      - song_id: 1501
+        title: ローリンガール
+        url: https://vocadb.net/S/1501
+        tag_votes: 9
+      - song_id: 20
+        title: ワールズエンド・ダンスホール
+        url: https://vocadb.net/S/20
+        tag_votes: 11
+      - song_id: 164107
+        title: アンノウン・マザーグース
+        url: https://vocadb.net/S/164107
+        tag_votes: 10
     - label: rock
       display_zh: 摇滚
-    - label: high tempo
-      display_zh: 高速感
-  kemu:
-    source_url: https://vocadb.net/Ar/735
-    style_tags:
-    - label: vocarock
-      display_zh: VOCAROCK
-    - label: rock
-      display_zh: 摇滚
-    - label: story
-      display_zh: 叙事
-  neru:
-    source_url: https://vocadb.net/Ar/137
-    style_tags:
-    - label: vocarock
-      display_zh: VOCAROCK
-    - label: guitar
-      display_zh: 吉他
-    - label: dark
-      display_zh: 暗色
-  deco27:
-    source_url: https://vocadb.net/Ar/45
-    style_tags:
-    - label: pop
-      display_zh: 流行
-    - label: rock
-      display_zh: 摇滚
-    - label: electropop
-      display_zh: 电子流行
-  pinocchiop:
-    source_url: https://vocadb.net/Ar/28
-    style_tags:
-    - label: electropop
-      display_zh: 电子流行
-    - label: denpa song
-      display_zh: 电波
-    - label: satire
-      display_zh: 讽刺
-  mitchie_m:
-    source_url: https://vocadb.net/Ar/624
-    style_tags:
-    - label: pop
-      display_zh: 流行
-    - label: dance-pop
-      display_zh: 舞曲流行
-    - label: electropop
-      display_zh: 电子流行
-  jin:
-    source_url: https://vocadb.net/Ar/552
-    style_tags:
-    - label: vocarock
-      display_zh: VOCAROCK
-    - label: piano
-      display_zh: 钢琴
-    - label: story
-      display_zh: 叙事
-  orangestar:
-    source_url: https://vocadb.net/Ar/11630
-    style_tags:
-    - label: rock
-      display_zh: 摇滚
-    - label: guitar
-      display_zh: 吉他
-    - label: summer
-      display_zh: 夏日
-  cosmo:
-    source_url: https://vocadb.net/Ar/85
-    style_tags:
-    - label: electronic
-      display_zh: 电子
-    - label: techno
-      display_zh: Techno
-    - label: high tempo
-      display_zh: 高BPM
-  hachi:
-    source_url: https://vocadb.net/Ar/49
-    style_tags:
-    - label: rock
-      display_zh: 摇滚
+      category: Genres
+      song_count: 16
+      evidence:
+      - song_id: 1501
+        title: ローリンガール
+        url: https://vocadb.net/S/1501
+        tag_votes: 9
+      - song_id: 20
+        title: ワールズエンド・ダンスホール
+        url: https://vocadb.net/S/20
+        tag_votes: 8
+      - song_id: 164107
+        title: アンノウン・マザーグース
+        url: https://vocadb.net/S/164107
+        tag_votes: 5
     - label: alternative rock
       display_zh: 另类摇滚
-    - label: folk
-      display_zh: 民谣
-  40mp:
-    source_url: https://vocadb.net/Ar/8
-    style_tags:
-    - label: pop
-      display_zh: 流行
-    - label: acoustic
-      display_zh: 原声
-    - label: ballad
-      display_zh: Ballad
-  nayutan:
-    source_url: https://vocadb.net/Ar/36280
-    style_tags:
-    - label: electropop
-      display_zh: 电子流行
-    - label: denpa song
-      display_zh: 电波
-    - label: dance
-      display_zh: Dance
-  kairikibear:
-    source_url: https://vocadb.net/Ar/885
-    style_tags:
-    - label: vocarock
-      display_zh: VOCAROCK
-    - label: rock
-      display_zh: 摇滚
-    - label: dark
-      display_zh: 暗色
-  kanaria:
-    source_url: https://vocadb.net/Ar/80976
-    style_tags:
-    - label: electropop
-      display_zh: 电子流行
-    - label: dance
-      display_zh: Dance
-    - label: dark
-      display_zh: 暗色
-  chinozo:
-    source_url: https://vocadb.net/Ar/67910
-    style_tags:
-    - label: pop
-      display_zh: 流行
-    - label: electropop
-      display_zh: 电子流行
-    - label: rock
-      display_zh: 摇滚
-  inabakumori:
-    source_url: https://vocadb.net/Ar/46824
-    style_tags:
-    - label: electropop
-      display_zh: 电子流行
-    - label: rock
-      display_zh: 摇滚
-    - label: melancholy
-      display_zh: Melancholy
-  mimi:
-    source_url: https://vocadb.net/Ar/49431
-    style_tags:
-    - label: piano
-      display_zh: 钢琴
-    - label: ballad
-      display_zh: Ballad
-    - label: pop
-      display_zh: 流行
-  maretu:
-    source_url: https://vocadb.net/Ar/1665
-    style_tags:
-    - label: dark
-      display_zh: 暗色
-    - label: metal
-      display_zh: Metal
-    - label: rock
-      display_zh: 摇滚
-  n_buna:
-    source_url: https://vocadb.net/Ar/3258
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 1501
+        title: ローリンガール
+        url: https://vocadb.net/S/1501
+        tag_votes: 6
+      - song_id: 20
+        title: ワールズエンド・ダンスホール
+        url: https://vocadb.net/S/20
+        tag_votes: 10
+      - song_id: 1500
+        title: アンハッピーリフレイン
+        url: https://vocadb.net/S/1500
+        tag_votes: 5
+  kemu:
+    artist_id: 735
+    source_url: https://vocadb.net/Ar/735
+    api_url: https://vocadb.net/api/songs?artistId[]=735&fields=PVs,Artists,Tags
+    songs_analyzed: 58
     style_tags:
     - label: rock
       display_zh: 摇滚
-    - label: guitar
-      display_zh: 吉他
-    - label: ballad
-      display_zh: Ballad
-  ayase:
-    source_url: https://vocadb.net/Ar/70347
-    style_tags:
-    - label: electropop
-      display_zh: 电子流行
-    - label: pop
-      display_zh: 流行
-    - label: edm
-      display_zh: EDM
-  iyowa:
-    source_url: https://vocadb.net/Ar/65229
-    style_tags:
-    - label: experimental
-      display_zh: 实验
-    - label: electropop
-      display_zh: 电子流行
-    - label: progressive
-      display_zh: Progressive
-  syudou:
-    source_url: https://vocadb.net/Ar/4834
-    style_tags:
-    - label: rock
-      display_zh: 摇滚
-    - label: dark
-      display_zh: 暗色
-    - label: pop
-      display_zh: 流行
-  nakiso:
-    source_url: https://vocadb.net/Ar/64141
-    style_tags:
-    - label: dark
-      display_zh: 暗色
-    - label: minimal
-      display_zh: Minimal
-    - label: pop
-      display_zh: 流行
-  surii:
-    source_url: https://vocadb.net/Ar/64856
-    style_tags:
-    - label: vocarock
-      display_zh: VOCAROCK
-    - label: rock
-      display_zh: 摇滚
+      category: Genres
+      song_count: 18
+      evidence:
+      - song_id: 11219
+        title: 六兆年と一夜物語
+        url: https://vocadb.net/S/11219
+        tag_votes: 5
+      - song_id: 8251
+        title: インビジブル
+        url: https://vocadb.net/S/8251
+        tag_votes: 7
+      - song_id: 8250
+        title: 人生リセットボタン
+        url: https://vocadb.net/S/8250
+        tag_votes: 4
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 14
+      evidence:
+      - song_id: 11219
+        title: 六兆年と一夜物語
+        url: https://vocadb.net/S/11219
+        tag_votes: 6
+      - song_id: 8251
+        title: インビジブル
+        url: https://vocadb.net/S/8251
+        tag_votes: 5
+      - song_id: 8250
+        title: 人生リセットボタン
+        url: https://vocadb.net/S/8250
+        tag_votes: 3
     - label: pop rock
       display_zh: Pop Rock
-  r_sound_design:
-    source_url: https://vocadb.net/Ar/51589
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 480295
+        title: 新人類
+        url: https://vocadb.net/S/480295
+        tag_votes: 7
+      - song_id: 13615
+        title: 地球最後の告白を
+        url: https://vocadb.net/S/13615
+        tag_votes: 2
+      - song_id: 400359
+        title: 88☆彡
+        url: https://vocadb.net/S/400359
+        tag_votes: 6
+  neru:
+    artist_id: 137
+    source_url: https://vocadb.net/Ar/137
+    api_url: https://vocadb.net/api/songs?artistId[]=137&fields=PVs,Artists,Tags
+    songs_analyzed: 62
     style_tags:
-    - label: edm
-      display_zh: EDM
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 33
+      evidence:
+      - song_id: 19094
+        title: ロストワンの号哭
+        url: https://vocadb.net/S/19094
+        tag_votes: 15
+      - song_id: 555
+        title: 東京テディベア
+        url: https://vocadb.net/S/555
+        tag_votes: 5
+      - song_id: 4982
+        title: アブストラクト・ナンセンス
+        url: https://vocadb.net/S/4982
+        tag_votes: 5
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 24
+      evidence:
+      - song_id: 19094
+        title: ロストワンの号哭
+        url: https://vocadb.net/S/19094
+        tag_votes: 6
+      - song_id: 555
+        title: 東京テディベア
+        url: https://vocadb.net/S/555
+        tag_votes: 7
+      - song_id: 127169
+        title: 脱法ロック
+        url: https://vocadb.net/S/127169
+        tag_votes: 6
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 19094
+        title: ロストワンの号哭
+        url: https://vocadb.net/S/19094
+        tag_votes: 7
+      - song_id: 555
+        title: 東京テディベア
+        url: https://vocadb.net/S/555
+        tag_votes: 6
+      - song_id: 4982
+        title: アブストラクト・ナンセンス
+        url: https://vocadb.net/S/4982
+        tag_votes: 6
+  deco27:
+    artist_id: 45
+    source_url: https://vocadb.net/Ar/45
+    api_url: https://vocadb.net/api/songs?artistId[]=45&fields=PVs,Artists,Tags
+    songs_analyzed: 162
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 56
+      evidence:
+      - song_id: 1381
+        title: モザイクロール
+        url: https://vocadb.net/S/1381
+        tag_votes: 8
+      - song_id: 112085
+        title: ゴーストルール
+        url: https://vocadb.net/S/112085
+        tag_votes: 9
+      - song_id: 668055
+        title: モニタリング
+        url: https://vocadb.net/S/668055
+        tag_votes: 3
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 52
+      evidence:
+      - song_id: 1381
+        title: モザイクロール
+        url: https://vocadb.net/S/1381
+        tag_votes: 6
+      - song_id: 222749
+        title: 乙女解剖
+        url: https://vocadb.net/S/222749
+        tag_votes: 8
+      - song_id: 1268
+        title: 弱虫モンブラン
+        url: https://vocadb.net/S/1268
+        tag_votes: 6
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 39
+      evidence:
+      - song_id: 1381
+        title: モザイクロール
+        url: https://vocadb.net/S/1381
+        tag_votes: 3
+      - song_id: 668055
+        title: モニタリング
+        url: https://vocadb.net/S/668055
+        tag_votes: 7
+      - song_id: 222749
+        title: 乙女解剖
+        url: https://vocadb.net/S/222749
+        tag_votes: 6
+  pinocchiop:
+    artist_id: 28
+    source_url: https://vocadb.net/Ar/28
+    api_url: https://vocadb.net/api/songs?artistId[]=28&fields=PVs,Artists,Tags
+    songs_analyzed: 154
+    style_tags:
     - label: electropop
       display_zh: 电子流行
-    - label: city pop
-      display_zh: City Pop
-  toa:
-    source_url: https://vocadb.net/Ar/7538
+      category: Genres
+      song_count: 38
+      evidence:
+      - song_id: 13351
+        title: ありふれたせかいせいふく
+        url: https://vocadb.net/S/13351
+        tag_votes: 1
+      - song_id: 160589
+        title: アップルドットコム
+        url: https://vocadb.net/S/160589
+        tag_votes: 5
+      - song_id: 132923
+        title: きみも悪い人でよかった
+        url: https://vocadb.net/S/132923
+        tag_votes: 2
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 27
+      evidence:
+      - song_id: 56903
+        title: すろぉもぉしょん
+        url: https://vocadb.net/S/56903
+        tag_votes: 6
+      - song_id: 136
+        title: 腐れ外道とチョコレゐト
+        url: https://vocadb.net/S/136
+        tag_votes: 1
+      - song_id: 467610
+        title: デビルじゃないもん
+        url: https://vocadb.net/S/467610
+        tag_votes: 4
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 26
+      evidence:
+      - song_id: 160589
+        title: アップルドットコム
+        url: https://vocadb.net/S/160589
+        tag_votes: 7
+      - song_id: 335988
+        title: ノンブレス・オブリージュ
+        url: https://vocadb.net/S/335988
+        tag_votes: 4
+      - song_id: 467610
+        title: デビルじゃないもん
+        url: https://vocadb.net/S/467610
+        tag_votes: 5
+  mitchie_m:
+    artist_id: 624
+    source_url: https://vocadb.net/Ar/624
+    api_url: https://vocadb.net/api/songs?artistId[]=624&fields=PVs,Artists,Tags
+    songs_analyzed: 51
     style_tags:
-    - label: electropop
-      display_zh: 电子流行
     - label: pop
       display_zh: 流行
-    - label: piano
-      display_zh: 钢琴
-  teniwoha:
-    source_url: https://vocadb.net/Ar/1346
+      category: Genres
+      song_count: 19
+      evidence:
+      - song_id: 35603
+        title: ビバハピ
+        url: https://vocadb.net/S/35603
+        tag_votes: 8
+      - song_id: 5364
+        title: FREELY TOMORROW
+        url: https://vocadb.net/S/5364
+        tag_votes: 1
+      - song_id: 251400
+        title: リングの熾天使
+        url: https://vocadb.net/S/251400
+        tag_votes: 4
+    - label: electropop
+      display_zh: 电子流行
+      category: Genres
+      song_count: 13
+      evidence:
+      - song_id: 5364
+        title: FREELY TOMORROW
+        url: https://vocadb.net/S/5364
+        tag_votes: 5
+      - song_id: 164109
+        title: 大江戸ジュリアナイト
+        url: https://vocadb.net/S/164109
+        tag_votes: 4
+      - song_id: 251400
+        title: リングの熾天使
+        url: https://vocadb.net/S/251400
+        tag_votes: 5
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 35603
+        title: ビバハピ
+        url: https://vocadb.net/S/35603
+        tag_votes: 10
+      - song_id: 5364
+        title: FREELY TOMORROW
+        url: https://vocadb.net/S/5364
+        tag_votes: 4
+      - song_id: 38420
+        title: アゲアゲアゲイン
+        url: https://vocadb.net/S/38420
+        tag_votes: 4
+  jin:
+    artist_id: 552
+    source_url: https://vocadb.net/Ar/552
+    api_url: https://vocadb.net/api/songs?artistId[]=552&fields=PVs,Artists,Tags
+    songs_analyzed: 127
     style_tags:
     - label: rock
       display_zh: 摇滚
-    - label: jazz
-      display_zh: Jazz
-    - label: traditional japanese
-      display_zh: 和风
-  niru_kajitsu:
-    source_url: https://vocadb.net/Ar/64434
+      category: Genres
+      song_count: 28
+      evidence:
+      - song_id: 4979
+        title: カゲロウデイズ
+        url: https://vocadb.net/S/4979
+        tag_votes: 5
+      - song_id: 28646
+        title: アウターサイエンス
+        url: https://vocadb.net/S/28646
+        tag_votes: 4
+      - song_id: 23087
+        title: 夜咄ディセイブ
+        url: https://vocadb.net/S/23087
+        tag_votes: 3
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 17
+      evidence:
+      - song_id: 4979
+        title: カゲロウデイズ
+        url: https://vocadb.net/S/4979
+        tag_votes: 5
+      - song_id: 23087
+        title: 夜咄ディセイブ
+        url: https://vocadb.net/S/23087
+        tag_votes: 4
+      - song_id: 25896
+        title: ロスタイムメモリー
+        url: https://vocadb.net/S/25896
+        tag_votes: 3
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 17
+      evidence:
+      - song_id: 4979
+        title: カゲロウデイズ
+        url: https://vocadb.net/S/4979
+        tag_votes: 2
+      - song_id: 28646
+        title: アウターサイエンス
+        url: https://vocadb.net/S/28646
+        tag_votes: 1
+      - song_id: 25896
+        title: ロスタイムメモリー
+        url: https://vocadb.net/S/25896
+        tag_votes: 3
+  orangestar:
+    artist_id: 11630
+    source_url: https://vocadb.net/Ar/11630
+    api_url: https://vocadb.net/api/songs?artistId[]=11630&fields=PVs,Artists,Tags
+    songs_analyzed: 82
     style_tags:
-    - label: electropop
-      display_zh: 电子流行
-    - label: dark
-      display_zh: 暗色
     - label: rock
       display_zh: 摇滚
-  harumaki_gohan:
-    source_url: https://vocadb.net/Ar/28208
-    style_tags:
-    - label: electropop
-      display_zh: 电子流行
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 65861
+        title: アスノヨゾラ哨戒班
+        url: https://vocadb.net/S/65861
+        tag_votes: 1
+      - song_id: 282574
+        title: Henceforth
+        url: https://vocadb.net/S/282574
+        tag_votes: 1
+      - song_id: 143132
+        title: スターナイトスノウ
+        url: https://vocadb.net/S/143132
+        tag_votes: 5
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 5
+      evidence:
+      - song_id: 65861
+        title: アスノヨゾラ哨戒班
+        url: https://vocadb.net/S/65861
+        tag_votes: 3
+      - song_id: 141339
+        title: DAYBREAK FRONTLINE
+        url: https://vocadb.net/S/141339
+        tag_votes: 1
+      - song_id: 143132
+        title: スターナイトスノウ
+        url: https://vocadb.net/S/143132
+        tag_votes: 1
     - label: ballad
       display_zh: Ballad
-    - label: story
-      display_zh: 叙事
-  r_906:
-    source_url: https://vocadb.net/Ar/66139
+      category: Genres
+      song_count: 4
+      evidence:
+      - song_id: 65861
+        title: アスノヨゾラ哨戒班
+        url: https://vocadb.net/S/65861
+        tag_votes: 3
+      - song_id: 141339
+        title: DAYBREAK FRONTLINE
+        url: https://vocadb.net/S/141339
+        tag_votes: 2
+      - song_id: 282574
+        title: Henceforth
+        url: https://vocadb.net/S/282574
+        tag_votes: 3
+  cosmo:
+    artist_id: 85
+    source_url: https://vocadb.net/Ar/85
+    api_url: https://vocadb.net/api/songs?artistId[]=85&fields=PVs,Artists,Tags
+    songs_analyzed: 149
     style_tags:
-    - label: techno
-      display_zh: Techno
-    - label: minimal
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 24
+      evidence:
+      - song_id: 104783
+        title: R.I.P.ゴシップの海
+        url: https://vocadb.net/S/104783
+        tag_votes: 4
+      - song_id: 96567
+        title: リアル初音ミクの消失
+        url: https://vocadb.net/S/96567
+        tag_votes: 4
+      - song_id: 409532
+        title: ヤミナベ!!!!
+        url: https://vocadb.net/S/409532
+        tag_votes: 5
+    - label: 電波
+      display_zh: 电波
+      category: Genres
+      song_count: 20
+      evidence:
+      - song_id: 104783
+        title: R.I.P.ゴシップの海
+        url: https://vocadb.net/S/104783
+        tag_votes: 2
+      - song_id: 533777
+        title: ダイジョブですか？
+        url: https://vocadb.net/S/533777
+        tag_votes: 1
+      - song_id: 665432
+        title: コぇちっちゃ＜てゴ×ンネ
+        url: https://vocadb.net/S/665432
+        tag_votes: 7
+    - label: digital rock
+      display_zh: Digital Rock
+      category: Genres
+      song_count: 18
+      evidence:
+      - song_id: 16061
+        title: Sadistic.Music∞Factory
+        url: https://vocadb.net/S/16061
+        tag_votes: 4
+      - song_id: 96567
+        title: リアル初音ミクの消失
+        url: https://vocadb.net/S/96567
+        tag_votes: 7
+      - song_id: 189757
+        title: 初音ミクの消失
+        url: https://vocadb.net/S/189757
+        tag_votes: 6
+  hachi:
+    artist_id: 49
+    source_url: https://vocadb.net/Ar/49
+    api_url: https://vocadb.net/api/songs?artistId[]=49&fields=PVs,Artists,Tags
+    songs_analyzed: 54
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 368
+        title: マトリョシカ
+        url: https://vocadb.net/S/368
+        tag_votes: 6
+      - song_id: 157860
+        title: 砂の惑星
+        url: https://vocadb.net/S/157860
+        tag_votes: 4
+      - song_id: 42676
+        title: ドーナツホール
+        url: https://vocadb.net/S/42676
+        tag_votes: 4
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 6
+      evidence:
+      - song_id: 368
+        title: マトリョシカ
+        url: https://vocadb.net/S/368
+        tag_votes: 9
+      - song_id: 157860
+        title: 砂の惑星
+        url: https://vocadb.net/S/157860
+        tag_votes: 7
+      - song_id: 42676
+        title: ドーナツホール
+        url: https://vocadb.net/S/42676
+        tag_votes: 4
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 5
+      evidence:
+      - song_id: 368
+        title: マトリョシカ
+        url: https://vocadb.net/S/368
+        tag_votes: 7
+      - song_id: 2982
+        title: 結ンデ開イテ羅刹ト骸
+        url: https://vocadb.net/S/2982
+        tag_votes: 5
+      - song_id: 42676
+        title: ドーナツホール
+        url: https://vocadb.net/S/42676
+        tag_votes: 4
+  40mp:
+    artist_id: 8
+    source_url: https://vocadb.net/Ar/8
+    api_url: https://vocadb.net/api/songs?artistId[]=8&fields=PVs,Artists,Tags
+    songs_analyzed: 154
+    style_tags:
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 56
+      evidence:
+      - song_id: 1363
+        title: からくりピエロ
+        url: https://vocadb.net/S/1363
+        tag_votes: 3
+      - song_id: 57519
+        title: 恋愛裁判
+        url: https://vocadb.net/S/57519
+        tag_votes: 5
+      - song_id: 1359
+        title: トリノコシティ
+        url: https://vocadb.net/S/1359
+        tag_votes: 4
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 42
+      evidence:
+      - song_id: 1363
+        title: からくりピエロ
+        url: https://vocadb.net/S/1363
+        tag_votes: 7
+      - song_id: 8601
+        title: ドレミファロンド
+        url: https://vocadb.net/S/8601
+        tag_votes: 1
+      - song_id: 81641
+        title: だんだん早くなる
+        url: https://vocadb.net/S/81641
+        tag_votes: 5
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 41
+      evidence:
+      - song_id: 1363
+        title: からくりピエロ
+        url: https://vocadb.net/S/1363
+        tag_votes: 6
+      - song_id: 57519
+        title: 恋愛裁判
+        url: https://vocadb.net/S/57519
+        tag_votes: 6
+      - song_id: 1359
+        title: トリノコシティ
+        url: https://vocadb.net/S/1359
+        tag_votes: 4
+  nayutan:
+    artist_id: 36280
+    source_url: https://vocadb.net/Ar/36280
+    api_url: https://vocadb.net/api/songs?artistId[]=36280&fields=PVs,Artists,Tags
+    songs_analyzed: 76
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 23
+      evidence:
+      - song_id: 106773
+        title: エイリアンエイリアン
+        url: https://vocadb.net/S/106773
+        tag_votes: 5
+      - song_id: 141649
+        title: ダンスロボットダンス
+        url: https://vocadb.net/S/141649
+        tag_votes: 5
+      - song_id: 129109
+        title: 太陽系デスコ
+        url: https://vocadb.net/S/129109
+        tag_votes: 5
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 9
+      evidence:
+      - song_id: 106773
+        title: エイリアンエイリアン
+        url: https://vocadb.net/S/106773
+        tag_votes: 6
+      - song_id: 141649
+        title: ダンスロボットダンス
+        url: https://vocadb.net/S/141649
+        tag_votes: 6
+      - song_id: 129109
+        title: 太陽系デスコ
+        url: https://vocadb.net/S/129109
+        tag_votes: 4
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 9
+      evidence:
+      - song_id: 106773
+        title: エイリアンエイリアン
+        url: https://vocadb.net/S/106773
+        tag_votes: 3
+      - song_id: 129109
+        title: 太陽系デスコ
+        url: https://vocadb.net/S/129109
+        tag_votes: 4
+      - song_id: 593626
+        title: エスパーエスパー
+        url: https://vocadb.net/S/593626
+        tag_votes: 5
+  kairikibear:
+    artist_id: 885
+    source_url: https://vocadb.net/Ar/885
+    api_url: https://vocadb.net/api/songs?artistId[]=885&fields=PVs,Artists,Tags
+    songs_analyzed: 104
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 37
+      evidence:
+      - song_id: 199209
+        title: ベノム
+        url: https://vocadb.net/S/199209
+        tag_votes: 6
+      - song_id: 293286
+        title: ダーリンダンス
+        url: https://vocadb.net/S/293286
+        tag_votes: 2
+      - song_id: 113086
+        title: ヒトサマアレルギー
+        url: https://vocadb.net/S/113086
+        tag_votes: 3
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 26
+      evidence:
+      - song_id: 199209
+        title: ベノム
+        url: https://vocadb.net/S/199209
+        tag_votes: 6
+      - song_id: 293286
+        title: ダーリンダンス
+        url: https://vocadb.net/S/293286
+        tag_votes: 3
+      - song_id: 37948
+        title: マネマネサイコトロピック
+        url: https://vocadb.net/S/37948
+        tag_votes: 6
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 199209
+        title: ベノム
+        url: https://vocadb.net/S/199209
+        tag_votes: 4
+      - song_id: 113086
+        title: ヒトサマアレルギー
+        url: https://vocadb.net/S/113086
+        tag_votes: 3
+      - song_id: 37948
+        title: マネマネサイコトロピック
+        url: https://vocadb.net/S/37948
+        tag_votes: 5
+  kanaria:
+    artist_id: 80976
+    source_url: https://vocadb.net/Ar/80976
+    api_url: https://vocadb.net/api/songs?artistId[]=80976&fields=PVs,Artists,Tags
+    songs_analyzed: 21
+    style_tags:
+    - label: digital rock
+      display_zh: Digital Rock
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 290384
+        title: KING
+        url: https://vocadb.net/S/290384
+        tag_votes: 9
+      - song_id: 429733
+        title: QUEEN
+        url: https://vocadb.net/S/429733
+        tag_votes: 4
+      - song_id: 377317
+        title: アイデンティティ
+        url: https://vocadb.net/S/377317
+        tag_votes: 2
+    - label: gothic rock (japanese)
+      display_zh: Gothic Rock
+      category: Genres
+      song_count: 9
+      evidence:
+      - song_id: 290384
+        title: KING
+        url: https://vocadb.net/S/290384
+        tag_votes: 2
+      - song_id: 429733
+        title: QUEEN
+        url: https://vocadb.net/S/429733
+        tag_votes: 2
+      - song_id: 377317
+        title: アイデンティティ
+        url: https://vocadb.net/S/377317
+        tag_votes: 2
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 290384
+        title: KING
+        url: https://vocadb.net/S/290384
+        tag_votes: 4
+      - song_id: 429733
+        title: QUEEN
+        url: https://vocadb.net/S/429733
+        tag_votes: 4
+      - song_id: 377317
+        title: アイデンティティ
+        url: https://vocadb.net/S/377317
+        tag_votes: 1
+  chinozo:
+    artist_id: 67910
+    source_url: https://vocadb.net/Ar/67910
+    api_url: https://vocadb.net/api/songs?artistId[]=67910&fields=PVs,Artists,Tags
+    songs_analyzed: 77
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 13
+      evidence:
+      - song_id: 278267
+        title: グッバイ宣言
+        url: https://vocadb.net/S/278267
+        tag_votes: 6
+      - song_id: 385831
+        title: Flyer!
+        url: https://vocadb.net/S/385831
+        tag_votes: 2
+      - song_id: 409013
+        title: ムシ
+        url: https://vocadb.net/S/409013
+        tag_votes: 1
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 751130
+        title: アンチユー
+        url: https://vocadb.net/S/751130
+        tag_votes: 1
+      - song_id: 295177
+        title: シェーマ
+        url: https://vocadb.net/S/295177
+        tag_votes: 1
+      - song_id: 511160
+        title: ミィハー
+        url: https://vocadb.net/S/511160
+        tag_votes: 1
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 6
+      evidence:
+      - song_id: 278267
+        title: グッバイ宣言
+        url: https://vocadb.net/S/278267
+        tag_votes: 3
+      - song_id: 323126
+        title: ジェラシス
+        url: https://vocadb.net/S/323126
+        tag_votes: 2
+      - song_id: 345122
+        title: ショットガン・ナウル
+        url: https://vocadb.net/S/345122
+        tag_votes: 1
+  inabakumori:
+    artist_id: 46824
+    source_url: https://vocadb.net/Ar/46824
+    api_url: https://vocadb.net/api/songs?artistId[]=46824&fields=PVs,Artists,Tags
+    songs_analyzed: 59
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 27
+      evidence:
+      - song_id: 288238
+        title: ラグトレイン
+        url: https://vocadb.net/S/288238
+        tag_votes: 4
+      - song_id: 185364
+        title: ロストアンブレラ
+        url: https://vocadb.net/S/185364
+        tag_votes: 4
+      - song_id: 387825
+        title: きみに回帰線
+        url: https://vocadb.net/S/387825
+        tag_votes: 2
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 23
+      evidence:
+      - song_id: 288238
+        title: ラグトレイン
+        url: https://vocadb.net/S/288238
+        tag_votes: 10
+      - song_id: 185364
+        title: ロストアンブレラ
+        url: https://vocadb.net/S/185364
+        tag_votes: 6
+      - song_id: 518922
+        title: リレイアウター
+        url: https://vocadb.net/S/518922
+        tag_votes: 5
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 288238
+        title: ラグトレイン
+        url: https://vocadb.net/S/288238
+        tag_votes: 6
+      - song_id: 614867
+        title: 私は雨
+        url: https://vocadb.net/S/614867
+        tag_votes: 2
+      - song_id: 124517
+        title: ループスピナ
+        url: https://vocadb.net/S/124517
+        tag_votes: 4
+  mimi:
+    artist_id: 49431
+    source_url: https://vocadb.net/Ar/49431
+    api_url: https://vocadb.net/api/songs?artistId[]=49431&fields=PVs,Artists,Tags
+    songs_analyzed: 103
+    style_tags:
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 37
+      evidence:
+      - song_id: 180185
+        title: マシュマリー
+        url: https://vocadb.net/S/180185
+        tag_votes: 3
+      - song_id: 379067
+        title: くうになる
+        url: https://vocadb.net/S/379067
+        tag_votes: 7
+      - song_id: 549505
+        title: はぐ
+        url: https://vocadb.net/S/549505
+        tag_votes: 2
+    - label: ballad
+      display_zh: Ballad
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 180185
+        title: マシュマリー
+        url: https://vocadb.net/S/180185
+        tag_votes: 5
+      - song_id: 383427
+        title: だきしめるまで。
+        url: https://vocadb.net/S/383427
+        tag_votes: 3
+      - song_id: 274835
+        title: カラバコにアイ
+        url: https://vocadb.net/S/274835
+        tag_votes: 4
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 762088
+        title: アンコールダンス
+        url: https://vocadb.net/S/762088
+        tag_votes: 1
+      - song_id: 346638
+        title: いっせーのーで
+        url: https://vocadb.net/S/346638
+        tag_votes: 3
+      - song_id: 292206
+        title: ルルージュ
+        url: https://vocadb.net/S/292206
+        tag_votes: 2
+  maretu:
+    artist_id: 1665
+    source_url: https://vocadb.net/Ar/1665
+    api_url: https://vocadb.net/api/songs?artistId[]=1665&fields=PVs,Artists,Tags
+    songs_analyzed: 80
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 29
+      evidence:
+      - song_id: 38835
+        title: 脳内革命ガール
+        url: https://vocadb.net/S/38835
+        tag_votes: 10
+      - song_id: 22421
+        title: コインロッカーベイビー
+        url: https://vocadb.net/S/22421
+        tag_votes: 4
+      - song_id: 160508
+        title: ホワイトハッピー
+        url: https://vocadb.net/S/160508
+        tag_votes: 6
+    - label: chiptune
+      display_zh: Chiptune
+      category: Genres
+      song_count: 27
+      evidence:
+      - song_id: 38835
+        title: 脳内革命ガール
+        url: https://vocadb.net/S/38835
+        tag_votes: 2
+      - song_id: 160508
+        title: ホワイトハッピー
+        url: https://vocadb.net/S/160508
+        tag_votes: 3
+      - song_id: 168886
+        title: ダーリン
+        url: https://vocadb.net/S/168886
+        tag_votes: 4
+    - label: digital rock
+      display_zh: Digital Rock
+      category: Genres
+      song_count: 27
+      evidence:
+      - song_id: 22421
+        title: コインロッカーベイビー
+        url: https://vocadb.net/S/22421
+        tag_votes: 6
+      - song_id: 160508
+        title: ホワイトハッピー
+        url: https://vocadb.net/S/160508
+        tag_votes: 7
+      - song_id: 168886
+        title: ダーリン
+        url: https://vocadb.net/S/168886
+        tag_votes: 4
+  n_buna:
+    artist_id: 3258
+    source_url: https://vocadb.net/Ar/3258
+    api_url: https://vocadb.net/api/songs?artistId[]=3258&fields=PVs,Artists,Tags
+    songs_analyzed: 96
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 30
+      evidence:
+      - song_id: 49871
+        title: ウミユリ海底譚
+        url: https://vocadb.net/S/49871
+        tag_votes: 4
+      - song_id: 87458
+        title: メリュー
+        url: https://vocadb.net/S/87458
+        tag_votes: 5
+      - song_id: 23473
+        title: 透明エレジー
+        url: https://vocadb.net/S/23473
+        tag_votes: 3
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 87458
+        title: メリュー
+        url: https://vocadb.net/S/87458
+        tag_votes: 4
+      - song_id: 67776
+        title: 夜明けと蛍
+        url: https://vocadb.net/S/67776
+        tag_votes: 1
+      - song_id: 186287
+        title: ヨヒラ
+        url: https://vocadb.net/S/186287
+        tag_votes: 1
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 49871
+        title: ウミユリ海底譚
+        url: https://vocadb.net/S/49871
+        tag_votes: 6
+      - song_id: 87458
+        title: メリュー
+        url: https://vocadb.net/S/87458
+        tag_votes: 4
+      - song_id: 143132
+        title: スターナイトスノウ
+        url: https://vocadb.net/S/143132
+        tag_votes: 1
+  ayase:
+    artist_id: 70347
+    source_url: https://vocadb.net/Ar/70347
+    api_url: https://vocadb.net/api/songs?artistId[]=70347&fields=PVs,Artists,Tags
+    songs_analyzed: 35
+    style_tags:
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 9
+      evidence:
+      - song_id: 333025
+        title: シネマ
+        url: https://vocadb.net/S/333025
+        tag_votes: 4
+      - song_id: 285532
+        title: 夜に駆ける
+        url: https://vocadb.net/S/285532
+        tag_votes: 5
+      - song_id: 492341
+        title: アイドル
+        url: https://vocadb.net/S/492341
+        tag_votes: 2
+    - label: dance-pop
+      display_zh: 舞曲流行
+      category: Genres
+      song_count: 5
+      evidence:
+      - song_id: 333025
+        title: シネマ
+        url: https://vocadb.net/S/333025
+        tag_votes: 4
+      - song_id: 285532
+        title: 夜に駆ける
+        url: https://vocadb.net/S/285532
+        tag_votes: 5
+      - song_id: 492341
+        title: アイドル
+        url: https://vocadb.net/S/492341
+        tag_votes: 2
+    - label: house
+      display_zh: House
+      category: Genres
+      song_count: 4
+      evidence:
+      - song_id: 262740
+        title: 幽霊東京
+        url: https://vocadb.net/S/262740
+        tag_votes: 4
+      - song_id: 333025
+        title: シネマ
+        url: https://vocadb.net/S/333025
+        tag_votes: 3
+      - song_id: 236272
+        title: ラストリゾート
+        url: https://vocadb.net/S/236272
+        tag_votes: 2
+  iyowa:
+    artist_id: 65229
+    source_url: https://vocadb.net/Ar/65229
+    api_url: https://vocadb.net/api/songs?artistId[]=65229&fields=PVs,Artists,Tags
+    songs_analyzed: 93
+    style_tags:
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 19
+      evidence:
+      - song_id: 349763
+        title: きゅうくらりん
+        url: https://vocadb.net/S/349763
+        tag_votes: 1
+      - song_id: 483406
+        title: 一千光年
+        url: https://vocadb.net/S/483406
+        tag_votes: 2
+      - song_id: 363570
+        title: アプリコット
+        url: https://vocadb.net/S/363570
+        tag_votes: 1
+    - label: experimental
+      display_zh: 实验
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 443534
+        title: 熱異常
+        url: https://vocadb.net/S/443534
+        tag_votes: 5
+      - song_id: 349763
+        title: きゅうくらりん
+        url: https://vocadb.net/S/349763
+        tag_votes: 2
+      - song_id: 495666
+        title: ももいろの鍵
+        url: https://vocadb.net/S/495666
+        tag_votes: 3
+    - label: breakcore
+      display_zh: Breakcore
+      category: Genres
+      song_count: 9
+      evidence:
+      - song_id: 614616
+        title: クリエイトがある
+        url: https://vocadb.net/S/614616
+        tag_votes: 2
+      - song_id: 259743
+        title: 赤色が怖い
+        url: https://vocadb.net/S/259743
+        tag_votes: 1
+      - song_id: 363571
+        title: うらぽしゃ
+        url: https://vocadb.net/S/363571
+        tag_votes: 3
+  syudou:
+    artist_id: 4834
+    source_url: https://vocadb.net/Ar/4834
+    api_url: https://vocadb.net/api/songs?artistId[]=4834&fields=PVs,Artists,Tags
+    songs_analyzed: 109
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 26
+      evidence:
+      - song_id: 435103
+        title: 気取屋商売
+        url: https://vocadb.net/S/435103
+        tag_votes: 11
+      - song_id: 366767
+        title: うっせぇわ
+        url: https://vocadb.net/S/366767
+        tag_votes: 4
+      - song_id: 231791
+        title: コールボーイ
+        url: https://vocadb.net/S/231791
+        tag_votes: 5
+    - label: trap music
+      display_zh: Trap
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 221277
+        title: ビターチョコデコレーション
+        url: https://vocadb.net/S/221277
+        tag_votes: 5
+      - song_id: 316298
+        title: キュートなカノジョ
+        url: https://vocadb.net/S/316298
+        tag_votes: 4
+      - song_id: 299484
+        title: ジャックポットサッドガール
+        url: https://vocadb.net/S/299484
+        tag_votes: 4
+    - label: alternative rock
+      display_zh: 另类摇滚
+      category: Genres
+      song_count: 7
+      evidence:
+      - song_id: 231791
+        title: コールボーイ
+        url: https://vocadb.net/S/231791
+        tag_votes: 4
+      - song_id: 347355
+        title: カレシのジュード
+        url: https://vocadb.net/S/347355
+        tag_votes: 3
+      - song_id: 182313
+        title: 邪魔
+        url: https://vocadb.net/S/182313
+        tag_votes: 2
+  nakiso:
+    artist_id: 64141
+    source_url: https://vocadb.net/Ar/64141
+    api_url: https://vocadb.net/api/songs?artistId[]=64141&fields=PVs,Artists,Tags
+    songs_analyzed: 39
+    style_tags:
+    - label: minimal music
       display_zh: Minimal
-    - label: electronic
-      display_zh: 电子
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 389724
+        title: ド屑
+        url: https://vocadb.net/S/389724
+        tag_votes: 1
+      - song_id: 583464
+        title: みなごろし
+        url: https://vocadb.net/S/583464
+        tag_votes: 2
+      - song_id: 911812
+        title: 罰して光
+        url: https://vocadb.net/S/911812
+        tag_votes: 1
+    - label: trap music
+      display_zh: Trap
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 819926
+        title: いますぐ輪廻
+        url: https://vocadb.net/S/819926
+        tag_votes: 6
+      - song_id: 685575
+        title: 化けの花
+        url: https://vocadb.net/S/685575
+        tag_votes: 4
+      - song_id: 389724
+        title: ド屑
+        url: https://vocadb.net/S/389724
+        tag_votes: 5
+    - label: experimental
+      display_zh: 实验
+      category: Genres
+      song_count: 3
+      evidence:
+      - song_id: 685575
+        title: 化けの花
+        url: https://vocadb.net/S/685575
+        tag_votes: 3
+      - song_id: 389724
+        title: ド屑
+        url: https://vocadb.net/S/389724
+        tag_votes: 5
+      - song_id: 849931
+        title: 超常体験
+        url: https://vocadb.net/S/849931
+        tag_votes: 2
+  surii:
+    artist_id: 64856
+    source_url: https://vocadb.net/Ar/64856
+    api_url: https://vocadb.net/api/songs?artistId[]=64856&fields=PVs,Artists,Tags
+    songs_analyzed: 42
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 6
+      evidence:
+      - song_id: 229552
+        title: エゴロック(long ver.)
+        url: https://vocadb.net/S/229552
+        tag_votes: 1
+      - song_id: 449282
+        title: ラヴィ
+        url: https://vocadb.net/S/449282
+        tag_votes: 2
+      - song_id: 185731
+        title: 空中分解
+        url: https://vocadb.net/S/185731
+        tag_votes: 3
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 5
+      evidence:
+      - song_id: 265022
+        title: ジャンキーナイトタウンオーケストラ
+        url: https://vocadb.net/S/265022
+        tag_votes: 2
+      - song_id: 233017
+        title: テレキャスタービーボーイ
+        url: https://vocadb.net/S/233017
+        tag_votes: 1
+      - song_id: 853916
+        title: ドキドキ！
+        url: https://vocadb.net/S/853916
+        tag_votes: 2
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 4
+      evidence:
+      - song_id: 449282
+        title: ラヴィ
+        url: https://vocadb.net/S/449282
+        tag_votes: 5
+      - song_id: 662691
+        title: おべか
+        url: https://vocadb.net/S/662691
+        tag_votes: 1
+      - song_id: 368048
+        title: カメレオン
+        url: https://vocadb.net/S/368048
+        tag_votes: 2
+  r_sound_design:
+    artist_id: 51589
+    source_url: https://vocadb.net/Ar/51589
+    api_url: https://vocadb.net/api/songs?artistId[]=51589&fields=PVs,Artists,Tags
+    songs_analyzed: 53
+    style_tags:
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 186227
+        title: flos
+        url: https://vocadb.net/S/186227
+        tag_votes: 5
+      - song_id: 514213
+        title: ブルベ、恋をする
+        url: https://vocadb.net/S/514213
+        tag_votes: 1
+      - song_id: 228789
+        title: レテノール
+        url: https://vocadb.net/S/228789
+        tag_votes: 1
+    - label: technopop
+      display_zh: Technopop
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 186227
+        title: flos
+        url: https://vocadb.net/S/186227
+        tag_votes: 3
+      - song_id: 306252
+        title: Forward
+        url: https://vocadb.net/S/306252
+        tag_votes: 3
+      - song_id: 322146
+        title: レトロポリス
+        url: https://vocadb.net/S/322146
+        tag_votes: 1
+    - label: electronica
+      display_zh: Electronica
+      category: Genres
+      song_count: 6
+      evidence:
+      - song_id: 186227
+        title: flos
+        url: https://vocadb.net/S/186227
+        tag_votes: 3
+      - song_id: 228789
+        title: レテノール
+        url: https://vocadb.net/S/228789
+        tag_votes: 1
+      - song_id: 290296
+        title: 水星都市計画
+        url: https://vocadb.net/S/290296
+        tag_votes: 1
+  toa:
+    artist_id: 7538
+    source_url: https://vocadb.net/Ar/7538
+    api_url: https://vocadb.net/api/songs?artistId[]=7538&fields=PVs,Artists,Tags
+    songs_analyzed: 61
+    style_tags:
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 25
+      evidence:
+      - song_id: 331459
+        title: アイディスマイル
+        url: https://vocadb.net/S/331459
+        tag_votes: 4
+      - song_id: 127434
+        title: ピチカートドロップス
+        url: https://vocadb.net/S/127434
+        tag_votes: 4
+      - song_id: 382692
+        title: ステンドノクターン
+        url: https://vocadb.net/S/382692
+        tag_votes: 2
+    - label: technopop
+      display_zh: Technopop
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 58632
+        title: ツギハギスタッカート
+        url: https://vocadb.net/S/58632
+        tag_votes: 2
+      - song_id: 331459
+        title: アイディスマイル
+        url: https://vocadb.net/S/331459
+        tag_votes: 4
+      - song_id: 66167
+        title: ミュージックミュージック
+        url: https://vocadb.net/S/66167
+        tag_votes: 4
+    - label: ballad
+      display_zh: Ballad
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 542491
+        title: トワイライトライト
+        url: https://vocadb.net/S/542491
+        tag_votes: 3
+      - song_id: 110348
+        title: さよならスーヴェニア
+        url: https://vocadb.net/S/110348
+        tag_votes: 2
+      - song_id: 405402
+        title: いらない、いらない、いらない。
+        url: https://vocadb.net/S/405402
+        tag_votes: 3
+  teniwoha:
+    artist_id: 1346
+    source_url: https://vocadb.net/Ar/1346
+    api_url: https://vocadb.net/api/songs?artistId[]=1346&fields=PVs,Artists,Tags
+    songs_analyzed: 161
+    style_tags:
+    - label: 和風
+      display_zh: 和风
+      category: Genres
+      song_count: 24
+      evidence:
+      - song_id: 13908
+        title: 古書屋敷殺人事件
+        url: https://vocadb.net/S/13908
+        tag_votes: 3
+      - song_id: 520351
+        title: 夜祭
+        url: https://vocadb.net/S/520351
+        tag_votes: 3
+      - song_id: 235566
+        title: BO-ZU
+        url: https://vocadb.net/S/235566
+        tag_votes: 1
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 23
+      evidence:
+      - song_id: 271917
+        title: ヴィラン
+        url: https://vocadb.net/S/271917
+        tag_votes: 3
+      - song_id: 13908
+        title: 古書屋敷殺人事件
+        url: https://vocadb.net/S/13908
+        tag_votes: 3
+      - song_id: 235566
+        title: BO-ZU
+        url: https://vocadb.net/S/235566
+        tag_votes: 2
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 281902
+        title: 一角獣
+        url: https://vocadb.net/S/281902
+        tag_votes: 1
+      - song_id: 356767
+        title: デビル
+        url: https://vocadb.net/S/356767
+        tag_votes: 2
+      - song_id: 322979
+        title: キュリオ・シティ
+        url: https://vocadb.net/S/322979
+        tag_votes: 1
+  niru_kajitsu:
+    artist_id: 64434
+    source_url: https://vocadb.net/Ar/64434
+    api_url: https://vocadb.net/api/songs?artistId[]=64434&fields=PVs,Artists,Tags
+    songs_analyzed: 89
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 16
+      evidence:
+      - song_id: 251205
+        title: トラフィック・ジャム
+        url: https://vocadb.net/S/251205
+        tag_votes: 4
+      - song_id: 207152
+        title: 紗痲
+        url: https://vocadb.net/S/207152
+        tag_votes: 3
+      - song_id: 382077
+        title: トリコロージュ
+        url: https://vocadb.net/S/382077
+        tag_votes: 1
+    - label: 夜好性
+      display_zh: 夜好性
+      category: Genres
+      song_count: 12
+      evidence:
+      - song_id: 251205
+        title: トラフィック・ジャム
+        url: https://vocadb.net/S/251205
+        tag_votes: 2
+      - song_id: 207152
+        title: 紗痲
+        url: https://vocadb.net/S/207152
+        tag_votes: 3
+      - song_id: 349350
+        title: フランケンX
+        url: https://vocadb.net/S/349350
+        tag_votes: 3
+    - label: funk rock
+      display_zh: Funk Rock
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 251205
+        title: トラフィック・ジャム
+        url: https://vocadb.net/S/251205
+        tag_votes: 2
+      - song_id: 207152
+        title: 紗痲
+        url: https://vocadb.net/S/207152
+        tag_votes: 5
+      - song_id: 233555
+        title: キルマー
+        url: https://vocadb.net/S/233555
+        tag_votes: 2
+  harumaki_gohan:
+    artist_id: 28208
+    source_url: https://vocadb.net/Ar/28208
+    api_url: https://vocadb.net/api/songs?artistId[]=28208&fields=PVs,Artists,Tags
+    songs_analyzed: 95
+    style_tags:
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 18
+      evidence:
+      - song_id: 178226
+        title: メルティランドナイトメア
+        url: https://vocadb.net/S/178226
+        tag_votes: 3
+      - song_id: 642538
+        title: エンパープル
+        url: https://vocadb.net/S/642538
+        tag_votes: 2
+      - song_id: 395826
+        title: 幻影
+        url: https://vocadb.net/S/395826
+        tag_votes: 6
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 16
+      evidence:
+      - song_id: 178226
+        title: メルティランドナイトメア
+        url: https://vocadb.net/S/178226
+        tag_votes: 1
+      - song_id: 156001
+        title: ドリームレス・ドリームス
+        url: https://vocadb.net/S/156001
+        tag_votes: 6
+      - song_id: 111806
+        title: 銀河録
+        url: https://vocadb.net/S/111806
+        tag_votes: 4
+    - label: math rock
+      display_zh: Math Rock
+      category: Genres
+      song_count: 14
+      evidence:
+      - song_id: 156001
+        title: ドリームレス・ドリームス
+        url: https://vocadb.net/S/156001
+        tag_votes: 3
+      - song_id: 243895
+        title: 再会
+        url: https://vocadb.net/S/243895
+        tag_votes: 4
+      - song_id: 111806
+        title: 銀河録
+        url: https://vocadb.net/S/111806
+        tag_votes: 3
+  r_906:
+    artist_id: 66139
+    source_url: https://vocadb.net/Ar/66139
+    api_url: https://vocadb.net/api/songs?artistId[]=66139&fields=PVs,Artists,Tags
+    songs_analyzed: 71
+    style_tags:
+    - label: drum and bass
+      display_zh: Drum and Bass
+      category: Genres
+      song_count: 22
+      evidence:
+      - song_id: 401491
+        title: まにまに
+        url: https://vocadb.net/S/401491
+        tag_votes: 12
+      - song_id: 460547
+        title: プシ
+        url: https://vocadb.net/S/460547
+        tag_votes: 10
+      - song_id: 696211
+        title: 匙ノ咒
+        url: https://vocadb.net/S/696211
+        tag_votes: 8
+    - label: technopop
+      display_zh: Technopop
+      category: Genres
+      song_count: 14
+      evidence:
+      - song_id: 276128
+        title: 三日月ステップ
+        url: https://vocadb.net/S/276128
+        tag_votes: 7
+      - song_id: 490863
+        title: 三日月ステップ 2023
+        url: https://vocadb.net/S/490863
+        tag_votes: 1
+      - song_id: 285801
+        title: ムーンライトダンサー
+        url: https://vocadb.net/S/285801
+        tag_votes: 3
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 249746
+        title: パノプティコン
+        url: https://vocadb.net/S/249746
+        tag_votes: 8
+      - song_id: 276128
+        title: 三日月ステップ
+        url: https://vocadb.net/S/276128
+        tag_votes: 5
+      - song_id: 592237
+        title: JUMPIN’ OVER !
+        url: https://vocadb.net/S/592237
+        tag_votes: 3
   sasakure_uk:
+    artist_id: 51
     source_url: https://vocadb.net/Ar/51
+    api_url: https://vocadb.net/api/songs?artistId[]=51&fields=PVs,Artists,Tags
+    songs_analyzed: 140
     style_tags:
     - label: chiptune
       display_zh: Chiptune
-    - label: electronic
-      display_zh: 电子
-    - label: progressive
-      display_zh: Progressive
+      category: Genres
+      song_count: 31
+      evidence:
+      - song_id: 2924
+        title: ＊ハロー、プラネット。
+        url: https://vocadb.net/S/2924
+        tag_votes: 15
+      - song_id: 391129
+        title: フューチャー・イヴ
+        url: https://vocadb.net/S/391129
+        tag_votes: 4
+      - song_id: 340035
+        title: トンデモワンダーズ
+        url: https://vocadb.net/S/340035
+        tag_votes: 6
+    - label: bitpop
+      display_zh: Bitpop
+      category: Genres
+      song_count: 14
+      evidence:
+      - song_id: 2924
+        title: ＊ハロー、プラネット。
+        url: https://vocadb.net/S/2924
+        tag_votes: 8
+      - song_id: 391129
+        title: フューチャー・イヴ
+        url: https://vocadb.net/S/391129
+        tag_votes: 3
+      - song_id: 340035
+        title: トンデモワンダーズ
+        url: https://vocadb.net/S/340035
+        tag_votes: 5
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 13
+      evidence:
+      - song_id: 14480
+        title: '39'
+        url: https://vocadb.net/S/14480
+        tag_votes: 3
+      - song_id: 6186
+        title: トゥイー・ボックスの人形劇場
+        url: https://vocadb.net/S/6186
+        tag_votes: 2
+      - song_id: 833027
+        title: トゥイー・ボックスの人形劇場
+        url: https://vocadb.net/S/833027
+        tag_votes: 4

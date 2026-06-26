@@ -58,7 +58,7 @@ class VocaDBClient:
         all_items: list[dict] = []
         while True:
             params: dict = {
-                "artistId": artist_id,
+                "artistId[]": artist_id,
                 "fields": fields,
                 "maxResults": min(max_results, 50),
                 "start": start,

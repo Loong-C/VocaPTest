@@ -24,6 +24,23 @@ export interface AnalyzeResponse {
   error: string | null;
 }
 
+export type JobStage =
+  | "received"
+  | "segmenting"
+  | "embedding"
+  | "classifying"
+  | "done"
+  | "failed";
+
+export interface JobStatusResponse {
+  job_id: string;
+  status: string;
+  stage: JobStage;
+  result: AnalyzeResult | null;
+  error: string | null;
+  progress: number;
+}
+
 export interface ProducerInfo {
   slug: string;
   display_name: string;
@@ -74,6 +91,6 @@ export interface ProducerDisplay extends ProducerInfo {
 export type UploadState =
   | { phase: "idle" }
   | { phase: "uploading"; progress: number }
-  | { phase: "analyzing" }
+  | { phase: "analyzing"; jobId: string; stage: JobStage; progress: number }
   | { phase: "done"; result: AnalyzeResult }
   | { phase: "error"; message: string };

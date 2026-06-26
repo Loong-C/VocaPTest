@@ -63,7 +63,8 @@ class ProducerListResponse(BaseModel):
 
 class JobStatusResponse(BaseModel):
     job_id: str
-    status: str  # pending | processing | done | failed
+    status: str  # processing | done | failed | not_found
+    stage: str = "received"  # received | segmenting | embedding | classifying | done | failed
     result: AnalyzeResult | None = None
     error: str | None = None
     progress: float = Field(default=0.0, ge=0.0, le=1.0)

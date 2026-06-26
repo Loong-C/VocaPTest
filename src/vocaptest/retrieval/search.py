@@ -1,6 +1,7 @@
 ﻿"""Main search function: input audio -> Top-K producers."""
 from __future__ import annotations
 
+from collections.abc import Callable
 from pathlib import Path
 
 import numpy as np
@@ -17,6 +18,8 @@ from vocaptest.retrieval.similarity import score_song_against_all
 from vocaptest.utils.logging import setup_logging
 
 logger = setup_logging()
+
+ProgressCallback = Callable[[str, float], None]
 
 
 class ProducerSearch:
@@ -65,6 +68,7 @@ class ProducerSearch:
     def search_file_detailed(
         self,
         audio_path: str | Path,
+        progress_callback: ProgressCallback | None = None,
     ) -> tuple[list[SearchResult], dict | None]:
         """Search a file and return optional calibration/rejection diagnostics."""
         audio_path = Path(audio_path)
@@ -74,7 +78,7 @@ class ProducerSearch:
         if in_sr != self._sr:
             num_samples = int(len(wav) * self._sr / in_sr)
             wav = scipy_resample(wav, num_samples)
-        return self.search_wav_detailed(wav)
+        return self.search_wav_detailed(wav, progress_callback=progress_callback)
 
     def search_wav(self, wav: np.ndarray) -> list[SearchResult]:
         """Search from an already-loaded waveform."""
@@ -83,9 +87,12 @@ class ProducerSearch:
     def search_wav_detailed(
         self,
         wav: np.ndarray,
+        progress_callback: ProgressCallback | None = None,
     ) -> tuple[list[SearchResult], dict | None]:
         """Search waveform and return results plus calibrated confidence signals."""
         # Segment
+        if progress_callback:
+            progress_callback("segmenting", 0.25)
         segments_info = split_segments(
             wav, self._sr,
             segment_seconds=self._segment_sec,
@@ -100,17 +107,31 @@ class ProducerSearch:
             return [], None
 
         # Embed each segment
+        if progress_callback:
+            progress_callback("embedding", 0.45)
         chunks = [
             wav[segment["start_sample"]:segment["end_sample"]]
             for segment in segments_info
         ]
         if isinstance(self.classifier, LayerFusionLDA):
             segment_layers = []
+            total_batches = max(
+                1,
+                (len(chunks) + self._inference_batch_size - 1) // self._inference_batch_size,
+            )
             for start in range(0, len(chunks), self._inference_batch_size):
                 segment_layers.extend(self.embedder.embed_batch_layers(
                     chunks[start:start + self._inference_batch_size],
                     self._sr,
                 ))
+                if progress_callback:
+                    batch_index = start // self._inference_batch_size + 1
+                    progress_callback(
+                        "embedding",
+                        0.45 + 0.35 * batch_index / total_batches,
+                    )
+            if progress_callback:
+                progress_callback("classifying", 0.85)
             prediction = self.classifier.rank_segment_layers(
                 np.stack(segment_layers),
                 top_k=self._top_k,
@@ -122,15 +143,18 @@ class ProducerSearch:
                 "entropy": prediction.entropy,
             }
 
-        segment_embs = [
-            self.embedder.embed_wav(chunk, self._sr)
-            for chunk in chunks
-        ]
+        segment_embs = []
+        for index, chunk in enumerate(chunks, start=1):
+            segment_embs.append(self.embedder.embed_wav(chunk, self._sr))
+            if progress_callback:
+                progress_callback("embedding", 0.45 + 0.35 * index / len(chunks))
         if not segment_embs:
             return [], None
 
         segment_embs = np.stack(segment_embs, axis=0)
 
+        if progress_callback:
+            progress_callback("classifying", 0.85)
         if self.classifier is not None:
             return (
                 self.classifier.rank_segments(segment_embs, top_k=self._top_k),

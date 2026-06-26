@@ -1,9 +1,11 @@
 ﻿"""Tests for API endpoints."""
+from pathlib import Path
+
 import pytest
 from fastapi.testclient import TestClient
 
 from vocaptest.api.main import app
-from vocaptest.api import routes_metadata
+from vocaptest.api import routes_metadata, routes_upload
 
 client = TestClient(app)
 
@@ -69,8 +71,34 @@ def test_analyze_no_file():
     assert response.status_code == 422  # validation error
 
 
+def test_create_analysis_job_and_poll_status(monkeypatch):
+    def fake_run_analysis_job(_job_id: str, tmp_path: str) -> None:
+        Path(tmp_path).unlink(missing_ok=True)
+
+    monkeypatch.setattr(routes_upload, "_run_analysis_job", fake_run_analysis_job)
+
+    response = client.post(
+        "/api/analyze/jobs",
+        files={"file": ("test.wav", b"RIFF....WAVE", "audio/wav")},
+    )
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["job_id"].startswith("job_")
+    assert data["status"] == "processing"
+    assert data["stage"] == "received"
+    assert data["progress"] > 0
+
+    poll_response = client.get(f"/api/jobs/{data['job_id']}")
+    assert poll_response.status_code == 200
+    poll_data = poll_response.json()
+    assert poll_data["job_id"] == data["job_id"]
+    assert poll_data["stage"] == "received"
+
+
 def test_job_status():
     response = client.get("/api/jobs/test_123")
     assert response.status_code == 200
     data = response.json()
     assert data["job_id"] == "test_123"
+    assert data["status"] == "not_found"

@@ -3,6 +3,7 @@ import type {
   ProducerListResponse,
   ProducerInfo,
   AnalyzeResponse,
+  JobStatusResponse,
 } from "./types";
 
 const APP_BASE = import.meta.env.BASE_URL === "/"
@@ -37,6 +38,25 @@ export async function analyzeAudio(
   file: File,
   onProgress?: (pct: number) => void
 ): Promise<AnalyzeResponse> {
+  return uploadAudio<AnalyzeResponse>(`${APP_BASE}/api/analyze`, file, onProgress);
+}
+
+export async function createAnalyzeJob(
+  file: File,
+  onProgress?: (pct: number) => void
+): Promise<JobStatusResponse> {
+  return uploadAudio<JobStatusResponse>(`${APP_BASE}/api/analyze/jobs`, file, onProgress);
+}
+
+export async function getAnalyzeJob(jobId: string): Promise<JobStatusResponse> {
+  return request<JobStatusResponse>(`${APP_BASE}/api/jobs/${jobId}`);
+}
+
+function uploadAudio<T>(
+  url: string,
+  file: File,
+  onProgress?: (pct: number) => void
+): Promise<T> {
   const formData = new FormData();
   formData.append("file", file);
 
@@ -61,13 +81,13 @@ export async function analyzeAudio(
           reject(new Error("Invalid response"));
         }
       } else {
-        reject(new Error(`Upload failed: ${xhr.status}`));
+        reject(new Error(`Upload failed: ${xhr.status}: ${xhr.responseText || xhr.statusText}`));
       }
     });
 
     xhr.addEventListener("error", () => reject(new Error("Network error")));
 
-    xhr.open("POST", `${APP_BASE}/api/analyze`);
+    xhr.open("POST", url);
     xhr.send(formData);
   });
 }

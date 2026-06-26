@@ -1,11 +1,11 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertTriangle, FileAudio, Info, RefreshCw, Sparkles } from "lucide-react";
 import AudioUploader from "@/components/AudioUploader";
 import ScoreBar from "@/components/ScoreBar";
-import { analyzeAudio } from "@/lib/api";
+import { createAnalyzeJob, getAnalyzeJob } from "@/lib/api";
 import { getProducerMeta } from "@/lib/producers";
-import type { AnalyzeResult, SearchResultItem, UploadState } from "@/lib/types";
+import type { AnalyzeResult, JobStage, SearchResultItem, UploadState } from "@/lib/types";
 
 const RESULT_GRADIENTS = [
   "from-pink to-purple",
@@ -15,49 +15,79 @@ const RESULT_GRADIENTS = [
   "from-amber-400 to-pink",
 ];
 
-const PROCESS_STEPS = [
-  "接收音频",
-  "切分片段",
-  "提取特征",
-  "匹配风格",
+const PROCESS_STEPS: { stage: JobStage; label: string }[] = [
+  { stage: "received", label: "接收音频" },
+  { stage: "segmenting", label: "切分片段" },
+  { stage: "embedding", label: "提取特征" },
+  { stage: "classifying", label: "匹配风格" },
 ];
 
 const WAVEFORM_BARS = Array.from({ length: 22 }, (_, index) => index);
-const ANALYZING_PROGRESS_WIDTHS = ["38%", "74%", "56%", "88%"];
+const POLL_INTERVAL_MS = 900;
+const STAGE_LABELS: Record<JobStage, string> = {
+  received: "接收音频",
+  segmenting: "切分片段",
+  embedding: "提取特征",
+  classifying: "匹配风格",
+  done: "完成",
+  failed: "失败",
+};
+
+const delay = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
 
 export default function Analyze() {
   const [state, setState] = useState<UploadState>({ phase: "idle" });
   const [fileName, setFileName] = useState("");
+  const runIdRef = useRef(0);
 
   const handleFile = useCallback(async (file: File) => {
+    const runId = runIdRef.current + 1;
+    runIdRef.current = runId;
     setFileName(file.name);
     setState({ phase: "uploading", progress: 0 });
 
     try {
-      const response = await analyzeAudio(file, (pct) => {
-        if (pct >= 100) {
-          setState({ phase: "analyzing" });
-        } else {
+      let job = await createAnalyzeJob(file, (pct) => {
+        if (runIdRef.current === runId) {
           setState({ phase: "uploading", progress: pct });
         }
       });
 
-      if (response.result) {
-        setState({ phase: "done", result: response.result });
-      } else if (response.error) {
-        setState({ phase: "error", message: response.error });
-      } else {
-        setState({ phase: "error", message: "未知错误" });
+      while (runIdRef.current === runId) {
+        if (job.status === "done" && job.result) {
+          setState({ phase: "done", result: job.result });
+          return;
+        }
+        if (job.status === "failed") {
+          setState({ phase: "error", message: job.error || "分析失败" });
+          return;
+        }
+        if (job.status === "not_found") {
+          setState({ phase: "error", message: job.error || "未找到分析任务" });
+          return;
+        }
+
+        setState({
+          phase: "analyzing",
+          jobId: job.job_id,
+          stage: job.stage,
+          progress: job.progress,
+        });
+        await delay(POLL_INTERVAL_MS);
+        job = await getAnalyzeJob(job.job_id);
       }
     } catch (err) {
-      setState({
-        phase: "error",
-        message: err instanceof Error ? err.message : "上传失败",
-      });
+      if (runIdRef.current === runId) {
+        setState({
+          phase: "error",
+          message: err instanceof Error ? err.message : "上传失败",
+        });
+      }
     }
   }, []);
 
   const reset = () => {
+    runIdRef.current += 1;
     setState({ phase: "idle" });
     setFileName("");
   };
@@ -102,6 +132,8 @@ export default function Analyze() {
             key="analyzing"
             phase="analyzing"
             fileName={fileName}
+            progress={state.progress}
+            stage={state.stage}
           />
         )}
 
@@ -135,15 +167,23 @@ function ProcessingCard({
   phase,
   fileName,
   progress = 100,
+  stage = "received",
 }: {
   phase: "uploading" | "analyzing";
   fileName: string;
   progress?: number;
+  stage?: JobStage;
 }) {
   const isUploading = phase === "uploading";
-  const activeIndex = isUploading ? 0 : 2;
-  const progressLabel = isUploading ? `${progress}%` : "分析中";
-  const progressWidth = isUploading ? `${progress}%` : ANALYZING_PROGRESS_WIDTHS;
+  const stageIndex = PROCESS_STEPS.findIndex((step) => step.stage === stage);
+  const activeIndex = isUploading ? 0 : Math.max(0, stageIndex);
+  const normalizedProgress = isUploading
+    ? Math.min(Math.max(progress, 0), 100) / 100
+    : Math.min(Math.max(progress, 0), 1);
+  const progressPct = Math.round(normalizedProgress * 100);
+  const progressLabel = isUploading ? `${progressPct}%` : `${progressPct}%`;
+  const progressWidth = `${progressPct}%`;
+  const stageLabel = isUploading ? "上传阶段" : STAGE_LABELS[stage];
 
   return (
     <motion.div
@@ -195,19 +235,17 @@ function ProcessingCard({
       </p>
       <p className="mb-5 text-xs text-text-muted">
         {isUploading
-          ? "先把音频安全送达，再开始切片和提取 MERT 表征。"
-          : "模型正在把片段均值、层融合概率和拒识校准合在一起。"}
+          ? "正在上传音频……"
+          : "模型正在分析音频特征……"}
       </p>
 
       <div className="mb-3 h-3 overflow-hidden rounded-full bg-pink/10">
         <motion.div
           className="relative h-full rounded-full bg-gradient-to-r from-pink via-purple to-sky"
-          initial={{ width: isUploading ? 0 : "42%" }}
+          initial={{ width: 0 }}
           animate={{ width: progressWidth }}
           transition={{
-            duration: isUploading ? 0.3 : 1.8,
-            repeat: isUploading ? 0 : Infinity,
-            repeatType: "mirror",
+            duration: 0.35,
             ease: "easeInOut",
           }}
         >
@@ -221,16 +259,16 @@ function ProcessingCard({
 
       <div className="mb-5 flex items-center justify-between text-xs text-text-muted">
         <span>{progressLabel}</span>
-        <span>{isUploading ? "上传阶段" : "特征分析阶段"}</span>
+        <span>{stageLabel}</span>
       </div>
 
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {PROCESS_STEPS.map((step, index) => {
-          const isActive = index === activeIndex || (!isUploading && index === 3);
+          const isActive = index === activeIndex;
           const isDone = index < activeIndex;
           return (
             <div
-              key={step}
+              key={step.stage}
               className={`rounded-2xl px-3 py-2 text-xs transition-colors ${
                 isActive
                   ? "bg-purple/10 text-purple"
@@ -239,7 +277,7 @@ function ProcessingCard({
                   : "bg-white/55 text-text-muted"
               }`}
             >
-              {step}
+              {step.label}
             </div>
           );
         })}
@@ -272,7 +310,7 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
 
       <div className="card space-y-5 p-6 stagger">
         <h3 className="text-center font-display text-lg text-text">
-          {lowConfidence ? "灵感参考" : "匹配排名"}
+          {lowConfidence ? "相似参考" : "匹配排名"}
         </h3>
 
         {result.top_k.length === 0 && (
