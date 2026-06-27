@@ -16,6 +16,19 @@ const ALLOWED = {
   "audio/aac": [".aac"],
 };
 
+function formatRejectionMessage(code: string): string {
+  switch (code) {
+    case "file-invalid-type":
+      return "文件类型不支持，请上传 WAV、MP3、FLAC、OGG、M4A 或 AAC 音频。";
+    case "file-too-large":
+      return "文件过大，请上传 50MB 以内的音频。";
+    case "too-many-files":
+      return "一次只能上传一个音频文件。";
+    default:
+      return "文件无法上传，请换一个音频文件重试。";
+  }
+}
+
 export default function AudioUploader({ onFile, disabled }: Props) {
   const [dragOver, setDragOver] = useState(false);
 
@@ -99,7 +112,7 @@ export default function AudioUploader({ onFile, disabled }: Props) {
           <AlertCircle size={16} className="shrink-0 mt-0.5" />
           <div>
             {fileRejections[0]?.errors.map((e, i) => (
-              <p key={i}>{e.message}</p>
+              <p key={i}>{formatRejectionMessage(e.code)}</p>
             ))}
           </div>
         </div>

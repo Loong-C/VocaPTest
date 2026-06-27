@@ -17,9 +17,35 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
   });
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`API ${res.status}: ${body || res.statusText}`);
+    throw new Error(formatApiError(res.status, body, res.statusText));
   }
   return res.json();
+}
+
+function formatApiError(status: number, body: string, statusText: string): string {
+  if (status === 413) {
+    return "文件过大，请上传 50MB 以内的音频。";
+  }
+  if (status === 429) {
+    return "请求太频繁，请稍后再试。";
+  }
+  if (status === 400) {
+    return "文件类型或内容不支持，请换一个音频文件重试。";
+  }
+  if (status >= 500) {
+    return "服务暂时无法完成分析，请稍后再试。";
+  }
+
+  try {
+    const parsed = JSON.parse(body);
+    if (typeof parsed.detail === "string") {
+      return parsed.detail;
+    }
+  } catch {
+    // Fall through to the generic message.
+  }
+
+  return statusText || "请求失败，请稍后再试。";
 }
 
 export async function checkHealth(): Promise<HealthResponse> {
@@ -81,7 +107,7 @@ function uploadAudio<T>(
           reject(new Error("Invalid response"));
         }
       } else {
-        reject(new Error(`Upload failed: ${xhr.status}: ${xhr.responseText || xhr.statusText}`));
+        reject(new Error(formatApiError(xhr.status, xhr.responseText, xhr.statusText)));
       }
     });
 

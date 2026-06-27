@@ -101,6 +101,24 @@ def test_create_analysis_job_and_poll_status(monkeypatch):
     assert poll_data["stage"] == "received"
 
 
+def test_analyze_failure_returns_generic_error(monkeypatch):
+    def fail_analysis(_tmp_path: str, _job_id: str, _progress_callback=None):
+        raise RuntimeError("internal model path /srv/vocaptest/private.pkl")
+
+    monkeypatch.setattr(routes_upload, "_analyze_temp_file", fail_analysis)
+
+    response = client.post(
+        "/api/analyze",
+        files={"file": ("test.wav", b"RIFF....WAVE", "audio/wav")},
+    )
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "failed"
+    assert data["error"] == routes_upload.USER_ANALYSIS_ERROR
+    assert "private.pkl" not in data["error"]
+
+
 def test_job_status():
     response = client.get("/api/jobs/test_123")
     assert response.status_code == 200

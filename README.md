@@ -146,7 +146,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1 `
 脚本默认在 VPS 上以后台任务执行更新，并轮询 `/tmp/vocaptest-deploy-*.log`；如需保持单个 SSH 前台会话，可追加 `-RunUpdateInForeground`。
 
 生产部署包含：
-- `/VocaPTest/api/analyze` 每 IP 每分钟 10 次、突发 5 次的 Nginx 限流。
+- `/VocaPTest/api/analyze` 与 `/VocaPTest/api/analyze/jobs` 每 IP 每分钟 10 次、突发 5 次的 Nginx 限流。
+- 前后端上传大小限制为 50MB，Nginx 请求体限制为 60MB；后端按流式读取检查大小，并只接受 WAV、MP3、FLAC、OGG、M4A、AAC。
+- 分析异常对用户返回通用提示，内部异常只写入服务日志，避免把模型路径或运行时细节暴露到页面。
 - HSTS、CSP、X-Frame-Options、X-Content-Type-Options 等基础安全响应头。
 - FastAPI 服务以 `vocaptest` 低权限用户运行。
 

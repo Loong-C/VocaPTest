@@ -28,6 +28,8 @@ logger = setup_logging()
 router = APIRouter(prefix="/api", tags=["analyze"])
 
 ALLOWED_EXTS = {".wav", ".mp3", ".flac", ".ogg", ".m4a", ".aac"}
+READ_CHUNK_BYTES = 1024 * 1024
+USER_ANALYSIS_ERROR = "分析失败，请稍后重试或换一段更清晰的音频。"
 ProgressCallback = Callable[[str, float], None]
 
 
@@ -42,16 +44,23 @@ async def _save_upload_to_temp_file(file: UploadFile) -> tuple[str, str]:
             detail=f"Unsupported file type: {ext}. Allowed: {', '.join(sorted(ALLOWED_EXTS))}",
         )
 
-    content = await file.read()
-    if len(content) > max_mb * 1024 * 1024:
-        raise HTTPException(
-            status_code=413,
-            detail=f"File too large. Maximum: {max_mb}MB",
-        )
-
+    max_bytes = max_mb * 1024 * 1024
     with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as tmp:
-        tmp.write(content)
-        return tmp.name, ext
+        tmp_path = tmp.name
+        total = 0
+        try:
+            while chunk := await file.read(READ_CHUNK_BYTES):
+                total += len(chunk)
+                if total > max_bytes:
+                    raise HTTPException(
+                        status_code=413,
+                        detail=f"File too large. Maximum: {max_mb}MB",
+                    )
+                tmp.write(chunk)
+        except Exception:
+            Path(tmp_path).unlink(missing_ok=True)
+            raise
+        return tmp_path, ext
 
 
 def _build_result(
@@ -131,7 +140,7 @@ def _run_analysis_job(job_id: str, tmp_path: str) -> None:
             job_id,
             status="failed",
             stage="failed",
-            error=str(exc),
+            error=USER_ANALYSIS_ERROR,
         )
     finally:
         try:
@@ -158,7 +167,7 @@ async def analyze_audio(file: UploadFile = File(...)):
         return AnalyzeResponse(
             job_id=job_id,
             status="failed",
-            error=str(e),
+            error=USER_ANALYSIS_ERROR,
         )
     finally:
         # Clean up temp file
