@@ -27,6 +27,8 @@ function Layout({ children }: { children: React.ReactNode }) {
           <nav className="flex items-center gap-1">
             <NavLink
               to="/analyze"
+              aria-label="分析"
+              title="分析"
               className={({ isActive }) =>
                 `flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium
                  transition-all duration-200 no-underline
@@ -41,6 +43,8 @@ function Layout({ children }: { children: React.ReactNode }) {
 
             <NavLink
               to="/producers"
+              aria-label="P 主"
+              title="P 主"
               className={({ isActive }) =>
                 `flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium
                  transition-all duration-200 no-underline
