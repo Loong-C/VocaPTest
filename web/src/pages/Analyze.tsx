@@ -354,7 +354,7 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
           <div>
             <p className="mb-1 font-medium text-text">你的音乐很有特色！</p>
             <p>
-              它和当前资料库里的典型 P 主风格都不太像，仅列出最接近的候选作为参考。
+              它和当前涵盖的典型 P 主风格都不太像，仅列出最接近的候选作为参考。
             </p>
           </div>
         </div>
@@ -432,7 +432,7 @@ function TopMatchCard({
 
       <div className="p-5 text-center">
         <p className="mb-3 text-sm text-text">
-          {accepted ? "你的曲风听起来最像 " : "资料库里最接近的是 "}
+          {accepted ? "你的曲风听起来最像 " : "当前 P 主里最接近的是 "}
           <span className="font-semibold text-pink-dark">{item.display_name}</span>
         </p>
 
