@@ -1,0 +1,81 @@
+{
+  "strategy": "source_clean",
+  "source_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\mert_95_p1\\segments.jsonl",
+  "manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\source_clean\\segments.jsonl",
+  "songs": 573,
+  "segments": 6857,
+  "classes": 50,
+  "minimum_class_songs": 9,
+  "songs_per_class": {
+    "40mp": 12,
+    "ayase": 11,
+    "balloon": 10,
+    "chinozo": 13,
+    "cosmo": 19,
+    "deco27": 14,
+    "eve": 10,
+    "giga": 12,
+    "gyari": 10,
+    "hachi": 12,
+    "hachioji_p": 10,
+    "harumaki_gohan": 9,
+    "hiiragi_magnetite": 10,
+    "hitoshizuku_p": 10,
+    "inabakumori": 14,
+    "iyowa": 10,
+    "jin": 17,
+    "kairikibear": 12,
+    "kanaria": 10,
+    "kemu": 11,
+    "kuro_usa_p": 10,
+    "maretu": 12,
+    "mikito_p": 10,
+    "mimi": 14,
+    "mitchie_m": 10,
+    "mothy": 10,
+    "n_buna": 11,
+    "nakiso": 14,
+    "nayutan": 11,
+    "neru": 16,
+    "niru_kajitsu": 10,
+    "nuyuri": 10,
+    "orangestar": 12,
+    "oster_project": 10,
+    "owata_p": 11,
+    "papiyon": 10,
+    "pinocchiop": 13,
+    "r_906": 10,
+    "r_sound_design": 14,
+    "rerulili": 10,
+    "ryo": 13,
+    "sasakure_uk": 11,
+    "surii": 15,
+    "syudou": 10,
+    "teniwoha": 10,
+    "toa": 10,
+    "toma": 10,
+    "ume_tora": 10,
+    "wotaku": 10,
+    "wowaka": 10
+  },
+  "exclusions": {
+    "excluded_songs": 1,
+    "by_code": {
+      "configured_source_not_original": 1
+    },
+    "by_class": {
+      "kemu": 1
+    },
+    "records": [
+      {
+        "song_id": "youtube_pIF_kTBBnuU",
+        "producer_slug": "kemu",
+        "title": "ぼくらの報復政策",
+        "codes": [
+          "configured_source_not_original"
+        ],
+        "risk_score": 10
+      }
+    ]
+  }
+}
