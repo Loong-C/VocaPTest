@@ -566,3 +566,41 @@ songs:
     youtube_id: ca7QqLHEiLA
     source_id: ca7QqLHEiLA
     source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: Ladies First
+    vocadb_song_id: 17707
+    source_service: NicoNicoDouga
+    source_id: sm10752593
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: EAT ME
+    vocadb_song_id: 4390
+    source_service: NicoNicoDouga
+    source_id: sm15234093
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: ノスタルジックドリームガール
+    vocadb_song_id: 4092
+    source_service: NicoNicoDouga
+    source_id: sm16203010
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: ユグドの歯車
+    vocadb_song_id: 60745
+    source_service: NicoNicoDouga
+    source_id: sm11282453
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: 進捗ダメダメです
+    vocadb_song_id: 720372
+    source_service: Youtube
+    youtube_id: YzuWMyd7Pjk
+    source_id: YzuWMyd7Pjk
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: ドリル無双。
+    vocadb_song_id: 659639
+    source_service: Youtube
+    youtube_id: satZx43Sv_0
+    source_id: satZx43Sv_0
+    source_kind: vocadb_original_pv

@@ -2135,3 +2135,199 @@ songs:
     source_service: NicoNicoDouga
     source_id: sm10924943
     source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: ミラクルペイント
+    vocadb_song_id: 3658
+    source_service: Youtube
+    youtube_id: gqPWXe0dCC4
+    source_id: gqPWXe0dCC4
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: 恋色病棟
+    vocadb_song_id: 3015
+    source_service: Youtube
+    youtube_id: tPnIwDBk09k
+    source_id: tPnIwDBk09k
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: ピアノ×フォルテ×スキャンダル
+    vocadb_song_id: 9035
+    source_service: Youtube
+    youtube_id: JQTl7IvOX0E
+    source_id: JQTl7IvOX0E
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: trick and treat
+    vocadb_song_id: 3244
+    source_service: Youtube
+    youtube_id: EEPdHJxJCrA
+    source_id: EEPdHJxJCrA
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: サマーアイドル
+    vocadb_song_id: 15394
+    source_service: Youtube
+    youtube_id: kY6Xe4Au_sI
+    source_id: kY6Xe4Au_sI
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: Dreaming Leaf ‐ユメミルコトノハ‐
+    vocadb_song_id: 5547
+    source_service: NicoNicoDouga
+    source_id: sm1235385
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: 歌の棲む家～メゾン初音～
+    vocadb_song_id: 177923
+    source_service: NicoNicoDouga
+    source_id: sm32540853
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: フキゲンワルツ
+    vocadb_song_id: 9237
+    source_service: Youtube
+    youtube_id: QHa0_A5_dFA
+    source_id: QHa0_A5_dFA
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: おひめさまになりたいのッ！
+    vocadb_song_id: 8973
+    source_service: Youtube
+    youtube_id: -oh4deCOYYk
+    source_id: -oh4deCOYYk
+    source_kind: vocadb_original_pv
+  - producer_slug: oster_project
+    title: マージナル
+    vocadb_song_id: 2949
+    source_service: Youtube
+    youtube_id: btYMfaIyVao
+    source_id: btYMfaIyVao
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: 骸骨楽団とリリア
+    vocadb_song_id: 556
+    source_service: NicoNicoDouga
+    source_id: sm14780909
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: エンヴィキャットウォーク
+    vocadb_song_id: 453
+    source_service: NicoNicoDouga
+    source_id: sm15956806
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: バビロン
+    vocadb_song_id: 4989
+    source_service: NicoNicoDouga
+    source_id: sm14332782
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: 魔法少女幸福論
+    vocadb_song_id: 22858
+    source_service: NicoNicoDouga
+    source_id: sm20503130
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: ヤンキーボーイ・ヤンキーガール
+    vocadb_song_id: 21210
+    source_service: NicoNicoDouga
+    source_id: sm20252366
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: オレンジ
+    vocadb_song_id: 19058
+    source_service: NicoNicoDouga
+    source_id: sm19625630
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: マダラカルト
+    vocadb_song_id: 11966
+    source_service: NicoNicoDouga
+    source_id: sm17754841
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: 幽霊屋敷の首吊り少女
+    vocadb_song_id: 9030
+    source_service: NicoNicoDouga
+    source_id: sm16866078
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: アザレアの亡霊
+    vocadb_song_id: 17764
+    source_service: NicoNicoDouga
+    source_id: sm19286279
+    source_kind: vocadb_original_pv
+  - producer_slug: toma
+    title: ミーミルの花
+    vocadb_song_id: 11722
+    source_service: NicoNicoDouga
+    source_id: sm14020920
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: アカリがやってきたぞっ
+    vocadb_song_id: 199952
+    source_service: Youtube
+    youtube_id: tyneiz9FRMw
+    source_id: tyneiz9FRMw
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: 何でも言うことを聞いてくれるアカネチャン
+    vocadb_song_id: 179162
+    source_service: Youtube
+    youtube_id: OVuYIMa5XBw
+    source_id: OVuYIMa5XBw
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: 絶対にチョコミントを食べるアオイチャン
+    vocadb_song_id: 248895
+    source_service: Youtube
+    youtube_id: pfkBYHFZAt8
+    source_id: pfkBYHFZAt8
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: Yellow Star Beats
+    vocadb_song_id: 24316
+    source_service: NicoNicoDouga
+    source_id: sm20369981
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: Sunny Wave
+    vocadb_song_id: 36372
+    source_service: NicoNicoDouga
+    source_id: sm21724799
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: 無限にホメてくれる桜乃そら先生
+    vocadb_song_id: 220223
+    source_service: Youtube
+    youtube_id: M20SfPdzlQ0
+    source_id: M20SfPdzlQ0
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: 永遠にゲームで対戦したいキリタン
+    vocadb_song_id: 266510
+    source_service: Youtube
+    youtube_id: 5uFrdGMo684
+    source_id: 5uFrdGMo684
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: ありきたりな恋の歌
+    vocadb_song_id: 568606
+    source_service: Youtube
+    youtube_id: Zj8lmg6NpOg
+    source_id: Zj8lmg6NpOg
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: 色彩の共鳴
+    vocadb_song_id: 941241
+    source_service: Youtube
+    youtube_id: fKbGyhepJgk
+    source_id: fKbGyhepJgk
+    source_kind: vocadb_original_pv
+  - producer_slug: gyari
+    title: チャンネル登録よろしくお願いします
+    vocadb_song_id: 521661
+    source_service: Youtube
+    youtube_id: BbyqEMSDuww
+    source_id: BbyqEMSDuww
+    source_kind: vocadb_original_pv

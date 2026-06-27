@@ -20,9 +20,9 @@
     "calibration_input": "probabilities"
   },
   "dataset": {
-    "songs": 544,
-    "segments": 6509,
-    "classes": 47,
+    "songs": 574,
+    "segments": 6869,
+    "classes": 50,
     "layers_available": 13,
     "embedding_dim": 768,
     "class_names": [
@@ -34,6 +34,7 @@
       "deco27",
       "eve",
       "giga",
+      "gyari",
       "hachi",
       "hachioji_p",
       "harumaki_gohan",
@@ -58,6 +59,7 @@
       "niru_kajitsu",
       "nuyuri",
       "orangestar",
+      "oster_project",
       "owata_p",
       "papiyon",
       "pinocchiop",
@@ -70,6 +72,7 @@
       "syudou",
       "teniwoha",
       "toa",
+      "toma",
       "ume_tora",
       "wotaku",
       "wowaka"
@@ -78,83 +81,83 @@
   "oof": {
     "aggregate": {
       "top1_accuracy": {
-        "mean": 0.8301470588235293,
-        "std": 0.012234971538451279,
-        "min": 0.8198529411764706,
-        "max": 0.8511029411764706
+        "mean": 0.8264808362369338,
+        "std": 0.004372787595125834,
+        "min": 0.8205574912891986,
+        "max": 0.8327526132404182
       },
       "top3_accuracy": {
-        "mean": 0.9176470588235294,
-        "std": 0.006803954236515381,
-        "min": 0.9099264705882353,
-        "max": 0.9264705882352942
+        "mean": 0.9135888501742159,
+        "std": 0.006109992305487864,
+        "min": 0.9076655052264808,
+        "max": 0.9233449477351916
       },
       "macro_f1": {
-        "mean": 0.8353289567518646,
-        "std": 0.012482698306297706,
-        "min": 0.8245091631631843,
-        "max": 0.8568206893873122
+        "mean": 0.833048374813216,
+        "std": 0.0040733432730541514,
+        "min": 0.8275051408772214,
+        "max": 0.8383590760051292
       },
       "mrr": {
-        "mean": 0.8805168050483104,
-        "std": 0.008582319205363587,
-        "min": 0.8715528118200724,
-        "max": 0.8943137198875238
+        "mean": 0.8773447472697908,
+        "std": 0.0026639880078328797,
+        "min": 0.8747645552769773,
+        "max": 0.8816260450561099
       }
     },
     "repeat_metrics": [
       {
-        "top1_accuracy": 0.8290441176470589,
-        "top3_accuracy": 0.9227941176470589,
-        "macro_f1": 0.8335465946041642,
-        "mrr": 0.8819109501049907
+        "top1_accuracy": 0.8275261324041812,
+        "top3_accuracy": 0.9128919860627178,
+        "macro_f1": 0.8353124124894129,
+        "mrr": 0.8780359110245654
       },
       {
-        "top1_accuracy": 0.8272058823529411,
-        "top3_accuracy": 0.9136029411764706,
-        "macro_f1": 0.83178400703822,
-        "mrr": 0.8785401441817865
+        "top1_accuracy": 0.8327526132404182,
+        "top3_accuracy": 0.9146341463414634,
+        "macro_f1": 0.8383590760051292,
+        "mrr": 0.8816260450561099
       },
       {
-        "top1_accuracy": 0.8198529411764706,
-        "top3_accuracy": 0.9099264705882353,
-        "macro_f1": 0.8245091631631843,
-        "mrr": 0.8715528118200724
+        "top1_accuracy": 0.8205574912891986,
+        "top3_accuracy": 0.9233449477351916,
+        "macro_f1": 0.8275051408772214,
+        "mrr": 0.8763236022622982
       },
       {
-        "top1_accuracy": 0.8511029411764706,
-        "top3_accuracy": 0.9264705882352942,
-        "macro_f1": 0.8568206893873122,
-        "mrr": 0.8943137198875238
+        "top1_accuracy": 0.8257839721254355,
+        "top3_accuracy": 0.9094076655052264,
+        "macro_f1": 0.8323848575794579,
+        "mrr": 0.8747645552769773
       },
       {
-        "top1_accuracy": 0.8235294117647058,
-        "top3_accuracy": 0.9154411764705882,
-        "macro_f1": 0.829984329566442,
-        "mrr": 0.8762663992471789
+        "top1_accuracy": 0.8257839721254355,
+        "top3_accuracy": 0.9076655052264808,
+        "macro_f1": 0.831680387114858,
+        "mrr": 0.8759736227290036
       }
     ],
-    "temperature": 4.254878222222297,
+    "temperature": 4.2512562456843375,
     "rejection": {
-      "threshold": 0.7649851722859712,
-      "coverage": 0.7408088235294118,
-      "precision": 0.9602977667493796
+      "threshold": 0.7528682876089476,
+      "coverage": 0.7376306620209059,
+      "precision": 0.9603212092583845
     },
     "rejection_metrics": {
-      "threshold": 0.7649851722859712,
-      "coverage": 0.7408088235294118,
-      "accepted_count": 2015,
-      "accepted_accuracy": 0.9602977667493796,
-      "accepted_wrong_count": 80,
-      "rejected_correct_count": 323,
-      "target_precision_oof": 0.9602977667493796,
-      "true_class_count": 47
+      "threshold": 0.7528682876089476,
+      "coverage": 0.7376306620209059,
+      "accepted_count": 2117,
+      "accepted_accuracy": 0.9603212092583845,
+      "accepted_wrong_count": 84,
+      "rejected_correct_count": 339,
+      "target_precision_oof": 0.9603212092583845,
+      "true_class_count": 50
     }
   },
   "artifact": {
     "model_output": "data/processed/models/p1_layer_fusion_lda.pkl",
     "backend": "mert_95+nonnegative_layer_fusion_lda_calibrated",
-    "classes": 47,
+    "classes": 50,
     "layer_indices": [
       5,
       6,

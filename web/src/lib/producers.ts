@@ -52,6 +52,9 @@ const PRODUCER_GRADIENTS: Record<string, string> = {
   wotaku: "from-slate-700 to-cyan-600",
   ume_tora: "from-fuchsia-500 to-amber-500",
   hachioji_p: "from-cyan-400 to-fuchsia-500",
+  oster_project: "from-pink-400 to-amber-400",
+  toma: "from-zinc-700 to-rose-600",
+  gyari: "from-amber-400 to-cyan-500",
 };
 
 export function getProducerMeta(slug: string): { gradient: string } {

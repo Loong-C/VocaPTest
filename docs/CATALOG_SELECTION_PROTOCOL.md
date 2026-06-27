@@ -29,6 +29,9 @@ When adding producers, prefer fewer clean songs over a larger noisy set.
   representative works that may be important despite lower current ratings.
 - Keep development and final holdouts representative; do not reserve only
   obscure tail songs for evaluation.
+- Downloaded media must be between 60 and 600 seconds. Very long musicals,
+  medleys, loop jams, or talk-heavy session videos should be replaced with
+  cleaner representative works even when VocaDB marks them as Original PVs.
 
 ## Exclusion Rules
 

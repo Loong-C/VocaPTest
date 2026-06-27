@@ -2690,3 +2690,174 @@ producers:
         title: Baby Maniacs
         url: https://vocadb.net/S/5347
         tag_votes: 4
+  oster_project:
+    artist_id: 58
+    source_url: https://vocadb.net/Ar/58
+    api_url: https://vocadb.net/api/songs?artistId[]=58&fields=PVs,Artists,Tags
+    songs_analyzed: 146
+    style_tags:
+    - label: jazz
+      display_zh: Jazz
+      category: Genres
+      song_count: 34
+      evidence:
+      - song_id: 3658
+        title: ミラクルペイント
+        url: https://vocadb.net/S/3658
+        tag_votes: 14
+      - song_id: 9035
+        title: ピアノ×フォルテ×スキャンダル
+        url: https://vocadb.net/S/9035
+        tag_votes: 5
+      - song_id: 12283
+        title: Alice in Musicland
+        url: https://vocadb.net/S/12283
+        tag_votes: 4
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 26
+      evidence:
+      - song_id: 3658
+        title: ミラクルペイント
+        url: https://vocadb.net/S/3658
+        tag_votes: 5
+      - song_id: 3015
+        title: 恋色病棟
+        url: https://vocadb.net/S/3015
+        tag_votes: 1
+      - song_id: 3244
+        title: trick and treat
+        url: https://vocadb.net/S/3244
+        tag_votes: 4
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 25
+      evidence:
+      - song_id: 3015
+        title: 恋色病棟
+        url: https://vocadb.net/S/3015
+        tag_votes: 7
+      - song_id: 2920
+        title: カラフル×メロディ
+        url: https://vocadb.net/S/2920
+        tag_votes: 1
+      - song_id: 177923
+        title: 歌の棲む家～メゾン初音～
+        url: https://vocadb.net/S/177923
+        tag_votes: 4
+  toma:
+    artist_id: 153
+    source_url: https://vocadb.net/Ar/153
+    api_url: https://vocadb.net/api/songs?artistId[]=153&fields=PVs,Artists,Tags
+    songs_analyzed: 34
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 13
+      evidence:
+      - song_id: 4989
+        title: バビロン
+        url: https://vocadb.net/S/4989
+        tag_votes: 3
+      - song_id: 22858
+        title: 魔法少女幸福論
+        url: https://vocadb.net/S/22858
+        tag_votes: 3
+      - song_id: 21210
+        title: ヤンキーボーイ・ヤンキーガール
+        url: https://vocadb.net/S/21210
+        tag_votes: 3
+    - label: experimental rock
+      display_zh: experimental rock
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 453
+        title: エンヴィキャットウォーク
+        url: https://vocadb.net/S/453
+        tag_votes: 1
+      - song_id: 4989
+        title: バビロン
+        url: https://vocadb.net/S/4989
+        tag_votes: 3
+      - song_id: 22858
+        title: 魔法少女幸福論
+        url: https://vocadb.net/S/22858
+        tag_votes: 3
+    - label: j-rock
+      display_zh: J-Rock
+      category: Genres
+      song_count: 7
+      evidence:
+      - song_id: 453
+        title: エンヴィキャットウォーク
+        url: https://vocadb.net/S/453
+        tag_votes: 4
+      - song_id: 4989
+        title: バビロン
+        url: https://vocadb.net/S/4989
+        tag_votes: 3
+      - song_id: 22858
+        title: 魔法少女幸福論
+        url: https://vocadb.net/S/22858
+        tag_votes: 4
+  gyari:
+    artist_id: 717
+    source_url: https://vocadb.net/Ar/717
+    api_url: https://vocadb.net/api/songs?artistId[]=717&fields=PVs,Artists,Tags
+    songs_analyzed: 65
+    style_tags:
+    - label: jazz
+      display_zh: Jazz
+      category: Genres
+      song_count: 24
+      evidence:
+      - song_id: 199952
+        title: アカリがやってきたぞっ
+        url: https://vocadb.net/S/199952
+        tag_votes: 4
+      - song_id: 179162
+        title: 何でも言うことを聞いてくれるアカネチャン
+        url: https://vocadb.net/S/179162
+        tag_votes: 6
+      - song_id: 248895
+        title: 絶対にチョコミントを食べるアオイチャン
+        url: https://vocadb.net/S/248895
+        tag_votes: 3
+    - label: pop
+      display_zh: 流行
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 199952
+        title: アカリがやってきたぞっ
+        url: https://vocadb.net/S/199952
+        tag_votes: 2
+      - song_id: 248895
+        title: 絶対にチョコミントを食べるアオイチャン
+        url: https://vocadb.net/S/248895
+        tag_votes: 4
+      - song_id: 220223
+        title: 無限にホメてくれる桜乃そら先生
+        url: https://vocadb.net/S/220223
+        tag_votes: 2
+    - label: 電波
+      display_zh: 电波
+      category: Genres
+      song_count: 7
+      evidence:
+      - song_id: 199952
+        title: アカリがやってきたぞっ
+        url: https://vocadb.net/S/199952
+        tag_votes: 2
+      - song_id: 131351
+        title: ボーカロイドたちがただ叫ぶだけ
+        url: https://vocadb.net/S/131351
+        tag_votes: 1
+      - song_id: 111424
+        title: ボーカロイドたちがただﾃｯﾃｰﾃﾚｯﾃｰするだけ
+        url: https://vocadb.net/S/111424
+        tag_votes: 1

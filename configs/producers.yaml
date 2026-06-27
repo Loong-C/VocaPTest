@@ -357,3 +357,30 @@ producers:
   vocadb_artist_id: 38
   profile_url: https://vocadb.net/Ar/38
   avatar_url: /avatars/hachioji_p.webp
+- slug: oster_project
+  display_name: OSTER project
+  aliases:
+  - OSTER
+  - ふわふわシナモン
+  - Fuwafuwa Cinnamon
+  vocadb_artist_id: 58
+  profile_url: https://vocadb.net/Ar/58
+  avatar_url: /avatars/oster_project.webp
+- slug: toma
+  display_name: トーマ
+  aliases:
+  - Tohma
+  - Toma
+  - Gyoson
+  - 魚
+  vocadb_artist_id: 153
+  profile_url: https://vocadb.net/Ar/153
+  avatar_url: /avatars/toma.webp
+- slug: gyari
+  display_name: GYARI
+  aliases:
+  - ココアシガレットP
+  - Cocoa CigaretteP
+  vocadb_artist_id: 717
+  profile_url: https://vocadb.net/Ar/717
+  avatar_url: /avatars/gyari.webp
