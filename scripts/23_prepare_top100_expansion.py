@@ -90,10 +90,8 @@ CANDIDATES: dict[str, Candidate] = {
         aliases=("supercell",),
         vocadb_artist_id=67,
         top100_name="ryo",
-        reason=(
-            "Skipped by default: VocaDB currently exposes only one strict "
-            "non-Topic voice-synth Original PV."
-        ),
+        allowed_style_credit_ids=(249,),
+        reason="Allow supercell as ryo's own project credit.",
     ),
     "mikito_p": Candidate(
         rank=20,
@@ -159,6 +157,46 @@ CANDIDATES: dict[str, Candidate] = {
         aliases=("Nuyuri", "nulut", "Lanndo", "go乱心P", "ぬるり", "Crona"),
         vocadb_artist_id=5666,
         top100_name="ぬゆり",
+    ),
+    "eve": Candidate(
+        rank=39,
+        slug="eve",
+        display_name="Eve",
+        aliases=(),
+        vocadb_artist_id=10233,
+        top100_name="Eve",
+    ),
+    "papiyon": Candidate(
+        rank=43,
+        slug="papiyon",
+        display_name="蝶々P",
+        aliases=("papiyon", "一之瀬ユウ", "Yu Ichinose"),
+        vocadb_artist_id=96,
+        top100_name="papiyon/蝶々P",
+    ),
+    "wotaku": Candidate(
+        rank=45,
+        slug="wotaku",
+        display_name="wotaku",
+        aliases=(),
+        vocadb_artist_id=60331,
+        top100_name="wotaku",
+    ),
+    "ume_tora": Candidate(
+        rank=46,
+        slug="ume_tora",
+        display_name="梅とら",
+        aliases=("umedy",),
+        vocadb_artist_id=1164,
+        top100_name="梅とら",
+    ),
+    "hachioji_p": Candidate(
+        rank=47,
+        slug="hachioji_p",
+        display_name="八王子P",
+        aliases=("HachiojiP", "8#Prince"),
+        vocadb_artist_id=38,
+        top100_name="八王子P",
     ),
 }
 
@@ -458,12 +496,12 @@ def producer_block(candidate: Candidate) -> str:
     lines = [
         f"- slug: {candidate.slug}",
         f"  display_name: {candidate.display_name}",
-        "  aliases:",
     ]
     if candidate.aliases:
+        lines.append("  aliases:")
         lines.extend(f"  - {alias}" for alias in candidate.aliases)
     else:
-        lines.append("  []")
+        lines.append("  aliases: []")
     lines.extend([
         f"  vocadb_artist_id: {candidate.vocadb_artist_id}",
         f"  profile_url: https://vocadb.net/Ar/{candidate.vocadb_artist_id}",

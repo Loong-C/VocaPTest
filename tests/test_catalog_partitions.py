@@ -38,7 +38,7 @@ TOP100_EXPANSION_PRODUCERS = {
     "owata_p",
     "nuyuri",
 }
-SPARSE_DEV_PRODUCERS: set[str] = set()
+SPARSE_DEV_PRODUCERS: set[str] = {"ryo", "eve"}
 SPARSE_TRAINING_PRODUCERS: set[str] = set()
 
 

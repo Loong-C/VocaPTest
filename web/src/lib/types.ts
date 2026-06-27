@@ -3,6 +3,7 @@
 export interface SearchResultItem {
   producer_slug: string;
   display_name: string;
+  avatar_url: string | null;
   score: number;
   rank: number;
   style_tags: string[];

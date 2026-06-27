@@ -149,6 +149,8 @@ def main() -> None:
             allowed_pv_types=(
                 ("Reprint",)
                 if source_kind == "vocadb_reprint"
+                else ("Other",)
+                if source_kind == "vocadb_other_pv"
                 else ("Original",)
             ),
         )

@@ -18,6 +18,7 @@ from vocaptest.api.schemas import (
     SearchResultItem,
 )
 from vocaptest.data.producer_catalog import (
+    load_producer_metadata,
     load_producer_style_tags,
     load_representative_song_catalog,
 )
@@ -57,12 +58,14 @@ def _build_result(
     results,
     diagnostics: dict | None,
 ) -> AnalyzeResult:
+    producer_metadata = load_producer_metadata()
     style_tags = load_producer_style_tags()
     representative_songs = load_representative_song_catalog()
     top_k = [
         SearchResultItem(
             producer_slug=r.producer_slug,
             display_name=r.display_name,
+            avatar_url=producer_metadata.get(r.producer_slug, {}).get("avatar_url"),
             score=r.score,
             rank=r.rank,
             style_tags=style_tags.get(r.producer_slug, {}).get("style_tags", []),

@@ -961,3 +961,114 @@ songs:
   vocadb_song_id: 568795
   youtube_id: lTH46ZUhbas
   source_kind: vocadb_original_pv
+- producer_slug: ryo
+  title: キボウノネイロ
+  vocadb_song_id: 19596
+  source_service: NicoNicoDouga
+  source_id: sm3967976
+  source_kind: vocadb_original_pv
+- producer_slug: eve
+  title: Sympathy
+  vocadb_song_id: 769680
+  source_service: NicoNicoDouga
+  source_id: so44806039
+  source_kind: vocadb_original_pv
+- producer_slug: papiyon
+  title: White Prism
+  vocadb_song_id: 31722
+  source_service: NicoNicoDouga
+  source_id: sm21390666
+  source_kind: vocadb_original_pv
+- producer_slug: papiyon
+  title: 飴玉サイコロジスト
+  vocadb_song_id: 2724
+  source_service: NicoNicoDouga
+  source_id: sm13479021
+  source_kind: vocadb_original_pv
+- producer_slug: papiyon
+  title: Spectrum
+  vocadb_song_id: 83671
+  source_service: NicoNicoDouga
+  source_id: sm25801643
+  source_kind: vocadb_original_pv
+- producer_slug: papiyon
+  title: アイロニックメタファー
+  vocadb_song_id: 62527
+  source_service: NicoNicoDouga
+  source_id: sm24080543
+  source_kind: vocadb_original_pv
+- producer_slug: wotaku
+  title: イルミナティ
+  vocadb_song_id: 297586
+  source_service: NicoNicoDouga
+  source_id: sm37629565
+  source_kind: vocadb_original_pv
+- producer_slug: wotaku
+  title: フィラデルフィア
+  vocadb_song_id: 802328
+  source_service: NicoNicoDouga
+  source_id: sm45101221
+  source_kind: vocadb_original_pv
+- producer_slug: wotaku
+  title: 福音
+  vocadb_song_id: 367723
+  source_service: NicoNicoDouga
+  source_id: sm39662203
+  source_kind: vocadb_original_pv
+- producer_slug: wotaku
+  title: ホロン
+  vocadb_song_id: 253321
+  source_service: NicoNicoDouga
+  source_id: sm35667721
+  source_kind: vocadb_original_pv
+- producer_slug: ume_tora
+  title: Love Me If You Can
+  vocadb_song_id: 84380
+  source_service: NicoNicoDouga
+  source_id: sm25892554
+  source_kind: vocadb_original_pv
+- producer_slug: ume_tora
+  title: FLASH BACK
+  vocadb_song_id: 47570
+  source_service: NicoNicoDouga
+  source_id: sm22799924
+  source_kind: vocadb_original_pv
+- producer_slug: ume_tora
+  title: La La L危
+  vocadb_song_id: 79132
+  source_service: NicoNicoDouga
+  source_id: sm29659225
+  source_kind: vocadb_original_pv
+- producer_slug: ume_tora
+  title: Black Out
+  vocadb_song_id: 130998
+  source_service: NicoNicoDouga
+  source_id: sm29416913
+  source_kind: vocadb_original_pv
+- producer_slug: hachioji_p
+  title: RAD DOGS
+  vocadb_song_id: 313733
+  source_service: NicoNicoDouga
+  source_id: so40968821
+  source_kind: vocadb_original_pv
+- producer_slug: hachioji_p
+  title: fake doll
+  vocadb_song_id: 15044
+  source_service: Youtube
+  youtube_id: Z1VhvAIa3UA
+  source_id: Z1VhvAIa3UA
+  source_kind: vocadb_original_pv
+- producer_slug: hachioji_p
+  title: Distorted Princess
+  vocadb_song_id: 1388
+  source_service: Youtube
+  youtube_id: LYwtq1hITEs
+  source_id: LYwtq1hITEs
+  source_kind: vocadb_original_pv
+- producer_slug: hachioji_p
+  title: Bitter Majesty
+  vocadb_song_id: 162206
+  source_service: Youtube
+  youtube_id: xYVcxsuj0PI
+  source_id: xYVcxsuj0PI
+  source_kind: vocadb_original_pv

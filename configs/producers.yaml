@@ -314,3 +314,46 @@ producers:
   vocadb_artist_id: 5666
   profile_url: https://vocadb.net/Ar/5666
   avatar_url: /avatars/nuyuri.webp
+- slug: ryo
+  display_name: ryo
+  aliases:
+  - supercell
+  vocadb_artist_id: 67
+  profile_url: https://vocadb.net/Ar/67
+  avatar_url: /avatars/ryo.webp
+- slug: eve
+  display_name: Eve
+  aliases: []
+  vocadb_artist_id: 10233
+  profile_url: https://vocadb.net/Ar/10233
+  avatar_url: /avatars/eve.webp
+- slug: papiyon
+  display_name: 蝶々P
+  aliases:
+  - papiyon
+  - 一之瀬ユウ
+  - Yu Ichinose
+  vocadb_artist_id: 96
+  profile_url: https://vocadb.net/Ar/96
+  avatar_url: /avatars/papiyon.webp
+- slug: wotaku
+  display_name: wotaku
+  aliases: []
+  vocadb_artist_id: 60331
+  profile_url: https://vocadb.net/Ar/60331
+  avatar_url: /avatars/wotaku.webp
+- slug: ume_tora
+  display_name: 梅とら
+  aliases:
+  - umedy
+  vocadb_artist_id: 1164
+  profile_url: https://vocadb.net/Ar/1164
+  avatar_url: /avatars/ume_tora.webp
+- slug: hachioji_p
+  display_name: 八王子P
+  aliases:
+  - HachiojiP
+  - 8#Prince
+  vocadb_artist_id: 38
+  profile_url: https://vocadb.net/Ar/38
+  avatar_url: /avatars/hachioji_p.webp

@@ -4,7 +4,7 @@ import { AlertTriangle, FileAudio, Info, RefreshCw, Sparkles } from "lucide-reac
 import AudioUploader from "@/components/AudioUploader";
 import ScoreBar from "@/components/ScoreBar";
 import { createAnalyzeJob, getAnalyzeJob } from "@/lib/api";
-import { getProducerMeta } from "@/lib/producers";
+import { getProducerMeta, withBasePath } from "@/lib/producers";
 import type { AnalyzeResult, JobStage, SearchResultItem, UploadState } from "@/lib/types";
 
 const RESULT_GRADIENTS = [
@@ -95,7 +95,7 @@ export default function Analyze() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         className="mb-8 text-center"
       >
@@ -110,7 +110,7 @@ export default function Analyze() {
         {state.phase === "idle" && (
           <motion.div
             key="upload"
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
@@ -309,7 +309,6 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
         )}
 
         {result.top_k.map((item, i) => {
-          const meta = getProducerMeta(item.producer_slug);
           const tags = item.style_tags ?? [];
           return (
             <motion.div
@@ -319,13 +318,7 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
               transition={{ delay: i * 0.08 }}
               className="flex items-center gap-4 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80"
             >
-              <div
-                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${meta.gradient} shadow-md`}
-              >
-                <span className="font-display text-sm text-white">
-                  {item.display_name.slice(0, 2)}
-                </span>
-              </div>
+              <ProducerResultAvatar item={item} size="sm" />
 
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-semibold text-text">{item.display_name}</p>
@@ -339,11 +332,6 @@ function ResultView({ result, onReset }: { result: AnalyzeResult; onReset: () =>
                     </span>
                   ))}
                 </div>
-                <RepresentativeSongs
-                  songs={item.representative_songs}
-                  limit={2}
-                  className="mt-1"
-                />
               </div>
 
               <div className="w-32 shrink-0">
@@ -414,7 +402,7 @@ function TopMatchCard({
       className="card overflow-hidden"
     >
       <div
-        className={`relative flex h-28 items-center justify-center bg-gradient-to-r ${
+        className={`relative flex h-40 items-center justify-center bg-gradient-to-r ${
           accepted ? meta.gradient : "from-slate-400 to-purple-400"
         }`}
       >
@@ -422,16 +410,17 @@ function TopMatchCard({
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white/40"
+            className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white/40"
           />
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/25"
+            className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/25"
           />
         </div>
 
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <ProducerResultAvatar item={item} size="lg" />
           <p className="mb-1 text-sm text-white/80">
             {accepted ? "最匹配" : "最接近的相似参考"}
           </p>
@@ -474,6 +463,41 @@ function TopMatchCard({
         </p>
       </div>
     </motion.div>
+  );
+}
+
+function ProducerResultAvatar({
+  item,
+  size,
+}: {
+  item: SearchResultItem;
+  size: "sm" | "lg";
+}) {
+  const meta = getProducerMeta(item.producer_slug);
+  const avatarUrl = withBasePath(item.avatar_url);
+  const [imageAvailable, setImageAvailable] = useState(Boolean(avatarUrl));
+  const sizeClass = size === "lg"
+    ? "mb-3 h-20 w-20 text-xl ring-4 ring-white/75"
+    : "h-12 w-12 text-sm";
+
+  return (
+    <div
+      className={`flex ${sizeClass} shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${meta.gradient} shadow-md`}
+    >
+      {avatarUrl && imageAvailable ? (
+        <img
+          src={avatarUrl}
+          alt={item.display_name}
+          className="h-full w-full object-cover"
+          loading="lazy"
+          onError={() => setImageAvailable(false)}
+        />
+      ) : (
+        <span className="font-display text-white">
+          {item.display_name.slice(0, 2)}
+        </span>
+      )}
+    </div>
   );
 }
 

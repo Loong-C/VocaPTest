@@ -1,6 +1,6 @@
 # VocaP Test - 测测你的曲风最像哪位 P 主
 
-一个 Vocaloid Producer 风格相似度系统。上传一段音乐，系统会在 41 位
+一个 Vocaloid Producer 风格相似度系统。上传一段音乐，系统会在 47 位
 P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受区域时给出低置信提示。
 结果仅供娱乐，不代表模型能真正识别作曲家风格。
 
@@ -8,12 +8,12 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 
 | 项目 | 当前状态 |
 |---|---:|
-| 训练目录 | **473 首 canonical 作品** |
-| Development holdout | **80 首作品，每类 1-2 首** |
-| Final frozen test | **162 首作品，每类 2-4 首** |
-| 训练分段 | **5658 段** |
-| Dev 分段 | **960 段** |
-| Final frozen 分段 | **1926 段** |
+| 训练目录 | **544 首 canonical 作品** |
+| Development holdout | **88 首作品，每类 0-2 首** |
+| Final frozen test | **180 首作品，每类 1-4 首** |
+| 训练分段 | **6509 段** |
+| Dev 分段 | **1056 段** |
+| Final frozen 分段 | **2142 段** |
 | 音频处理 | 24kHz 单声道、20s 窗口、10s hop、均匀覆盖、最多 12 段 |
 | 音频表征 | MERT-v1-95M 第 5/6/8 层，每层 768 维 |
 | 分类器 | 三个歌曲均值 Shrinkage LDA head 的概率平均 |
@@ -25,9 +25,9 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 - **Dev holdout songs**：不参与训练，用于未来模型选择、错误分析和方案比较。
 - **Final frozen songs**：不参与训练、模型选择或校准，只用于最终验收。
 
-## 覆盖的 41 位 P 主
+## 覆盖的 47 位 P 主
 
-当前配置覆盖 niconico top100 名单中 top50 的 34 位（68%）；top30 覆盖 29 位，仅暂缓 `ryo`。
+当前配置覆盖 niconico top100 名单中 top50 的 40 位（80%）；top30 覆盖 30 位。
 
 | P 主 | 别名 | 训练歌曲 | 训练分段 |
 |---|---|---:|---:|
@@ -37,9 +37,9 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 | DECO*27 | - | 14 | 168 |
 | ピノキオピー | PinocchioP, ピノキオP | 13 | 155 |
 | Mitchie M | - | 10 | 120 |
-| じん | 自然の敵P, Jin | 16 | 192 |
+| じん | 自然の敵P, Jin | 17 | 204 |
 | Orangestar | 蜜柑星P | 12 | 144 |
-| cosMo@暴走P | cosMo, 暴走P | 13 | 156 |
+| cosMo@暴走P | cosMo, 暴走P | 19 | 227 |
 | ハチ | Hachi, 米津玄師 | 12 | 144 |
 | 40mP | 40㍍P | 12 | 144 |
 | ナユタン星人 | NayutalieN | 11 | 132 |
@@ -61,7 +61,7 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 | 煮ル果実 | NILFRUITS | 10 | 120 |
 | はるまきごはん | Harumaki Gohan | 9 | 108 |
 | r-906 | arukuremu | 10 | 120 |
-| sasakure.UK | ささくれP, sasakureP | 10 | 120 |
+| sasakure.UK | ささくれP, sasakureP | 11 | 132 |
 | Giga | ギガ | 12 | 144 |
 | れるりり | rerulili, 当社比P, ToushahiP | 10 | 120 |
 | みきとP | MikitoP, 愛島, Aijima | 10 | 120 |
@@ -72,27 +72,34 @@ P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受�
 | 柊マグネタイト | Hiiragi Magnetite | 10 | 120 |
 | オワタP | OwataP, ガルナ, Garuna | 11 | 132 |
 | ぬゆり | Nuyuri, nulut, Lanndo, go乱心P, ぬるり, Crona | 10 | 120 |
+| ryo | supercell | 13 | 156 |
+| Eve | - | 10 | 120 |
+| 蝶々P | papiyon, 一之瀬ユウ, Yu Ichinose | 10 | 120 |
+| wotaku | - | 10 | 120 |
+| 梅とら | umedy | 10 | 120 |
+| 八王子P | HachiojiP, 8#Prince | 10 | 120 |
 
 ## 评估结果
 
-| 指标 | 36 类 / 420 首 CV | 41 类 / 473 首 CV |
-|---|---:|---:|
-| Top-1 | 85.05% ± 0.57% | **84.40% ± 0.91%** |
-| Top-3 | 92.90% ± 0.39% | **93.15% ± 0.32%** |
-| Macro-F1 | 85.86% ± 0.61% | **84.80% ± 0.99%** |
-| MRR | 89.60% ± 0.38% | **89.31% ± 0.54%** |
+| 指标 | 36 类 / 420 首 CV | 41 类 / 473 首 CV | 47 类 / 544 首 CV |
+|---|---:|---:|---:|
+| Top-1 | 85.05% ± 0.57% | 84.40% ± 0.91% | **83.01% ± 1.22%** |
+| Top-3 | 92.90% ± 0.39% | 93.15% ± 0.32% | **91.76% ± 0.68%** |
+| Macro-F1 | 85.86% ± 0.61% | 84.80% ± 0.99% | **83.53% ± 1.25%** |
+| MRR | 89.60% ± 0.38% | 89.31% ± 0.54% | **88.05% ± 0.86%** |
 
-| 指标 | Dev holdout / 80 首 | Final frozen / 162 首 |
+| 指标 | Dev holdout / 88 首 | Final frozen / 180 首 |
 |---|---:|---:|
-| Top-1 | **78.75%** | **80.86%** |
-| Top-3 | **87.50%** | **91.98%** |
-| Macro-F1 | **76.91%** | **80.91%** |
-| MRR | **84.55%** | **86.99%** |
-| 覆盖率 | **68.75%** | **68.52%** |
-| 被接受样本准确率 | **96.36%** | **95.50%** |
+| Top-1 | **81.82%** | **82.22%** |
+| Top-3 | **88.64%** | **91.11%** |
+| Macro-F1 | **77.73%** | **80.95%** |
+| MRR | **85.78%** | **87.41%** |
+| 覆盖率 | **65.91%** | **69.44%** |
+| 被接受样本准确率 | **98.28%** | **95.20%** |
 
-41 类修补版补回了 niconico 首发代表曲，OOF 指标已接近 36 类稳定批次，final Macro-F1 回到 80% 以上。
-但 dev Macro-F1 仍低于 80%，因此当前分支适合作为谨慎部署点，不建议继续追加下一批 P 主。
+47 类版本补入 `ryo`、`Eve`、`蝶々P`、`wotaku`、`梅とら`、`八王子P`，
+并补回 `じん`、`sasakure.UK`、`cosMo@暴走P` 的 niconico 首发代表曲。
+final Macro-F1 仍保持在 80% 以上；dev Macro-F1 仍低于 80%，因此继续扩张前应优先回审数据与拒识策略。
 
 P2 数据更难，尤其暴露出 `じん`、`すりぃ`、`Neru`、`sasakure.UK/cosMo`、
 `DECO*27` 和若干跨媒体/非典型曲目的边界问题。详细错误分析见
@@ -155,17 +162,17 @@ bash deploy/harden_vps_security.sh
 
 | 文件 | 说明 |
 |---|---|
-| `configs/producers.yaml` | 41 位 P 主配置 |
+| `configs/producers.yaml` | 47 位 P 主配置 |
 | `configs/producer_style_tags.yaml` | VocaDB song tags 风格标签缓存 |
 | `configs/training_catalog_additions.yaml` | 人工核验的训练目录增量 |
 | `configs/dev_holdout_catalog.yaml` | development holdout 配置 |
 | `configs/frozen_test_catalog.yaml` | final frozen 配置 |
-| `data/processed/curated/mert_95_p1/segments.jsonl` | 训练 MERT 清单 |
+| `data/processed/curated/mert_95_p1/segments.jsonl` | 当前 47 类训练 MERT 清单 |
 | `data/processed/dev_holdout/catalog.jsonl` | dev 下载清单 |
 | `data/processed/dev_holdout/mert_95_layers/segments.jsonl` | dev MERT 清单 |
 | `data/processed/frozen_test/catalog.jsonl` | final frozen 下载清单 |
 | `data/processed/frozen_test/mert_95_layers/segments.jsonl` | final frozen MERT 清单 |
-| `data/processed/evaluations/p3_layer_fusion_deploy.json` | 当前 41 类 CV 与校准结果 |
+| `data/processed/evaluations/p3_layer_fusion_deploy.json` | 当前 47 类 CV 与校准结果 |
 | `data/processed/evaluations/p2_dev_holdout.json` | dev holdout 结果 |
 | `data/processed/evaluations/p1_frozen_test.json` | 当前 final frozen 结果 |
 
@@ -228,14 +235,15 @@ python scripts/19_evaluate_frozen_test.py `
 ## 当前机器适配
 
 当前 RTX 4060 Ti 8GB、约 32GB 内存下，MERT-v1-95M 使用 batch size 4 稳定。
-本轮新增 top100 前两批 10 位候选 P 主，并修补了 YouTube-only 选曲造成的 niconico 首发漏曲；完整重建缓存可在本机完成。
+本轮已扩到 47 位 P 主，并修补了 YouTube-only 选曲造成的 niconico 首发漏曲；完整重建缓存可在本机完成。
 现阶段瓶颈仍是数据口径和评估设计，不是显存。
 
 ## 已知问题
 
-1. 41 类修补版 final Macro-F1 已回到 80% 以上，但 dev Macro-F1 仍低于 80%；本轮应停止扩张并先部署验证。
-2. `じん`、`Neru`、`すりぃ`、`cosMo/sasakure.UK` 仍是重点边界，需要继续靠干净曲目和拒识阈值控制。
-3. 覆盖审计仍列出若干旧 P 主的 niconico 首发候选；下一轮应优先补 VocaDB id/source 证据，再决定是否替换旧样本。
+1. 47 类版本 final Macro-F1 仍在 80% 以上，但 dev Macro-F1 仍低于 80%；继续扩张前应先做错误分析。
+2. `ryo` 因 VocaDB 中部分经典作品缺少 enabled Original PV，少量训练曲使用 VocaDB-listed `Other/Reprint` PV 作为显式例外。
+3. `じん`、`Neru`、`すりぃ`、`cosMo/sasakure.UK` 仍是重点边界，需要继续靠干净曲目和拒识阈值控制。
+4. 覆盖审计仍列出若干旧 P 主的 niconico 首发候选；下一轮应优先补 VocaDB id/source 证据，再决定是否替换旧样本。
 
 历史 27 类结果见 [P1 报告](docs/P1_27_PRODUCERS_FROZEN_TEST_REPORT.md)。
 

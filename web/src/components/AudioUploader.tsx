@@ -44,7 +44,7 @@ export default function AudioUploader({ onFile, disabled }: Props) {
         {...getRootProps()}
         className={`
           relative border-2 border-dashed rounded-[var(--radius-card)]
-          p-10 text-center cursor-pointer transition-all duration-300
+          p-6 text-center cursor-pointer transition-all duration-300 sm:p-10
           ${disabled ? "opacity-50 cursor-not-allowed" : ""}
           ${
             isDragActive || dragOver
@@ -72,14 +72,14 @@ export default function AudioUploader({ onFile, disabled }: Props) {
             <p className="text-text font-medium">
               {isDragActive ? "✨ 松开以上传音频" : "拖拽音频文件到这里"}
             </p>
-            <p className="text-text-muted text-sm mt-1">
-              或点击选择文件 · 支持 WAV / MP3 / FLAC / OGG / M4A / AAC
+            <p className="mx-auto mt-1 max-w-xs text-sm leading-relaxed text-text-muted">
+              或点击选择文件 · 支持 WAV、MP3、FLAC、OGG、M4A、AAC
             </p>
             <p className="text-text-muted text-xs mt-1">最大 50MB</p>
           </div>
 
           {/* Accepted formats hint */}
-          <div className="flex gap-2 text-xs text-text-muted">
+          <div className="flex flex-wrap justify-center gap-2 text-xs text-text-muted">
             <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-white/60 border border-pink-light/30">
               <FileAudio size={12} /> WAV
             </span>

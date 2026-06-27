@@ -1678,3 +1678,460 @@ songs:
     vocadb_song_id: 209476
     youtube_id: 3bm4sysQsAM
     source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: 恋は戦争
+    vocadb_song_id: 1320
+    source_service: NicoNicoDouga
+    source_id: sm2397344
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: ワールドイズマイン
+    vocadb_song_id: 1326
+    source_service: NicoNicoDouga
+    source_id: sm3504435
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: メルト
+    vocadb_song_id: 1322
+    source_service: NicoNicoDouga
+    source_id: sm1715919
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: ブラック★ロックシューター
+    vocadb_song_id: 1323
+    source_service: NicoNicoDouga
+    source_id: sm3645817
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: 初めての恋が終わる時
+    vocadb_song_id: 1327
+    source_service: NicoNicoDouga
+    source_id: sm5524166
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: こっち向いて Baby
+    vocadb_song_id: 2904
+    source_service: NicoNicoDouga
+    source_id: so11251970
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: 罪の名前
+    vocadb_song_id: 121112
+    source_service: Youtube
+    youtube_id: kWJ4z-I25LU
+    source_id: kWJ4z-I25LU
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: きみをわすれない
+    vocadb_song_id: 5349
+    source_service: NicoNicoDouga
+    source_id: sm1656992
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: ODDS&ENDS
+    vocadb_song_id: 15662
+    source_service: NicoNicoDouga
+    source_id: sm18626305
+    source_kind: vocadb_reprint
+  - producer_slug: ryo
+    title: 積乱雲グラフィティ
+    vocadb_song_id: 2879
+    source_service: Youtube
+    youtube_id: roABID20GjU
+    source_id: roABID20GjU
+    source_kind: vocadb_original_pv
+  - producer_slug: ryo
+    title: E.D.E.N
+    vocadb_song_id: 21268
+    source_service: Youtube
+    youtube_id: ysR_wFlB66c
+    source_id: ysR_wFlB66c
+    source_kind: vocadb_other_pv
+  - producer_slug: ryo
+    title: オーケイ？
+    vocadb_song_id: 3712
+    source_service: Youtube
+    youtube_id: sYFbyz5qgxI
+    source_id: sYFbyz5qgxI
+    source_kind: vocadb_other_pv
+  - producer_slug: ryo
+    title: ハートブレイカー
+    vocadb_song_id: 696725
+    source_service: NicoNicoDouga
+    source_id: nm5603494
+    source_kind: vocadb_other_pv
+  - producer_slug: eve
+    title: ドラマツルギー
+    vocadb_song_id: 170110
+    source_service: NicoNicoDouga
+    source_id: sm32076378
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: ナンセンス文学
+    vocadb_song_id: 157227
+    source_service: NicoNicoDouga
+    source_id: sm31241401
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: お気に召すまま
+    vocadb_song_id: 175905
+    source_service: NicoNicoDouga
+    source_id: sm32338124
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: 群青讃歌
+    vocadb_song_id: 356981
+    source_service: NicoNicoDouga
+    source_id: sm39411572
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: トーキョーゲットー
+    vocadb_song_id: 197392
+    source_service: NicoNicoDouga
+    source_id: sm33475587
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: アウトサイダー
+    vocadb_song_id: 189387
+    source_service: NicoNicoDouga
+    source_id: sm33009959
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: Glorious Day
+    vocadb_song_id: 598025
+    source_service: Youtube
+    youtube_id: ABQvefYR9ec
+    source_id: ABQvefYR9ec
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: ラストダンス
+    vocadb_song_id: 217902
+    source_service: NicoNicoDouga
+    source_id: sm34317927
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: あの娘シークレット
+    vocadb_song_id: 161656
+    source_service: NicoNicoDouga
+    source_id: sm31562175
+    source_kind: vocadb_original_pv
+  - producer_slug: eve
+    title: やどりぎ
+    vocadb_song_id: 278544
+    source_service: NicoNicoDouga
+    source_id: so43309410
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: え？あぁ、そう。
+    vocadb_song_id: 2716
+    source_service: NicoNicoDouga
+    source_id: sm10122021
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: 心做し
+    vocadb_song_id: 46115
+    source_service: Youtube
+    youtube_id: 3SkNrZnoK5w
+    source_id: 3SkNrZnoK5w
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: 心拍数♯0822
+    vocadb_song_id: 6099
+    source_service: NicoNicoDouga
+    source_id: sm11834233
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: Black Board
+    vocadb_song_id: 10580
+    source_service: Youtube
+    youtube_id: XjcfzyAtzug
+    source_id: XjcfzyAtzug
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: About me
+    vocadb_song_id: 43294
+    source_service: NicoNicoDouga
+    source_id: sm22820339
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: Glorious World
+    vocadb_song_id: 2715
+    source_service: Youtube
+    youtube_id: P1OFfGO-lLw
+    source_id: P1OFfGO-lLw
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: Star Bright
+    vocadb_song_id: 18254
+    source_service: NicoNicoDouga
+    source_id: sm19504789
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: End of the World
+    vocadb_song_id: 66733
+    source_service: Youtube
+    youtube_id: FTEoVXw6RdM
+    source_id: FTEoVXw6RdM
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: ラブアトミック・トランスファー
+    vocadb_song_id: 2717
+    source_service: NicoNicoDouga
+    source_id: sm9092949
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: クランベリー
+    vocadb_song_id: 13680
+    source_service: NicoNicoDouga
+    source_id: sm18213445
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: ジェヘナ
+    vocadb_song_id: 248865
+    source_service: Youtube
+    youtube_id: 7Y9sJvLI3Po
+    source_id: 7Y9sJvLI3Po
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: シャンティ
+    vocadb_song_id: 354249
+    source_service: Youtube
+    youtube_id: POy0RvJeaqM
+    source_id: POy0RvJeaqM
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: snooze
+    vocadb_song_id: 348155
+    source_service: Youtube
+    youtube_id: fqBpGiVn2k0
+    source_id: fqBpGiVn2k0
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: リテラシー
+    vocadb_song_id: 344890
+    source_service: Youtube
+    youtube_id: d3ZOnM1I17s
+    source_id: d3ZOnM1I17s
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: マフィア
+    vocadb_song_id: 290822
+    source_service: Youtube
+    youtube_id: 43gCuHxQDy0
+    source_id: 43gCuHxQDy0
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: シビュラ
+    vocadb_song_id: 246785
+    source_service: Youtube
+    youtube_id: B8DEBwvkfbM
+    source_id: B8DEBwvkfbM
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: アブダスィマ
+    vocadb_song_id: 857745
+    source_service: Youtube
+    youtube_id: LciqbiVSMMQ
+    source_id: LciqbiVSMMQ
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: スピークイージー
+    vocadb_song_id: 309446
+    source_service: Youtube
+    youtube_id: P8aUNilN7JQ
+    source_id: P8aUNilN7JQ
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: 宣夜説
+    vocadb_song_id: 748944
+    source_service: Youtube
+    youtube_id: p5ZuXADFeBQ
+    source_id: p5ZuXADFeBQ
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: マギサ
+    vocadb_song_id: 257375
+    source_service: Youtube
+    youtube_id: M-5OSd5x2uc
+    source_id: M-5OSd5x2uc
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: 威風堂々
+    vocadb_song_id: 17673
+    source_service: Youtube
+    youtube_id: xGNQOqtGU_E
+    source_id: xGNQOqtGU_E
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: 一心不乱
+    vocadb_song_id: 9947
+    source_service: NicoNicoDouga
+    source_id: sm17141425
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: 虎視眈々
+    vocadb_song_id: 42554
+    source_service: Youtube
+    youtube_id: 2SBkkwZYc9g
+    source_id: 2SBkkwZYc9g
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: KILLER B
+    vocadb_song_id: 178309
+    source_service: Youtube
+    youtube_id: T2ekD1vzw8I
+    source_id: T2ekD1vzw8I
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: ANIMAる
+    vocadb_song_id: 195142
+    source_service: Youtube
+    youtube_id: yQxspP3RNv4
+    source_id: yQxspP3RNv4
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: 一騎当千
+    vocadb_song_id: 75766
+    source_service: NicoNicoDouga
+    source_id: sm25086693
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: 疑心暗鬼
+    vocadb_song_id: 58586
+    source_service: NicoNicoDouga
+    source_id: sm23769673
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: SURVIVE
+    vocadb_song_id: 243631
+    source_service: NicoNicoDouga
+    source_id: so35594221
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: L愛KE
+    vocadb_song_id: 414947
+    source_service: Youtube
+    youtube_id: dy0X0pVrgSY
+    source_id: dy0X0pVrgSY
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: 狂喜乱舞
+    vocadb_song_id: 17519
+    source_service: NicoNicoDouga
+    source_id: sm18615759
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: 気まぐれメルシィ
+    vocadb_song_id: 121935
+    source_service: Youtube
+    youtube_id: o1iz4L-5zkQ
+    source_id: o1iz4L-5zkQ
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: Sweet Devil
+    vocadb_song_id: 1383
+    source_service: NicoNicoDouga
+    source_id: sm9711503
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: Weekender Girl
+    vocadb_song_id: 15047
+    source_service: Youtube
+    youtube_id: 06d8SwcSm_Q
+    source_id: 06d8SwcSm_Q
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: KiLLER LADY
+    vocadb_song_id: 1399
+    source_service: Youtube
+    youtube_id: 2bgBEocBUFY
+    source_id: 2bgBEocBUFY
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: エレクトリック・ラブ
+    vocadb_song_id: 1389
+    source_service: NicoNicoDouga
+    source_id: sm9097377
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: Heart Chrome
+    vocadb_song_id: 49455
+    source_service: Youtube
+    youtube_id: 46MIgupU8UY
+    source_id: 46MIgupU8UY
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: バイオレンストリガー
+    vocadb_song_id: 219144
+    source_service: Youtube
+    youtube_id: iKdHiLzBf34
+    source_id: iKdHiLzBf34
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: Blue Star
+    vocadb_song_id: 105439
+    source_service: NicoNicoDouga
+    source_id: so27572761
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: Beautiful Nightmare
+    vocadb_song_id: 95898
+    source_service: Youtube
+    youtube_id: Kobrtyw97kU
+    source_id: Kobrtyw97kU
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: 嬢王
+    vocadb_song_id: 603800
+    source_service: Youtube
+    youtube_id: 7-A2FC4q4ac
+    source_id: 7-A2FC4q4ac
+    source_kind: vocadb_original_pv
+  - producer_slug: jin
+    title: カゲロウデイズ
+    vocadb_song_id: 4979
+    source_service: NicoNicoDouga
+    source_id: sm15751190
+    source_kind: vocadb_original_pv
+  - producer_slug: sasakure_uk
+    title: ＊ハロー、プラネット。
+    vocadb_song_id: 2924
+    source_service: NicoNicoDouga
+    source_id: sm7138245
+    source_kind: vocadb_original_pv
+  - producer_slug: cosmo
+    title: Sadistic.Music∞Factory
+    vocadb_song_id: 16061
+    source_service: NicoNicoDouga
+    source_id: sm18729289
+    source_kind: vocadb_original_pv
+  - producer_slug: cosmo
+    title: 初音ミクの激唱（LONG VERSION）
+    vocadb_song_id: 8215
+    source_service: NicoNicoDouga
+    source_id: sm11328911
+    source_kind: vocadb_original_pv
+  - producer_slug: cosmo
+    title: ANTI THE∞HOLiC
+    vocadb_song_id: 4269
+    source_service: NicoNicoDouga
+    source_id: sm7781905
+    source_kind: vocadb_original_pv
+  - producer_slug: cosmo
+    title: 初音ミクの消失
+    vocadb_song_id: 295872
+    source_service: NicoNicoDouga
+    source_id: sm1476648
+    source_kind: vocadb_original_pv
+  - producer_slug: cosmo
+    title: 鏡音レンの暴走
+    vocadb_song_id: 4315
+    source_service: NicoNicoDouga
+    source_id: sm4775243
+    source_kind: vocadb_original_pv
+  - producer_slug: cosmo
+    title: 初音ミクの分裂→破壊
+    vocadb_song_id: 3802
+    source_service: NicoNicoDouga
+    source_id: sm10924943
+    source_kind: vocadb_original_pv

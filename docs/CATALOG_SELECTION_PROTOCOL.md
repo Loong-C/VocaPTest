@@ -11,6 +11,10 @@ When adding producers, prefer fewer clean songs over a larger noisy set.
   `source_service`/`source_id` or the legacy `youtube_id`.
 - Supported media sources are VocaDB-listed enabled Original PVs from
   `Youtube` and `NicoNicoDouga`.
+- Use VocaDB-listed `Other` or `Reprint` PVs only as explicit documented
+  exceptions when an important canonical work lacks an enabled Original PV.
+  Mark those entries with `source_kind: vocadb_other_pv` or
+  `source_kind: vocadb_reprint`.
 - Do not report VocaDB refreshes as successful unless the API returned JSON.
   If the request is blocked by Cloudflare, store exported API JSON locally and
   process that file instead.
@@ -29,7 +33,8 @@ When adding producers, prefer fewer clean songs over a larger noisy set.
 ## Exclusion Rules
 
 - Exclude covers, remixes, non-original PVs, disabled PVs, and entries where
-  VocaDB does not support the producer/style attribution.
+  VocaDB does not support the producer/style attribution unless a reviewed
+  sparse-catalog exception is documented in the catalog entry.
 - Exclude songs with unapproved external producer or group style credits.
 - Exclude songs that overlap another configured producer as a style credit.
 - Avoid Topic/KARENT/SEGA/Project Sekai-style uploads when an original producer

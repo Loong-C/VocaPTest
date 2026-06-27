@@ -46,6 +46,12 @@ const PRODUCER_GRADIENTS: Record<string, string> = {
   hiiragi_magnetite: "from-cyan-500 to-fuchsia-500",
   owata_p: "from-orange-400 to-sky-500",
   nuyuri: "from-zinc-600 to-emerald-500",
+  ryo: "from-sky-500 to-blue-700",
+  eve: "from-red-500 to-zinc-700",
+  papiyon: "from-violet-500 to-rose-500",
+  wotaku: "from-slate-700 to-cyan-600",
+  ume_tora: "from-fuchsia-500 to-amber-500",
+  hachioji_p: "from-cyan-400 to-fuchsia-500",
 };
 
 export function getProducerMeta(slug: string): { gradient: string } {
@@ -54,7 +60,7 @@ export function getProducerMeta(slug: string): { gradient: string } {
   };
 }
 
-function withBasePath(url?: string | null): string | null {
+export function withBasePath(url?: string | null): string | null {
   if (!url) return null;
   if (/^(https?:)?\/\//.test(url) || url.startsWith("data:") || url.startsWith("blob:")) {
     return url;

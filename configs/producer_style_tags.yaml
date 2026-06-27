@@ -3,7 +3,7 @@ source:
   url: https://vocadb.net/
   api_url: https://vocadb.net/api
   refresh_script: scripts/22_refresh_vocadb_style_tags.py
-  last_reviewed: '2026-06-26'
+  last_reviewed: '2026-06-27'
   notes:
   - Runtime never calls VocaDB; tags are cached in this file for stable deployment.
   - Tags are display-only descriptors and are not used by the audio model.
@@ -1678,7 +1678,7 @@ producers:
       - song_id: 401491
         title: まにまに
         url: https://vocadb.net/S/401491
-        tag_votes: 12
+        tag_votes: 13
       - song_id: 460547
         title: プシ
         url: https://vocadb.net/S/460547
@@ -2348,3 +2348,345 @@ producers:
         title: ディカディズム
         url: https://vocadb.net/S/189940
         tag_votes: 2
+  ryo:
+    artist_id: 67
+    source_url: https://vocadb.net/Ar/67
+    api_url: https://vocadb.net/api/songs?artistId[]=67&fields=PVs,Artists,Tags
+    songs_analyzed: 54
+    style_tags:
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 16
+      evidence:
+      - song_id: 1326
+        title: ワールドイズマイン
+        url: https://vocadb.net/S/1326
+        tag_votes: 7
+      - song_id: 15662
+        title: ODDS&ENDS
+        url: https://vocadb.net/S/15662
+        tag_votes: 10
+      - song_id: 1322
+        title: メルト
+        url: https://vocadb.net/S/1322
+        tag_votes: 5
+    - label: j-pop
+      display_zh: J-Pop
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 1326
+        title: ワールドイズマイン
+        url: https://vocadb.net/S/1326
+        tag_votes: 4
+      - song_id: 15662
+        title: ODDS&ENDS
+        url: https://vocadb.net/S/15662
+        tag_votes: 3
+      - song_id: 1322
+        title: メルト
+        url: https://vocadb.net/S/1322
+        tag_votes: 9
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 1320
+        title: 恋は戦争
+        url: https://vocadb.net/S/1320
+        tag_votes: 6
+      - song_id: 15662
+        title: ODDS&ENDS
+        url: https://vocadb.net/S/15662
+        tag_votes: 3
+      - song_id: 1323
+        title: ブラック★ロックシューター
+        url: https://vocadb.net/S/1323
+        tag_votes: 3
+  eve:
+    artist_id: 10233
+    source_url: https://vocadb.net/Ar/10233
+    api_url: https://vocadb.net/api/songs?artistId[]=10233&fields=PVs,Artists,Tags
+    songs_analyzed: 19
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 170110
+        title: ドラマツルギー
+        url: https://vocadb.net/S/170110
+        tag_votes: 6
+      - song_id: 157227
+        title: ナンセンス文学
+        url: https://vocadb.net/S/157227
+        tag_votes: 3
+      - song_id: 189387
+        title: アウトサイダー
+        url: https://vocadb.net/S/189387
+        tag_votes: 1
+    - label: funk rock
+      display_zh: Funk Rock
+      category: Genres
+      song_count: 5
+      evidence:
+      - song_id: 170110
+        title: ドラマツルギー
+        url: https://vocadb.net/S/170110
+        tag_votes: 5
+      - song_id: 175905
+        title: お気に召すまま
+        url: https://vocadb.net/S/175905
+        tag_votes: 4
+      - song_id: 197392
+        title: トーキョーゲットー
+        url: https://vocadb.net/S/197392
+        tag_votes: 3
+    - label: pop rock
+      display_zh: Pop Rock
+      category: Genres
+      song_count: 5
+      evidence:
+      - song_id: 170110
+        title: ドラマツルギー
+        url: https://vocadb.net/S/170110
+        tag_votes: 4
+      - song_id: 175905
+        title: お気に召すまま
+        url: https://vocadb.net/S/175905
+        tag_votes: 4
+      - song_id: 356981
+        title: 群青讃歌
+        url: https://vocadb.net/S/356981
+        tag_votes: 2
+  papiyon:
+    artist_id: 96
+    source_url: https://vocadb.net/Ar/96
+    api_url: https://vocadb.net/api/songs?artistId[]=96&fields=PVs,Artists,Tags
+    songs_analyzed: 87
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 31
+      evidence:
+      - song_id: 46115
+        title: 心做し
+        url: https://vocadb.net/S/46115
+        tag_votes: 1
+      - song_id: 10580
+        title: Black Board
+        url: https://vocadb.net/S/10580
+        tag_votes: 4
+      - song_id: 275708
+        title: え？あぁ、そう。- 10th Anniversary Edition -
+        url: https://vocadb.net/S/275708
+        tag_votes: 3
+    - label: piano-rock
+      display_zh: piano-rock
+      category: Genres
+      song_count: 10
+      evidence:
+      - song_id: 2716
+        title: え？あぁ、そう。
+        url: https://vocadb.net/S/2716
+        tag_votes: 3
+      - song_id: 275708
+        title: え？あぁ、そう。- 10th Anniversary Edition -
+        url: https://vocadb.net/S/275708
+        tag_votes: 3
+      - song_id: 66733
+        title: End of the World
+        url: https://vocadb.net/S/66733
+        tag_votes: 1
+    - label: ballad
+      display_zh: Ballad
+      category: Genres
+      song_count: 8
+      evidence:
+      - song_id: 46115
+        title: 心做し
+        url: https://vocadb.net/S/46115
+        tag_votes: 7
+      - song_id: 6099
+        title: 心拍数♯0822
+        url: https://vocadb.net/S/6099
+        tag_votes: 2
+      - song_id: 8717
+        title: 「I」
+        url: https://vocadb.net/S/8717
+        tag_votes: 1
+  wotaku:
+    artist_id: 60331
+    source_url: https://vocadb.net/Ar/60331
+    api_url: https://vocadb.net/api/songs?artistId[]=60331&fields=PVs,Artists,Tags
+    songs_analyzed: 117
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 21
+      evidence:
+      - song_id: 354249
+        title: シャンティ
+        url: https://vocadb.net/S/354249
+        tag_votes: 2
+      - song_id: 246785
+        title: シビュラ
+        url: https://vocadb.net/S/246785
+        tag_votes: 3
+      - song_id: 358759
+        title: ヸシュヌ
+        url: https://vocadb.net/S/358759
+        tag_votes: 1
+    - label: electro swing
+      display_zh: electro swing
+      category: Genres
+      song_count: 17
+      evidence:
+      - song_id: 248865
+        title: ジェヘナ
+        url: https://vocadb.net/S/248865
+        tag_votes: 10
+      - song_id: 344890
+        title: リテラシー
+        url: https://vocadb.net/S/344890
+        tag_votes: 3
+      - song_id: 246785
+        title: シビュラ
+        url: https://vocadb.net/S/246785
+        tag_votes: 3
+    - label: trap music
+      display_zh: Trap
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 354249
+        title: シャンティ
+        url: https://vocadb.net/S/354249
+        tag_votes: 7
+      - song_id: 348155
+        title: snooze
+        url: https://vocadb.net/S/348155
+        tag_votes: 7
+      - song_id: 290822
+        title: マフィア
+        url: https://vocadb.net/S/290822
+        tag_votes: 5
+  ume_tora:
+    artist_id: 1164
+    source_url: https://vocadb.net/Ar/1164
+    api_url: https://vocadb.net/api/songs?artistId[]=1164&fields=PVs,Artists,Tags
+    songs_analyzed: 85
+    style_tags:
+    - label: rock
+      display_zh: 摇滚
+      category: Genres
+      song_count: 15
+      evidence:
+      - song_id: 75766
+        title: 一騎当千
+        url: https://vocadb.net/S/75766
+        tag_votes: 1
+      - song_id: 243631
+        title: SURVIVE
+        url: https://vocadb.net/S/243631
+        tag_votes: 2
+      - song_id: 60288
+        title: VERSUS
+        url: https://vocadb.net/S/60288
+        tag_votes: 2
+    - label: dance-pop
+      display_zh: 舞曲流行
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 9947
+        title: 一心不乱
+        url: https://vocadb.net/S/9947
+        tag_votes: 1
+      - song_id: 178309
+        title: KILLER B
+        url: https://vocadb.net/S/178309
+        tag_votes: 7
+      - song_id: 195142
+        title: ANIMAる
+        url: https://vocadb.net/S/195142
+        tag_votes: 4
+    - label: edm
+      display_zh: EDM
+      category: Genres
+      song_count: 11
+      evidence:
+      - song_id: 17673
+        title: 威風堂々
+        url: https://vocadb.net/S/17673
+        tag_votes: 3
+      - song_id: 9947
+        title: 一心不乱
+        url: https://vocadb.net/S/9947
+        tag_votes: 1
+      - song_id: 195142
+        title: ANIMAる
+        url: https://vocadb.net/S/195142
+        tag_votes: 2
+  hachioji_p:
+    artist_id: 38
+    source_url: https://vocadb.net/Ar/38
+    api_url: https://vocadb.net/api/songs?artistId[]=38&fields=PVs,Artists,Tags
+    songs_analyzed: 134
+    style_tags:
+    - label: electropop
+      display_zh: 电子流行
+      category: Genres
+      song_count: 54
+      evidence:
+      - song_id: 246033
+        title: Gimme×Gimme
+        url: https://vocadb.net/S/246033
+        tag_votes: 9
+      - song_id: 121935
+        title: 気まぐれメルシィ
+        url: https://vocadb.net/S/121935
+        tag_votes: 3
+      - song_id: 1383
+        title: Sweet Devil
+        url: https://vocadb.net/S/1383
+        tag_votes: 3
+    - label: edm
+      display_zh: EDM
+      category: Genres
+      song_count: 39
+      evidence:
+      - song_id: 246033
+        title: Gimme×Gimme
+        url: https://vocadb.net/S/246033
+        tag_votes: 11
+      - song_id: 121935
+        title: 気まぐれメルシィ
+        url: https://vocadb.net/S/121935
+        tag_votes: 5
+      - song_id: 1383
+        title: Sweet Devil
+        url: https://vocadb.net/S/1383
+        tag_votes: 2
+    - label: electro-house
+      display_zh: electro-house
+      category: Genres
+      song_count: 20
+      evidence:
+      - song_id: 1399
+        title: KiLLER LADY
+        url: https://vocadb.net/S/1399
+        tag_votes: 3
+      - song_id: 95898
+        title: Beautiful Nightmare
+        url: https://vocadb.net/S/95898
+        tag_votes: 5
+      - song_id: 5347
+        title: Baby Maniacs
+        url: https://vocadb.net/S/5347
+        tag_votes: 4

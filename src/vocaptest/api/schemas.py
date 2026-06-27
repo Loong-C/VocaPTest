@@ -13,6 +13,7 @@ class ProducerSong(BaseModel):
 class SearchResultItem(BaseModel):
     producer_slug: str
     display_name: str
+    avatar_url: str | None = None
     score: float
     rank: int
     style_tags: list[str] = Field(default_factory=list)

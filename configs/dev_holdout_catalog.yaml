@@ -512,3 +512,57 @@ songs:
     vocadb_song_id: 812036
     youtube_id: Pr4OUUAXbZI
     source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: 月見夜ラビット
+    vocadb_song_id: 16255
+    source_service: NicoNicoDouga
+    source_id: sm18865202
+    source_kind: vocadb_original_pv
+  - producer_slug: papiyon
+    title: シエレトワール
+    vocadb_song_id: 190561
+    source_service: Youtube
+    youtube_id: 7fcc5MOT-r8
+    source_id: 7fcc5MOT-r8
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: DOGMA
+    vocadb_song_id: 245208
+    source_service: Youtube
+    youtube_id: JAdcCzeD0qk
+    source_id: JAdcCzeD0qk
+    source_kind: vocadb_original_pv
+  - producer_slug: wotaku
+    title: Lindenbaum
+    vocadb_song_id: 776616
+    source_service: Youtube
+    youtube_id: ob9EiRmAX-c
+    source_id: ob9EiRmAX-c
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: jewel
+    vocadb_song_id: 30054
+    source_service: NicoNicoDouga
+    source_id: sm20907526
+    source_kind: vocadb_original_pv
+  - producer_slug: ume_tora
+    title: 赤ネ鳳
+    vocadb_song_id: 289321
+    source_service: Youtube
+    youtube_id: naWjPf5IkvY
+    source_id: naWjPf5IkvY
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: PARTY ROCK ETERNITY
+    vocadb_song_id: 589291
+    source_service: Youtube
+    youtube_id: MyV8DhouDXY
+    source_id: MyV8DhouDXY
+    source_kind: vocadb_original_pv
+  - producer_slug: hachioji_p
+    title: Baby Maniacs
+    vocadb_song_id: 5347
+    source_service: Youtube
+    youtube_id: ca7QqLHEiLA
+    source_id: ca7QqLHEiLA
+    source_kind: vocadb_original_pv
