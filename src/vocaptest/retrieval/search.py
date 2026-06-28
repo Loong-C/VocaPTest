@@ -12,7 +12,6 @@ from vocaptest.audio.preprocess import preprocess_file
 from vocaptest.audio.segment import segment_file, split_segments
 from vocaptest.data.metadata_schema import SearchResult
 from vocaptest.models.base import AudioEmbedder
-from vocaptest.models.layer_fusion import LayerFusionLDA
 from vocaptest.models.song_lda import SongMeanShrinkageLDA
 from vocaptest.retrieval.similarity import score_song_against_all
 from vocaptest.utils.logging import setup_logging
@@ -29,7 +28,7 @@ class ProducerSearch:
         self,
         embedder: AudioEmbedder,
         profiles: dict | None = None,
-        classifier: SongMeanShrinkageLDA | LayerFusionLDA | None = None,
+        classifier: object | None = None,
         config: dict | None = None,
     ):
         self.embedder = embedder
@@ -113,7 +112,7 @@ class ProducerSearch:
             wav[segment["start_sample"]:segment["end_sample"]]
             for segment in segments_info
         ]
-        if isinstance(self.classifier, LayerFusionLDA):
+        if hasattr(self.classifier, "rank_segment_layers"):
             segment_layers = []
             total_batches = max(
                 1,

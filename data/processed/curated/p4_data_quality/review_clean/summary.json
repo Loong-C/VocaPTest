@@ -1,0 +1,198 @@
+{
+  "strategy": "review_clean",
+  "source_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\mert_95_p1\\segments.jsonl",
+  "manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\review_clean\\segments.jsonl",
+  "songs": 561,
+  "segments": 6713,
+  "classes": 50,
+  "minimum_class_songs": 7,
+  "songs_per_class": {
+    "40mp": 12,
+    "ayase": 11,
+    "balloon": 10,
+    "chinozo": 13,
+    "cosmo": 19,
+    "deco27": 14,
+    "eve": 10,
+    "giga": 12,
+    "gyari": 10,
+    "hachi": 11,
+    "hachioji_p": 10,
+    "harumaki_gohan": 9,
+    "hiiragi_magnetite": 10,
+    "hitoshizuku_p": 10,
+    "inabakumori": 14,
+    "iyowa": 10,
+    "jin": 15,
+    "kairikibear": 12,
+    "kanaria": 10,
+    "kemu": 11,
+    "kuro_usa_p": 8,
+    "maretu": 12,
+    "mikito_p": 10,
+    "mimi": 14,
+    "mitchie_m": 10,
+    "mothy": 10,
+    "n_buna": 10,
+    "nakiso": 14,
+    "nayutan": 11,
+    "neru": 16,
+    "niru_kajitsu": 10,
+    "nuyuri": 10,
+    "orangestar": 12,
+    "oster_project": 10,
+    "owata_p": 11,
+    "papiyon": 10,
+    "pinocchiop": 13,
+    "r_906": 9,
+    "r_sound_design": 13,
+    "rerulili": 10,
+    "ryo": 13,
+    "sasakure_uk": 7,
+    "surii": 15,
+    "syudou": 10,
+    "teniwoha": 10,
+    "toa": 10,
+    "toma": 10,
+    "ume_tora": 10,
+    "wotaku": 10,
+    "wowaka": 10
+  },
+  "exclusions": {
+    "excluded_songs": 13,
+    "by_code": {
+      "configured_source_not_original": 1,
+      "low_vocadb_rating": 2,
+      "review_pv_author": 10
+    },
+    "by_class": {
+      "hachi": 1,
+      "jin": 2,
+      "kemu": 1,
+      "kuro_usa_p": 2,
+      "n_buna": 1,
+      "r_906": 1,
+      "r_sound_design": 1,
+      "sasakure_uk": 4
+    },
+    "records": [
+      {
+        "song_id": "niconico_sm14605390",
+        "producer_slug": "kuro_usa_p",
+        "title": "2525遊園地",
+        "codes": [
+          "low_vocadb_rating"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "niconico_sm22340063",
+        "producer_slug": "kuro_usa_p",
+        "title": "弾丸ロッケンガール",
+        "codes": [
+          "low_vocadb_rating"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_8xR6zghZM1c",
+        "producer_slug": "jin",
+        "title": "チルドレンレコード",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_9ID3-cXidQA",
+        "producer_slug": "r_sound_design",
+        "title": "ネオンライト",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_LdnlHz3qGrQ",
+        "producer_slug": "sasakure_uk",
+        "title": "ネガポジ＊コンティニューズ",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_Qyjy_-mSsB4",
+        "producer_slug": "n_buna",
+        "title": "アイラ",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_RfZgC1-uc4w",
+        "producer_slug": "sasakure_uk",
+        "title": "トゥイー・ボックスの人形劇場",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube__xs6LjWf3sM",
+        "producer_slug": "hachi",
+        "title": "Mrs.Pumpkinの滑稽な夢",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_efXqozK4A40",
+        "producer_slug": "r_906",
+        "title": "プシ",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_oKBkctJAo5Y",
+        "producer_slug": "sasakure_uk",
+        "title": "蜘蛛糸モノポリー",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_pIF_kTBBnuU",
+        "producer_slug": "kemu",
+        "title": "ぼくらの報復政策",
+        "codes": [
+          "configured_source_not_original"
+        ],
+        "risk_score": 10
+      },
+      {
+        "song_id": "youtube_uel07HVEY40",
+        "producer_slug": "jin",
+        "title": "ヘッドフォンアクター",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      },
+      {
+        "song_id": "youtube_vnWupmpoHaM",
+        "producer_slug": "sasakure_uk",
+        "title": "しゅうまつがやってくる！",
+        "codes": [
+          "review_pv_author"
+        ],
+        "risk_score": 1
+      }
+    ]
+  }
+}

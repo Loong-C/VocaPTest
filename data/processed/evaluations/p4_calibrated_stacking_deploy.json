@@ -1,0 +1,195 @@
+{
+  "protocol": {
+    "purpose": "Deployable P4 calibrated-stacking artifact",
+    "train_manifest": "data/processed/curated/mert_95_p1/segments.jsonl",
+    "dev_manifest": "data/processed/dev_holdout/mert_95_layers/segments.jsonl",
+    "final_manifest": "data/processed/frozen_test/mert_95_layers/segments.jsonl",
+    "strategy": "source_clean",
+    "base_heads": [
+      {
+        "name": "layer_6",
+        "kind": "layer",
+        "layers": [
+          6
+        ]
+      },
+      {
+        "name": "layer_7",
+        "kind": "layer",
+        "layers": [
+          7
+        ]
+      },
+      {
+        "name": "layer_8",
+        "kind": "layer",
+        "layers": [
+          8
+        ]
+      },
+      {
+        "name": "fusion_567",
+        "kind": "layer_fusion",
+        "layers": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "fusion_568",
+        "kind": "layer_fusion",
+        "layers": [
+          5,
+          6,
+          8
+        ]
+      },
+      {
+        "name": "concat_56",
+        "kind": "concat",
+        "layers": [
+          5,
+          6
+        ]
+      },
+      {
+        "name": "concat_67",
+        "kind": "concat",
+        "layers": [
+          6,
+          7
+        ]
+      },
+      {
+        "name": "concat_567",
+        "kind": "concat",
+        "layers": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "concat_568",
+        "kind": "concat",
+        "layers": [
+          5,
+          6,
+          8
+        ]
+      },
+      {
+        "name": "concat_678",
+        "kind": "concat",
+        "layers": [
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "concat_789",
+        "kind": "concat",
+        "layers": [
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "name": "concat_45678",
+        "kind": "concat",
+        "layers": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    ],
+    "base_oof": "5 StratifiedGroupKFold by work_id",
+    "meta_cv": "5 StratifiedGroupKFold by work_id",
+    "meta_model": {
+      "kind": "logistic_regression",
+      "C": 0.03,
+      "feature_mode": "log_prob",
+      "class_weight": "balanced"
+    },
+    "target_precision": 0.96
+  },
+  "dataset": {
+    "train_songs": 573,
+    "removed_train_songs": 1,
+    "train_segments": 6857,
+    "dev_songs": 94,
+    "final_songs": 190,
+    "classes": 50,
+    "minimum_class_songs": 9
+  },
+  "train_cv": {
+    "metrics": {
+      "top1_accuracy": 0.8429319371727748,
+      "top3_accuracy": 0.900523560209424,
+      "macro_f1": 0.8444997752488278,
+      "mrr": 0.8806998632977074,
+      "log_loss": 0.771055668718384
+    },
+    "rejection": {
+      "threshold": 0.8683586265410457,
+      "coverage": 0.6544502617801047,
+      "precision": 0.96
+    },
+    "rejection_metrics": {
+      "threshold": 0.8683586265410457,
+      "coverage": 0.6544502617801047,
+      "accepted_count": 375,
+      "accepted_accuracy": 0.96,
+      "accepted_wrong_count": 15,
+      "rejected_correct_count": 123
+    }
+  },
+  "dev": {
+    "metrics": {
+      "top1_accuracy": 0.8085106382978723,
+      "top3_accuracy": 0.851063829787234,
+      "macro_f1": 0.758,
+      "mrr": 0.846053375516755,
+      "log_loss": 1.0696100188156024
+    },
+    "rejection_metrics": {
+      "threshold": 0.8683586265410457,
+      "coverage": 0.6595744680851063,
+      "accepted_count": 62,
+      "accepted_accuracy": 0.9516129032258065,
+      "accepted_wrong_count": 3,
+      "rejected_correct_count": 17
+    }
+  },
+  "final": {
+    "metrics": {
+      "top1_accuracy": 0.8210526315789474,
+      "top3_accuracy": 0.9,
+      "macro_f1": 0.799968586968587,
+      "mrr": 0.8644043362186844,
+      "log_loss": 0.9115681067267141
+    },
+    "rejection_metrics": {
+      "threshold": 0.8683586265410457,
+      "coverage": 0.6473684210526316,
+      "accepted_count": 123,
+      "accepted_accuracy": 0.959349593495935,
+      "accepted_wrong_count": 5,
+      "rejected_correct_count": 38
+    }
+  },
+  "artifact": {
+    "model_output": "data/processed/models/p4_calibrated_stacking.pkl",
+    "backend": "mert_95_p4_calibrated_stacking",
+    "classes": 50,
+    "base_head_count": 12,
+    "meta_feature_mode": "log_prob",
+    "stripped_inference_unused_attributes": 16
+  }
+}

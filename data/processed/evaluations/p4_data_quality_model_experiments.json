@@ -1,0 +1,3592 @@
+{
+  "protocol": {
+    "purpose": "Data-quality filters and global model-head experiments",
+    "constraints": [
+      "No new songs are added.",
+      "No cached audio or embedding files are deleted.",
+      "No producer-specific rules or pair-specific heads are used.",
+      "Development holdout is used for method selection; final frozen is reported only for acceptance."
+    ],
+    "train_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\mert_95_p1\\segments.jsonl",
+    "dev_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\dev_holdout\\mert_95_layers\\segments.jsonl",
+    "final_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\frozen_test\\mert_95_layers\\segments.jsonl",
+    "audit": "F:\\Personal\\Code\\vocaptest\\data\\processed\\evaluations\\catalog_risk_audit.json"
+  },
+  "dataset": {
+    "train_songs": 574,
+    "dev_songs": 94,
+    "final_songs": 190,
+    "classes": 50,
+    "layers": 13,
+    "embedding_dim": 768
+  },
+  "exclusions": {
+    "raw": {
+      "excluded_songs": 0,
+      "by_code": {},
+      "by_class": {},
+      "records": []
+    },
+    "source_clean": {
+      "excluded_songs": 1,
+      "by_code": {
+        "configured_source_not_original": 1
+      },
+      "by_class": {
+        "kemu": 1
+      },
+      "records": [
+        {
+          "song_id": "youtube_pIF_kTBBnuU",
+          "producer_slug": "kemu",
+          "title": "ぼくらの報復政策",
+          "codes": [
+            "configured_source_not_original"
+          ],
+          "risk_score": 10
+        }
+      ]
+    },
+    "review_clean": {
+      "excluded_songs": 13,
+      "by_code": {
+        "configured_source_not_original": 1,
+        "low_vocadb_rating": 2,
+        "review_pv_author": 10
+      },
+      "by_class": {
+        "hachi": 1,
+        "jin": 2,
+        "kemu": 1,
+        "kuro_usa_p": 2,
+        "n_buna": 1,
+        "r_906": 1,
+        "r_sound_design": 1,
+        "sasakure_uk": 4
+      },
+      "records": [
+        {
+          "song_id": "niconico_sm14605390",
+          "producer_slug": "kuro_usa_p",
+          "title": "2525遊園地",
+          "codes": [
+            "low_vocadb_rating"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "niconico_sm22340063",
+          "producer_slug": "kuro_usa_p",
+          "title": "弾丸ロッケンガール",
+          "codes": [
+            "low_vocadb_rating"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_8xR6zghZM1c",
+          "producer_slug": "jin",
+          "title": "チルドレンレコード",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_9ID3-cXidQA",
+          "producer_slug": "r_sound_design",
+          "title": "ネオンライト",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_LdnlHz3qGrQ",
+          "producer_slug": "sasakure_uk",
+          "title": "ネガポジ＊コンティニューズ",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_Qyjy_-mSsB4",
+          "producer_slug": "n_buna",
+          "title": "アイラ",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_RfZgC1-uc4w",
+          "producer_slug": "sasakure_uk",
+          "title": "トゥイー・ボックスの人形劇場",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube__xs6LjWf3sM",
+          "producer_slug": "hachi",
+          "title": "Mrs.Pumpkinの滑稽な夢",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_efXqozK4A40",
+          "producer_slug": "r_906",
+          "title": "プシ",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_oKBkctJAo5Y",
+          "producer_slug": "sasakure_uk",
+          "title": "蜘蛛糸モノポリー",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_pIF_kTBBnuU",
+          "producer_slug": "kemu",
+          "title": "ぼくらの報復政策",
+          "codes": [
+            "configured_source_not_original"
+          ],
+          "risk_score": 10
+        },
+        {
+          "song_id": "youtube_uel07HVEY40",
+          "producer_slug": "jin",
+          "title": "ヘッドフォンアクター",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_vnWupmpoHaM",
+          "producer_slug": "sasakure_uk",
+          "title": "しゅうまつがやってくる！",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        }
+      ]
+    },
+    "protocol_complete": {
+      "excluded_songs": 187,
+      "by_code": {
+        "configured_source_not_original": 1,
+        "low_vocadb_rating": 2,
+        "missing_vocadb_song_id": 174,
+        "review_pv_author": 10
+      },
+      "by_class": {
+        "40mp": 10,
+        "chinozo": 11,
+        "cosmo": 11,
+        "deco27": 12,
+        "hachi": 11,
+        "inabakumori": 12,
+        "jin": 13,
+        "kairikibear": 10,
+        "kanaria": 7,
+        "kemu": 11,
+        "kuro_usa_p": 2,
+        "maretu": 10,
+        "mimi": 12,
+        "mitchie_m": 8,
+        "n_buna": 1,
+        "nayutan": 9,
+        "neru": 5,
+        "orangestar": 10,
+        "pinocchiop": 11,
+        "r_906": 1,
+        "r_sound_design": 1,
+        "sasakure_uk": 4,
+        "wowaka": 5
+      },
+      "records": [
+        {
+          "song_id": "niconico_sm14605390",
+          "producer_slug": "kuro_usa_p",
+          "title": "2525遊園地",
+          "codes": [
+            "low_vocadb_rating"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "niconico_sm22340063",
+          "producer_slug": "kuro_usa_p",
+          "title": "弾丸ロッケンガール",
+          "codes": [
+            "low_vocadb_rating"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_-5T-L0b43no",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『ノンユース』Vo. 歌愛ユキ & 初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_-rbyIphpwAo",
+          "producer_slug": "maretu",
+          "title": "MARETU ft. 初音ミク \"Mind Brand\" マインドブランド (English Subtitles)",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_0RU_05zpETo",
+          "producer_slug": "hachi",
+          "title": "ハチ  MV「パンダヒーロー」HACHI / Panda Hero",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_0edqjKwidPM",
+          "producer_slug": "orangestar",
+          "title": "Aloud (ASH ver.)",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_1EXGjYk_xXk",
+          "producer_slug": "kemu",
+          "title": "【HD】Reincarnation【GUMI・Kagamine Rin】- KEMU VOXX",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_1EevjGF2nuU",
+          "producer_slug": "mimi",
+          "title": "『ぴょん』/ feat. 初音ミク＆重音テトSV",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_2PqxOytUjz0",
+          "producer_slug": "hachi",
+          "title": "米津玄師　MV『ゴーゴー幽霊船』",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_2t1NMRse6aI",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - エイリアンエイリアン (ft.初音ミク) OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_3GzRDW3hZ1k",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - HAO feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_3x9_LpnRtAk",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - ロケットサイダー (ft.初音ミク) Official Music Video",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_4QL9tLfVFJg",
+          "producer_slug": "mitchie_m",
+          "title": "Mitchie M - Newly Edgy Idols feat. Hatsune Miku, Kagamine Rin, Megurine Luka, Meiko",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_5Pbx04sT-sU",
+          "producer_slug": "kemu",
+          "title": "【HD】 イカサマライフゲイム 【GUMI】 - KEMU VOXX",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_5hgSET4bpbk",
+          "producer_slug": "mimi",
+          "title": "『アンコールダンス』/ feat. 重音テトSV",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_6wUqdA4SuBk",
+          "producer_slug": "cosmo",
+          "title": "コぇちっちゃ＜てゴ×ンネ - cosMo＠暴走P feat.可不",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_7xht3kQO_TM",
+          "producer_slug": "mimi",
+          "title": "『 Hanataba 』/ MIMI feat. KAFU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_86NfhiTdA7g",
+          "producer_slug": "40mp",
+          "title": "【VOCALOID Fukase】 誰も知らないハッピーエンド 【オリジナルMV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_8J6SMoVd5BY",
+          "producer_slug": "cosmo",
+          "title": "Hatsune Creation Myth / cosMo@Bousou-P feat. Hatsune Miku [Magical Mirai 2021]",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_8kX5_69sO8Q",
+          "producer_slug": "mitchie_m",
+          "title": "Hatsune Miku - Burenai ai de (by Mitchie M) [VOCALOID EDM]",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_8oBV3jPTW4s",
+          "producer_slug": "neru",
+          "title": "Neru - Lost One's Weeping feat. Kagamine Rin",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_8pGRdRhjX3o",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - MKDR (DSCF) feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_8uV_czuhdjc",
+          "producer_slug": "40mp",
+          "title": "【初音ミク】 悪役にキスシーンを 【オリジナルMV】_Kiss the Villain",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_8xR6zghZM1c",
+          "producer_slug": "jin",
+          "title": "チルドレンレコード",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_94FQd3qSoz8",
+          "producer_slug": "kanaria",
+          "title": "【初音ミク】レクイエム【Kanaria】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_9ID3-cXidQA",
+          "producer_slug": "r_sound_design",
+          "title": "ネオンライト",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_A1Ptl0qs-pE",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - Fake meme feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_A1XqqVWyUl4",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - With or Without Me feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_AKffZySqQts",
+          "producer_slug": "hachi",
+          "title": "ハチ MV「結ンデ開イテ羅刹ト骸」HACHI / Musunde Hiraite Rasetsu to Mukuro",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_AS4q9yaWJkI",
+          "producer_slug": "hachi",
+          "title": "ハチ - 砂の惑星 feat.初音ミク , HACHI - DUNE ft.Miku Hatsune",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_BI9Ue6JwJic",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Cherry Pop feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_BY7CnLX5Mk0",
+          "producer_slug": "kanaria",
+          "title": "【GUMI】CartoonGirl【Kanaria】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Bewg7ljiO-w",
+          "producer_slug": "maretu",
+          "title": "[MARETU] 彼氏が死んじゃった。(My Boyfriend Died.) Ft. 初音ミク/鏡音リン - Modern MARETU PV + English Subs.",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_BwGpXK3W6tE",
+          "producer_slug": "orangestar",
+          "title": "Orangestar - 快晴 (feat. IA) Official Video",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_C3j9HtU2cMo",
+          "producer_slug": "jin",
+          "title": "じん feat.初音ミク　「Sky of Beginning」 full music video ver. (FHD)",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_DeKLpgzh-qQ",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『ロストアンブレラ』Vo. 歌愛ユキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_EEk4JGzqoFg",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『私は雨』Vo. 歌愛ユキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_EHBFKhLUVig",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - God-ish feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_E_PfhNftyh4",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Dilemma feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_EjSvChCF9_M",
+          "producer_slug": "neru",
+          "title": "Neru - Abstract Nonsense (アブストラクト・ナンセンス) feat. Kagamine Rin",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_FkO8ub83wss",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 バグ／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Ftx7tjZTpsw",
+          "producer_slug": "hachi",
+          "title": "ハチ MV「Christmas Morgue」HACHI",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_GlBWvRslL2c",
+          "producer_slug": "hachi",
+          "title": "ハチ MV「WORLD'S  END UMBRELLA」HACHI",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_HOz-9FzIDf0",
+          "producer_slug": "hachi",
+          "title": "ハチ  MV「マトリョシカ」HACHI / MATORYOSHKA",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_HY4iy9J9V1A",
+          "producer_slug": "chinozo",
+          "title": "Chinozo 「Re:main」 feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_HbSMzi9niVg",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 メンタルチェンソー／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_HdC2cB_DZok",
+          "producer_slug": "neru",
+          "title": "Neru - ハウトゥー世界征服(How To World Domination) feat. Kagamine Rin & Kagamine Len",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_IJN0piNZhBE",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『超深淵帯』Vo. 歌愛ユキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_IN3kbST908c",
+          "producer_slug": "kemu",
+          "title": "【HD】 人生リセットボタン 【GUMIオリジナル曲・PV付】- KEMU VOXX",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_JQoeuGNJfAg",
+          "producer_slug": "mitchie_m",
+          "title": "Bad Girl A feat. Hatsune Miku [Comic-like MV] / Mitchie M",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Ja9qmYjXk6U",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - 太陽系デスコ (ft.初音ミク) OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Jhw7Hum-eLw",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『浮遊月光街』Vo. 歌愛ユキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Jtm6ikBIl0g",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - Don’t Believe in T feat. Hatsune Miku & Kasane Teto",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_KFCaSz_yYCM",
+          "producer_slug": "kanaria",
+          "title": "【GUMI】QUEEN【Kanaria】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_LYWP8HtgeLQ",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - Reincarnation Apple feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_LdnlHz3qGrQ",
+          "producer_slug": "sasakure_uk",
+          "title": "ネガポジ＊コンティニューズ",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_M9moY0hEJRE",
+          "producer_slug": "kanaria",
+          "title": "【GUMI×Hatsune Miku】identity【Kanaria】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_MFEaIgMkR_0",
+          "producer_slug": "cosmo",
+          "title": "[Official] The Intense Voice of HATSUNE MIKU / cosMo@Bousou-P",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_MJL9LuyX-Bk",
+          "producer_slug": "jin",
+          "title": "初音ミク『個々々々々々人』",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Mksf3xakH8s",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - 水色侵略 (ft.初音ミク) OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_MoyBi5SM7XI",
+          "producer_slug": "cosmo",
+          "title": "[Official] Sentimental Masochist/ cosMo@Bousou-P feat. HATSUNE MIKU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_N2-HzUpMY7c",
+          "producer_slug": "jin",
+          "title": "JUVENILE / 初音ミク feat. じん【Official MV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_NFT6GMPeYJI",
+          "producer_slug": "cosmo",
+          "title": "ヤミナベ!!!! - cosMo＠暴走P feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_NvAh_YiAfws",
+          "producer_slug": "40mp",
+          "title": "【初音ミク(40㍍)】 純情スカート Pure-Hearted Skirt【オリジナルPV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_OQvIBUvto5U",
+          "producer_slug": "mimi",
+          "title": "『Sora's Record』 / feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Om3MTou2kPg",
+          "producer_slug": "kemu",
+          "title": "【HD】 六兆年と一夜物語 【IAオリジナル曲・PV付】- KEMU VOXX",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_OmHD11TOD08",
+          "producer_slug": "kemu",
+          "title": "瓦礫の塔 - kemu feat. GUMI",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_P_CSdxSGfaA",
+          "producer_slug": "wowaka",
+          "title": "wowaka 『アンノウン・マザーグース』feat. 初音ミク / wowaka - Unknown Mother-Goose (Official Video) ft. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Q7KBdr_kwJc",
+          "producer_slug": "40mp",
+          "title": "【GUMI(40㍍)】 ハートブレイク・ヘッドライン Heart Break Head Line【オリジナルPV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Qyjy_-mSsB4",
+          "producer_slug": "n_buna",
+          "title": "アイラ",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_R_g0M5Zmqhg",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　あいしていたのに　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_RfZgC1-uc4w",
+          "producer_slug": "sasakure_uk",
+          "title": "トゥイー・ボックスの人形劇場",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_RgVLBtRLX9k",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Love Para feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Rkrm5foi188",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 ダーリンダンス／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_SOhCtSuVSWo",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　ニャン　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_STBoCK69vVQ",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『スポットレイト』Vo. 歌愛ユキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_TC80uw4HgCw",
+          "producer_slug": "mimi",
+          "title": "『マジック・メイド』 / feat.重音テトSV",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_TFpizvPDbec",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 メロメロイド／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_TX7jS2Ivze4",
+          "producer_slug": "cosmo",
+          "title": "[Official] Gensou Rakudo \"Dr. Realist\" / cosMo＠Bousou-P feat. Kamui Gakupo",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_TXzfQ0cP1P0",
+          "producer_slug": "40mp",
+          "title": "【初音ミク】 恋愛裁判 Love Trial 【オリジナルMV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Tu2xgl1303M",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　うみなおし　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_UShV3NXq00U",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　ファシネイター　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_UnIhRpIT7nc",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『ラグトレイン』Vo. 歌愛ユキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_UquPv9WpuB4",
+          "producer_slug": "cosmo",
+          "title": "[Official] R.I.P.  Gossip Sea / cosMo@Bousou-P feat. GUMI",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_UxwHkqkzm0o",
+          "producer_slug": "jin",
+          "title": "Summering / じん【Official MV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_VA35FGCCX0E",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - エスパーエスパー (ft.初音ミク) OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_VyRrUt_lTGo",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - リバースユニバース (ft.初音ミク) OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_WEVgkh_7_0k",
+          "producer_slug": "jin",
+          "title": "じん『チルドレンレコード(Re:boot)』MV / JIN『Children Record(Re:boot)』MV",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_X4hjLt4kiUM",
+          "producer_slug": "pinocchiop",
+          "title": "シャニムニ花火 - ピノキオピー feat. 初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_XMdIGSyFKCk",
+          "producer_slug": "kemu",
+          "title": "【HD】 カミサマネジマキ 【GUMIオリジナル・PV付】- KEMU VOXX",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_XfUao0_54yM",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 ルマ／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_XogSflwXgpw",
+          "producer_slug": "orangestar",
+          "title": "Orangestar - アスノヨゾラ哨戒班 (feat. IA) Official Video",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Xx1TnVObQ0k",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - Love Attribute feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_Y0EcKR05Ac4",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　マジカルドクター　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_YznQjwMjDKw",
+          "producer_slug": "chinozo",
+          "title": "Chinozo 'エリート' feat.KafU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube__xs6LjWf3sM",
+          "producer_slug": "hachi",
+          "title": "Mrs.Pumpkinの滑稽な夢",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_aB-pIUzPB-I",
+          "producer_slug": "40mp",
+          "title": "【GUMI(40㍍)】 シリョクケンサ Eye Examination【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_aPDaFGqMX4I",
+          "producer_slug": "jin",
+          "title": "じん / 夜咄ディセイブ (IA)【OFFICIAL MUSIC VIDEO】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_adE8jVLoLPo",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - Rejected Diva feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_b2Di3kFGAUM",
+          "producer_slug": "jin",
+          "title": "NEO feat. 初音ミク / じん【Official MV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_b56xjtP6Qac",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『リレイアウター』Vo. 歌愛ユキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_b_cuMcDWwsI",
+          "producer_slug": "wowaka",
+          "title": "wowaka 『裏表ラバーズ』feat. 初音ミク / wowaka - Ura-Omote Lovers (Official Video) ft. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_c56TpxfO9q0",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Telepathy feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_c6HKcNVbByc",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Chimera feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_cm-l2h6GB8Q",
+          "producer_slug": "kanaria",
+          "title": "【GUMI】KING【Kanaria】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_dH4b59syDYs",
+          "producer_slug": "chinozo",
+          "title": "Schema / FloweR MV",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_dHXC_ahjtEE",
+          "producer_slug": "chinozo",
+          "title": "Goodbye Declaration / Chinozo",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_e1xCOsgWG0M",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - The Vampire feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_eSI7RsjZy1E",
+          "producer_slug": "neru",
+          "title": "Neru - Tokyo Teddy Bear ( 東京テディベア) feat. Kagamine Rin",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_eSW2LVbPThw",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Rabbit Hole feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_eUDtDGh_XeM",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 最愛人生ランナー／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_eVfppbSqACQ",
+          "producer_slug": "chinozo",
+          "title": "Chinozo 'アンチユー' feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_efXqozK4A40",
+          "producer_slug": "r_906",
+          "title": "プシ",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_emrt46SRyYs",
+          "producer_slug": "orangestar",
+          "title": "Orangestar - DAYBREAK FRONTLINE (feat. IA) Official Video",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_eurJC5ElRPE",
+          "producer_slug": "mimi",
+          "title": "『 Poshetto 』 / MIMI feat. KAFU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_f6TytcA47rI",
+          "producer_slug": "mimi",
+          "title": "『くうになる』 / feat. 初音ミク ＆ 可不",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_fGizrX4JjPg",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　ビノミ　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_g0JEUPfmu9c",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Stuckmoth feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_g6sYNwl1EWg",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『ハローマリーナ』Vo. 歌愛ユキ & 初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_g7dvpD_zlIM",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - ダンスロボットダンス (ft.初音ミク) OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_gX_EUiEdur8",
+          "producer_slug": "cosmo",
+          "title": "デロデロデロデ - cosMo＠暴走P feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_ggS02jTcGHU",
+          "producer_slug": "chinozo",
+          "title": "Chinozo 'フリソデ' feat.FloweR",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_grdy6rLbQ-c",
+          "producer_slug": "kemu",
+          "title": "【HD】Dear Doppelganger【KEMU VOXX】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_h4HkXR3NSI4",
+          "producer_slug": "kanaria",
+          "title": "【Kanaria】BRAIN",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_hEyvYm2YRXQ",
+          "producer_slug": "hachi",
+          "title": "ハチ MV「clock lock works」HACHI",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_hK82hfN_ymQ",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Love Words V feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_hkKoaWTjVds",
+          "producer_slug": "wowaka",
+          "title": "wowaka 『グレーゾーンにて。』feat. 初音ミク / wowaka - In The Gray Zone. (Official Video) ft. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_i7HgXE61_N4",
+          "producer_slug": "jin",
+          "title": "イライラしている！ / じん【Official MV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_ioW9iGDpQyw",
+          "producer_slug": "mimi",
+          "title": "MIMI - Delusional Elegy (feat. Hatsune Miku & KAFU)",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_kEMLqgcxrM0",
+          "producer_slug": "jin",
+          "title": "BLUE BACK / じん【Official MV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_kFcha2y7utY",
+          "producer_slug": "chinozo",
+          "title": "Chinozo 'マザーデイズ' feat.KafU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_kbNdx0yqbZE",
+          "producer_slug": "deco27",
+          "title": "DECO*27 - Monitoring feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_kv8DDUSmtq4",
+          "producer_slug": "orangestar",
+          "title": "[Eng Sub] Earphones and a Chorus of Cicadas [IA]",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_l69v6SVoE9k",
+          "producer_slug": "mitchie_m",
+          "title": "Hatsune Miku's TV show \"NEWS 39\" MV - Mitchie M",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_lI7T7fbYj0w",
+          "producer_slug": "40mp",
+          "title": "【初音ミク(40㍍)】 妄想スケッチ Delusion Sketch 【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_lWuJRRCTHrg",
+          "producer_slug": "mitchie_m",
+          "title": "Seraphim On The Ring - Mitchie M feat. Hatsune Miku, Kagamine Rin, KAITO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_lh9g1yNGFcs",
+          "producer_slug": "orangestar",
+          "title": "Uz",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_lvPRs_HC7Wg",
+          "producer_slug": "cosmo",
+          "title": "[Official] ANTI THE∞HOLiC / cosMo＠Bousou-P feat.  Kagamine Rin, Megurine Luka",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_lw7pcm1W5tw",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - Non-breath oblige feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_m-bvW4pKT68",
+          "producer_slug": "mimi",
+          "title": "MIMI - Science (feat. Kasane Teto SV)",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_mFih47l1pVI",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『ハルノ寂寞』Vo. 弦巻マキ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_mRlPjF0-iIY",
+          "producer_slug": "cosmo",
+          "title": "[Official] Gensou Rakudo \"Fake Sister\" / cosMo＠Bousou-P feat. HATSUNE MIKU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_nEJ-m6KNddI",
+          "producer_slug": "neru",
+          "title": "Neru - 脱獄(Jailbreak) feat. Kagamine Rin",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_nOtWU5MRiTU",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 ネクラチューンサーカス／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_o14pj9CsNVY",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『期待通り』Vo. AI音街ウナ",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_oKBkctJAo5Y",
+          "producer_slug": "sasakure_uk",
+          "title": "蜘蛛糸モノポリー",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_oRJBwaZ59fQ",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 ベノム／かいりきベア feat.flower",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_pIF_kTBBnuU",
+          "producer_slug": "kemu",
+          "title": "ぼくらの報復政策",
+          "codes": [
+            "configured_source_not_original"
+          ],
+          "risk_score": 10
+        },
+        {
+          "song_id": "youtube_ptgj9rrZokQ",
+          "producer_slug": "chinozo",
+          "title": "Chinozo 'シックマン'feat.Hatsune MikU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_pvG05Z4J8s0",
+          "producer_slug": "kairikibear",
+          "title": "スターリースタート / かいりきベア feat. 初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_q2QfH1JqtkY",
+          "producer_slug": "jin",
+          "title": "じん−アディショナルメモリー / JIN−Additional Memory",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_qnX2CdOBcDI",
+          "producer_slug": "hachi",
+          "title": "ハチ - ドーナツホール , HACHI - DONUT HOLE",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_qtuX4cHk-vE",
+          "producer_slug": "mimi",
+          "title": "マシュマリー / feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_rkaNKAvksDE",
+          "producer_slug": "orangestar",
+          "title": "Orangestar - Surges (feat. IA & 初音ミク) Official Video",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_ro4UeYDDAsg",
+          "producer_slug": "cosmo",
+          "title": "[K-字幕]【cosMo＠暴走P feat. 初音ミク】 A.I 中文字幕",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_s8KBk8ZRH54",
+          "producer_slug": "kemu",
+          "title": "【HD】 地球最後の告白を 【GUMI】- KEMU VOXX",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_sjr-tPFADpM",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　脳内革命ガール　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_smYLMgfCD5o",
+          "producer_slug": "jin",
+          "title": "GURU / じん【Official MV】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_t8JXBtezzOc",
+          "producer_slug": "orangestar",
+          "title": "Orangestar - CITRUS (feat. IA & ONE) Official Video",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_thmR2SmkeDU",
+          "producer_slug": "pinocchiop",
+          "title": "PinocchioP - Super Superhero feat. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_tptmXIHhXG4",
+          "producer_slug": "chinozo",
+          "title": "Chinozo  'ショットガン・ナウル' feat.FloweR",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_ttEOHrHeh5I",
+          "producer_slug": "maretu",
+          "title": "【初音ミク】　ぴんく　【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_uMlv9VWAxko",
+          "producer_slug": "wowaka",
+          "title": "wowaka 『アンハッピーリフレイン』feat. 初音ミク / wowaka - Unhappy Refrain (Official Video) ft. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_uel07HVEY40",
+          "producer_slug": "jin",
+          "title": "ヘッドフォンアクター",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_uoYegcqyfxE",
+          "producer_slug": "mimi",
+          "title": "『トリックハート』 / feat.重音テトSV",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_vB8sxY_PJ_w",
+          "producer_slug": "kanaria",
+          "title": "【GUMI】酔いどれ知らず【Kanaria】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_vcq4xyooNns",
+          "producer_slug": "chinozo",
+          "title": "Chinozo  'アリサマ' feat. FloweR",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_vgkPjszSSSc",
+          "producer_slug": "nayutan",
+          "title": "ナユタン星人 - 倶楽部カシオペア (ft.初音ミク) OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_vnWupmpoHaM",
+          "producer_slug": "sasakure_uk",
+          "title": "しゅうまつがやってくる！",
+          "codes": [
+            "review_pv_author"
+          ],
+          "risk_score": 1
+        },
+        {
+          "song_id": "youtube_vnw8zURAxkU",
+          "producer_slug": "wowaka",
+          "title": "wowaka 『ローリンガール』feat. 初音ミク / wowaka - Rollin Girl (Official Video) ft. Hatsune Miku",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_w2ySuxC2SNI",
+          "producer_slug": "kemu",
+          "title": "【HD】 敗北の少年 【GUMI オリジナル曲】- KEMU VOXX",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_wCj04kwAFX8",
+          "producer_slug": "nayutan",
+          "title": "彗星ハネムーン - ナユタン星人 ft.初音ミク OFFICIAL MUSIC VIDEO",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_wW1UjAtAZ1A",
+          "producer_slug": "mimi",
+          "title": "『痛いの痛いの飛んでいけっ』 / MIMI feat. saewool  (Music Video)",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_wW2tKV920Ac",
+          "producer_slug": "orangestar",
+          "title": "Nadir",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_wjau2XZEH4A",
+          "producer_slug": "hachi",
+          "title": "ハチ  MV「ワンダーランドと羊の歌」HACHI / Wonderland to Hitsujinouta",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_xgO-uGH7tho",
+          "producer_slug": "mitchie_m",
+          "title": "Hatsune Miku - Assassin Princess / Mitchie M [Comic Style MV]",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_xn4qndSd3vs",
+          "producer_slug": "inabakumori",
+          "title": "稲葉曇『シンクタンク』Vo. 裏命",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_xxFkW3PCT5M",
+          "producer_slug": "40mp",
+          "title": "【初音ミク(40㍍)】 からくりピエロ Karakuri Pierrot【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_xzoShzMIlIM",
+          "producer_slug": "orangestar",
+          "title": "Orangestar - 空奏列車 (feat. IA & 初音ミク) Official Video",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_y3yyYYLyVzw",
+          "producer_slug": "mitchie_m",
+          "title": "Hatsune Miku, KAITO - Ohedo Julia-Night（大江戸ジュリアナイト）",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_y7uFVdBluns",
+          "producer_slug": "kemu",
+          "title": "熱風 - kemu feat. 初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_yIQDGwyJpSo",
+          "producer_slug": "40mp",
+          "title": "【初音ミク(40㍍)】 トリノコシティ Torinoko City【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_yYdRXJaVEIM",
+          "producer_slug": "chinozo",
+          "title": "Chinozo 'チーズ' feat.KafU",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_ygY2qObZv24",
+          "producer_slug": "pinocchiop",
+          "title": "ピノキオピー - 愛されなくても君がいる feat. 初音ミク / Because You’re Here",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_zLPZpfX5lwE",
+          "producer_slug": "40mp",
+          "title": "【初音ミク(40㍍)】 パラメタ 【オリジナル】",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_zLmopbS97aY",
+          "producer_slug": "kairikibear",
+          "title": "【公式】 アルカリレットウセイ／かいりきベア feat.初音ミク",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        },
+        {
+          "song_id": "youtube_zkLJoFp2UAE",
+          "producer_slug": "mitchie_m",
+          "title": "[Miku & Luka sing like humans] Ai Dee feat. Hatsune Miku & Megurine Luka [Official PV]",
+          "codes": [
+            "missing_vocadb_song_id"
+          ],
+          "risk_score": 100
+        }
+      ]
+    }
+  },
+  "filtered_manifests": [
+    {
+      "strategy": "source_clean",
+      "manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\source_clean\\segments.jsonl",
+      "summary": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\source_clean\\summary.json",
+      "songs": 573,
+      "segments": 6857,
+      "minimum_class_songs": 9
+    },
+    {
+      "strategy": "review_clean",
+      "manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\review_clean\\segments.jsonl",
+      "summary": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\review_clean\\summary.json",
+      "songs": 561,
+      "segments": 6713,
+      "minimum_class_songs": 7
+    },
+    {
+      "strategy": "protocol_complete",
+      "manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\protocol_complete\\segments.jsonl",
+      "summary": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\p4_data_quality\\protocol_complete\\summary.json",
+      "songs": 387,
+      "segments": 4627,
+      "minimum_class_songs": 1
+    }
+  ],
+  "results": [
+    {
+      "strategy": "raw",
+      "training_songs": 574,
+      "minimum_class_songs": 9,
+      "songs_per_class": {
+        "40mp": 12,
+        "ayase": 11,
+        "balloon": 10,
+        "chinozo": 13,
+        "cosmo": 19,
+        "deco27": 14,
+        "eve": 10,
+        "giga": 12,
+        "gyari": 10,
+        "hachi": 12,
+        "hachioji_p": 10,
+        "harumaki_gohan": 9,
+        "hiiragi_magnetite": 10,
+        "hitoshizuku_p": 10,
+        "inabakumori": 14,
+        "iyowa": 10,
+        "jin": 17,
+        "kairikibear": 12,
+        "kanaria": 10,
+        "kemu": 12,
+        "kuro_usa_p": 10,
+        "maretu": 12,
+        "mikito_p": 10,
+        "mimi": 14,
+        "mitchie_m": 10,
+        "mothy": 10,
+        "n_buna": 11,
+        "nakiso": 14,
+        "nayutan": 11,
+        "neru": 16,
+        "niru_kajitsu": 10,
+        "nuyuri": 10,
+        "orangestar": 12,
+        "oster_project": 10,
+        "owata_p": 11,
+        "papiyon": 10,
+        "pinocchiop": 13,
+        "r_906": 10,
+        "r_sound_design": 14,
+        "rerulili": 10,
+        "ryo": 13,
+        "sasakure_uk": 11,
+        "surii": 15,
+        "syudou": 10,
+        "teniwoha": 10,
+        "toa": 10,
+        "toma": 10,
+        "ume_tora": 10,
+        "wotaku": 10,
+        "wowaka": 10
+      },
+      "methods": [
+        {
+          "method": "lda_equal_568",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9998463314833496,
+            "coverage": 0.6595744680851063,
+            "precision": 0.967741935483871
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7953333333333333,
+              "mrr": 0.8676582981116808,
+              "log_loss": 3.018393375433895
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9998463314833496,
+              "coverage": 0.6595744680851063,
+              "accepted_count": 62,
+              "accepted_accuracy": 0.967741935483871,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 18
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7842105263157895,
+              "top3_accuracy": 0.8894736842105263,
+              "macro_f1": 0.7554502164502164,
+              "mrr": 0.8437835010914383,
+              "log_loss": 2.7004829651487516
+            },
+            "wrong_count": 41,
+            "top3_miss_count": 21,
+            "rejection": {
+              "threshold": 0.9998463314833496,
+              "coverage": 0.6789473684210526,
+              "accepted_count": 129,
+              "accepted_accuracy": 0.9302325581395349,
+              "accepted_wrong_count": 9,
+              "rejected_correct_count": 29
+            }
+          }
+        },
+        {
+          "method": "lda_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              6,
+              7,
+              8
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.6780566058329922,
+            "coverage": 0.8191489361702128,
+            "precision": 0.961038961038961
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.7978723404255319,
+              "top3_accuracy": 0.8829787234042553,
+              "macro_f1": 0.7554285714285714,
+              "mrr": 0.8491586795544045,
+              "log_loss": 3.0469497273584785
+            },
+            "wrong_count": 19,
+            "top3_miss_count": 11,
+            "rejection": {
+              "threshold": 0.6780566058329922,
+              "coverage": 0.8191489361702128,
+              "accepted_count": 77,
+              "accepted_accuracy": 0.961038961038961,
+              "accepted_wrong_count": 3,
+              "rejected_correct_count": 1
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.8052631578947368,
+              "top3_accuracy": 0.9,
+              "macro_f1": 0.7739328449328449,
+              "mrr": 0.8545274063090278,
+              "log_loss": 2.85191074112082
+            },
+            "wrong_count": 37,
+            "top3_miss_count": 19,
+            "rejection": {
+              "threshold": 0.6780566058329922,
+              "coverage": 0.8526315789473684,
+              "accepted_count": 162,
+              "accepted_accuracy": 0.8518518518518519,
+              "accepted_wrong_count": 24,
+              "rejected_correct_count": 15
+            }
+          }
+        },
+        {
+          "method": "lda_dev_weighted_all_layers",
+          "extra": {
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weights": [
+              0.09656757794886325,
+              4.2635191641808394e-17,
+              6.346076719947625e-18,
+              7.820655201998955e-18,
+              0.0,
+              0.15223971081907164,
+              0.29305962341888436,
+              0.15782238303189747,
+              0.12555010499022767,
+              0.06709205451756085,
+              0.09931472550990317,
+              0.0,
+              0.008353819763591622
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.6880620598271147,
+            "coverage": 0.7978723404255319,
+            "precision": 0.96
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8191489361702128,
+              "top3_accuracy": 0.8723404255319149,
+              "macro_f1": 0.7879999999999999,
+              "mrr": 0.8588722525823178,
+              "log_loss": 2.157549398290032
+            },
+            "wrong_count": 17,
+            "top3_miss_count": 12,
+            "rejection": {
+              "threshold": 0.6880620598271147,
+              "coverage": 0.7978723404255319,
+              "accepted_count": 75,
+              "accepted_accuracy": 0.96,
+              "accepted_wrong_count": 3,
+              "rejected_correct_count": 5
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7947368421052632,
+              "top3_accuracy": 0.8736842105263158,
+              "macro_f1": 0.7631587301587301,
+              "mrr": 0.847820254773275,
+              "log_loss": 2.1572645980917997
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 24,
+            "rejection": {
+              "threshold": 0.6880620598271147,
+              "coverage": 0.8263157894736842,
+              "accepted_count": 157,
+              "accepted_accuracy": 0.8662420382165605,
+              "accepted_wrong_count": 21,
+              "rejected_correct_count": 15
+            }
+          }
+        },
+        {
+          "method": "centroid_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              6,
+              7,
+              8
+            ],
+            "scale": 64.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.0758403773769789,
+            "coverage": 0.14893617021276595,
+            "precision": 1.0
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.5851063829787234,
+              "top3_accuracy": 0.776595744680851,
+              "macro_f1": 0.5286666666666666,
+              "mrr": 0.7023956137500817,
+              "log_loss": 3.029457515399776
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 21,
+            "rejection": {
+              "threshold": 0.0758403773769789,
+              "coverage": 0.14893617021276595,
+              "accepted_count": 14,
+              "accepted_accuracy": 1.0,
+              "accepted_wrong_count": 0,
+              "rejected_correct_count": 41
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.5894736842105263,
+              "top3_accuracy": 0.7,
+              "macro_f1": 0.5586436896436896,
+              "mrr": 0.673249127154892,
+              "log_loss": 3.063912506455851
+            },
+            "wrong_count": 78,
+            "top3_miss_count": 57,
+            "rejection": {
+              "threshold": 0.0758403773769789,
+              "coverage": 0.21052631578947367,
+              "accepted_count": 40,
+              "accepted_accuracy": 0.75,
+              "accepted_wrong_count": 10,
+              "rejected_correct_count": 82
+            }
+          }
+        },
+        {
+          "method": "blend_lda_centroid_top3_dev_layers",
+          "extra": {
+            "layers": [
+              6,
+              7,
+              8
+            ],
+            "centroid_scale": 64.0,
+            "lda_weight": 1.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.6780566058329922,
+            "coverage": 0.8191489361702128,
+            "precision": 0.961038961038961
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.7978723404255319,
+              "top3_accuracy": 0.8829787234042553,
+              "macro_f1": 0.7554285714285714,
+              "mrr": 0.8491586795544045,
+              "log_loss": 3.0469497273584785
+            },
+            "wrong_count": 19,
+            "top3_miss_count": 11,
+            "rejection": {
+              "threshold": 0.6780566058329922,
+              "coverage": 0.8191489361702128,
+              "accepted_count": 77,
+              "accepted_accuracy": 0.961038961038961,
+              "accepted_wrong_count": 3,
+              "rejected_correct_count": 1
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.8052631578947368,
+              "top3_accuracy": 0.9,
+              "macro_f1": 0.7739328449328449,
+              "mrr": 0.8545274063090278,
+              "log_loss": 2.85191074112082
+            },
+            "wrong_count": 37,
+            "top3_miss_count": 19,
+            "rejection": {
+              "threshold": 0.6780566058329922,
+              "coverage": 0.8526315789473684,
+              "accepted_count": 162,
+              "accepted_accuracy": 0.8518518518518519,
+              "accepted_wrong_count": 24,
+              "rejected_correct_count": 15
+            }
+          }
+        }
+      ],
+      "selected_by_dev": {
+        "method": "lda_equal_568",
+        "extra": {
+          "layers": [
+            5,
+            6,
+            8
+          ],
+          "weights": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "dev": {
+          "metrics": {
+            "top1_accuracy": 0.8297872340425532,
+            "top3_accuracy": 0.8936170212765957,
+            "macro_f1": 0.7953333333333333,
+            "mrr": 0.8676582981116808,
+            "log_loss": 3.018393375433895
+          },
+          "wrong_count": 16,
+          "top3_miss_count": 10,
+          "rejection": {
+            "threshold": 0.9998463314833496,
+            "coverage": 0.6595744680851063,
+            "accepted_count": 62,
+            "accepted_accuracy": 0.967741935483871,
+            "accepted_wrong_count": 2,
+            "rejected_correct_count": 18
+          }
+        },
+        "final": {
+          "metrics": {
+            "top1_accuracy": 0.7842105263157895,
+            "top3_accuracy": 0.8894736842105263,
+            "macro_f1": 0.7554502164502164,
+            "mrr": 0.8437835010914383,
+            "log_loss": 2.7004829651487516
+          },
+          "wrong_count": 41,
+          "top3_miss_count": 21,
+          "rejection": {
+            "threshold": 0.9998463314833496,
+            "coverage": 0.6789473684210526,
+            "accepted_count": 129,
+            "accepted_accuracy": 0.9302325581395349,
+            "accepted_wrong_count": 9,
+            "rejected_correct_count": 29
+          }
+        }
+      }
+    },
+    {
+      "strategy": "source_clean",
+      "training_songs": 573,
+      "minimum_class_songs": 9,
+      "songs_per_class": {
+        "40mp": 12,
+        "ayase": 11,
+        "balloon": 10,
+        "chinozo": 13,
+        "cosmo": 19,
+        "deco27": 14,
+        "eve": 10,
+        "giga": 12,
+        "gyari": 10,
+        "hachi": 12,
+        "hachioji_p": 10,
+        "harumaki_gohan": 9,
+        "hiiragi_magnetite": 10,
+        "hitoshizuku_p": 10,
+        "inabakumori": 14,
+        "iyowa": 10,
+        "jin": 17,
+        "kairikibear": 12,
+        "kanaria": 10,
+        "kemu": 11,
+        "kuro_usa_p": 10,
+        "maretu": 12,
+        "mikito_p": 10,
+        "mimi": 14,
+        "mitchie_m": 10,
+        "mothy": 10,
+        "n_buna": 11,
+        "nakiso": 14,
+        "nayutan": 11,
+        "neru": 16,
+        "niru_kajitsu": 10,
+        "nuyuri": 10,
+        "orangestar": 12,
+        "oster_project": 10,
+        "owata_p": 11,
+        "papiyon": 10,
+        "pinocchiop": 13,
+        "r_906": 10,
+        "r_sound_design": 14,
+        "rerulili": 10,
+        "ryo": 13,
+        "sasakure_uk": 11,
+        "surii": 15,
+        "syudou": 10,
+        "teniwoha": 10,
+        "toa": 10,
+        "toma": 10,
+        "ume_tora": 10,
+        "wotaku": 10,
+        "wowaka": 10
+      },
+      "methods": [
+        {
+          "method": "lda_equal_568",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9998397778172534,
+            "coverage": 0.6595744680851063,
+            "precision": 0.967741935483871
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7953333333333333,
+              "mrr": 0.8676582981116808,
+              "log_loss": 3.013903079931332
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9998397778172534,
+              "coverage": 0.6595744680851063,
+              "accepted_count": 62,
+              "accepted_accuracy": 0.967741935483871,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 18
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7842105263157895,
+              "top3_accuracy": 0.8842105263157894,
+              "macro_f1": 0.7554502164502164,
+              "mrr": 0.8437772354272779,
+              "log_loss": 2.6901445106967863
+            },
+            "wrong_count": 41,
+            "top3_miss_count": 22,
+            "rejection": {
+              "threshold": 0.9998397778172534,
+              "coverage": 0.6789473684210526,
+              "accepted_count": 129,
+              "accepted_accuracy": 0.9302325581395349,
+              "accepted_wrong_count": 9,
+              "rejected_correct_count": 29
+            }
+          }
+        },
+        {
+          "method": "lda_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              7
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9998397778172536,
+            "coverage": 0.6914893617021277,
+            "precision": 0.9692307692307692
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7967619047619047,
+              "mrr": 0.868284571200634,
+              "log_loss": 2.9251075099009403
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9998397778172536,
+              "coverage": 0.6914893617021277,
+              "accepted_count": 65,
+              "accepted_accuracy": 0.9692307692307692,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 15
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7947368421052632,
+              "top3_accuracy": 0.8947368421052632,
+              "macro_f1": 0.763142857142857,
+              "mrr": 0.8486115592418648,
+              "log_loss": 2.750396310015078
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 20,
+            "rejection": {
+              "threshold": 0.9998397778172536,
+              "coverage": 0.6578947368421053,
+              "accepted_count": 125,
+              "accepted_accuracy": 0.944,
+              "accepted_wrong_count": 7,
+              "rejected_correct_count": 33
+            }
+          }
+        },
+        {
+          "method": "lda_dev_weighted_all_layers",
+          "extra": {
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weights": [
+              0.0898428452969596,
+              2.784668459701795e-17,
+              0.0,
+              1.0930510198063514e-17,
+              0.0,
+              0.16566474768957162,
+              0.2876449296227242,
+              0.1648035896352672,
+              0.11900909970839804,
+              0.054384507930673405,
+              0.09817711148887147,
+              0.0,
+              0.020473168627534493
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.7945793884503057,
+            "coverage": 0.7446808510638298,
+            "precision": 0.9714285714285714
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8191489361702128,
+              "top3_accuracy": 0.8723404255319149,
+              "macro_f1": 0.7879999999999999,
+              "mrr": 0.8593382956624839,
+              "log_loss": 2.1502232512057478
+            },
+            "wrong_count": 17,
+            "top3_miss_count": 12,
+            "rejection": {
+              "threshold": 0.7945793884503057,
+              "coverage": 0.7446808510638298,
+              "accepted_count": 70,
+              "accepted_accuracy": 0.9714285714285714,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 9
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7947368421052632,
+              "top3_accuracy": 0.868421052631579,
+              "macro_f1": 0.7631587301587301,
+              "mrr": 0.8485580476821206,
+              "log_loss": 2.1652691378156925
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 25,
+            "rejection": {
+              "threshold": 0.7945793884503057,
+              "coverage": 0.7421052631578947,
+              "accepted_count": 141,
+              "accepted_accuracy": 0.8936170212765957,
+              "accepted_wrong_count": 15,
+              "rejected_correct_count": 25
+            }
+          }
+        },
+        {
+          "method": "centroid_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              7
+            ],
+            "scale": 64.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.07763996181333337,
+            "coverage": 0.1276595744680851,
+            "precision": 1.0
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.5851063829787234,
+              "top3_accuracy": 0.7872340425531915,
+              "macro_f1": 0.5286666666666666,
+              "mrr": 0.7077861802361176,
+              "log_loss": 3.020370217773669
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 20,
+            "rejection": {
+              "threshold": 0.07763996181333337,
+              "coverage": 0.1276595744680851,
+              "accepted_count": 12,
+              "accepted_accuracy": 1.0,
+              "accepted_wrong_count": 0,
+              "rejected_correct_count": 43
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.5894736842105263,
+              "top3_accuracy": 0.7210526315789474,
+              "macro_f1": 0.5592308802308802,
+              "mrr": 0.678272216704401,
+              "log_loss": 3.060119923786663
+            },
+            "wrong_count": 78,
+            "top3_miss_count": 53,
+            "rejection": {
+              "threshold": 0.07763996181333337,
+              "coverage": 0.1631578947368421,
+              "accepted_count": 31,
+              "accepted_accuracy": 0.7419354838709677,
+              "accepted_wrong_count": 8,
+              "rejected_correct_count": 89
+            }
+          }
+        },
+        {
+          "method": "blend_lda_centroid_top3_dev_layers",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              7
+            ],
+            "centroid_scale": 64.0,
+            "lda_weight": 1.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9998397778172536,
+            "coverage": 0.6914893617021277,
+            "precision": 0.9692307692307692
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7967619047619047,
+              "mrr": 0.868284571200634,
+              "log_loss": 2.9251075099009403
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9998397778172536,
+              "coverage": 0.6914893617021277,
+              "accepted_count": 65,
+              "accepted_accuracy": 0.9692307692307692,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 15
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7947368421052632,
+              "top3_accuracy": 0.8947368421052632,
+              "macro_f1": 0.763142857142857,
+              "mrr": 0.8486115592418648,
+              "log_loss": 2.750396310015078
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 20,
+            "rejection": {
+              "threshold": 0.9998397778172536,
+              "coverage": 0.6578947368421053,
+              "accepted_count": 125,
+              "accepted_accuracy": 0.944,
+              "accepted_wrong_count": 7,
+              "rejected_correct_count": 33
+            }
+          }
+        }
+      ],
+      "selected_by_dev": {
+        "method": "lda_equal_top3_dev_layers",
+        "extra": {
+          "layers": [
+            5,
+            6,
+            7
+          ],
+          "weights": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "dev": {
+          "metrics": {
+            "top1_accuracy": 0.8297872340425532,
+            "top3_accuracy": 0.8936170212765957,
+            "macro_f1": 0.7967619047619047,
+            "mrr": 0.868284571200634,
+            "log_loss": 2.9251075099009403
+          },
+          "wrong_count": 16,
+          "top3_miss_count": 10,
+          "rejection": {
+            "threshold": 0.9998397778172536,
+            "coverage": 0.6914893617021277,
+            "accepted_count": 65,
+            "accepted_accuracy": 0.9692307692307692,
+            "accepted_wrong_count": 2,
+            "rejected_correct_count": 15
+          }
+        },
+        "final": {
+          "metrics": {
+            "top1_accuracy": 0.7947368421052632,
+            "top3_accuracy": 0.8947368421052632,
+            "macro_f1": 0.763142857142857,
+            "mrr": 0.8486115592418648,
+            "log_loss": 2.750396310015078
+          },
+          "wrong_count": 39,
+          "top3_miss_count": 20,
+          "rejection": {
+            "threshold": 0.9998397778172536,
+            "coverage": 0.6578947368421053,
+            "accepted_count": 125,
+            "accepted_accuracy": 0.944,
+            "accepted_wrong_count": 7,
+            "rejected_correct_count": 33
+          }
+        }
+      }
+    },
+    {
+      "strategy": "review_clean",
+      "training_songs": 561,
+      "minimum_class_songs": 7,
+      "songs_per_class": {
+        "40mp": 12,
+        "ayase": 11,
+        "balloon": 10,
+        "chinozo": 13,
+        "cosmo": 19,
+        "deco27": 14,
+        "eve": 10,
+        "giga": 12,
+        "gyari": 10,
+        "hachi": 11,
+        "hachioji_p": 10,
+        "harumaki_gohan": 9,
+        "hiiragi_magnetite": 10,
+        "hitoshizuku_p": 10,
+        "inabakumori": 14,
+        "iyowa": 10,
+        "jin": 15,
+        "kairikibear": 12,
+        "kanaria": 10,
+        "kemu": 11,
+        "kuro_usa_p": 8,
+        "maretu": 12,
+        "mikito_p": 10,
+        "mimi": 14,
+        "mitchie_m": 10,
+        "mothy": 10,
+        "n_buna": 10,
+        "nakiso": 14,
+        "nayutan": 11,
+        "neru": 16,
+        "niru_kajitsu": 10,
+        "nuyuri": 10,
+        "orangestar": 12,
+        "oster_project": 10,
+        "owata_p": 11,
+        "papiyon": 10,
+        "pinocchiop": 13,
+        "r_906": 9,
+        "r_sound_design": 13,
+        "rerulili": 10,
+        "ryo": 13,
+        "sasakure_uk": 7,
+        "surii": 15,
+        "syudou": 10,
+        "teniwoha": 10,
+        "toa": 10,
+        "toma": 10,
+        "ume_tora": 10,
+        "wotaku": 10,
+        "wowaka": 10
+      },
+      "methods": [
+        {
+          "method": "lda_equal_568",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9999822852308604,
+            "coverage": 0.6382978723404256,
+            "precision": 0.9666666666666667
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7967619047619047,
+              "mrr": 0.8677765014213735,
+              "log_loss": 3.0409979923252597
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9999822852308604,
+              "coverage": 0.6382978723404256,
+              "accepted_count": 60,
+              "accepted_accuracy": 0.9666666666666667,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 20
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7894736842105263,
+              "top3_accuracy": 0.8894736842105263,
+              "macro_f1": 0.7634688644688644,
+              "mrr": 0.8477343662594087,
+              "log_loss": 2.680436599617134
+            },
+            "wrong_count": 40,
+            "top3_miss_count": 21,
+            "rejection": {
+              "threshold": 0.9999822852308604,
+              "coverage": 0.6368421052631579,
+              "accepted_count": 121,
+              "accepted_accuracy": 0.9504132231404959,
+              "accepted_wrong_count": 6,
+              "rejected_correct_count": 35
+            }
+          }
+        },
+        {
+          "method": "lda_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9999822852308604,
+            "coverage": 0.6382978723404256,
+            "precision": 0.9666666666666667
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7967619047619047,
+              "mrr": 0.8677765014213735,
+              "log_loss": 3.0409979923252597
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9999822852308604,
+              "coverage": 0.6382978723404256,
+              "accepted_count": 60,
+              "accepted_accuracy": 0.9666666666666667,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 20
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7894736842105263,
+              "top3_accuracy": 0.8894736842105263,
+              "macro_f1": 0.7634688644688644,
+              "mrr": 0.8477343662594087,
+              "log_loss": 2.680436599617134
+            },
+            "wrong_count": 40,
+            "top3_miss_count": 21,
+            "rejection": {
+              "threshold": 0.9999822852308604,
+              "coverage": 0.6368421052631579,
+              "accepted_count": 121,
+              "accepted_accuracy": 0.9504132231404959,
+              "accepted_wrong_count": 6,
+              "rejected_correct_count": 35
+            }
+          }
+        },
+        {
+          "method": "lda_dev_weighted_all_layers",
+          "extra": {
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weights": [
+              0.09428310341087036,
+              1.719447766168668e-17,
+              0.0,
+              1.8242601524575073e-17,
+              0.0,
+              0.15575231123015537,
+              0.2883601072056707,
+              0.19396370997324253,
+              0.12505064465841587,
+              0.029743280868666826,
+              0.09236789975297358,
+              0.0,
+              0.02047894290000489
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.7947435680459297,
+            "coverage": 0.7446808510638298,
+            "precision": 0.9714285714285714
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8191489361702128,
+              "top3_accuracy": 0.8617021276595744,
+              "macro_f1": 0.7894285714285714,
+              "mrr": 0.8551373960892438,
+              "log_loss": 2.2251069821691445
+            },
+            "wrong_count": 17,
+            "top3_miss_count": 13,
+            "rejection": {
+              "threshold": 0.7947435680459297,
+              "coverage": 0.7340425531914894,
+              "accepted_count": 69,
+              "accepted_accuracy": 0.9855072463768116,
+              "accepted_wrong_count": 1,
+              "rejected_correct_count": 9
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.8,
+              "top3_accuracy": 0.868421052631579,
+              "macro_f1": 0.7731111111111111,
+              "mrr": 0.850777207901463,
+              "log_loss": 2.148792774953122
+            },
+            "wrong_count": 38,
+            "top3_miss_count": 25,
+            "rejection": {
+              "threshold": 0.7947435680459297,
+              "coverage": 0.7421052631578947,
+              "accepted_count": 141,
+              "accepted_accuracy": 0.9078014184397163,
+              "accepted_wrong_count": 13,
+              "rejected_correct_count": 24
+            }
+          }
+        },
+        {
+          "method": "centroid_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "scale": 64.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.07444116483597248,
+            "coverage": 0.1276595744680851,
+            "precision": 1.0
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.574468085106383,
+              "top3_accuracy": 0.776595744680851,
+              "macro_f1": 0.5177142857142857,
+              "mrr": 0.6983276720281646,
+              "log_loss": 3.054173214249187
+            },
+            "wrong_count": 40,
+            "top3_miss_count": 21,
+            "rejection": {
+              "threshold": 0.07444116483597248,
+              "coverage": 0.1276595744680851,
+              "accepted_count": 12,
+              "accepted_accuracy": 1.0,
+              "accepted_wrong_count": 0,
+              "rejected_correct_count": 42
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.5789473684210527,
+              "top3_accuracy": 0.7157894736842105,
+              "macro_f1": 0.5546837606837606,
+              "mrr": 0.6734051057717538,
+              "log_loss": 3.0862145464692103
+            },
+            "wrong_count": 80,
+            "top3_miss_count": 54,
+            "rejection": {
+              "threshold": 0.07444116483597248,
+              "coverage": 0.1736842105263158,
+              "accepted_count": 33,
+              "accepted_accuracy": 0.7575757575757576,
+              "accepted_wrong_count": 8,
+              "rejected_correct_count": 85
+            }
+          }
+        },
+        {
+          "method": "blend_lda_centroid_top3_dev_layers",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "centroid_scale": 64.0,
+            "lda_weight": 1.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9999822852308604,
+            "coverage": 0.6382978723404256,
+            "precision": 0.9666666666666667
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7967619047619047,
+              "mrr": 0.8677765014213735,
+              "log_loss": 3.0409979923252597
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9999822852308604,
+              "coverage": 0.6382978723404256,
+              "accepted_count": 60,
+              "accepted_accuracy": 0.9666666666666667,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 20
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7894736842105263,
+              "top3_accuracy": 0.8894736842105263,
+              "macro_f1": 0.7634688644688644,
+              "mrr": 0.8477343662594087,
+              "log_loss": 2.680436599617134
+            },
+            "wrong_count": 40,
+            "top3_miss_count": 21,
+            "rejection": {
+              "threshold": 0.9999822852308604,
+              "coverage": 0.6368421052631579,
+              "accepted_count": 121,
+              "accepted_accuracy": 0.9504132231404959,
+              "accepted_wrong_count": 6,
+              "rejected_correct_count": 35
+            }
+          }
+        }
+      ],
+      "selected_by_dev": {
+        "method": "lda_equal_568",
+        "extra": {
+          "layers": [
+            5,
+            6,
+            8
+          ],
+          "weights": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "dev": {
+          "metrics": {
+            "top1_accuracy": 0.8297872340425532,
+            "top3_accuracy": 0.8936170212765957,
+            "macro_f1": 0.7967619047619047,
+            "mrr": 0.8677765014213735,
+            "log_loss": 3.0409979923252597
+          },
+          "wrong_count": 16,
+          "top3_miss_count": 10,
+          "rejection": {
+            "threshold": 0.9999822852308604,
+            "coverage": 0.6382978723404256,
+            "accepted_count": 60,
+            "accepted_accuracy": 0.9666666666666667,
+            "accepted_wrong_count": 2,
+            "rejected_correct_count": 20
+          }
+        },
+        "final": {
+          "metrics": {
+            "top1_accuracy": 0.7894736842105263,
+            "top3_accuracy": 0.8894736842105263,
+            "macro_f1": 0.7634688644688644,
+            "mrr": 0.8477343662594087,
+            "log_loss": 2.680436599617134
+          },
+          "wrong_count": 40,
+          "top3_miss_count": 21,
+          "rejection": {
+            "threshold": 0.9999822852308604,
+            "coverage": 0.6368421052631579,
+            "accepted_count": 121,
+            "accepted_accuracy": 0.9504132231404959,
+            "accepted_wrong_count": 6,
+            "rejected_correct_count": 35
+          }
+        }
+      }
+    },
+    {
+      "strategy": "protocol_complete",
+      "training_songs": 387,
+      "minimum_class_songs": 1,
+      "songs_per_class": {
+        "40mp": 2,
+        "ayase": 11,
+        "balloon": 10,
+        "chinozo": 2,
+        "cosmo": 8,
+        "deco27": 2,
+        "eve": 10,
+        "giga": 12,
+        "gyari": 10,
+        "hachi": 1,
+        "hachioji_p": 10,
+        "harumaki_gohan": 9,
+        "hiiragi_magnetite": 10,
+        "hitoshizuku_p": 10,
+        "inabakumori": 2,
+        "iyowa": 10,
+        "jin": 4,
+        "kairikibear": 2,
+        "kanaria": 3,
+        "kemu": 1,
+        "kuro_usa_p": 8,
+        "maretu": 2,
+        "mikito_p": 10,
+        "mimi": 2,
+        "mitchie_m": 2,
+        "mothy": 10,
+        "n_buna": 10,
+        "nakiso": 14,
+        "nayutan": 2,
+        "neru": 11,
+        "niru_kajitsu": 10,
+        "nuyuri": 10,
+        "orangestar": 2,
+        "oster_project": 10,
+        "owata_p": 11,
+        "papiyon": 10,
+        "pinocchiop": 2,
+        "r_906": 9,
+        "r_sound_design": 13,
+        "rerulili": 10,
+        "ryo": 13,
+        "sasakure_uk": 7,
+        "surii": 15,
+        "syudou": 10,
+        "teniwoha": 10,
+        "toa": 10,
+        "toma": 10,
+        "ume_tora": 10,
+        "wotaku": 10,
+        "wowaka": 5
+      },
+      "methods": [
+        {
+          "method": "lda_equal_568",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9999999999509999,
+            "coverage": 0.1276595744680851,
+            "precision": 0.9166666666666666
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.5957446808510638,
+              "top3_accuracy": 0.7021276595744681,
+              "macro_f1": 0.491,
+              "mrr": 0.6577972616977698,
+              "log_loss": 8.014733719110989
+            },
+            "wrong_count": 38,
+            "top3_miss_count": 28,
+            "rejection": {
+              "threshold": 0.9999999999509999,
+              "coverage": 0.32978723404255317,
+              "accepted_count": 31,
+              "accepted_accuracy": 0.9354838709677419,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 27
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.5947368421052631,
+              "top3_accuracy": 0.7,
+              "macro_f1": 0.5287910977910977,
+              "mrr": 0.6642554343017274,
+              "log_loss": 8.296203786037005
+            },
+            "wrong_count": 77,
+            "top3_miss_count": 57,
+            "rejection": {
+              "threshold": 0.9999999999509999,
+              "coverage": 0.3368421052631579,
+              "accepted_count": 64,
+              "accepted_accuracy": 0.96875,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 51
+            }
+          }
+        },
+        {
+          "method": "lda_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              4,
+              5,
+              7
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9999999992149913,
+            "coverage": 0.39361702127659576,
+            "precision": 0.972972972972973
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.6170212765957447,
+              "top3_accuracy": 0.7127659574468085,
+              "macro_f1": 0.5297777777777778,
+              "mrr": 0.677105776156472,
+              "log_loss": 7.967774871210643
+            },
+            "wrong_count": 36,
+            "top3_miss_count": 27,
+            "rejection": {
+              "threshold": 0.9999999992149913,
+              "coverage": 0.39361702127659576,
+              "accepted_count": 37,
+              "accepted_accuracy": 0.972972972972973,
+              "accepted_wrong_count": 1,
+              "rejected_correct_count": 22
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.5684210526315789,
+              "top3_accuracy": 0.6684210526315789,
+              "macro_f1": 0.4958725653431536,
+              "mrr": 0.6389325480717284,
+              "log_loss": 8.722122075388901
+            },
+            "wrong_count": 82,
+            "top3_miss_count": 63,
+            "rejection": {
+              "threshold": 0.9999999992149913,
+              "coverage": 0.3736842105263158,
+              "accepted_count": 71,
+              "accepted_accuracy": 0.9577464788732394,
+              "accepted_wrong_count": 3,
+              "rejected_correct_count": 40
+            }
+          }
+        },
+        {
+          "method": "lda_dev_weighted_all_layers",
+          "extra": {
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weights": [
+              1.2691685513482567e-16,
+              0.14537494540830478,
+              0.056339518415997665,
+              9.130992993938391e-17,
+              0.0025309479002956757,
+              0.198335434022685,
+              0.16472032261371192,
+              0.1673966735345628,
+              0.17043335536833265,
+              0.05069774293252548,
+              0.044171059803583844,
+              1.270276765060056e-17,
+              0.0
+            ]
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9999997077976928,
+            "coverage": 0.2978723404255319,
+            "precision": 0.9642857142857143
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.5957446808510638,
+              "top3_accuracy": 0.6808510638297872,
+              "macro_f1": 0.5012063492063492,
+              "mrr": 0.6574127382773135,
+              "log_loss": 7.119319133778423
+            },
+            "wrong_count": 38,
+            "top3_miss_count": 30,
+            "rejection": {
+              "threshold": 0.9999997077976928,
+              "coverage": 0.2978723404255319,
+              "accepted_count": 28,
+              "accepted_accuracy": 0.9642857142857143,
+              "accepted_wrong_count": 1,
+              "rejected_correct_count": 29
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.6,
+              "top3_accuracy": 0.7,
+              "macro_f1": 0.5277377067377067,
+              "mrr": 0.6672243403795163,
+              "log_loss": 7.565925880546794
+            },
+            "wrong_count": 76,
+            "top3_miss_count": 57,
+            "rejection": {
+              "threshold": 0.9999997077976928,
+              "coverage": 0.2789473684210526,
+              "accepted_count": 53,
+              "accepted_accuracy": 0.9811320754716981,
+              "accepted_wrong_count": 1,
+              "rejected_correct_count": 62
+            }
+          }
+        },
+        {
+          "method": "centroid_equal_top3_dev_layers",
+          "extra": {
+            "layers": [
+              4,
+              5,
+              7
+            ],
+            "scale": 64.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.08511734827177937,
+            "coverage": 0.10638297872340426,
+            "precision": 0.9
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.4574468085106383,
+              "top3_accuracy": 0.6702127659574468,
+              "macro_f1": 0.3814285714285714,
+              "mrr": 0.5837389620065415,
+              "log_loss": 3.143209129320903
+            },
+            "wrong_count": 51,
+            "top3_miss_count": 31,
+            "rejection": {
+              "threshold": 0.08511734827177937,
+              "coverage": 0.10638297872340426,
+              "accepted_count": 10,
+              "accepted_accuracy": 0.9,
+              "accepted_wrong_count": 1,
+              "rejected_correct_count": 34
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.4368421052631579,
+              "top3_accuracy": 0.6052631578947368,
+              "macro_f1": 0.3958296148296148,
+              "mrr": 0.549085832172032,
+              "log_loss": 3.1225245873622907
+            },
+            "wrong_count": 107,
+            "top3_miss_count": 75,
+            "rejection": {
+              "threshold": 0.08511734827177937,
+              "coverage": 0.19473684210526315,
+              "accepted_count": 37,
+              "accepted_accuracy": 0.6756756756756757,
+              "accepted_wrong_count": 12,
+              "rejected_correct_count": 58
+            }
+          }
+        },
+        {
+          "method": "blend_lda_centroid_top3_dev_layers",
+          "extra": {
+            "layers": [
+              4,
+              5,
+              7
+            ],
+            "centroid_scale": 64.0,
+            "lda_weight": 0.1
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.17659311694501958,
+            "coverage": 0.10638297872340426,
+            "precision": 0.9
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.6276595744680851,
+              "top3_accuracy": 0.6808510638297872,
+              "macro_f1": 0.5445396825396824,
+              "mrr": 0.6788374023646815,
+              "log_loss": 2.6097713797996622
+            },
+            "wrong_count": 35,
+            "top3_miss_count": 30,
+            "rejection": {
+              "threshold": 0.17659311694501958,
+              "coverage": 0.10638297872340426,
+              "accepted_count": 10,
+              "accepted_accuracy": 0.9,
+              "accepted_wrong_count": 1,
+              "rejected_correct_count": 50
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.5736842105263158,
+              "top3_accuracy": 0.6947368421052632,
+              "macro_f1": 0.5042581862581862,
+              "mrr": 0.6520184913314713,
+              "log_loss": 2.6150599431145696
+            },
+            "wrong_count": 81,
+            "top3_miss_count": 58,
+            "rejection": {
+              "threshold": 0.17659311694501958,
+              "coverage": 0.12631578947368421,
+              "accepted_count": 24,
+              "accepted_accuracy": 0.875,
+              "accepted_wrong_count": 3,
+              "rejected_correct_count": 88
+            }
+          }
+        }
+      ],
+      "selected_by_dev": {
+        "method": "blend_lda_centroid_top3_dev_layers",
+        "extra": {
+          "layers": [
+            4,
+            5,
+            7
+          ],
+          "centroid_scale": 64.0,
+          "lda_weight": 0.1
+        },
+        "dev": {
+          "metrics": {
+            "top1_accuracy": 0.6276595744680851,
+            "top3_accuracy": 0.6808510638297872,
+            "macro_f1": 0.5445396825396824,
+            "mrr": 0.6788374023646815,
+            "log_loss": 2.6097713797996622
+          },
+          "wrong_count": 35,
+          "top3_miss_count": 30,
+          "rejection": {
+            "threshold": 0.17659311694501958,
+            "coverage": 0.10638297872340426,
+            "accepted_count": 10,
+            "accepted_accuracy": 0.9,
+            "accepted_wrong_count": 1,
+            "rejected_correct_count": 50
+          }
+        },
+        "final": {
+          "metrics": {
+            "top1_accuracy": 0.5736842105263158,
+            "top3_accuracy": 0.6947368421052632,
+            "macro_f1": 0.5042581862581862,
+            "mrr": 0.6520184913314713,
+            "log_loss": 2.6150599431145696
+          },
+          "wrong_count": 81,
+          "top3_miss_count": 58,
+          "rejection": {
+            "threshold": 0.17659311694501958,
+            "coverage": 0.12631578947368421,
+            "accepted_count": 24,
+            "accepted_accuracy": 0.875,
+            "accepted_wrong_count": 3,
+            "rejected_correct_count": 88
+          }
+        }
+      }
+    }
+  ]
+}
