@@ -1,0 +1,834 @@
+{
+  "protocol": {
+    "purpose": "P4 projection-head search",
+    "strategy": "source_clean",
+    "repeats": 2,
+    "max_epochs": 120,
+    "patience": 12,
+    "batch_size": 64,
+    "device": "cuda",
+    "seed": 42,
+    "selection": "Candidates are selected by dev macro-F1/top1/top3/log-loss. Final is evaluated only for the selected candidate."
+  },
+  "dataset": {
+    "train_songs": 573,
+    "minimum_class_songs": 9,
+    "dev_songs": 94,
+    "final_songs": 190,
+    "classes": 50
+  },
+  "candidate_results": [
+    {
+      "candidate": {
+        "layers": [
+          6
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8404255319148937,
+          "top3_accuracy": 0.8723404255319149,
+          "macro_f1": 0.7966666666666667,
+          "mrr": 0.8634267728876598,
+          "log_loss": 1.2620345774402284
+        }
+      },
+      "selected_epochs": [
+        31,
+        40
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8297872340425532,
+          "top3_accuracy": 0.9042553191489362,
+          "macro_f1": 0.7899999999999998,
+          "mrr": 0.8734006433005184,
+          "log_loss": 0.9247650606936165
+        }
+      },
+      "selected_epochs": [
+        49,
+        40
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8191489361702128,
+          "top3_accuracy": 0.9042553191489362,
+          "macro_f1": 0.7839999999999999,
+          "mrr": 0.8641294676389497,
+          "log_loss": 0.9982137595487715
+        }
+      },
+      "selected_epochs": [
+        29,
+        29
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          7
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8191489361702128,
+          "top3_accuracy": 0.8829787234042553,
+          "macro_f1": 0.7766666666666666,
+          "mrr": 0.8624374443523379,
+          "log_loss": 1.3219369718656608
+        }
+      },
+      "selected_epochs": [
+        32,
+        28
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8191489361702128,
+          "top3_accuracy": 0.8936170212765957,
+          "macro_f1": 0.7753333333333333,
+          "mrr": 0.8664288083691414,
+          "log_loss": 0.9851768530529484
+        }
+      },
+      "selected_epochs": [
+        36,
+        24
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8191489361702128,
+          "top3_accuracy": 0.8936170212765957,
+          "macro_f1": 0.7686666666666667,
+          "mrr": 0.8610442834707618,
+          "log_loss": 1.295654437642322
+        }
+      },
+      "selected_epochs": [
+        25,
+        34
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8085106382978723,
+          "top3_accuracy": 0.9042553191489362,
+          "macro_f1": 0.7673333333333333,
+          "mrr": 0.8636573495524339,
+          "log_loss": 1.1674219724647006
+        }
+      },
+      "selected_epochs": [
+        20,
+        22
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8191489361702128,
+          "top3_accuracy": 0.8829787234042553,
+          "macro_f1": 0.7653333333333333,
+          "mrr": 0.8630017145974592,
+          "log_loss": 0.9711472580937272
+        }
+      },
+      "selected_epochs": [
+        50,
+        23
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          7
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8085106382978723,
+          "top3_accuracy": 0.851063829787234,
+          "macro_f1": 0.7646666666666667,
+          "mrr": 0.8482259379774053,
+          "log_loss": 1.0181635804564253
+        }
+      },
+      "selected_epochs": [
+        50,
+        37
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          5,
+          6,
+          7
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8085106382978723,
+          "top3_accuracy": 0.9042553191489362,
+          "macro_f1": 0.76,
+          "mrr": 0.8625386113013309,
+          "log_loss": 1.3546657595880716
+        }
+      },
+      "selected_epochs": [
+        24,
+        27
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          7
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7978723404255319,
+          "top3_accuracy": 0.851063829787234,
+          "macro_f1": 0.754,
+          "mrr": 0.8443523010677266,
+          "log_loss": 1.1731128444140564
+        }
+      },
+      "selected_epochs": [
+        41,
+        17
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          5,
+          6,
+          7
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8085106382978723,
+          "top3_accuracy": 0.8829787234042553,
+          "macro_f1": 0.7526666666666667,
+          "mrr": 0.855419621749409,
+          "log_loss": 1.042349654911838
+        }
+      },
+      "selected_epochs": [
+        25,
+        35
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          7
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.8085106382978723,
+          "top3_accuracy": 0.8829787234042553,
+          "macro_f1": 0.7519999999999999,
+          "mrr": 0.8504619961243157,
+          "log_loss": 1.0593056376484304
+        }
+      },
+      "selected_epochs": [
+        78,
+        26
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7872340425531915,
+          "top3_accuracy": 0.8723404255319149,
+          "macro_f1": 0.7473333333333332,
+          "mrr": 0.8412011793730718,
+          "log_loss": 1.2762176471862927
+        }
+      },
+      "selected_epochs": [
+        16,
+        23
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          5,
+          6,
+          7
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7872340425531915,
+          "top3_accuracy": 0.8617021276595744,
+          "macro_f1": 0.7447619047619046,
+          "mrr": 0.8399611088349167,
+          "log_loss": 1.0705695376231321
+        }
+      },
+      "selected_epochs": [
+        26,
+        24
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          5,
+          6,
+          7
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7978723404255319,
+          "top3_accuracy": 0.8617021276595744,
+          "macro_f1": 0.7439999999999999,
+          "mrr": 0.8466163075168328,
+          "log_loss": 1.1063986174114915
+        }
+      },
+      "selected_epochs": [
+        26,
+        24
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7978723404255319,
+          "top3_accuracy": 0.8936170212765957,
+          "macro_f1": 0.7379999999999999,
+          "mrr": 0.8539519439227744,
+          "log_loss": 1.4590684174231956
+        }
+      },
+      "selected_epochs": [
+        23,
+        17
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7872340425531915,
+          "top3_accuracy": 0.851063829787234,
+          "macro_f1": 0.7334285714285714,
+          "mrr": 0.8338085471204173,
+          "log_loss": 1.267411369478066
+        }
+      },
+      "selected_epochs": [
+        25,
+        40
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7872340425531915,
+          "top3_accuracy": 0.9042553191489362,
+          "macro_f1": 0.732095238095238,
+          "mrr": 0.8441181053543511,
+          "log_loss": 1.3860293171918483
+        }
+      },
+      "selected_epochs": [
+        25,
+        32
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.776595744680851,
+          "top3_accuracy": 0.8617021276595744,
+          "macro_f1": 0.7273333333333334,
+          "mrr": 0.8317775403021762,
+          "log_loss": 1.5944014888060916
+        }
+      },
+      "selected_epochs": [
+        24,
+        16
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          5,
+          6,
+          7
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.776595744680851,
+          "top3_accuracy": 0.8617021276595744,
+          "macro_f1": 0.7219999999999999,
+          "mrr": 0.8338786804212336,
+          "log_loss": 1.4107966534810361
+        }
+      },
+      "selected_epochs": [
+        29,
+        21
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          5,
+          6,
+          7
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.0,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.776595744680851,
+          "top3_accuracy": 0.8723404255319149,
+          "macro_f1": 0.7174285714285715,
+          "mrr": 0.834922170028553,
+          "log_loss": 1.1996353959693011
+        }
+      },
+      "selected_epochs": [
+        30,
+        33
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7659574468085106,
+          "top3_accuracy": 0.851063829787234,
+          "macro_f1": 0.7146666666666666,
+          "mrr": 0.8183993644100027,
+          "log_loss": 1.2247589316520557
+        }
+      },
+      "selected_epochs": [
+        25,
+        24
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7553191489361702,
+          "top3_accuracy": 0.8829787234042553,
+          "macro_f1": 0.7093333333333333,
+          "mrr": 0.8258797658328321,
+          "log_loss": 0.9976408373419767
+        }
+      },
+      "selected_epochs": [
+        36,
+        42
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7659574468085106,
+          "top3_accuracy": 0.8829787234042553,
+          "macro_f1": 0.7073333333333334,
+          "mrr": 0.8278145602284327,
+          "log_loss": 1.2751609763710356
+        }
+      },
+      "selected_epochs": [
+        34,
+        24
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 128,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7659574468085106,
+          "top3_accuracy": 0.8617021276595744,
+          "macro_f1": 0.7067619047619046,
+          "mrr": 0.8264110878143222,
+          "log_loss": 1.23635006207457
+        }
+      },
+      "selected_epochs": [
+        19,
+        20
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          7
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7659574468085106,
+          "top3_accuracy": 0.8404255319148937,
+          "macro_f1": 0.706,
+          "mrr": 0.8155469155247036,
+          "log_loss": 1.3749449460641499
+        }
+      },
+      "selected_epochs": [
+        47,
+        27
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.05,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7340425531914894,
+          "top3_accuracy": 0.8617021276595744,
+          "macro_f1": 0.6907619047619048,
+          "mrr": 0.8058170257638344,
+          "log_loss": 1.2478775374368898
+        }
+      },
+      "selected_epochs": [
+        46,
+        30
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          7
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7340425531914894,
+          "top3_accuracy": 0.8617021276595744,
+          "macro_f1": 0.6786666666666666,
+          "mrr": 0.8093400108456411,
+          "log_loss": 1.364229894388749
+        }
+      },
+      "selected_epochs": [
+        32,
+        29
+      ]
+    },
+    {
+      "candidate": {
+        "layers": [
+          6
+        ],
+        "projection_dim": 64,
+        "contrastive_weight": 0.1,
+        "weight_decay": 0.003,
+        "learning_rate": 0.001
+      },
+      "dev": {
+        "metrics": {
+          "top1_accuracy": 0.7127659574468085,
+          "top3_accuracy": 0.8404255319148937,
+          "macro_f1": 0.6620952380952382,
+          "mrr": 0.7858094269796397,
+          "log_loss": 1.3806801748213877
+        }
+      },
+      "selected_epochs": [
+        33,
+        30
+      ]
+    }
+  ],
+  "selected_candidate": {
+    "candidate": {
+      "layers": [
+        6
+      ],
+      "projection_dim": 64,
+      "contrastive_weight": 0.05,
+      "weight_decay": 0.003,
+      "learning_rate": 0.001
+    },
+    "dev": {
+      "metrics": {
+        "top1_accuracy": 0.8404255319148937,
+        "top3_accuracy": 0.8723404255319149,
+        "macro_f1": 0.7966666666666667,
+        "mrr": 0.8634267728876598,
+        "log_loss": 1.2620345774402284
+      }
+    },
+    "selected_epochs": [
+      31,
+      40
+    ],
+    "final": {
+      "metrics": {
+        "top1_accuracy": 0.7157894736842105,
+        "top3_accuracy": 0.868421052631579,
+        "macro_f1": 0.6788050838050838,
+        "mrr": 0.7969482249570418,
+        "log_loss": 1.35129509556605
+      }
+    },
+    "final_selected_epochs": [
+      31,
+      46
+    ]
+  },
+  "success_gates": {
+    "top1_plus_4pp_guarded": false,
+    "top3_plus_3pp_guarded": false,
+    "macro_f1_plus_4pp_guarded": false,
+    "balanced_plus_3_1p5_3pp": false
+  },
+  "target_met": false
+}

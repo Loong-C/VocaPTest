@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Optional
 
 from vocaptest.models.base import AudioEmbedder
+from vocaptest.models.calibrated_stacking import CalibratedStackingLDA
 from vocaptest.models.layer_fusion import LayerFusionLDA
 from vocaptest.models.song_lda import SongMeanShrinkageLDA
 from vocaptest.retrieval.build_profiles import load_profiles
@@ -21,6 +22,7 @@ _embedder: Optional[AudioEmbedder] = None
 _profiles: Optional[dict] = None
 _lda_model: Optional[SongMeanShrinkageLDA] = None
 _p1_model: Optional[LayerFusionLDA] = None
+_p4_model: Optional[CalibratedStackingLDA] = None
 _search_engine: Optional[ProducerSearch] = None
 
 
@@ -158,10 +160,44 @@ def get_p1_model() -> LayerFusionLDA:
     return _p1_model
 
 
+def get_p4_model() -> CalibratedStackingLDA:
+    """Load the calibrated P4 stacking artifact."""
+    global _p4_model
+    if _p4_model is None:
+        cfg = get_config()
+        root = project_root()
+        configured_path = Path(cfg.retrieval.get(
+            "p4_model_path",
+            "data/processed/models/p4_calibrated_stacking.pkl",
+        ))
+        model_path = configured_path if configured_path.is_absolute() else root / configured_path
+        if not model_path.exists():
+            raise FileNotFoundError(
+                f"Configured P4 model does not exist: {model_path}. "
+                "Run scripts/35_train_p4_calibrated_stacking.py."
+            )
+        _p4_model = CalibratedStackingLDA.load(model_path)
+        logger.info(
+            "P4 calibrated stacking loaded: %d producers, base_heads=%d",
+            len(_p4_model.classes_),
+            len(_p4_model.base_heads),
+        )
+    return _p4_model
+
+
 def get_reference_library() -> dict:
     """Return metadata for the retrieval backend currently serving requests."""
     cfg = get_config()
     backend = cfg.retrieval.get("backend", "kmeans_profiles")
+    if backend == "p4_calibrated_stacking":
+        try:
+            return get_p4_model().to_reference_library()
+        except (FileNotFoundError, ValueError) as exc:
+            logger.warning("%s", exc)
+            return {
+                "backend": "p4_calibrated_stacking_unavailable",
+                "producers": {},
+            }
     if backend == "p1_selected_layer_lda":
         try:
             return get_p1_model().to_reference_library()
@@ -189,7 +225,9 @@ def get_search_engine() -> ProducerSearch:
     if _search_engine is None:
         cfg = get_config()
         retrieval_backend = cfg.retrieval.get("backend", "kmeans_profiles")
-        if retrieval_backend == "p1_selected_layer_lda":
+        if retrieval_backend == "p4_calibrated_stacking":
+            classifier = get_p4_model()
+        elif retrieval_backend == "p1_selected_layer_lda":
             classifier = get_p1_model()
         elif retrieval_backend == "song_mean_shrinkage_lda":
             classifier = get_lda_model()

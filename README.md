@@ -1,262 +1,177 @@
-# VocaP Test - 测测你的曲风最像哪位 P 主
+# VocaP Test
 
-一个 Vocaloid Producer 风格相似度系统。上传一段音乐，系统会在 50 位
-P 主的参考库中返回 Top-K 风格候选，并在结果超出校准接受区域时给出低置信提示。
-结果仅供娱乐，不代表模型能真正识别作曲家风格。
+测试你的曲风最像哪位 Vocaloid P 主。
 
-## 当前数据与模型
+这是一个娱乐向的 Vocaloid Producer 风格相似度系统。用户上传一段音乐后，系统会用冻结的 MERT-v1-95M 音频表征，在 50 位 P 主的参考库中返回 Top-K 风格候选，并在置信度不足时给出低置信提示。结果只表示“风格相似”，不代表模型真的识别作曲者身份。
+
+## 当前模型
+
+线上默认后端是 **P4 calibrated stacking**：
 
 | 项目 | 当前状态 |
 |---|---:|
-| 训练目录 | **574 首 canonical 作品** |
-| Development holdout | **94 首作品，每类 0-2 首** |
-| Final frozen test | **190 首作品，每类 1-4 首** |
-| 训练分段 | **6869 段** |
-| Dev 分段 | **1128 段** |
-| Final frozen 分段 | **2262 段** |
-| 音频处理 | 24kHz 单声道、20s 窗口、10s hop、均匀覆盖、最多 12 段 |
-| 音频表征 | MERT-v1-95M 第 5/6/8 层，每层 768 维 |
-| 分类器 | 三个歌曲均值 Shrinkage LDA head 的概率平均 |
-| 置信度 | OOF probability temperature scaling + 拒识阈值 |
+| 训练集 | 573 首 source-clean 训练作品 |
+| Dev holdout | 94 首作品 |
+| Final frozen test | 190 首作品 |
+| 覆盖 P 主 | 50 位 |
+| 音频切分 | 24kHz mono, 20s window, 10s hop, max 12 segments |
+| 音频表征 | MERT-v1-95M 全层缓存 |
+| 部署 artifact | `data/processed/models/p4_calibrated_stacking.pkl` |
+| API 后端标识 | `mert_95_p4_calibrated_stacking` |
 
-三个数据分区按媒体 source key 和 VocaDB `work_id` 双重隔离：
+模型使用多个全局 LDA 基头做 stacking：
 
-- **Training songs**：参与当前 LDA 模型训练。
-- **Dev holdout songs**：不参与训练，用于未来模型选择、错误分析和方案比较。
-- **Final frozen songs**：不参与训练、模型选择或校准，只用于最终验收。
-
-## 覆盖的 50 位 P 主
-
-当前配置覆盖 niconico top100 名单中 top50 的 43 位（86%）；top30 覆盖 30 位。
-
-| P 主 | 别名 | 训练歌曲 | 训练分段 |
-|---|---|---:|---:|
-| wowaka | 現実逃避P, GenjitsutouhiP | 10 | 120 |
-| kemu | 堀江晶太 | 12 | 144 |
-| Neru | 押入れP | 16 | 192 |
-| DECO*27 | - | 14 | 168 |
-| ピノキオピー | PinocchioP, ピノキオP | 13 | 155 |
-| Mitchie M | - | 10 | 120 |
-| じん | 自然の敵P, Jin | 17 | 204 |
-| Orangestar | 蜜柑星P | 12 | 144 |
-| cosMo@暴走P | cosMo, 暴走P | 19 | 227 |
-| ハチ | Hachi, 米津玄師 | 12 | 144 |
-| 40mP | 40㍍P | 12 | 144 |
-| ナユタン星人 | NayutalieN | 11 | 132 |
-| かいりきベア | Kairiki Bear | 12 | 144 |
-| Kanaria | - | 10 | 119 |
-| Chinozo | - | 13 | 156 |
-| 稲葉曇 | Inabakumori | 14 | 168 |
-| MIMI | mimi_3mi | 14 | 168 |
-| MARETU | 極悪P | 12 | 144 |
-| n-buna | ナブナ, Nabuna | 11 | 132 |
-| Ayase | Ayase_0404 | 11 | 132 |
-| いよわ | iyowa | 10 | 120 |
-| syudou | しゅどう | 10 | 120 |
-| なきそ | NAKISO | 14 | 164 |
-| すりぃ | Surii, Three | 15 | 168 |
-| R Sound Design | usugeP | 14 | 168 |
-| とあ | Toa | 10 | 120 |
-| てにをは | Teniwoha | 10 | 120 |
-| 煮ル果実 | NILFRUITS | 10 | 120 |
-| はるまきごはん | Harumaki Gohan | 9 | 108 |
-| r-906 | arukuremu | 10 | 120 |
-| sasakure.UK | ささくれP, sasakureP | 11 | 132 |
-| Giga | ギガ | 12 | 144 |
-| れるりり | rerulili, 当社比P, ToushahiP | 10 | 120 |
-| みきとP | MikitoP, 愛島, Aijima | 10 | 120 |
-| ひとしずくP / やま△ | ひとしずくP, HitoshizukuP, やま△, Yama△, さも, samo | 10 | 120 |
-| バルーン | balloon, 須田景凪, Suda Keina | 10 | 120 |
-| 黒うさP | KurousaP, くろうさP, WhiteFlame, しゃな, syana | 10 | 120 |
-| mothy | 悪ノP, AkunoP, master of the heavenly yard | 10 | 120 |
-| 柊マグネタイト | Hiiragi Magnetite | 10 | 120 |
-| オワタP | OwataP, ガルナ, Garuna | 11 | 132 |
-| ぬゆり | Nuyuri, nulut, Lanndo, go乱心P, ぬるり, Crona | 10 | 120 |
-| ryo | supercell | 13 | 156 |
-| Eve | - | 10 | 120 |
-| 蝶々P | papiyon, 一之瀬ユウ, Yu Ichinose | 10 | 120 |
-| wotaku | - | 10 | 120 |
-| 梅とら | umedy | 10 | 120 |
-| 八王子P | HachiojiP, 8#Prince | 10 | 120 |
-| OSTER project | OSTER, ふわふわシナモン, Fuwafuwa Cinnamon | 10 | 120 |
-| トーマ | Tohma, Toma, Gyoson, 魚 | 10 | 120 |
-| GYARI | ココアシガレットP, Cocoa CigaretteP | 10 | 120 |
+- 单层头：layer 6, 7, 8
+- 层融合头：5/6/7, 5/6/8
+- concat 头：5/6, 6/7, 5/6/7, 5/6/8, 6/7/8, 7/8/9, 4/5/6/7/8
+- meta model：`LogisticRegression(C=0.03)` on log-probability features
+- 选择协议：train-only grouped CV 以 log-loss/MRR 为主，dev 只做守门，final 只报告
 
 ## 评估结果
 
-| 指标 | 36 类 / 420 首 CV | 41 类 / 473 首 CV | 47 类 / 544 首 CV | 50 类 / 574 首 CV |
-|---|---:|---:|---:|---:|
-| Top-1 | 85.05% ± 0.57% | 84.40% ± 0.91% | 83.01% ± 1.22% | **82.65% ± 0.44%** |
-| Top-3 | 92.90% ± 0.39% | 93.15% ± 0.32% | 91.76% ± 0.68% | **91.36% ± 0.61%** |
-| Macro-F1 | 85.86% ± 0.61% | 84.80% ± 0.99% | 83.53% ± 1.25% | **83.30% ± 0.41%** |
-| MRR | 89.60% ± 0.38% | 89.31% ± 0.54% | 88.05% ± 0.86% | **87.73% ± 0.27%** |
+Raw baseline final：
 
-| 指标 | Dev holdout / 94 首 | Final frozen / 190 首 |
+| Metric | Raw |
+|---|---:|
+| Top-1 | 78.42% |
+| Top-3 | 88.95% |
+| Macro-F1 | 75.55% |
+
+P4 calibrated stacking final：
+
+| Metric | P4 | Delta |
 |---|---:|---:|
-| Top-1 | **82.98%** | **78.42%** |
-| Top-3 | **89.36%** | **88.95%** |
-| Macro-F1 | **79.53%** | **75.55%** |
-| MRR | **86.77%** | **84.38%** |
-| 覆盖率 | **67.02%** | **68.95%** |
-| 被接受样本准确率 | **96.83%** | **93.89%** |
+| Top-1 | 82.11% | +3.68 pp |
+| Top-3 | 90.00% | +1.05 pp |
+| Macro-F1 | 80.00% | +4.45 pp |
+| MRR | 86.44% | n/a |
+| Log loss | 0.9116 | n/a |
 
-50 类版本补入 `OSTER project`、`トーマ`、`GYARI`，并保留 47 类版本中
-`ryo`、`Eve`、`蝶々P`、`wotaku`、`梅とら`、`八王子P` 以及
-`じん`、`sasakure.UK`、`cosMo@暴走P` 的 niconico 首发代表曲修补。
-`Omoi` 在 VocaDB 严格规则下只找到 1 首可验证 voice-synth Original PV，
-低于 sparse producer 最低拆分要求，因此本轮没有硬加入。
-50 类 OOF 仍稳定，但 final Macro-F1 降至 75.55%；上线可作为娱乐型风格相似工具，
-继续扩张前应优先回审 final 错误样本和拒识阈值。
+这版没有用 final 调参。它满足 `macro_f1_plus_4pp_guarded` 门槛：Macro-F1 提升超过 4pp，同时 Top-1 和 Top-3 均不退化。
 
-P2 数据更难，尤其暴露出 `じん`、`すりぃ`、`Neru`、`sasakure.UK/cosMo`、
-`DECO*27` 和若干跨媒体/非典型曲目的边界问题。详细错误分析见
-[P2 数据扩充报告](docs/P2_DATA_EXPANSION_REPORT.md)。
+详细报告：
 
-## API 与前端
+- [P4 总览](docs/P4_MODEL_SEARCH_SUMMARY.md)
+- [P4 calibrated stacking](docs/P4_CALIBRATED_STACKING.md)
+- [P4 deploy 评估 JSON](data/processed/evaluations/p4_calibrated_stacking_deploy.json)
 
-| 端点 | 方法 | 说明 |
+## API
+
+| Endpoint | Method | 说明 |
 |---|:---:|---|
-| `/health` | GET | 健康检查和当前模型状态 |
-| `/api/producers` | GET | 获取所有 P 主 |
-| `/api/producers/{slug}` | GET | 获取头像、别名、训练曲、dev 曲和 final frozen 曲 |
-| `/api/analyze` | POST | 同步兼容接口，上传音频并返回 Top-K 候选 |
-| `/api/analyze/jobs` | POST | 创建异步分析任务，返回真实阶段进度 |
+| `/health` | GET | 健康检查和当前后端 |
+| `/api/producers` | GET | 获取全部 P 主 |
+| `/api/producers/{slug}` | GET | 获取 P 主头像、别名、训练/dev/final 曲目 |
+| `/api/analyze` | POST | 同步上传音频并返回 Top-K 候选 |
+| `/api/analyze/jobs` | POST | 创建异步分析任务 |
 | `/api/jobs/{job_id}` | GET | 查询 received / segmenting / embedding / classifying / done 状态 |
 
-P 主页面三段式展示：
+生产环境路径为：
 
-- 学习曲目：实际参与训练。
-- 开发验证曲目：用于模型开发验证。
-- 最终冻结测试曲目：用于最终验收。
+```text
+https://linkukai.com/VocaPTest/
+```
 
-P 主风格标签来自 `configs/producer_style_tags.yaml` 中缓存的 VocaDB song tags，
-仅用于页面展示和搜索提示，不参与模型训练或评估。维护口径见
-[P 主风格标签来源](docs/STYLE_TAG_SOURCES.md)。
+## 本地运行
 
-前端导航保留首页、分析页和 P 主图鉴页；顶部 GitHub 图标指向仓库，不再提供独立“关于”页面。
+安装依赖：
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+pip install -e .
+```
+
+训练当前部署模型：
+
+```powershell
+python scripts/35_train_p4_calibrated_stacking.py
+```
+
+启动 API：
+
+```powershell
+python scripts/06_run_api.py
+```
+
+前端：
+
+```powershell
+cd web
+npm install
+npm run dev
+```
 
 ## VPS 部署
 
-完整部署会拉取指定分支、安装依赖、构建前端、安装 systemd 服务并刷新 Nginx：
+完整部署会拉取指定分支、安装依赖、构建前端、安装 systemd 服务、刷新 Nginx，并同步本地 `data/processed/models/*.pkl` 模型 artifact：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1
 ```
 
-页面或文档更新可使用较快的更新路径，跳过系统包、Python 依赖和服务安装，只重新拉取代码并构建前端：
+只更新代码、前端和模型时使用快速路径：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1 `
-  -SkipModelSync -SkipSystemPackages -SkipPythonDeps -SkipServiceInstall -SkipNginxInstall
+  -SkipSystemPackages -SkipPythonDeps -SkipServiceInstall -SkipNginxInstall
 ```
 
-脚本默认在 VPS 上以后台任务执行更新，并轮询 `/tmp/vocaptest-deploy-*.log`；如需保持单个 SSH 前台会话，可追加 `-RunUpdateInForeground`。
+如果只改页面或文档、不需要同步模型，可额外加：
 
-生产部署包含：
-- `/VocaPTest/api/analyze` 与 `/VocaPTest/api/analyze/jobs` 每 IP 每分钟 10 次、突发 5 次的 Nginx 限流。
-- 前后端上传大小限制为 50MB，Nginx 请求体限制为 60MB；后端按流式读取检查大小，并只接受 WAV、MP3、FLAC、OGG、M4A、AAC。
-- 分析异常对用户返回通用提示，内部异常只写入服务日志，避免把模型路径或运行时细节暴露到页面。
-- HSTS、CSP、X-Frame-Options、X-Content-Type-Options 等基础安全响应头。
-- FastAPI 服务以 `vocaptest` 低权限用户运行。
+```powershell
+-SkipModelSync
+```
 
-VPS 首次安全加固可执行：
+部署脚本默认部署 `master` 分支，默认服务器为 `root@187.77.136.20`，默认应用目录为 `/srv/vocaptest/app`。部署完成后会检查 systemd 状态和：
+
+```text
+http://127.0.0.1:8000/health
+```
+
+VPS 首次安全加固：
 
 ```bash
 bash deploy/harden_vps_security.sh
 ```
 
-该脚本会禁用 SSH 密码登录、保留 root 公钥登录、开启 UFW，仅放行 22/80/443，并启用 fail2ban。
-
 ## 关键文件
 
 | 文件 | 说明 |
 |---|---|
+| `configs/retrieval.yaml` | 当前默认检索后端和模型路径 |
 | `configs/producers.yaml` | 50 位 P 主配置 |
-| `configs/producer_style_tags.yaml` | VocaDB song tags 风格标签缓存 |
-| `configs/training_catalog_additions.yaml` | 人工核验的训练目录增量 |
-| `configs/dev_holdout_catalog.yaml` | development holdout 配置 |
+| `configs/training_catalog_additions.yaml` | 训练目录补充 |
+| `configs/dev_holdout_catalog.yaml` | dev holdout 配置 |
 | `configs/frozen_test_catalog.yaml` | final frozen 配置 |
-| `data/processed/curated/mert_95_p1/segments.jsonl` | 当前 50 类训练 MERT 清单 |
-| `data/processed/dev_holdout/catalog.jsonl` | dev 下载清单 |
-| `data/processed/dev_holdout/mert_95_layers/segments.jsonl` | dev MERT 清单 |
-| `data/processed/frozen_test/catalog.jsonl` | final frozen 下载清单 |
-| `data/processed/frozen_test/mert_95_layers/segments.jsonl` | final frozen MERT 清单 |
-| `data/processed/evaluations/p3_layer_fusion_deploy.json` | 当前 50 类 CV 与校准结果 |
-| `data/processed/evaluations/p2_dev_holdout.json` | dev holdout 结果 |
-| `data/processed/evaluations/p1_frozen_test.json` | 当前 final frozen 结果 |
+| `src/vocaptest/models/calibrated_stacking.py` | P4 calibrated stacking 模型类 |
+| `scripts/35_train_p4_calibrated_stacking.py` | 训练部署 artifact |
+| `data/processed/models/p4_calibrated_stacking.pkl` | 当前部署模型，未纳入 git，由部署脚本同步 |
+| `data/processed/evaluations/p4_calibrated_stacking_deploy.json` | 部署模型评估结果 |
 
-## 复现数据与评估
+## 复现实验
+
+P4 搜索相关脚本按时间顺序排列：
+
+```powershell
+python scripts/27_run_p4_broad_model_search.py
+python scripts/28_validate_p4_broad_candidates.py
+python scripts/29_run_p4_concat_pooling_search.py
+python scripts/30_run_p4_similarity_search.py
+python scripts/31_run_p4_stacking_search.py
+python scripts/32_run_p4_projection_head_search.py
+python scripts/33_run_p4_cv_selected_stacking.py
+python scripts/34_run_p4_calibrated_stacking.py
+python scripts/35_train_p4_calibrated_stacking.py
+```
+
+历史数据准备和 MERT 缓存重建仍使用：
 
 ```powershell
 python scripts/16_expand_training_catalog.py --ffmpeg-location <ffmpeg目录>
-
-python scripts/18_prepare_frozen_test_catalog.py `
-  --catalog configs/dev_holdout_catalog.yaml `
-  --audio-root data/dev_holdout_audio `
-  --manifest-output data/processed/dev_holdout/catalog.jsonl `
-  --category dev_holdout `
-  --expected-per-class 2 `
-  --allow-variable-per-class `
-  --minimum-per-class 0 `
-  --exclude-catalog configs/frozen_test_catalog.yaml `
-  --ffmpeg-location <ffmpeg目录>
-
-python scripts/18_prepare_frozen_test_catalog.py `
-  --catalog configs/frozen_test_catalog.yaml `
-  --audio-root data/frozen_test_audio `
-  --manifest-output data/processed/frozen_test/catalog.jsonl `
-  --category frozen_test `
-  --expected-per-class 4 `
-  --allow-variable-per-class `
-  --minimum-per-class 1 `
-  --exclude-catalog configs/dev_holdout_catalog.yaml `
-  --ffmpeg-location <ffmpeg目录>
-
 python scripts/09_rebuild_p1_layer_embeddings.py
-
-python scripts/09_rebuild_p1_layer_embeddings.py `
-  --decisions data/processed/dev_holdout/catalog.jsonl `
-  --audio-root data/dev_holdout_audio `
-  --embedding-output data/processed/embeddings/mert_95_dev_holdout_layers `
-  --manifest-output data/processed/dev_holdout/mert_95_layers/segments.jsonl
-
-python scripts/09_rebuild_p1_layer_embeddings.py `
-  --decisions data/processed/frozen_test/catalog.jsonl `
-  --audio-root data/frozen_test_audio `
-  --embedding-output data/processed/embeddings/mert_95_frozen_layers `
-  --manifest-output data/processed/frozen_test/mert_95_layers/segments.jsonl
-
 python scripts/21_train_p3_layer_fusion.py
-python scripts/19_evaluate_frozen_test.py `
-  --manifest data/processed/dev_holdout/mert_95_layers/segments.jsonl `
-  --output data/processed/evaluations/p2_dev_holdout.json `
-  --protocol-name p2_development_holdout `
-  --expected-per-class 2 `
-  --allow-variable-per-class `
-  --minimum-per-class 0
-python scripts/19_evaluate_frozen_test.py `
-  --protocol-name p2_final_frozen_test `
-  --expected-per-class 4 `
-  --allow-variable-per-class `
-  --minimum-per-class 1
 ```
 
-## 当前机器适配
-
-当前 RTX 4060 Ti 8GB、约 32GB 内存下，MERT-v1-95M 使用 batch size 4 稳定。
-本轮已扩到 50 位 P 主，并修补了 YouTube-only 选曲造成的 niconico 首发漏曲；完整重建缓存可在本机完成。
-现阶段瓶颈仍是数据口径和评估设计，不是显存。
-
-## 已知问题
-
-1. 50 类版本 OOF 仍稳，但 final Macro-F1 降至 75.55%；继续扩张前应先做错误分析，不宜只按人数推进。
-2. `ryo` 因 VocaDB 中部分经典作品缺少 enabled Original PV，少量训练曲使用 VocaDB-listed `Other/Reprint` PV 作为显式例外。
-3. `じん`、`Neru`、`すりぃ`、`cosMo/sasakure.UK` 仍是重点边界，需要继续靠干净曲目和拒识阈值控制。
-4. 覆盖审计仍列出若干旧 P 主的 niconico 首发候选；下一轮应优先补 VocaDB id/source 证据，再决定是否替换旧样本。
-
-历史 27 类结果见 [P1 报告](docs/P1_27_PRODUCERS_FROZEN_TEST_REPORT.md)。
-
-新增或回审 P 主时，按 [Catalog Selection Protocol](docs/CATALOG_SELECTION_PROTOCOL.md)
-执行：VocaDB 为主证据，支持 YouTube 与 niconico Original PV，训练/dev/final
-按 VocaDB song id 与媒体 source key 双重隔离；样本少的 P 主可保留较小拆分，
-但不能为了凑数量混入来源不清或风格归因不稳的曲目。
+新增或替换 P 主时，请按 [Catalog Selection Protocol](docs/CATALOG_SELECTION_PROTOCOL.md) 执行：VocaDB 为主证据，支持 YouTube 和 niconico Original PV，训练/dev/final 按 VocaDB song id 与媒体 source key 双重隔离，不能为了凑数量混入来源不清或风格归因不稳的曲目。

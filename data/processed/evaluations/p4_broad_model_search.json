@@ -1,0 +1,1044 @@
+{
+  "protocol": {
+    "purpose": "Broad global model search after P4 data-quality cleanup",
+    "constraints": [
+      "No new songs, audio, embeddings, or labels are added.",
+      "No producer-specific or producer-pair-specific rules are used.",
+      "Development holdout is used for method selection; final frozen is diagnostic/report-only."
+    ],
+    "train_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\curated\\mert_95_p1\\segments.jsonl",
+    "dev_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\dev_holdout\\mert_95_layers\\segments.jsonl",
+    "final_manifest": "F:\\Personal\\Code\\vocaptest\\data\\processed\\frozen_test\\mert_95_layers\\segments.jsonl",
+    "audit": "F:\\Personal\\Code\\vocaptest\\data\\processed\\evaluations\\catalog_risk_audit.json",
+    "max_combo_size": 3,
+    "segment_methods": false
+  },
+  "dataset": {
+    "train_songs": 574,
+    "dev_songs": 94,
+    "final_songs": 190,
+    "classes": 50,
+    "layers": 13,
+    "embedding_dim": 768
+  },
+  "exclusions": {
+    "source_clean": {
+      "excluded_songs": 1,
+      "by_code": {
+        "configured_source_not_original": 1
+      },
+      "records": [
+        {
+          "song_id": "youtube_pIF_kTBBnuU",
+          "producer_slug": "kemu",
+          "title": "ぼくらの報復政策",
+          "codes": [
+            "configured_source_not_original"
+          ],
+          "risk_score": 10
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "strategy": "source_clean",
+      "training_songs": 573,
+      "minimum_class_songs": 9,
+      "songs_per_class": {
+        "40mp": 12,
+        "ayase": 11,
+        "balloon": 10,
+        "chinozo": 13,
+        "cosmo": 19,
+        "deco27": 14,
+        "eve": 10,
+        "giga": 12,
+        "gyari": 10,
+        "hachi": 12,
+        "hachioji_p": 10,
+        "harumaki_gohan": 9,
+        "hiiragi_magnetite": 10,
+        "hitoshizuku_p": 10,
+        "inabakumori": 14,
+        "iyowa": 10,
+        "jin": 17,
+        "kairikibear": 12,
+        "kanaria": 10,
+        "kemu": 11,
+        "kuro_usa_p": 10,
+        "maretu": 12,
+        "mikito_p": 10,
+        "mimi": 14,
+        "mitchie_m": 10,
+        "mothy": 10,
+        "n_buna": 11,
+        "nakiso": 14,
+        "nayutan": 11,
+        "neru": 16,
+        "niru_kajitsu": 10,
+        "nuyuri": 10,
+        "orangestar": 12,
+        "oster_project": 10,
+        "owata_p": 11,
+        "papiyon": 10,
+        "pinocchiop": 13,
+        "r_906": 10,
+        "r_sound_design": 14,
+        "rerulili": 10,
+        "ryo": 13,
+        "sasakure_uk": 11,
+        "surii": 15,
+        "syudou": 10,
+        "teniwoha": 10,
+        "toa": 10,
+        "toma": 10,
+        "ume_tora": 10,
+        "wotaku": 10,
+        "wowaka": 10
+      },
+      "selected_by_dev": {
+        "method": "lda_best_dev_combo_temperature",
+        "family": "layer_probability_fusion",
+        "extra": {
+          "layers": [
+            1,
+            5,
+            6,
+            7
+          ],
+          "weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "temperature": 2.0
+        },
+        "dev": {
+          "metrics": {
+            "top1_accuracy": 0.851063829787234,
+            "top3_accuracy": 0.8723404255319149,
+            "macro_f1": 0.8119999999999998,
+            "mrr": 0.8752860993317815,
+            "log_loss": 1.336414733573942
+          },
+          "wrong_count": 14,
+          "top3_miss_count": 12,
+          "rejection": {
+            "threshold": 0.8161293623775518,
+            "coverage": 0.648936170212766,
+            "accepted_count": 61,
+            "accepted_accuracy": 0.9672131147540983,
+            "accepted_wrong_count": 2,
+            "rejected_correct_count": 21
+          }
+        },
+        "final": {
+          "metrics": {
+            "top1_accuracy": 0.7947368421052632,
+            "top3_accuracy": 0.8736842105263158,
+            "macro_f1": 0.7648845598845598,
+            "mrr": 0.8498611646129873,
+            "log_loss": 1.4060561846832667
+          },
+          "wrong_count": 39,
+          "top3_miss_count": 24,
+          "rejection": {
+            "threshold": 0.8161293623775518,
+            "coverage": 0.6210526315789474,
+            "accepted_count": 118,
+            "accepted_accuracy": 0.940677966101695,
+            "accepted_wrong_count": 7,
+            "rejected_correct_count": 40
+          }
+        }
+      },
+      "best_final_top1_diagnostic": {
+        "method": "lda_equal_top3_dev_layers",
+        "family": "layer_probability_fusion",
+        "extra": {
+          "layers": [
+            5,
+            6,
+            7
+          ],
+          "weights": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "fusion": "arithmetic"
+        },
+        "dev": {
+          "metrics": {
+            "top1_accuracy": 0.8297872340425532,
+            "top3_accuracy": 0.8936170212765957,
+            "macro_f1": 0.7967619047619047,
+            "mrr": 0.8688328039962072,
+            "log_loss": 2.923097940130821
+          },
+          "wrong_count": 16,
+          "top3_miss_count": 10,
+          "rejection": {
+            "threshold": 0.9998397778135875,
+            "coverage": 0.6914893617021277,
+            "accepted_count": 65,
+            "accepted_accuracy": 0.9692307692307692,
+            "accepted_wrong_count": 2,
+            "rejected_correct_count": 15
+          }
+        },
+        "final": {
+          "metrics": {
+            "top1_accuracy": 0.7947368421052632,
+            "top3_accuracy": 0.8947368421052632,
+            "macro_f1": 0.763142857142857,
+            "mrr": 0.8486115592418648,
+            "log_loss": 2.750389407242863
+          },
+          "wrong_count": 39,
+          "top3_miss_count": 20,
+          "rejection": {
+            "threshold": 0.9998397778135875,
+            "coverage": 0.6578947368421053,
+            "accepted_count": 125,
+            "accepted_accuracy": 0.944,
+            "accepted_wrong_count": 7,
+            "rejected_correct_count": 33
+          }
+        }
+      },
+      "methods": [
+        {
+          "method": "lda_equal_568",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "fusion": "arithmetic"
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9998397778135875,
+            "coverage": 0.6595744680851063,
+            "precision": 0.967741935483871
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7953333333333333,
+              "mrr": 0.8676582981116808,
+              "log_loss": 3.0137823831364874
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9998397778135875,
+              "coverage": 0.6595744680851063,
+              "accepted_count": 62,
+              "accepted_accuracy": 0.967741935483871,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 18
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7842105263157895,
+              "top3_accuracy": 0.8842105263157894,
+              "macro_f1": 0.7554502164502164,
+              "mrr": 0.8441939020939446,
+              "log_loss": 2.6892867744505606
+            },
+            "wrong_count": 41,
+            "top3_miss_count": 22,
+            "rejection": {
+              "threshold": 0.9998397778135875,
+              "coverage": 0.6789473684210526,
+              "accepted_count": 129,
+              "accepted_accuracy": 0.9302325581395349,
+              "accepted_wrong_count": 9,
+              "rejected_correct_count": 29
+            }
+          }
+        },
+        {
+          "method": "lda_equal_all_layers",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weights": [
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693,
+              0.07692307692307693
+            ],
+            "fusion": "arithmetic"
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.678766909846391,
+            "coverage": 0.6914893617021277,
+            "precision": 0.9692307692307692
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8085106382978723,
+              "top3_accuracy": 0.8723404255319149,
+              "macro_f1": 0.7727619047619046,
+              "mrr": 0.8486719800623809,
+              "log_loss": 2.2436092723425283
+            },
+            "wrong_count": 18,
+            "top3_miss_count": 12,
+            "rejection": {
+              "threshold": 0.678766909846391,
+              "coverage": 0.6914893617021277,
+              "accepted_count": 65,
+              "accepted_accuracy": 0.9692307692307692,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 13
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7894736842105263,
+              "top3_accuracy": 0.868421052631579,
+              "macro_f1": 0.7738845598845598,
+              "mrr": 0.8442030194385881,
+              "log_loss": 2.0047096388181282
+            },
+            "wrong_count": 40,
+            "top3_miss_count": 25,
+            "rejection": {
+              "threshold": 0.678766909846391,
+              "coverage": 0.7157894736842105,
+              "accepted_count": 136,
+              "accepted_accuracy": 0.8970588235294118,
+              "accepted_wrong_count": 14,
+              "rejected_correct_count": 28
+            }
+          }
+        },
+        {
+          "method": "lda_equal_top3_dev_layers",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              5,
+              6,
+              7
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "fusion": "arithmetic"
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9998397778135875,
+            "coverage": 0.6914893617021277,
+            "precision": 0.9692307692307692
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7967619047619047,
+              "mrr": 0.8688328039962072,
+              "log_loss": 2.923097940130821
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.9998397778135875,
+              "coverage": 0.6914893617021277,
+              "accepted_count": 65,
+              "accepted_accuracy": 0.9692307692307692,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 15
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7947368421052632,
+              "top3_accuracy": 0.8947368421052632,
+              "macro_f1": 0.763142857142857,
+              "mrr": 0.8486115592418648,
+              "log_loss": 2.750389407242863
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 20,
+            "rejection": {
+              "threshold": 0.9998397778135875,
+              "coverage": 0.6578947368421053,
+              "accepted_count": 125,
+              "accepted_accuracy": 0.944,
+              "accepted_wrong_count": 7,
+              "rejected_correct_count": 33
+            }
+          }
+        },
+        {
+          "method": "lda_dev_weighted_all_layers",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weights": [
+              0.08985724379392969,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.1613606837908901,
+              0.2854739648959249,
+              0.1744110342892714,
+              0.11643832644515247,
+              0.05410012709858297,
+              0.09792773579934595,
+              0.0,
+              0.020430883886902583
+            ],
+            "fusion": "arithmetic"
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.7948554885144682,
+            "coverage": 0.7446808510638298,
+            "precision": 0.9714285714285714
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8191489361702128,
+              "top3_accuracy": 0.8723404255319149,
+              "macro_f1": 0.7879999999999999,
+              "mrr": 0.8593981603770269,
+              "log_loss": 2.148918087170993
+            },
+            "wrong_count": 17,
+            "top3_miss_count": 12,
+            "rejection": {
+              "threshold": 0.7948554885144682,
+              "coverage": 0.7446808510638298,
+              "accepted_count": 70,
+              "accepted_accuracy": 0.9714285714285714,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 9
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7947368421052632,
+              "top3_accuracy": 0.868421052631579,
+              "macro_f1": 0.7640378510378509,
+              "mrr": 0.847683636495592,
+              "log_loss": 2.1637644965131266
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 25,
+            "rejection": {
+              "threshold": 0.7948554885144682,
+              "coverage": 0.7421052631578947,
+              "accepted_count": 141,
+              "accepted_accuracy": 0.8936170212765957,
+              "accepted_wrong_count": 15,
+              "rejected_correct_count": 25
+            }
+          }
+        },
+        {
+          "method": "lda_dev_weighted_geomean_all_layers",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weights": [
+              0.16131142523080394,
+              0.025300087318732577,
+              0.27256272732372927,
+              6.861704892432567e-17,
+              2.299329697226956e-19,
+              0.05659845738831701,
+              0.17749742778795594,
+              0.21097159123214637,
+              0.012469712067949881,
+              0.0,
+              0.0,
+              0.08328857165036492,
+              0.0
+            ],
+            "fusion": "geometric"
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9998171140527771,
+            "coverage": 0.7021276595744681,
+            "precision": 0.9696969696969697
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.7872340425531915,
+              "top3_accuracy": 0.8617021276595744,
+              "macro_f1": 0.7493333333333334,
+              "mrr": 0.8410205522317816,
+              "log_loss": 2.8085225621572296
+            },
+            "wrong_count": 20,
+            "top3_miss_count": 13,
+            "rejection": {
+              "threshold": 0.9998171140527771,
+              "coverage": 0.7021276595744681,
+              "accepted_count": 66,
+              "accepted_accuracy": 0.9696969696969697,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 10
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7842105263157895,
+              "top3_accuracy": 0.8842105263157894,
+              "macro_f1": 0.7546651126651125,
+              "mrr": 0.8442984400948389,
+              "log_loss": 2.7928552343115274
+            },
+            "wrong_count": 41,
+            "top3_miss_count": 22,
+            "rejection": {
+              "threshold": 0.9998171140527771,
+              "coverage": 0.7,
+              "accepted_count": 133,
+              "accepted_accuracy": 0.924812030075188,
+              "accepted_wrong_count": 10,
+              "rejected_correct_count": 26
+            }
+          }
+        },
+        {
+          "method": "lda_best_dev_combo_arithmetic",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              3,
+              6,
+              10
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "fusion": "arithmetic",
+            "rank_scale": null,
+            "max_combo_size": 3
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.7974397253919601,
+            "coverage": 0.648936170212766,
+            "precision": 0.9672131147540983
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8404255319148937,
+              "top3_accuracy": 0.8829787234042553,
+              "macro_f1": 0.7986666666666667,
+              "mrr": 0.8716566977616761,
+              "log_loss": 2.958418324162384
+            },
+            "wrong_count": 15,
+            "top3_miss_count": 11,
+            "rejection": {
+              "threshold": 0.7974397253919601,
+              "coverage": 0.648936170212766,
+              "accepted_count": 61,
+              "accepted_accuracy": 0.9672131147540983,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 20
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7631578947368421,
+              "top3_accuracy": 0.8842105263157894,
+              "macro_f1": 0.7429108669108667,
+              "mrr": 0.8301896680239209,
+              "log_loss": 2.6516674205030553
+            },
+            "wrong_count": 45,
+            "top3_miss_count": 22,
+            "rejection": {
+              "threshold": 0.7974397253919601,
+              "coverage": 0.6736842105263158,
+              "accepted_count": 128,
+              "accepted_accuracy": 0.90625,
+              "accepted_wrong_count": 12,
+              "rejected_correct_count": 29
+            }
+          }
+        },
+        {
+          "method": "lda_best_dev_combo_geometric",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              2,
+              6,
+              7
+            ],
+            "weights": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "fusion": "geometric",
+            "rank_scale": null,
+            "max_combo_size": 3
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.9999952519912318,
+            "coverage": 0.6914893617021277,
+            "precision": 0.9692307692307692
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.8829787234042553,
+              "macro_f1": 0.7973333333333332,
+              "mrr": 0.8670604980186036,
+              "log_loss": 2.9535148462340284
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 11,
+            "rejection": {
+              "threshold": 0.9999952519912318,
+              "coverage": 0.6914893617021277,
+              "accepted_count": 65,
+              "accepted_accuracy": 0.9692307692307692,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 15
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7789473684210526,
+              "top3_accuracy": 0.8947368421052632,
+              "macro_f1": 0.7480216450216449,
+              "mrr": 0.8443010996779222,
+              "log_loss": 2.9850714608296065
+            },
+            "wrong_count": 42,
+            "top3_miss_count": 20,
+            "rejection": {
+              "threshold": 0.9999952519912318,
+              "coverage": 0.6684210526315789,
+              "accepted_count": 127,
+              "accepted_accuracy": 0.9448818897637795,
+              "accepted_wrong_count": 7,
+              "rejected_correct_count": 28
+            }
+          }
+        },
+        {
+          "method": "lda_best_dev_combo_rank",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              5,
+              6
+            ],
+            "weights": [
+              0.5,
+              0.5
+            ],
+            "fusion": "rank",
+            "rank_scale": 8.0,
+            "max_combo_size": 3
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.17099809839538255,
+            "coverage": 0.10638297872340426,
+            "precision": 0.7
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8191489361702128,
+              "top3_accuracy": 0.8829787234042553,
+              "macro_f1": 0.7813333333333332,
+              "mrr": 0.8576497696608774,
+              "log_loss": 2.2184318280094057
+            },
+            "wrong_count": 17,
+            "top3_miss_count": 11,
+            "rejection": {
+              "threshold": 0.17099809839538255,
+              "coverage": 0.10638297872340426,
+              "accepted_count": 10,
+              "accepted_accuracy": 0.7,
+              "accepted_wrong_count": 3,
+              "rejected_correct_count": 70
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7631578947368421,
+              "top3_accuracy": 0.8842105263157894,
+              "macro_f1": 0.7337806637806638,
+              "mrr": 0.8299405409753153,
+              "log_loss": 2.1852076820431114
+            },
+            "wrong_count": 45,
+            "top3_miss_count": 22,
+            "rejection": {
+              "threshold": 0.17099809839538255,
+              "coverage": 0.03684210526315789,
+              "accepted_count": 7,
+              "accepted_accuracy": 1.0,
+              "accepted_wrong_count": 0,
+              "rejected_correct_count": 138
+            }
+          }
+        },
+        {
+          "method": "lda_best_dev_combo_temperature",
+          "family": "layer_probability_fusion",
+          "extra": {
+            "layers": [
+              1,
+              5,
+              6,
+              7
+            ],
+            "weights": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "temperature": 2.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.8161293623775518,
+            "coverage": 0.648936170212766,
+            "precision": 0.9672131147540983
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.851063829787234,
+              "top3_accuracy": 0.8723404255319149,
+              "macro_f1": 0.8119999999999998,
+              "mrr": 0.8752860993317815,
+              "log_loss": 1.336414733573942
+            },
+            "wrong_count": 14,
+            "top3_miss_count": 12,
+            "rejection": {
+              "threshold": 0.8161293623775518,
+              "coverage": 0.648936170212766,
+              "accepted_count": 61,
+              "accepted_accuracy": 0.9672131147540983,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 21
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7947368421052632,
+              "top3_accuracy": 0.8736842105263158,
+              "macro_f1": 0.7648845598845598,
+              "mrr": 0.8498611646129873,
+              "log_loss": 1.4060561846832667
+            },
+            "wrong_count": 39,
+            "top3_miss_count": 24,
+            "rejection": {
+              "threshold": 0.8161293623775518,
+              "coverage": 0.6210526315789474,
+              "accepted_count": 118,
+              "accepted_accuracy": 0.940677966101695,
+              "accepted_wrong_count": 7,
+              "rejected_correct_count": 40
+            }
+          }
+        },
+        {
+          "method": "concat_pca_lda",
+          "family": "concat_classifier",
+          "extra": {
+            "feature_set": "single_6",
+            "layers": [
+              6
+            ],
+            "pca_dim": null
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.999999986964583,
+            "coverage": 0.6595744680851063,
+            "precision": 0.967741935483871
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8404255319148937,
+              "top3_accuracy": 0.8829787234042553,
+              "macro_f1": 0.8019999999999999,
+              "mrr": 0.8683840528681083,
+              "log_loss": 3.601297904885246
+            },
+            "wrong_count": 15,
+            "top3_miss_count": 11,
+            "rejection": {
+              "threshold": 0.999999986964583,
+              "coverage": 0.6595744680851063,
+              "accepted_count": 62,
+              "accepted_accuracy": 0.967741935483871,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 19
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7736842105263158,
+              "top3_accuracy": 0.8789473684210526,
+              "macro_f1": 0.7432337662337661,
+              "mrr": 0.8359479916064927,
+              "log_loss": 3.421673280636414
+            },
+            "wrong_count": 43,
+            "top3_miss_count": 23,
+            "rejection": {
+              "threshold": 0.999999986964583,
+              "coverage": 0.6157894736842106,
+              "accepted_count": 117,
+              "accepted_accuracy": 0.9487179487179487,
+              "accepted_wrong_count": 6,
+              "rejected_correct_count": 36
+            }
+          }
+        },
+        {
+          "method": "concat_logreg",
+          "family": "concat_classifier",
+          "extra": {
+            "feature_set": "default_568",
+            "layers": [
+              5,
+              6,
+              8
+            ],
+            "pca_dim": null,
+            "C": 0.3
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.7595908822719404,
+            "coverage": 0.5319148936170213,
+            "precision": 0.96
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.7872340425531915,
+              "top3_accuracy": 0.8936170212765957,
+              "macro_f1": 0.7287619047619048,
+              "mrr": 0.85336628967648,
+              "log_loss": 0.9154451043857016
+            },
+            "wrong_count": 20,
+            "top3_miss_count": 10,
+            "rejection": {
+              "threshold": 0.7595908822719404,
+              "coverage": 0.5319148936170213,
+              "accepted_count": 50,
+              "accepted_accuracy": 0.96,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 26
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7526315789473684,
+              "top3_accuracy": 0.8578947368421053,
+              "macro_f1": 0.7042453102453102,
+              "mrr": 0.8176845593362214,
+              "log_loss": 1.0609400136743647
+            },
+            "wrong_count": 47,
+            "top3_miss_count": 27,
+            "rejection": {
+              "threshold": 0.7595908822719404,
+              "coverage": 0.531578947368421,
+              "accepted_count": 101,
+              "accepted_accuracy": 0.9207920792079208,
+              "accepted_wrong_count": 8,
+              "rejected_correct_count": 50
+            }
+          }
+        },
+        {
+          "method": "concat_ridge",
+          "family": "concat_classifier",
+          "extra": {
+            "feature_set": "single_6",
+            "layers": [
+              6
+            ],
+            "pca_dim": null,
+            "alpha": 100.0
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.03239463918225052,
+            "coverage": 0.8085106382978723,
+            "precision": 0.9605263157894737
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.851063829787234,
+              "top3_accuracy": 0.9042553191489362,
+              "macro_f1": 0.8,
+              "mrr": 0.8865703341297834,
+              "log_loss": 3.2135699792322834
+            },
+            "wrong_count": 14,
+            "top3_miss_count": 9,
+            "rejection": {
+              "threshold": 0.03239463918225052,
+              "coverage": 0.8085106382978723,
+              "accepted_count": 76,
+              "accepted_accuracy": 0.9605263157894737,
+              "accepted_wrong_count": 3,
+              "rejected_correct_count": 7
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7842105263157895,
+              "top3_accuracy": 0.9,
+              "macro_f1": 0.7452914862914861,
+              "mrr": 0.8451279263916128,
+              "log_loss": 3.220162625402585
+            },
+            "wrong_count": 41,
+            "top3_miss_count": 19,
+            "rejection": {
+              "threshold": 0.03239463918225052,
+              "coverage": 0.7842105263157895,
+              "accepted_count": 149,
+              "accepted_accuracy": 0.9194630872483222,
+              "accepted_wrong_count": 12,
+              "rejected_correct_count": 12
+            }
+          }
+        },
+        {
+          "method": "concat_linear_svc",
+          "family": "concat_classifier",
+          "extra": {
+            "feature_set": "single_6",
+            "layers": [
+              6
+            ],
+            "pca_dim": null,
+            "C": 0.01
+          },
+          "dev_rejection_selection": {
+            "threshold": 0.039446803239752956,
+            "coverage": 0.6382978723404256,
+            "precision": 0.9666666666666667
+          },
+          "dev": {
+            "metrics": {
+              "top1_accuracy": 0.8297872340425532,
+              "top3_accuracy": 0.9042553191489362,
+              "macro_f1": 0.7926666666666665,
+              "mrr": 0.874470314634716,
+              "log_loss": 3.110943509473721
+            },
+            "wrong_count": 16,
+            "top3_miss_count": 9,
+            "rejection": {
+              "threshold": 0.039446803239752956,
+              "coverage": 0.6382978723404256,
+              "accepted_count": 60,
+              "accepted_accuracy": 0.9666666666666667,
+              "accepted_wrong_count": 2,
+              "rejected_correct_count": 20
+            }
+          },
+          "final": {
+            "metrics": {
+              "top1_accuracy": 0.7842105263157895,
+              "top3_accuracy": 0.8789473684210526,
+              "macro_f1": 0.742064935064935,
+              "mrr": 0.8403656974873789,
+              "log_loss": 3.12587283187703
+            },
+            "wrong_count": 41,
+            "top3_miss_count": 23,
+            "rejection": {
+              "threshold": 0.039446803239752956,
+              "coverage": 0.6157894736842106,
+              "accepted_count": 117,
+              "accepted_accuracy": 0.9658119658119658,
+              "accepted_wrong_count": 4,
+              "rejected_correct_count": 36
+            }
+          }
+        }
+      ],
+      "failures": []
+    }
+  ]
+}
