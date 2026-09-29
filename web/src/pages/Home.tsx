@@ -11,7 +11,10 @@ const FLOATING_ELEMENTS = [
   { emoji: "💖", className: "left-[5%] top-[40%] animate-float", size: "text-lg" },
 ];
 
+import { useAvailability } from "@/lib/useAvailability";
+
 export default function Home() {
+  const available = useAvailability();
   const navigate = useNavigate();
 
   return (
@@ -54,6 +57,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
               onClick={() => navigate("/analyze")}
+              disabled={available !== true}
               className="btn-primary text-base group"
             >
               <Sparkles size={18} className="group-hover:animate-spin" />
@@ -67,6 +71,7 @@ export default function Home() {
               浏览 P 主列表
             </button>
           </div>
+          {available !== true && <p role="status" className="mt-4 text-sm text-text-light">{available === null ? "检查服务器…" : "服务器不可用"}</p>}
         </div>
       </section>
 

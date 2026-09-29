@@ -103,38 +103,30 @@ npm install
 npm run dev
 ```
 
-## VPS 部署
+## 生产部署
 
-完整部署会拉取指定分支、安装依赖、构建前端、安装 systemd 服务、刷新 Nginx，并同步本地 `data/processed/models/*.pkl` 模型 artifact：
+生产页面位于 `https://linkukai.com/VocaPTest/`，由 `139.59.239.152` 的 Nginx
+提供静态文件。歌曲分析通过与 Escape 共用的 SSH 连接转发到本机 CUDA。
+VPS 不安装 Python 模型环境。旧的 `deploy_vps.ps1` 是另一台服务器的历史全栈部署工具，
+不适用于当前服务器；不要用它更新当前生产站。
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1
-```
-
-只更新代码、前端和模型时使用快速路径：
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\deploy_vps.ps1 `
-  -SkipSystemPackages -SkipPythonDeps -SkipServiceInstall -SkipNginxInstall
-```
-
-如果只改页面或文档、不需要同步模型，可额外加：
+前端构建并导出离线可用的 P 主资料：
 
 ```powershell
--SkipModelSync
+npm --prefix web run build
+.venv\Scripts\python scripts/export_web_catalog.py
 ```
 
-部署脚本默认部署 `master` 分支，默认服务器为 `root@187.77.136.20`，默认应用目录为 `/srv/vocaptest/app`。部署完成后会检查 systemd 状态和：
+生产 API 入口为 `vocaptest.api.production:app_factory`，只绑定
+`127.0.0.1:18766`，需要 `VOCAP_INFERENCE_KEY`。启动时强制 CUDA 并预热模型，
+一次只接收一个分析任务（繁忙返回 429），不排队、不回退 CPU。
+浏览器和反向代理均验证服务可用性；离线时显示“服务器不可用”并拒绝上传。
 
-```text
-http://127.0.0.1:8000/health
-```
-
-VPS 首次安全加固：
-
-```bash
-bash deploy/harden_vps_security.sh
-```
+Windows 任务 `LinkukaiGPU` 统一维护 Escape、VocaPTest 和双端口 SSH 隧道，
+从用户登录时启动。本机需保持登录、唤醒和联网。运行脚本、固定源码快照和凭据位于
+`E:/Escape/_AI/deploy/unified-20260929`，不提交到仓库。
+配置管理源位于相邻 `Escape_AI` 项目的 `scripts/run_shared_gpu.ps1` 和
+`deploy/unified_server.py`。上线采用不可变版本目录和公开符号链接，保留上一版以便回滚。
 
 ## 关键文件
 

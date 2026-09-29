@@ -4,6 +4,7 @@ import { AlertTriangle, FileAudio, Info, RefreshCw, Sparkles } from "lucide-reac
 import AudioUploader from "@/components/AudioUploader";
 import ScoreBar from "@/components/ScoreBar";
 import { createAnalyzeJob, getAnalyzeJob } from "@/lib/api";
+import { useAvailability } from "@/lib/useAvailability";
 import { getProducerMeta, withBasePath } from "@/lib/producers";
 import type { AnalyzeResult, JobStage, SearchResultItem, UploadState } from "@/lib/types";
 
@@ -36,6 +37,7 @@ const STAGE_LABELS: Record<JobStage, string> = {
 const delay = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
 
 export default function Analyze() {
+  const available = useAvailability();
   const [state, setState] = useState<UploadState>({ phase: "idle" });
   const [fileName, setFileName] = useState("");
   const runIdRef = useRef(0);
@@ -52,8 +54,10 @@ export default function Analyze() {
           setState({ phase: "uploading", progress: pct });
         }
       });
+      const deadline = Date.now() + 300000;
 
       while (runIdRef.current === runId) {
+        if (Date.now() > deadline) throw new Error("服务器不可用");
         if (job.status === "done" && job.result) {
           setState({ phase: "done", result: job.result });
           return;
@@ -114,7 +118,8 @@ export default function Analyze() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <AudioUploader onFile={handleFile} />
+            {available !== true && <p role="status" className="mb-4 text-center text-text-light">{available === null ? "检查服务器…" : "服务器不可用"}</p>}
+            <AudioUploader onFile={handleFile} disabled={available !== true} />
           </motion.div>
         )}
 

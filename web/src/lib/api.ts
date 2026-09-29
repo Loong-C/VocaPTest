@@ -11,15 +11,24 @@ const APP_BASE = import.meta.env.BASE_URL === "/"
   : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 4000);
+  try {
   const res = await fetch(url, {
     headers: { "Content-Type": "application/json" },
     ...options,
+    signal: controller.signal,
+    cache: "no-store",
   });
   if (!res.ok) {
     const body = await res.text();
     throw new Error(formatApiError(res.status, body, res.statusText));
   }
-  return res.json();
+  return await res.json();
+  } catch (error) {
+    if (error instanceof TypeError || controller.signal.aborted) throw new Error("服务器不可用");
+    throw error;
+  } finally { clearTimeout(timer); }
 }
 
 function formatApiError(status: number, body: string, statusText: string): string {
@@ -33,7 +42,7 @@ function formatApiError(status: number, body: string, statusText: string): strin
     return "文件类型或内容不支持，请换一个音频文件重试。";
   }
   if (status >= 500) {
-    return "服务暂时无法完成分析，请稍后再试。";
+    return "服务器不可用";
   }
 
   try {
@@ -49,15 +58,15 @@ function formatApiError(status: number, body: string, statusText: string): strin
 }
 
 export async function checkHealth(): Promise<HealthResponse> {
-  return request<HealthResponse>("/health");
+  return request<HealthResponse>(`${APP_BASE}/health`);
 }
 
 export async function listProducers(): Promise<ProducerListResponse> {
-  return request<ProducerListResponse>(`${APP_BASE}/api/producers`);
+  return request<ProducerListResponse>(`${APP_BASE}/catalog/producers.json`);
 }
 
 export async function getProducer(slug: string): Promise<ProducerInfo> {
-  return request<ProducerInfo>(`${APP_BASE}/api/producers/${slug}`);
+  return request<ProducerInfo>(`${APP_BASE}/catalog/producers/${encodeURIComponent(slug)}.json`);
 }
 
 export async function analyzeAudio(
@@ -71,6 +80,8 @@ export async function createAnalyzeJob(
   file: File,
   onProgress?: (pct: number) => void
 ): Promise<JobStatusResponse> {
+  const health = await checkHealth();
+  if (health.status !== "ok") throw new Error("服务器不可用");
   return uploadAudio<JobStatusResponse>(`${APP_BASE}/api/analyze/jobs`, file, onProgress);
 }
 
@@ -111,9 +122,11 @@ function uploadAudio<T>(
       }
     });
 
-    xhr.addEventListener("error", () => reject(new Error("Network error")));
+    xhr.addEventListener("error", () => reject(new Error("服务器不可用")));
+    xhr.addEventListener("timeout", () => reject(new Error("服务器不可用")));
 
     xhr.open("POST", url);
+    xhr.timeout = 120000;
     xhr.send(formData);
   });
 }
