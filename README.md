@@ -117,6 +117,11 @@ npm --prefix web run build
 .venv\Scripts\python scripts/export_web_catalog.py
 ```
 
+构建目录应包含写有完整源码提交 SHA 的 `release.json`；将 `web/dist` 内容打包后，
+上传归档和 `deploy/publish_static.py` 到服务器 `/tmp`，运行
+`python3 /tmp/publish_static.py <唯一版本名> /tmp/<归档>.tar.gz`。
+此脚本只切换静态页面，保留旧版本，检查失败自动回滚，不修改 GPU 服务或隧道。
+
 生产 API 入口为 `vocaptest.api.production:app_factory`，只绑定
 `127.0.0.1:18766`，需要 `VOCAP_INFERENCE_KEY`。启动时强制 CUDA 并预热模型，
 一次只接收一个分析任务（繁忙返回 429），不排队、不回退 CPU。
