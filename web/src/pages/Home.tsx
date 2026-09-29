@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Sparkles, Music, ArrowRight } from "lucide-react";
 import SparklesBg from "@/components/Sparkles";
+import { useAvailability } from "@/lib/useAvailability";
 
 const FLOATING_ELEMENTS = [
   { emoji: "🎵", className: "left-[8%] top-[15%] animate-float-slow", size: "text-3xl" },
@@ -10,8 +11,6 @@ const FLOATING_ELEMENTS = [
   { emoji: "🎼", className: "left-[92%] top-[70%] animate-float", size: "text-xl" },
   { emoji: "💖", className: "left-[5%] top-[40%] animate-float", size: "text-lg" },
 ];
-
-import { useAvailability } from "@/lib/useAvailability";
 
 export default function Home() {
   const available = useAvailability();

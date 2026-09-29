@@ -14,17 +14,17 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 4000);
   try {
-  const res = await fetch(url, {
-    headers: { "Content-Type": "application/json" },
-    ...options,
-    signal: controller.signal,
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(formatApiError(res.status, body, res.statusText));
-  }
-  return await res.json();
+    const res = await fetch(url, {
+      headers: { "Content-Type": "application/json" },
+      ...options,
+      signal: controller.signal,
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(formatApiError(res.status, body, res.statusText));
+    }
+    return await res.json();
   } catch (error) {
     if (error instanceof TypeError || controller.signal.aborted) throw new Error("服务器不可用");
     throw error;

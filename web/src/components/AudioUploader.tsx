@@ -66,7 +66,7 @@ export default function AudioUploader({ onFile, disabled }: Props) {
           }
         `}
       >
-        <input {...getInputProps()} />
+        <input {...getInputProps()} disabled={disabled} />
 
         <div className="flex flex-col items-center gap-3">
           <div
